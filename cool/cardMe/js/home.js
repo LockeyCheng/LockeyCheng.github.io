@@ -25,10 +25,12 @@ $(function(){
 	
 	
 	julying.gridMenu.menu = Array(		
-		{ name : 'about-me' ,  	pos : rand( 1 , 15 )  },
-		{ name : 'contact-me' , pos : rand( 20 ,35 )  },
-		{ name : 'blog' ,  		pos : rand( 40 , 55 )  },						
-		{ name : 'link' , 		pos : rand( 60 , 70 ) }
+		{ name : 'about-me' ,  	pos : rand( 1 , 3 )  },
+		{ name : 'contact-me' , pos : rand( 10 ,20 )  },
+		{ name : 'blog' ,  		pos : rand( 21 , 32 )  },						
+		{ name : 'link' , 		pos : rand( 33 , 45 ) },
+		{ name : 'tour' , 		pos : rand( 46 , 60 ) },
+	
 	); 
 	julying.gridMenu.init('#julyingGridMenu') ;
 	$('strong[name=replace]').each(function(){

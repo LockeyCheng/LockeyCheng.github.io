@@ -2,10 +2,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Personal page for Lockey</title>
+<title>Lockey's personal page</title>
 
 <link href="css/main.css" rel="stylesheet" media="all" />
-
+<link href="css/font-awesome.min.css" rel="stylesheet" media="all" />
 <script src="js/jQuery.js" type="text/javascript"></script>
 <script src="js/fun.base.js" type="text/javascript"></script>
 <script src="js/julying.gridmenu.js" type="text/javascript"></script>
@@ -16,7 +16,14 @@
 <body>
 
  
-
+<style type="text/css">
+    div.close{
+        margin-left: 78px;
+        margin-top: -3px;
+        font-size: 2em;
+        color: white;
+    }
+</style>
 
 
 <div id="julyingGridMenu" class="gridMenu">
@@ -24,30 +31,32 @@
 	<div class="position">
         <div id="about-me" class="about-me item">
             <div class="show">
-            	<div class="thumb">01</div>
-                <div class="small-thumb"></div>
-            	<div class="title">About Me</div>
-                <div class="close"></div>
+            	<div class="thumb">000</div>
+                <div class="small-thumb center"><i class="fa fa-free-code-camp"></i></div>
+            	<div class="title">Simple Me</div>
+                <div class="close fa fa-remove"></div>
             </div>            
         </div>
         
        <div class="about-me-body body">        	
             <div class="show">
             	<div class="me"></div>
-                <div class="about"> 
-                  <strong class="name">Lockey</strong>，编程爱好者
-                  <p>其实我</p>
-                  <p>愈来愈发现自己会得很少</p>
+                <div class="about" style="margin-top:-80px">
+                    <div style="margin-left:-100px ">
+                        <strong class="name">Lockey</strong>
+                        <p style="font-size:1.35em"><i class="fa fa-envelope-o" >&nbsp;&nbsp;iooiooi23@163.com</i></p>
+                    </div>
+                  <p style="margin-top:36px">The more i know, i wanna know more.</p>
+                  <p style="margin-top:56px">So short one's life, why not Python.</p>
                 </div><div class="clear"></div>
                 
                 <div class="introduction">
-                    <p>这个网站是我的个人主页，里面都为原创内容。</p>
-                    <p>我经常会分享一些好资源</p>
-                    <p>欢迎和我一起讨论编程技术。 
-                        <a class="qq" target="_blank" href="http://www.jqueryfuns.com/" title="网站源码">QQ</a>
-                        <a class="weibo tencent" target="_blank" href="http://www.jqueryfuns.com/" title="js特效">JS特效</a>
+                    <br/>
+                    <p>This is a personal page supported by Lockey.</p>
+                    <p>Herein, you can view photos, blogs, some articles about coding experience and life thinking from me. If you like, post your ideas to iooiooi23@163.com to communicate with me, gland to receive from your buddy.</p>
+                    <br/>
+                    <p>Thanks for your visit, details are waiting in other modules.
                     </p>
-                    <p>在我不是特别忙的时候，也接受修改代码付费编程任务。</p>
                 </div>
          	</div><!-- .show-->
             <div class="bg" child-num="20"></div>
@@ -55,38 +64,93 @@
         
         <div id="link" class="link item">
             <div class="show">
-                <div class="thumb">02</div>
+                <div class="thumb">001</div>
                 <div class="small-thumb"></div>
-                <div class="title">社交网络</div> 
-                <div class="close"></div>
+                <div class="title">Contact me</div> 
+                <div class="close fa fa-remove"></div>
             </div>       
             <ul>
-                <li class="qq-weibo"><a href="http://www.jqueryfuns.com/" target="_blank" title="网站源码">源码下载</a><span><b>01</b><font>ASP源码</font><i class="png"></i></span></li>
-                <li class="blog-works"><a href="http://www.jqueryfuns.com/" target="_blank" title="慕浟佳的博客">慕浟佳的博客</a><span><b>02</b><font>技术博客</font><i class="png"></i></span></li>
+                <li class="qq-weibo">
+                    <a href="#" target="_blank" title="">
+                        <i class="fa fa-wechat"></i>
+                    </a>
+                </li>
+
+                <li class="blog-works">
+                    <a href="#" target="_blank" title="">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="github">
+                    <a href="https://www.github.com/LockeyCheng" target="_blank" title="Click to Github">
+                        <i class="fa fa-github"></i>
+                    </a>
+                </li>
+                <li class="csdn">
+                    <a href="https://www.blog.csdn.net/lockey23" target="_blank" title="Click to CSDN">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <!--<span><b>02</b><font>技术博客</font><i class="png"></i></span>-->
+                </li>
             </ul>
         </div>
         
         
         <div id="blog" class="blog item">
             <div class="show">
-            	<div class="thumb">03</div>
+            	<div class="thumb">010</div>
                 <div class="small-thumb"></div>
-            	<div class="title">旅行、编程</div>                
-                <div class="close"></div>
+            	<div class="title">IT Skills</div>                
+                <div class="close fa fa-remove"></div>
             </div>
             <ul>
-                <li class="travel-photography"><a href="http://www.jqueryfuns.com/" target="_blank" title="一起去旅行">一起去旅行</a><span><b>01</b><font>一起去旅行吧</font><i class="png"></i></span></li>
-                <li class="website-front-end"><a href="http://www.jqueryfuns.com/" target="_blank" title="前端编程">前端编程</a><span><b>02</b><font>前端、web端编程</font><i class="png"></i></span></li>
-                <li class="mobile-terminal"><a href="http://www.jqueryfuns.com/" target="_blank" title="手机端编程">手机端编程</a><span><b>03</b><font>手机端编程</font><i class="png"></i></span></li>
+                <li class="skill-python">
+                   <div class="thumb">01</div>
+                    <p class="skill-span">Python</p>
+                    <!--
+                    <a href="http://www.jqueryfuns.com/" target="_blank" title="一起去旅行">一起去旅行</a><span><b>01</b><font>一起去旅行吧</font><i class="png"></i></span>-->
+                </li>
+                <li class="skill-operation">
+                     <div class="thumb">10</div>
+                    <!--<i class="fa fa-wechat"></i>-->
+                    <p class="skill-span">Operation</p>
+                </li>
+
+                <li class="skill-linux">
+                     <div class="thumb">10</div>
+                    <p class="skill-span">Linux</p>
+                </li>
+                <li class="skill-other">
+                     <div class="thumb">10</div>
+                    <!--<i class="fa fa-wechat"></i>-->
+                    <p class="skill-span">git,...</p>
+                </li>
+                <li class="skill-web">
+                   <div class="thumb">11</div>
+                    <p class="skill-span">Web</p>
+                </li>
+                 <li class="skill-database">
+                   <div class="thumb">100</div>
+                    <p class="skill-span">Database</p>
+                </li>
             </ul>
         </div>
         
+        <div id="tour" class="tour item">
+            <div class="show">
+                <div class="thumb">011</div>
+                <div class="small-thumb"></div>
+                <div class="title">On the way</div>                
+                <div class="close fa fa-remove"></div>
+            </div>
+        </div>
+
         <div id="contact-me" class="contact-me item">
             <div class="show">
-            	<div class="thumb">04</div>
+            	<div class="thumb">100</div>
                 <div class="small-thumb"></div>
-            	<div class="title">名片</div>
-                <div class="close"></div>
+            	<div class="title">My card</div>
+                <div class="close fa fa-remove"></div>
             </div>
         </div>
         <div class="contact-me-body body">

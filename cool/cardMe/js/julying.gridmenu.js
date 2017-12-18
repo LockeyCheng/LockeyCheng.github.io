@@ -159,7 +159,7 @@ julying.gridMenu = {
 				else
 					$show.find('.close').hide();
 			},function(){
-				$show.find('.close').hide();
+				//$show.find('.close').hide();
 			});
 			
 			$thisItem.find('div.close').click(function(){
