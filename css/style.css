@@ -186,19 +186,19 @@ hr{max-width: 50px;
     margin: 0;
 }
 h2.site-description {
-    margin: 7px;
+    margin: 16px;
     padding-left: 1.2em;
 	font-size: 16px;
 	font-weight: bold;
 }
 .site-title, .site-description {
-    display: inline-block;
+    /*display: inline-block;*/
     margin: 0;
     vertical-align: top;
 	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
 	color: #fff;
-}/*text-transform: uppercase;*/
-h1.site-title{font-size: 31px;color: #fff;border-right: 1px solid #fff;padding-right: 1em;}
+}/*text-transform: uppercase;border-right: 1px solid #fff;*/
+h1.site-title{font-size: 31px;color: #fff;padding-right: 1em;}
 h1.site-title a{color: #00ffd0;margin: 0;}
 h1.site-title a:hover {text-decoration: none;}
 
