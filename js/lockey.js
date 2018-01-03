@@ -27,15 +27,15 @@ setInterval(
     gretting = timeStr+' Middle Day. '
   }
   
-  if (hour >= 14 && hour <15){
+  if (hour >= 14 && hour <16){
     gretting = timeStr+' PM. '
   }
 
-  if (hour >= 15 && hour <18){
+  if (hour >= 16 && hour <19){
     gretting = timeStr+' Later PM. '
   }
  
-  if (hour >= 18 && hour <20){
+  if (hour >= 19 && hour <20){
     gretting = timeStr+' Evening. '
   }
 
