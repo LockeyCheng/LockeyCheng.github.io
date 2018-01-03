@@ -8,43 +8,49 @@
 ( function( window ) {
 
 'use strict';
-
+var nickname = 'Hello, Halo, Hi.'
+$('#nickname').html(nickname)
 // class helper functions from bonzo https://github.com/ded/bonzo
-function welcome(){
-  var nickname = 'Hello, Halo, Hi.'
-  $('#nickname').html(nickname)
-  var t = new Date()
-  var hour =t.getHours()
-  var gretting = 'Good Morning !'
+setInterval(
+  function welcome(){
+  var timeNow = Date()
+  var timeSplit = timeNow.split(" ")
+  var hms = timeSplit[4]
+  var timeStr = timeSplit[0]+" "+timeSplit[1]+" "+ timeSplit[2]+" "+timeSplit[3]+" "+hms
+  var hour = hms.slice(0,2)
+  var gretting = timeStr+' AM. '
   if (hour >= 9 && hour <12){
-    gretting = 'Good Later Morning !'
+    gretting = timeStr+' Later AM. '
   }
   
   if (hour >= 12 && hour <14){
-    gretting = 'Good Middle Day !'
+    gretting = timeStr+' Middle Day. '
   }
   
-  if (hour >= 14 && hour <18){
-    gretting = 'Good Afternoon !'
+  if (hour >= 14 && hour <15){
+    gretting = timeStr+' PM. '
+  }
+
+  if (hour >= 15 && hour <18){
+    gretting = timeStr+' Later PM. '
   }
  
   if (hour >= 18 && hour <20){
-    gretting = 'Good Evening !'
+    gretting = timeStr+' Evening. '
   }
 
   if (hour >= 20 && hour <23){
-    gretting = 'Good Night !'
+    gretting = timeStr+' Night. '
   }
 
   if (hour >= 23 && hour <24){
-    gretting = 'Good Later Night !'
+    gretting = timeStr+' Later Night. '
   }
   
   if (hour >= 24 && hour <6){
-    gretting = 'Nice Dream !'
+    gretting = timeStr+' Dream Time. '
   }
 
   $('#gretting').html(gretting)
-}
-welcome()
+},1000)
 })( window );
