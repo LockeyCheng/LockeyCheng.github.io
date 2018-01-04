@@ -88,7 +88,7 @@ hr{max-width: 50px;
 /* ---------------------------------------------------------------------------- */
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{background: none;}
 .navbar-default {border-color: transparent;background-color: #222;}
-.navbar-default .navbar-brand {font-family: Helvetica,Arial,cursive;color: #6d00a0;}
+.navbar-default .navbar-brand {font-family: Helvetica,Arial,cursive;color: #ff3d00;}
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus,
 .navbar-default .navbar-brand:active,
@@ -199,7 +199,7 @@ h2.site-description {
 	color: #00ffd0;
 }/*text-transform: uppercase;border-right: 1px solid #fff;*/
 h1.site-title{font-size: 31px;color: #fff;padding-right: 1em;}
-h1.site-title a{color: #ff3d00;margin: 0;}
+h1.site-title a{color: #a613ff;margin: 0;}
 h1.site-title a:hover {text-decoration: none;}
 
 .social-links{float: right;}
