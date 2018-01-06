@@ -8,8 +8,8 @@
 ( function( window ) {
 
 'use strict';
-var nickname = 'Hello, Halo, Hi.'
-$('#nickname').html(nickname)
+//var nickname = 'Hello, Halo, Hi.'
+//$('#nickname').html(nickname)
 // class helper functions from bonzo https://github.com/ded/bonzo
 setInterval(
   function welcome(){
