@@ -96,10 +96,14 @@ hr{max-width: 50px;
 
 .navbar-default .navbar-collapse {border-color: rgba(255,255,255,.02);}
 
-.navbar-default .navbar-toggle {border: none;background-color: #0AAC8E;}
 .navbar-default .navbar-toggle span.icon-bar{background-color: #fff;}
 .navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {background-color: #0AAC8E;}
+.navbar-default .navbar-toggle:focus {
+  background-image: -webkit-linear-gradient(left, #81db34 0%, #34d9da 100%), -webkit-linear-gradient(left, #81db34 0%, #34d9da 100%);
+    background-image: -moz-linear-gradient(left, #81db34 0%, #34d9da 100%), -moz-linear-gradient(left, #81db34 0%, #34d9da 100%);
+    background-image: -o-linear-gradient(left, #81db34 0%, #34d9da 100%), -o-linear-gradient(left, #81db34 0%, #34d9da 100%);
+    background-image: linear-gradient(to right, #81db34 0%, #34d9da 100%), linear-gradient(to right, #81db34 0%, #34d9da 100%);
+    }
 
 .navbar-default .nav li a {text-transform: uppercase;font-family: Helvetica,Arial,sans-serif;font-weight: bold;letter-spacing: 1px;color: #ddd;}
 .navbar-default .nav li a:hover,
@@ -425,4 +429,10 @@ a.btn:focus{outline: 0;}
     background-image: linear-gradient(to right, #81db34 0%, #34d9da 100%), linear-gradient(to right, #81db34 0%, #34d9da 100%);
     background: transparent;
     text-transform: uppercase;
+}
+#menu-toggle{
+	border-left-color: #81db34;
+    border-right-color: #34d9da;
+    border-top-color: #81db34;
+    border-bottom-color: #34d9da;
 }
