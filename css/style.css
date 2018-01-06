@@ -96,7 +96,7 @@ hr{max-width: 50px;
 
 .navbar-default .navbar-collapse {border-color: rgba(255,255,255,.02);}
 
-.navbar-default .navbar-toggle span.icon-bar{background-color: #fff;}
+.navbar-default .navbar-toggle span.icon-bar{background-color: #00ffff;}
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
   background-image: -webkit-linear-gradient(left, #81db34 0%, #34d9da 100%), -webkit-linear-gradient(left, #81db34 0%, #34d9da 100%);
