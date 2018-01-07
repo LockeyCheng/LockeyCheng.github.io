@@ -182,7 +182,10 @@ hr{max-width: 50px;
 .sub-page header{min-height: 250px;padding: 130px 7px 0;}
 .index-page header{margin-top: -220px;margin-bottom: 250px;}
 @media(max-width:767px){
-	.index-page header{margin-top: 56px;margin-bottom: -23px;}
+	.index-page header{
+	margin-top: -8px;
+    margin-bottom: 0px;
+}
 }
 .site-branding {
     display: inline-block;
@@ -243,7 +246,7 @@ article .info a:hover {color:#000;}
 article h1 {font-size: 30px;}
 article h2 {font-size: 22px;}
 article img{width:auto;}
-article .art-content{padding: 50px;}
+article .art-content{padding: 23px;}
 article .art-content p{
 	text-indent: 12px;
 }
