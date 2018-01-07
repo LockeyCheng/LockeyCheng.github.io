@@ -31,14 +31,10 @@
 /** 
  * ===================================================================
  * 01. webfonts and iconfonts - (_document-setup.scss)
- *
+ *@import url("micons/micons.css")
  * ------------------------------------------------------------------- 
  */
 @import url("fonts.css");
-@import url("font-awesome/css/font-awesome.min.css");
-@import url("micons/micons.css");
-
-
 /** 
  * ===================================================================
  * 02. base style overrides - (_document-setup.scss)
@@ -1627,8 +1623,8 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 #resume {
-	padding-top: 12rem;
-	padding-bottom: 12rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
 }
 
 #resume .resume-header {
@@ -1797,8 +1793,8 @@ header .logo a {
  */
 #portfolio {
 	background: #FFFFFF;
-	padding-top: 12rem;
-	padding-bottom: 12rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
 }
 #portfolio .folio-item {
 	padding: 0;
@@ -2105,8 +2101,8 @@ header .logo a {
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
-	padding-top: 12rem;
-	padding-bottom: 12rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
 	color: white;
 	position: relative;
 }

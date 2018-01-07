@@ -53,4 +53,7 @@ setInterval(
 
   $('#gretting').html(gretting)
 },1000)
+$('#Personal').click(function(){
+  $('#page-content1').fadeIn(500)
+})
 })( window );

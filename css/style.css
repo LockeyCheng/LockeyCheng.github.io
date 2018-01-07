@@ -170,7 +170,7 @@ hr{max-width: 50px;
 
 /* Carousel Header Styles */
 .header-text {position: absolute;top: 25%;left: 8%;right: auto;width: 85%;color: #fff;z-index: 9999;border-bottom: 2px solid #fff;padding-bottom: 60px;}
-.header-text h1{margin-top: 0;margin-bottom: 0;text-transform: uppercase;font-weight: 700;color: #fff;font-size: 65px;}
+.header-text h1{margin-top: 0;margin-bottom: 0;text-transform: uppercase;font-weight: 700;color: #fff;font-size: 1.5em;}
 .header-text hr{margin: 30px auto;}
 .header-text p{ margin-bottom: 50px;font-size: 18px;font-weight: 300;color: rgba(255,255,255,.7);}
 .header-text .btn-primary{padding: 10px 20px;}/*background-color: #0AAC8E;border:none;*/
@@ -182,7 +182,7 @@ hr{max-width: 50px;
 .sub-page header{min-height: 250px;padding: 130px 7px 0;}
 .index-page header{margin-top: -220px;margin-bottom: 250px;}
 @media(max-width:767px){
-	.index-page header{margin-top: 130px;margin-bottom: 0px;}
+	.index-page header{margin-top: 56px;margin-bottom: -23px;}
 }
 .site-branding {
     display: inline-block;
@@ -216,7 +216,7 @@ h1.site-title a:hover {text-decoration: none;}
 
 /* ---HomePage--- */
 .index-page .box-content {padding: 100px 0;}
-.index-page .box-content.box-1 {margin-top: -300px;}
+.index-page .box-content.box-1 {margin-top: -176px;}
 @media(max-width:767px){
 	.index-page .box-content.box-1 {margin-top: 0;}
 }
