@@ -1,0 +1,117 @@
+pre code.syntax-theme-base {
+  display: block; }
+  pre code.syntax-theme-base > span {
+    display: block;
+    white-space: pre-wrap; }
+  pre code.syntax-theme-base .indent {
+    display: block;
+    float: left; }
+  pre code.syntax-theme-base .text {
+    white-space: pre-wrap;
+    display: block;
+    overflow: hidden;
+    padding-left: 1rem;
+    text-indent: -1rem; }
+
+.syntax-theme-base a {
+  text-decoration: none;
+  color: inherit; }
+.syntax-theme-base .function {
+  color: #33f; }
+.syntax-theme-base .keyword, .syntax-theme-base .access {
+  color: #7a0968; }
+.syntax-theme-base .type {
+  color: #3239D6; }
+.syntax-theme-base .comment {
+  color: #6ac; }
+.syntax-theme-base .constant {
+  color: #1c00ce; }
+.syntax-theme-base .string, .syntax-theme-base .symbol {
+  color: #c41a15; }
+.syntax-theme-base .string .escape {
+  color: #f99; }
+.syntax-theme-base .operator {
+  color: #000000; }
+.syntax-theme-base .href {
+  color: #0e0eff;
+  text-decoration: underline; }
+.syntax-theme-base .variable {
+  color: #466997; }
+.syntax-theme-base .highlight {
+  background-color: #fdfdba; }
+.syntax-theme-base pre {
+  overflow: auto;
+  font-family: inherit; }
+
+.syntax-container.syntax-theme-base {
+  position: relative; }
+  .syntax-container.syntax-theme-base .toolbar {
+    font-size: 80%;
+    text-align: right;
+    padding: 0 0.2em 0.2em; }
+    .syntax-container.syntax-theme-base .toolbar a {
+      margin-left: 1em; }
+  .syntax-container.syntax-theme-base pre.raw {
+    overflow: auto;
+    padding: 0 0.4em 0 !important;
+    margin: 0 !important;
+    background-color: #f0f0f0;
+    border: 1px solid #aaa; }
+.syntax-container.syntax-theme-bright .syntax {
+  font-family: Menlo, Monaco, Consolas, monospace;
+  line-height: 1.5em; }
+  .syntax-container.syntax-theme-bright .syntax .function {
+    color: #33f; }
+  .syntax-container.syntax-theme-bright .syntax .keyword {
+    color: #3c3; }
+  .syntax-container.syntax-theme-bright .syntax .access {
+    color: #ffb600;
+    font-weight: bold; }
+  .syntax-container.syntax-theme-bright .syntax .type {
+    color: #191;
+    font-weight: bold; }
+  .syntax-container.syntax-theme-bright .syntax .comment {
+    color: #6ac;
+    font-style: italic; }
+  .syntax-container.syntax-theme-bright .syntax .string, .syntax-container.syntax-theme-bright .syntax .constant {
+    color: #f33; }
+  .syntax-container.syntax-theme-bright .syntax .string .escape {
+    color: #f99; }
+  .syntax-container.syntax-theme-bright .syntax .operator {
+    color: #c00; }
+  .syntax-container.syntax-theme-bright .syntax .href {
+    color: #00f;
+    text-decoration: underline; }
+  .syntax-container.syntax-theme-bright .syntax .variable {
+    color: #22c; }
+code.syntax-theme-paper {
+  font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+  line-height: 1.5em; }
+  code.syntax-theme-paper .function {
+    color: #33f; }
+  code.syntax-theme-paper .keyword {
+    color: #cb4b16; }
+  code.syntax-theme-paper .access {
+    color: #ffb600;
+    font-weight: bold; }
+  code.syntax-theme-paper .type {
+    color: #268bd2; }
+  code.syntax-theme-paper .comment {
+    color: #998;
+    font-style: italic; }
+  code.syntax-theme-paper .string {
+    color: #2aa198; }
+  code.syntax-theme-paper .string .escape {
+    color: #2ab1a8; }
+  code.syntax-theme-paper .operator {
+    color: #268bd2; }
+  code.syntax-theme-paper .href {
+    color: #00f;
+    text-decoration: underline; }
+  code.syntax-theme-paper .variable {
+    color: #b58900; }
+  code.syntax-theme-paper .constant {
+    color: #099; }
+
+pre code.syntax-theme-paper > span:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.05); }
