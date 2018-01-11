@@ -36,11 +36,11 @@ setInterval(
   }
  
   if (hour >= 19 && hour <20){
-    gretting = timeStr+' Good Evening. '
+    gretting = timeStr+' Evening. '
   }
 
   if (hour >= 20 && hour <23){
-    gretting = timeStr+' Good Night. '
+    gretting = timeStr+' Night. '
   }
 
   if (hour >= 23 && hour <24){

@@ -225,7 +225,7 @@ h1.site-title a:hover {text-decoration: none;}
 }
 .box-content.box-1 .box-item{background-color: #fff;margin: 0 auto 30px;max-width: 500px;}
 .box-content.box-1 .box-item:hover img{opacity: 0.9;} 
-.box-content.box-1 .box-item .content{padding: 10px 30px 30px;} 
+.box-content.box-1 .box-item .content{padding: 1px 18px 30px;} 
 .box-content.box-1 .box-item img {width: 100%;}
 .box-content.box-1 .box-item a{color: #0aac8e;font-weight: bold;}
 .box-content.box-1 .box-item .content h3{font-weight: 500;color: #333;font-size: 24px;margin-bottom: 20px;} 
