@@ -218,7 +218,7 @@ h1.site-title a:hover {text-decoration: none;}
 #page-content{}
 
 /* ---HomePage--- */
-.index-page .box-content {padding: 100px 0;}
+.index-page .box-content {padding: 23px 0;}
 .index-page .box-content.box-1 {margin-top: -176px;}
 @media(max-width:767px){
 	.index-page .box-content.box-1 {margin-top: 0;}
