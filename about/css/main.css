@@ -647,9 +647,8 @@ label > input[type="checkbox"], label > input[type="radio"] {
  *
  * ------------------------------------------------------------------- 
  */
-.button,
+
 a.button,
-button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
@@ -674,6 +673,10 @@ input[type="button"] {
 	-webkit-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
+}
+button{
+	border: none;
+	text-transform: uppercase;
 }
 .button:hover,
 a.button:hover,
@@ -2576,8 +2579,8 @@ footer .copyright span:last-child::after {
 	text-decoration: none;
 	border: 0 none;
 	display: block;
-	height: 6.6rem;
-	width: 6rem;
+	height: 3em;
+	width: 3em;
 	line-height: 6.6rem;
 	text-align: center;
 	background: #0ec7f3;
@@ -2589,10 +2592,11 @@ footer .copyright span:last-child::after {
 	-webkit-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
+	border-radius:50%;
 }
 #go-top a i {
-	font-size: 1.6rem;
-	line-height: inherit;
+	font-size: 3.6rem;
+	/*line-height: inherit;*/
 }
 #go-top a:hover {
 	background: #000000;
