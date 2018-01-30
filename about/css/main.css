@@ -1334,7 +1334,7 @@ header .logo a {
 	color: #FFFFFF;
 	font-family: "poppins-medium", sans-serif;
 	font-size: 8.4rem;
-	line-height: 1.071;
+	line-height: 1.2;
 	max-width: 900px;
 	margin-top: 0;
 	margin-bottom: .6rem;
@@ -1343,7 +1343,7 @@ header .logo a {
 	text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 .intro-content h5 {
-	color: #0ec7f3;/*#cc005f*/
+	color: #fff;
 	font-family: "poppins-bold", sans-serif;
 	font-size: 2.3rem;
 	line-height: 1.565;
