@@ -223,7 +223,7 @@ h1.site-title a:hover {text-decoration: none;}
 @media(max-width:767px){
 	.index-page .box-content.box-1 {margin-top: 0;}
 }
-.box-content.box-1 .box-item{background-color: #fff;margin: 0 auto 30px;max-width: 500px;}
+.box-content.box-1 .box-item{/*background-color: #fff;*/border:1px solid #73ffff;margin: 0 auto 30px;max-width: 500px;}
 .box-content.box-1 .box-item:hover img{opacity: 0.9;} 
 .box-content.box-1 .box-item .content{padding: 1px 18px 30px;} 
 .box-content.box-1 .box-item img {width: 100%;}
