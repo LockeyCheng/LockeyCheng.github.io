@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+<!--- basic page needs
+================================================== -->
+<meta charset="utf-8">
+<title>Lockey's Personal Page</title>
+<meta name="description" content="">  
+<meta name="author" content="">
+
+<!-- mobile specific metas
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="../../css/bootstrap.min.css"  type="text/css">
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="../../about/css/base.css">  
+<link rel="stylesheet" href="../../font-awesome-4.4.0/css/font-awesome.min.css"  type="text/css">
+<link rel="stylesheet" href="../../about/css/main.css">
+<link rel="stylesheet" href="../../about/css/vendor.css">    
+<!-- favicons
+================================================== --> 
+ <link rel="icon" type="image/x-icon" class="js-site-favicon" href="../../images/favicon.ico">
+    <link href="video-js.css" rel="stylesheet">
+    <script src="videojs-ie8.min.js"></script>
+    <script src="video.js"></script>
+
+<script src="../../about/js/modernizr.js"></script>
+<script src="../../about/js/pace.min.js"></script>
+
+</head>
+<style type="text/css">
+    #menu-toggle {
+    border-left-color: #81db34;
+    border-right-color: #34d9da;
+    border-top-color: #81db34;
+    border-bottom-color: #34d9da;
+}
+.navbar-default {
+    border-color: transparent;
+    background-color: #222;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:active, .navbar-default .navbar-brand.active {
+    color: #fec503;
+}
+.navbar-default .navbar-brand {
+    font-family: Helvetica,Arial,cursive;
+    color: #801f00;/*#ff3d00;*/
+}
+.navbar-default .navbar-nav>.active>a {
+    border-radius: 0;
+    color: #ddd;
+    background: none;
+}
+.navbar-default .nav li a {
+    text-transform: uppercase;
+    font-family: Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #ddd;
+}
+@media (min-width: 768px)
+{
+.navbar-default {
+    padding: 20px 0;
+    border: 0;
+    background-color: transparent;
+    -webkit-transition: padding .3s;
+    -moz-transition: padding .3s;
+    transition: padding .3s;
+}
+}
+@media (min-width: 768px)
+{
+.navbar-default.navbar-shrink {
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+}
+@media (min-width: 768px)
+{
+.navbar-default {
+    padding: 20px 0;
+    border: 0;
+    background-color: transparent;
+    -webkit-transition: padding .3s;
+    -moz-transition: padding .3s;
+    transition: padding .3s;
+}
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-image: -webkit-linear-gradient(left, #81db34 0%, #34d9da 100%), -webkit-linear-gradient(left, #81db34 0%, #34d9da 100%);
+    background-image: -moz-linear-gradient(left, #81db34 0%, #34d9da 100%), -moz-linear-gradient(left, #81db34 0%, #34d9da 100%);
+    background-image: -o-linear-gradient(left, #81db34 0%, #34d9da 100%), -o-linear-gradient(left, #81db34 0%, #34d9da 100%);
+    background-image: linear-gradient(to right, #81db34 0%, #34d9da 100%), linear-gradient(to right, #81db34 0%, #34d9da 100%);
+}
+.navbar-default .navbar-collapse {
+    border-color: rgba(255,255,255,.02);
+}
+section{
+    background-color: #000;
+}
+#gretting{
+    color: #006f75;
+    font-size: 0.6em;
+}
+.timeline-content p{
+    text-indent: 23px;
+    word-break: break-all;
+}
+</style>
+<body id="top">
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" id="menu-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="index.html"><i class="fa fa-github" style="padding-right:9px;font-size: 1.5em"></i>LOCKEY</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li  class="active">
+                        <a class="page-scroll" href="../../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="../../blog.html">Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+</nav>
+<style>
+.example_video_1-dimensions {
+    width: 100%;
+    height: 500px;
+    margin-top:52px;
+}
+</style>
+  <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+    <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+    <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+    <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
+    <track kind="captions" src="../shared/example-captions.vtt" srclang="en" label="English"></track>
+    <!-- Tracks need an ending tag thanks to IE9 -->
+    <track kind="subtitles" src="../shared/example-captions.vtt" srclang="en" label="English"></track>
+    <!-- Tracks need an ending tag thanks to IE9 -->
+    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+  </video>
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+</body>
+
+</html>
