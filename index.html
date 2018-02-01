@@ -46,7 +46,7 @@
 }
 .navbar-default .navbar-brand {
     font-family: Helvetica,Arial,cursive;
-    color: #ff3d00;
+    color: #801f00;/*#ff3d00;*/
 }
 .navbar-default .navbar-nav>.active>a {
     border-radius: 0;
@@ -131,10 +131,10 @@ section{
                         <a class="page-scroll" href="index.html">Home</a>
                     </li>
 					<li>
-                        <a class="page-scroll" href="https://lockeycheng.github.io/blog.html">Blog</a>
+                        <a class="page-scroll" href="blog.html">Blog</a>
                     </li>
                     <li>
-                        <a class="page-scroll" id="Personal" href="javascript:void(0)">Personal</a>
+                        <a class="page-scroll" id="Personal" href="javascript:void(0)" data-toggle="modal" data-target="#myModal">Personal</a>
                     </li>
                     
                 </ul>
@@ -1018,7 +1018,7 @@ section{
 	</div> <!-- /row -->     	
 </footer>  
 
-<div id="preloader" style="display: none"> 
+<div id="preloader" style="display: block"> 
 	<div id="loader"></div>
 </div> 
 
@@ -1033,7 +1033,33 @@ section{
 <script src="js/jquery.easing.min.js"></script>
 <script src="js/classie.js"></script>
 <script src="js/cbpAnimatedHeader.js"></script>
-<script type="text/javascript" src="js/lockey.js"></script>
 <script src="js/mousetrap.min.js"></script>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="margin-top: 196px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+				<i class="fa fa-lock" style="color:#ff3100;font-size: 1.6em;padding-right: 10px;"></i>隐私内容，密码访问！
+				</h4>
+			</div>
+			<div class="modal-body">
+				<input type="text" placeholder="Please Input File Name!" style="margin-bottom:0px;width: 96%;" id="accessFile">
+				<input type="password" placeholder="Please Input Access Token!" style="margin-bottom:0px;width: 96%;" id="accessPassword">
+				<span>按下 ESC 按钮退出。</span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary" id="accessPrivate">
+					提交密码
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+<script type="text/javascript" src="js/lockey.js"></script>
 </body>
 </html>

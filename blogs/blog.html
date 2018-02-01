@@ -18,7 +18,17 @@
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
     
 </head>
-
+<script type="text/javascript">
+    function getQueryString(name) { 
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+    var r = window.location.search.substr(1).match(reg); 
+    if (r != null) return unescape(r[2]); return null; 
+}
+var querySubject = getQueryString('subject')
+var loadJs = 'js-md/'+querySubject+'.js'
+scriptWrite = "<script src='"+loadJs+"'><\/script>"
+document.write(scriptWrite); 
+</script>
 <body class="sub-page"> 
 <style>
 #share-ul{
@@ -71,9 +81,6 @@ article .info {
                     <li>
                         <a class="page-scroll" href="../blog.html">Blog</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="about/me.html">About</a>
-                    </li>
                     
                 </ul>
             </div>
@@ -114,9 +121,9 @@ article .info {
                     <article>
                         <!--<img src="images/banner1.jpg" />-->
                         <div class="art-content">
-                            <div class="info">By <a href="#">LOCKEY</a> on Jan 2, 2018</div>
+                            <div class="info">By <a href="#">LOCKEY</a><span id='createDate' style="display: inline"></span></div>
 
-                            <div id="result"></div>
+                            <div id="result">Sorry, but Nothing to show!</div>
                             
                         </div>
                     </article>
@@ -136,13 +143,10 @@ article .info {
                         <h2 class="footer-title">Simple Me</h2>
                         <div class="textwidget">A Pythoner, once was considered as a web fron-end engineer, </div>
                     </div> 
-                    <div class="col-footer col-md-4 widget_recent_entries">
-                        <h2 class="footer-title">Recent Posts</h2>
-                        <ul>
-                            <li><a href="#">MOST VISITED COUNTRIES</a></li>
-                            <li><a href="#">5 PLACES THAT MAKE A GREAT HOLIDAY</a></li>
-                            <li><a href="#">PEBBLE TIME STEEL IS ON TRACK TO SHIP IN JULY</a></li>
-                            <li><a href="#">STARTUP COMPANY&#8217;S CO-FOUNDER TALKS ON HIS NEW PRODUCT</a></li>
+                    <div class="col-footer col-md-4 widget_recent_entries" style="max-height: 16em;overflow: hidden">
+                        <h2 class="footer-title">Relative Posts</h2>
+                        <ul id="seriesPosts">
+                            
                         </ul>
                     </div>
                     
@@ -213,20 +217,49 @@ article .info {
     <!-- Plugin JavaScript -->
     <script src="../js/classie.js"></script>
     <script src="../js/cbpAnimatedHeader.js"></script>
-    <script type="text/javascript" src="js-md/prometheus.js"></script>
     <script type="text/javascript" src="showdown.min.js"></script>
-    <script type="text/javascript">
-function compile(obj){
+<script type="text/javascript">
+function compile(){
+    var pageLink = window.location.href
+    var obj = jsObj
     //var text = document.getElementById("content").value;
-    var innerObj = obj['prometheus-1-introduction']
+    var sharpPos = pageLink.lastIndexOf('#')
+    var blogItem = pageLink.substr(sharpPos+1)
+    console.log(blogItem)
+    var innerObj = obj[blogItem] || obj[defaultItem]
     var title = innerObj['title']
+    var createDate = innerObj['date']
     $('#blog-title').html(title)
+    $('#createDate').html(createDate)
     var content = innerObj['content']
     var converter = new showdown.Converter();
     var html = converter.makeHtml(content);
     document.getElementById("result").innerHTML = html;
 }
-compile(prometheus)
+compile()
+function postListAppend(){
+    var postLst = ''
+    for(item in jsObj){
+        var postTitle = jsObj[item]['title']
+        postLst+= "<li><a href='#"+item+"' class='postli'>"+postTitle+"</a></li>"
+    }
+    $('#seriesPosts').append(postLst)
+}
+postListAppend()
+$("#seriesPosts").on("click",".postli",function(){
+    var x = setTimeout('compile()',1600)
+})
+var doscroll = function(){
+     var $parent = $('#seriesPosts');
+     var $first = $parent.find('li:first');
+     var height = $first.height();
+     $first.animate({
+         height: 0
+         }, 500, function() {
+         $first.css('height', height).appendTo($parent);
+     });    
+};
+setInterval(function(){doscroll()}, 2000);
 </script>
 </body>
 </html>
