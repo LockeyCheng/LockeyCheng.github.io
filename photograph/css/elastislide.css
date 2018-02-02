@@ -21,11 +21,6 @@
 	box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
-.elastislide-wrapper.elastislide-loading {
-	background-image: url(../images/loading.gif);
-	background-repeat: no-repeat;
-	background-position: center center;
-}
 
 .elastislide-horizontal {
 	padding: 66px 0 9px 39px;
@@ -88,7 +83,7 @@
 
 .elastislide-wrapper nav span {
 	position: absolute;
-	background: #ddd url(../images/nav.png) no-repeat 4px 3px;
+	background: #ddd;
 	width: 23px;
 	height: 23px;
 	border-radius: 50%;
@@ -102,7 +97,7 @@
 }
 
 .elastislide-horizontal nav span {
-	top: 50%;
+	
 	left: 10px;
 	margin-top: -41px;
 }

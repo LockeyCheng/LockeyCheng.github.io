@@ -77,9 +77,10 @@ a {
 }
 
 .main > header h1 span {
-	display: block;
-	font-size: 20px;
-	font-weight: 300;
+	/*display: block; */
+    font-size: 23px;
+    padding: 9px;
+    font-weight: 300;
 }
 
 .main p {
@@ -200,4 +201,78 @@ a {
 
 .image-preview{
 	padding: 23px 0 6px 0;
+}
+/** 
+ * ===================================================================
+ * 18. footer - (_layout.scss)
+ *font-size: 1.4rem;
+ * ------------------------------------------------------------------- 
+ */
+footer {
+	padding-bottom: 3rem;
+	
+	font-family: "poppins-regular", sans-serif;
+}
+footer a, footer a:visited {
+	color: #FFFFFF;
+}
+footer a:hover, footer a:focus {
+	color: #FF0077;
+}
+footer .row {
+	max-width: 900px;
+}
+footer .social {
+	text-align: right;
+}
+footer .footer-social {
+	display: inline-block;
+	font-size: 2.1rem;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	top: -.3rem;
+}
+footer .footer-social li {
+	display: inline-block;
+	margin: 0 12px;
+	padding: 0;
+}
+footer .footer-social li a {
+	color: #FFFFFF;
+}
+footer .copyright span {
+	display: inline-block;
+}
+footer .copyright span::after {
+	content: "|";
+	display: inline-block;
+	padding: 0 1rem 0 1.2rem;
+	color: rgba(255, 255, 255, 0.1);
+}
+footer .copyright span:last-child::after {
+	display: none;
+}
+
+/**
+ * responsive:
+ * footer
+ * -------------------------------------------------------------------
+ */
+@media only screen and (max-width:768px) {
+	footer {
+		text-align: center;
+	}
+	footer .social {
+		display: block;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 1.5rem;
+	}
+	footer .copyright span {
+		display: block;
+	}
+	footer .copyright span::after {
+		display: none;
+	}
 }
