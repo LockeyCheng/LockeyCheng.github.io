@@ -124,7 +124,11 @@ article .info {
                         <!--<img src="images/banner1.jpg" />-->
                         <div class="art-content">
                             <div class="info">By <a href="#">LOCKEY</a><span id='createDate' style="display: inline"></span></div>
-
+<style type="text/css">
+    #result p{
+        color:#00178e !important;
+    }
+</style>
                             <div id="result">Sorry, but Nothing to show!</div>
                             
                         </div>
@@ -147,6 +151,11 @@ article .info {
                     </div> 
                     <div class="col-footer col-md-4 widget_recent_entries" style="max-height: 16em;overflow: hidden">
                         <h2 class="footer-title">Relative Posts</h2>
+                        <style type="text/css">
+                            #seriesPosts{
+                                overflow-y:hidden; 
+                            }
+                        </style>
                         <ul id="seriesPosts">
                             
                         </ul>
@@ -261,7 +270,7 @@ var doscroll = function(){
          $first.css('height', height).appendTo($parent);
      });    
 };
-setInterval(function(){doscroll()}, 2000);
+setInterval(function(){doscroll()}, 3000);
 </script>
 </body>
 </html>
