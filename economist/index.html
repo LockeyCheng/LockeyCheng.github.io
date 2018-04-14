@@ -25,9 +25,7 @@
              <li><a href="https://blog.csdn.net/lockey23" target="_blank"><i class="fa fa-edit"></i></a></li>
              <li><a href="https://www.facebook.com/chen.yang.98031506"><i class="fa fa-facebook"></i></a></li>
              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-             <!-- <li><a href="#"><i class="fa fa-vimeo"></i></a></li> -->
-             <li><a href="#"><i class="fa fa-rss"></i></a></li>       
+             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>   
            </ul> 
       </div>
       </div>
@@ -93,6 +91,9 @@
                   // clear and hide result container when we press close
                   container.find('.result-container').fadeOut(100, function(){$(this).empty();});
                   $('.everydayMotto').show()
+                  $('footer').show()
+                  $('.searchResult').hide()
+
             }
         }
         setInterval(
@@ -118,6 +119,7 @@
                 var jsonData = dictData.responseJSON
                 $('.everydayMotto').hide()
                 if(jsonData[value]){
+                    $('footer').hide()
                     $(searchDiv).find('.result-container').html('')
                     $('.wordName').text(value)
                     $('.pronEg').text(jsonData[value]['pronunciations']['uk'])
