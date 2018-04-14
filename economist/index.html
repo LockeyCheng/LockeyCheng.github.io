@@ -33,7 +33,7 @@
       </div>
     </header>
 	<section class="container">
-		<form onsubmit="submitFn(this, event);">
+		<form onsubmit="submitFn(this, event);" id="searchForm">
             <div class="search-wrapper">
                 <div class="input-holder">
                     <input type="text" class="search-input" placeholder="Type to search" />
@@ -76,21 +76,14 @@
 	
 	<script src="../js/jquery-2.1.1.js"></script>
 	<script type="text/javascript">
-        var jsonData = {}
-        try { 
-           var dictData = $.get("./explanations/explanation.json",function(data,status){console.log(status)});
-           var jsonData = dictData.responseJSON
-        } catch(err) { 
-           console.log(err)
-        } 
+        var dictData = $.get("https://lockeycheng.github.io/economist/explanations/explanation.json",function(data,status){console.log(status)});
         function searchToggle(obj, evt){
             var container = $(obj).closest('.search-wrapper');
 
             if(!container.hasClass('active')){
                   container.addClass('active');
                   evt.preventDefault();
-                  $('.everydayMotto').hide()
-                  $('footer').hide()
+                  
             }
             else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
                   container.removeClass('active');
@@ -100,23 +93,23 @@
                   container.find('.result-container').fadeOut(100, function(){$(this).empty();});
                   $('.searchResult').hide()
                   $('.everydayMotto').show()
-                  $('footer').show()
             }
+            return false
         }
 
         function submitFn(obj, evt){
+            $('.everydayMotto').hide()
             value = $(obj).find('.search-input').val().trim();
 
             _html = "Yup yup! Your search text sounds like this: ";
             if(!value.length){
                 _html = "Yup yup! Add some text friend :D";
+                $(obj).find('.result-container').html('<span>' + _html + '</span>');
+                return false
             }
-            else{
-                _html += "<b>" + value + "</b>";
-            }
-
-            $(obj).find('.result-container').html('<span>' + _html + '</span>');
+            var jsonData = dictData.responseJSON
             if(jsonData[value]){
+                $(obj).find('.result-container').html('')
                 $('.searchResult').show()
                 $('.wordName').text(value)
                 $('.pronEg').text(jsonData[value]['pronunciations']['uk'])
@@ -126,10 +119,10 @@
                 $('.wordRelations').text(jsonData[value]['relation'])
                 $('.wordSentence').text(jsonData[value]['sentence'])
             }else{
-                $(obj).find('.result-container').html('<span class="error">' + value + '</span> is not in The Economist\'s words list!');
+                $(obj).find('.result-container').html('<span class="error">' + value + '</span> is not in my dictionary!');
             }
             $(obj).find('.result-container').fadeIn(100);
-
+            return false
             evt.preventDefault();
         }
         setInterval(

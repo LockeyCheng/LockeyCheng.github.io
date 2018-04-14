@@ -14,14 +14,14 @@ a:hover{
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    top:23%;
-    left:50%;
+    top:25%;
+    left:49%;
 }
 .search-wrapper.active {}
 
 .search-wrapper .input-holder {
     overflow: hidden;
-    height: 70px;
+    height: 50px;
     background: rgba(255,255,255,0);
     border-radius:6px;
     position: relative;
@@ -45,7 +45,7 @@ a:hover{
     padding:0px 70px 0 20px;
     opacity: 0;
     position: absolute;
-    top:0px;
+    top:-9px;
     left:0px;
     background: transparent;
     -webkit-box-sizing: border-box;
@@ -77,8 +77,8 @@ a:hover{
 }
 
 .search-wrapper .input-holder .search-icon {
-    width:70px;
-    height:70px;
+    width:56px;
+    height:50px;
     border:none;
     border-radius:6px;
     background: #FFF;
@@ -93,8 +93,8 @@ a:hover{
     transition: all 0.3s ease-in-out;
 }
 .search-wrapper.active .input-holder .search-icon {
-    width: 50px;
-    height:50px;
+    width: 30px;
+    height:30px;
     margin: 10px;
     border-radius: 30px;
 }
@@ -141,7 +141,7 @@ a:hover{
 .search-wrapper .close {
     position: absolute;
     z-index: 1;
-    top:24px;
+    top:12px;
     right:20px;
     width:25px;
     height:25px;
@@ -157,7 +157,7 @@ a:hover{
     transition-delay: 0.2s;
 }
 .search-wrapper.active .close {
-    right:-50px;
+    right:-36px;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -193,14 +193,14 @@ a:hover{
     left:0px;
     text-align: center;
     font-family: "Open Sans", Arial, Verdana;
-    font-size: 14px;
+    font-size: 21px;
     display:none;
     color:#B7B7B7;
 }
 /* ---------------------------------------------------------------------------- */
 /* ----------------------------------Footer------------------------------------ */
 /* ---------------------------------------------------------------------------- */
-.title{color: #b74c00;text-align: center;margin-top:36px;width: 100%;}
+.title{color: #b74c00;width:auto;padding-left: 23px;}
 .title img{
     width: 25px;
     margin-right: 6px;
@@ -251,7 +251,7 @@ footer ul.social-buttons li a i{margin-top: 7px;}
 .widget_recent_entries li a {font-weight:bold;text-transform:uppercase;color: #b74c00;display:inline-block;position:relative;padding-left:14px;letter-spacing:1px;font-size: 10px;}
 .pull-right{
     margin-right: 10px;
-    margin-top: -100px;
+    margin-top: -88px;
 }
 .links a{
     color: #9e43d8;
