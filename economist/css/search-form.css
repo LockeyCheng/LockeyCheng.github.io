@@ -1,5 +1,5 @@
 html,body {height: 96%;}
-body {padding: 0px; margin:0px; background:url(../img/image.jpg) ; background-position: center; background-size: cover; background-attachment: fixed; background-repeat: no-repeat;}
+body {padding: 0px; margin:0px; background: -webkit-radial-gradient(circle, #341800, #ebf9ff, #ff67006b);background: radial-gradient(circle, #341800, #ebf9ff, #ff67006b);background:url(../img/image.jpg) ; background-position: center; background-size: cover; background-attachment: fixed; background-repeat: no-repeat;}
 a{
     text-decoration: none;
     font-size: 1.5em;
@@ -284,4 +284,8 @@ footer ul.social-buttons li a i{margin-top: 7px;}
         margin-top:43%;
         margin-left: 10%
     }
+}
+.error{
+    color:red;
+    font-size: 1.3em;
 }

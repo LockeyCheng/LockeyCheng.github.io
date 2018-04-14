@@ -49,10 +49,11 @@
     <div class="searchResult">
         <div>
             <p class="wordName">tragedy</p>
-            <p><span class="wordTitle">发音：</span><span class="wordPronounce">英 [ˈtrædʒədi]  美 [ˈtrædʒɪdi]</span></p>
-            <p><span class="wordTitle">释义：</span><span class="wordExplanation">n.悲剧，惨剧； 悲剧文学； 悲剧理论，悲剧表演艺术； 悲剧式作品</span></p>
-            <p><span class="wordTitle">变形：</span><span class="wordRelations">复数： tragedies</span></p>
-            <p><span class="wordTitle">例句：</span><span class="wordSentence">The story ascends from a gothic tragedy to a miraculous fairy-tale.</span></p>
+            <p><span class="wordTitle">发音：</span>英 [<span class="pronEg"></span>] 美 [<span class="pronAm"></span>]</span></p>
+            <p><span class="wordTitle">释义（中）：</span><span class="wordExplanationCN"></span></p>
+            <p><span class="wordTitle">释义（英）：</span><span class="wordExplanationEG"></span></p>
+            <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
+            <p><span class="wordTitle">例句：</span><span class="wordSentence"></span></p>
         </div>
     </div>
     <div class="everydayMotto">
@@ -78,6 +79,14 @@
 	
 	<script src="../js/jquery-2.1.1.js"></script>
 	<script type="text/javascript">
+        $(document).ready(function () {
+        var jsonData = {}
+        try { 
+           var dictData = $.get("./explanations/explanation.json",function(data,status){console.log(status)});
+           var jsonData = dictData.responseJSON
+        } catch(err) { 
+           console.log(err)
+        } 
         function searchToggle(obj, evt){
             var container = $(obj).closest('.search-wrapper');
 
@@ -100,9 +109,6 @@
         }
 
         function submitFn(obj, evt){
-           $.get("./explanations/explanation.json",function(data,status){
-                alert("Data: " + data + "\nStatus: " + status);
-            });
             value = $(obj).find('.search-input').val().trim();
 
             _html = "Yup yup! Your search text sounds like this: ";
@@ -114,9 +120,21 @@
             }
 
             $(obj).find('.result-container').html('<span>' + _html + '</span>');
+            
+            if(jsonData[value]){
+                $('.searchResult').show()
+                $('.wordName').text(value)
+                $('.pronEg').text(jsonData[value]['pronunciations']['uk'])
+                $('.pronAm').text(jsonData[value]['pronunciations']['us'])
+                $('.wordExplanationCN').text(jsonData[value]['cn_definition']['defn'])
+                $('.wordExplanationEG').text(jsonData[value]['en_definition']['defn'])
+                $('.wordRelations').text(jsonData[value]['relation'])
+                $('.wordSentence').text(jsonData[value]['sentence'])
+            }else{
+                $(obj).find('.result-container').html('<span class="error">' + value + '</span> is not in The Economist\'s words list!');
+            }
             $(obj).find('.result-container').fadeIn(100);
-            $('.searchResult').show()
-
+            
             evt.preventDefault();
         }
         setInterval(
@@ -131,6 +149,7 @@
         $('.todayMotto').html("I am not afraid of tomorrow for I have seen yesterday and I love today.")
         $('.todayMottoAuthor').html("- William Allen White")
         $('.todayMottoCn').html("我并不害怕明天，因为我已见过昨天并且热爱今天。")
+        })
     </script>
 
 </body>
