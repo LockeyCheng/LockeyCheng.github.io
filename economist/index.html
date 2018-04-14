@@ -33,7 +33,7 @@
       </div>
     </header>
 	<section class="container">
-		<form onsubmit="submitFn(this, event);" id="searchForm">
+		<div id="searchForm">
             <div class="search-wrapper">
                 <div class="input-holder">
                     <input type="text" class="search-input" placeholder="Type to search" />
@@ -44,7 +44,7 @@
 
                 </div>
             </div>
-        </form>
+        </div>
 	</section>
     <div class="searchResult">
         <div>
@@ -98,32 +98,7 @@
         }
 
         function submitFn(obj, evt){
-            $('.everydayMotto').hide()
-            value = $(obj).find('.search-input').val().trim();
-
-            _html = "Yup yup! Your search text sounds like this: ";
-            if(!value.length){
-                _html = "Yup yup! Add some text friend :D";
-                $(obj).find('.result-container').html('<span>' + _html + '</span>');
-                return false
-            }
-            var jsonData = dictData.responseJSON
-            if(jsonData[value]){
-                $(obj).find('.result-container').html('')
-                $('.searchResult').show()
-                $('.wordName').text(value)
-                $('.pronEg').text(jsonData[value]['pronunciations']['uk'])
-                $('.pronAm').text(jsonData[value]['pronunciations']['us'])
-                $('.wordExplanationCN').text(jsonData[value]['cn_definition']['defn'])
-                $('.wordExplanationEG').text(jsonData[value]['en_definition']['defn'])
-                $('.wordRelations').text(jsonData[value]['relation'])
-                $('.wordSentence').text(jsonData[value]['sentence'])
-            }else{
-                $(obj).find('.result-container').html('<span class="error">' + value + '</span> is not in my dictionary!');
-            }
-            $(obj).find('.result-container').fadeIn(100);
-            return false
-            evt.preventDefault();
+            
         }
         setInterval(
           function welcome(){
@@ -136,6 +111,37 @@
         $('.todayMotto').html("I am not afraid of tomorrow for I have seen yesterday and I love today.")
         $('.todayMottoAuthor').html("- William Allen White")
         $('.todayMottoCn').html("我并不害怕明天，因为我已见过昨天并且热爱今天。")
+        var searchDiv = $('#searchForm')
+        document.onkeydown=function(event){
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if(e && e.keyCode == 13){
+                $('.everydayMotto').hide()
+                value = $(searchDiv).find('.search-input').val().trim();
+
+                _html = "Yup yup! Your search text sounds like this: ";
+                if(!value.length){
+                    _html = "Yup yup! Add some text friend :D";
+                    $(searchDiv).find('.result-container').html('<span>' + _html + '</span>');
+                    return false
+                }
+                var jsonData = dictData.responseJSON
+                if(jsonData[value]){
+                    $(searchDiv).find('.result-container').html('')
+                    $('.searchResult').show()
+                    $('.wordName').text(value)
+                    $('.pronEg').text(jsonData[value]['pronunciations']['uk'])
+                    $('.pronAm').text(jsonData[value]['pronunciations']['us'])
+                    $('.wordExplanationCN').text(jsonData[value]['cn_definition']['defn'])
+                    $('.wordExplanationEG').text(jsonData[value]['en_definition']['defn'])
+                    $('.wordRelations').text(jsonData[value]['relation'])
+                    $('.wordSentence').text(jsonData[value]['sentence'])
+                }else{
+                    $(searchDiv).find('.result-container').html('<span class="error">' + value + '</span> is not in my dictionary!');
+                }
+                $(searchDiv).find('.result-container').fadeIn(100);
+                return false
+            }
+            }; 
     </script>
 
 </body>
