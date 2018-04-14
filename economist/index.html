@@ -51,7 +51,8 @@
             <p><span class="wordTitle">释义（中）：</span><span class="wordExplanationCN"></span></p>
             <p><span class="wordTitle">释义（英）：</span><span class="wordExplanationEG"></span></p>
             <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
-            <p><span class="wordTitle">例句：</span><span class="wordSentence"></span></p>
+            <p><span class="wordTitle">例句：</span><span class="wordSentenceEn"></span></p>
+            <p><span class="wordTitle">例句：</span><span class="wordSentenceCn"></span></p>
         </div>
     </div>
     <div class="everydayMotto">
@@ -83,6 +84,7 @@
                   container.addClass('active');
                   evt.preventDefault();
                   $('.search-input').focus()
+                  $('footer').hide()
             }
             else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
                   container.removeClass('active');
@@ -119,7 +121,6 @@
                 var jsonData = dictData.responseJSON
                 $('.everydayMotto').hide()
                 if(jsonData[value]){
-                    $('footer').hide()
                     $(searchDiv).find('.result-container').html('')
                     $('.wordName').text(value)
                     $('.pronEg').text(jsonData[value]['pronunciations']['uk'])
@@ -127,7 +128,8 @@
                     $('.wordExplanationCN').text(jsonData[value]['cn_definition']['defn'])
                     $('.wordExplanationEG').text(jsonData[value]['en_definition']['defn'])
                     $('.wordRelations').text(jsonData[value]['relation'])
-                    $('.wordSentence').text(jsonData[value]['sentence'])
+                    $('.wordSentenceEn').text(jsonData[value]['eg'][0])
+                    $('.wordSentenceCn').text(jsonData[value]['eg'][1])
                     $('.searchResult').show()
                 }else{
                     $(searchDiv).find('.result-container').html('<span class="error">' + value + '</span> is not in my dictionary!');
@@ -142,7 +144,6 @@
             var e = event || window.event || arguments.callee.caller.arguments[0];
             var value = $(searchDiv).find('.search-input').val().trim();
             if(e && e.keyCode == 13 && value.length){
-                
                 submitSearch()
             }
             }; 

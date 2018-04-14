@@ -1,5 +1,4 @@
-html,body{width:100%;margin: 0}
-body{padding: 0px;background: -webkit-radial-gradient(circle, #341800, #ebf9ff, #ff67006b);background: radial-gradient(circle, #341800, #ebf9ff, #ff67006b); background:url('../img/image.jpg');background-position: center; background-size: cover; background-attachment: fixed; background-repeat: no-repeat;}
+html,body{padding: 0px;width:100%;margin: 0;background:url('../img/image.jpg');background-position: center; background-size: cover; background-attachment: fixed; background-repeat: no-repeat}
 a{
     text-decoration: none;
     font-size: 1.5em;
@@ -271,11 +270,16 @@ a:hover{
 .wordTitle{
     color:#0aac8e;
 }
+.error{
+    color:red;
+    font-size: 1.3em;
+}
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
     .everydayMotto{
         position: absolute;
         margin-top:45%;
+        padding: 0px 23px;
     }
     .searchResult{
         position: absolute;
@@ -285,7 +289,3 @@ a:hover{
     .todayMotto{
     font-size: 16px;
     }
-.error{
-    color:red;
-    font-size: 1.3em;
-}
