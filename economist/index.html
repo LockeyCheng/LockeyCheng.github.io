@@ -37,7 +37,7 @@
             <div class="search-wrapper">
                 <div class="input-holder">
                     <input type="text" class="search-input" placeholder="Type to search" />
-                    <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+                    <button class="search-icon" onclick="searchToggle(this, event);"><span id="submitGo"></span></button>
                 </div>
                 <span class="close" onclick="searchToggle(this, event);"></span>
                 <div class="result-container">
@@ -77,13 +77,14 @@
 	<script src="../js/jquery-2.1.1.js"></script>
 	<script type="text/javascript">
         var dictData = $.get("https://lockeycheng.github.io/economist/explanations/explanation.json",function(data,status){console.log(status)});
+        var searchDiv = $('#searchForm')
         function searchToggle(obj, evt){
             var container = $(obj).closest('.search-wrapper');
 
             if(!container.hasClass('active')){
                   container.addClass('active');
                   evt.preventDefault();
-                  
+                  $('.search-input').focus()
             }
             else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
                   container.removeClass('active');
@@ -91,14 +92,8 @@
                   container.find('.search-input').val('');
                   // clear and hide result container when we press close
                   container.find('.result-container').fadeOut(100, function(){$(this).empty();});
-                  $('.searchResult').hide()
                   $('.everydayMotto').show()
             }
-            return false
-        }
-
-        function submitFn(obj, evt){
-            
         }
         setInterval(
           function welcome(){
@@ -111,23 +106,19 @@
         $('.todayMotto').html("I am not afraid of tomorrow for I have seen yesterday and I love today.")
         $('.todayMottoAuthor').html("- William Allen White")
         $('.todayMottoCn').html("我并不害怕明天，因为我已见过昨天并且热爱今天。")
-        var searchDiv = $('#searchForm')
-        document.onkeydown=function(event){
-            var e = event || window.event || arguments.callee.caller.arguments[0];
-            if(e && e.keyCode == 13){
-                $('.everydayMotto').hide()
-                value = $(searchDiv).find('.search-input').val().trim();
+        function submitSearch(){
+                var value = $(searchDiv).find('.search-input').val().trim();
 
-                _html = "Yup yup! Your search text sounds like this: ";
+                var _html = "Yup yup! Your search text sounds like this: ";
                 if(!value.length){
                     _html = "Yup yup! Add some text friend :D";
                     $(searchDiv).find('.result-container').html('<span>' + _html + '</span>');
                     return false
                 }
                 var jsonData = dictData.responseJSON
+                $('.everydayMotto').hide()
                 if(jsonData[value]){
                     $(searchDiv).find('.result-container').html('')
-                    $('.searchResult').show()
                     $('.wordName').text(value)
                     $('.pronEg').text(jsonData[value]['pronunciations']['uk'])
                     $('.pronAm').text(jsonData[value]['pronunciations']['us'])
@@ -135,11 +126,22 @@
                     $('.wordExplanationEG').text(jsonData[value]['en_definition']['defn'])
                     $('.wordRelations').text(jsonData[value]['relation'])
                     $('.wordSentence').text(jsonData[value]['sentence'])
+                    $('.searchResult').show()
                 }else{
                     $(searchDiv).find('.result-container').html('<span class="error">' + value + '</span> is not in my dictionary!');
                 }
                 $(searchDiv).find('.result-container').fadeIn(100);
                 return false
+        }
+        $('#submitGo').click(function(){
+                submitSearch()
+        })
+        document.onkeydown=function(event){
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            var value = $(searchDiv).find('.search-input').val().trim();
+            if(e && e.keyCode == 13 && value.length){
+                
+                submitSearch()
             }
             }; 
     </script>
