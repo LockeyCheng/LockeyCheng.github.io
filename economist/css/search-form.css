@@ -210,6 +210,7 @@ footer{color: #b74c00;font-size: 13px;position: absolute;bottom:10px;text-align:
     color: #b74c00;position: absolute;margin-top:16%;text-align: center;width: 100%;
 }
 .todayMotto{
+    color:#ff6a00;
     font-size: 23px;
 }
 footer ul {padding: 0;margin-bottom: 10px;}
@@ -267,9 +268,6 @@ footer ul.social-buttons li a i{margin-top: 7px;}
     font-size: 1.5em;
     color:#08da83;
 }
-.todayMotto{
-    color:#ff6a00;
-}
 .wordTitle{
     color:#0aac8e;
 }
@@ -284,6 +282,9 @@ footer ul.social-buttons li a i{margin-top: 7px;}
         margin-top:43%;
         margin-left: 10%
     }
+    .todayMotto{
+    font-size: 16px;
+}
 }
 .error{
     color:red;
