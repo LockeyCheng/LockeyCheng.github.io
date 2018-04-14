@@ -76,11 +76,10 @@
 	
 	<script src="../js/jquery-2.1.1.js"></script>
 	<script type="text/javascript">
-        $(document).ready(function () {
         var jsonData = {}
         try { 
-           var dictData = $.get("./explanations/explanation.json",function(data,status){console.log(status)});
-           var jsonData = dictData.responseJSON
+           //var dictData = $.get("./explanations/explanation.json",function(data,status){console.log(status)});
+           //var jsonData = dictData.responseJSON
         } catch(err) { 
            console.log(err)
         } 
@@ -117,7 +116,6 @@
             }
 
             $(obj).find('.result-container').html('<span>' + _html + '</span>');
-            
             if(jsonData[value]){
                 $('.searchResult').show()
                 $('.wordName').text(value)
@@ -128,10 +126,10 @@
                 $('.wordRelations').text(jsonData[value]['relation'])
                 $('.wordSentence').text(jsonData[value]['sentence'])
             }else{
-                $(obj).find('.result-container').html('<span class="error">' + value + '</span> is not in The Economist\'s words list!');
+                $(this).find('.result-container').html('<span class="error">' + value + '</span> is not in The Economist\'s words list!');
             }
             $(obj).find('.result-container').fadeIn(100);
-            
+
             evt.preventDefault();
         }
         setInterval(
@@ -146,7 +144,6 @@
         $('.todayMotto').html("I am not afraid of tomorrow for I have seen yesterday and I love today.")
         $('.todayMottoAuthor').html("- William Allen White")
         $('.todayMottoCn').html("我并不害怕明天，因为我已见过昨天并且热爱今天。")
-        })
     </script>
 
 </body>
