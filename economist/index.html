@@ -51,8 +51,8 @@
             <p><span class="wordTitle">释义（中）：</span><span class="wordExplanationCN"></span></p>
             <p><span class="wordTitle">释义（英）：</span><span class="wordExplanationEG"></span></p>
             <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
-            <p><span class="wordTitle">例句：</span><span class="wordSentenceEn"></span></p>
-            <p><span class="wordTitle">例句：</span><span class="wordSentenceCn"></span></p>
+            <p><span class="wordTitle">例句（英）：</span><span class="wordSentenceEn"></span></p>
+            <p><span class="wordTitle">例句翻译：</span><span class="wordSentenceCn"></span></p>
         </div>
     </div>
     <div class="everydayMotto">
@@ -128,8 +128,8 @@
                     $('.wordExplanationCN').text(jsonData[value]['cn_definition']['defn'])
                     $('.wordExplanationEG').text(jsonData[value]['en_definition']['defn'])
                     $('.wordRelations').text(jsonData[value]['relation'])
-                    $('.wordSentenceEn').text(jsonData[value]['eg'][0])
-                    $('.wordSentenceCn').text(jsonData[value]['eg'][1])
+                    $('.wordSentenceEn').text(jsonData[value]['eg'][0][0])
+                    $('.wordSentenceCn').text(jsonData[value]['eg'][0][1])
                     $('.searchResult').show()
                 }else{
                     $(searchDiv).find('.result-container').html('<span class="error">' + value + '</span> is not in my dictionary!');
