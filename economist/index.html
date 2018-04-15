@@ -48,9 +48,11 @@
         <div>
             <p class="wordName">tragedy</p>
             <p><span class="wordTitle">发音：</span>英 [<span class="pronEg"></span>] 美 [<span class="pronAm"></span>]</span></p>
-            <p><span class="wordTitle">释义（中）：</span><span class="wordExplanationCN"></span></p>
-            <p><span class="wordTitle">释义（英）：</span><span class="wordExplanationEG"></span></p>
+            <p><span class="wordTitle">释义：</span><span class="wordExplanationCN"></span></p>
+            <!-- <p><span class="wordTitle">释义（英）：</span><span class="wordExplanationEG"></span></p> -->
             <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
+            <p><span class="wordTitle">近义：</span><span class="similar"></span></p>
+            <p><span class="wordTitle">反义：</span><span class="reverse"></span></p>
             <p><span class="wordTitle">例句（英）：</span><span class="wordSentenceEn"></span></p>
             <p><span class="wordTitle">例句翻译：</span><span class="wordSentenceCn"></span></p>
         </div>
@@ -123,16 +125,22 @@
                 if(jsonData[value]){
                     $(searchDiv).find('.result-container').html('')
                     $('.wordName').text(value)
-                    $('.pronEg').text(jsonData[value]['pronunciations']['uk'])
-                    $('.pronAm').text(jsonData[value]['pronunciations']['us'])
-                    $('.wordExplanationCN').text(jsonData[value]['cn_definition']['defn'])
-                    $('.wordExplanationEG').text(jsonData[value]['en_definition']['defn'])
-                    $('.wordRelations').text(jsonData[value]['relation'])
-                    var enSentence = jsonData[value]['eg'][0][0]
-                    enSentence = enSentence.replace('<vocab>','<b>')
-                    enSentence = enSentence.replace('</vocab>','</b>')
-                    $('.wordSentenceEn').text(enSentence)
-                    $('.wordSentenceCn').text(jsonData[value]['eg'][0][1])
+                    $('.pronEg').text(jsonData[value]['pro_en'])
+                    $('.pronAm').text(jsonData[value]['pro_am'])
+                    $('.wordExplanationCN').text(jsonData[value]['detail'])
+                    //$('.wordExplanationEG').text(jsonData[value]['en_definition']['defn'])
+                    //$('.wordRelations').text(jsonData[value]['relation'])
+                    //if(jsonData[value]['similar'] != ''){
+                    $('.similar').html(jsonData[value]['similar'])
+                    //}
+                    //if(jsonData[value]['reverse'] != ''){
+                    $('.reverse').html(jsonData[value]['reverse'])
+                    //}
+                    if(jsonData[value]['eg'] != []){
+                        var enSentence = jsonData[value]['eg'][0][0]
+                        $('.wordSentenceEn').text(enSentence)
+                        $('.wordSentenceCn').text(jsonData[value]['eg'][0][1])
+                    }
                     $('.searchResult').show()
                 }else{
                     $(searchDiv).find('.result-container').html('<span class="error">' + value + '</span> is not in my dictionary!');
