@@ -125,21 +125,21 @@
                 if(jsonData[value]){
                     $(searchDiv).find('.result-container').html('')
                     $('.wordName').text(value)
-                    $('.pronEg').text(jsonData[value]['pro_en'])
-                    $('.pronAm').text(jsonData[value]['pro_am'])
+                    $('.pronEg').html(jsonData[value]['pro_en'])
+                    $('.pronAm').html(jsonData[value]['pro_am'])
                     $('.wordExplanationCN').text(jsonData[value]['detail'])
                     //$('.wordExplanationEG').text(jsonData[value]['en_definition']['defn'])
                     //$('.wordRelations').text(jsonData[value]['relation'])
                     //if(jsonData[value]['similar'] != ''){
-                    $('.similar').html(jsonData[value]['similar'])
+                    //$('.similar').html(jsonData[value]['similar'])
                     //}
                     //if(jsonData[value]['reverse'] != ''){
-                    $('.reverse').html(jsonData[value]['reverse'])
+                    //$('.reverse').html(jsonData[value]['reverse'])
                     //}
                     if(jsonData[value]['eg'] != []){
                         var enSentence = jsonData[value]['eg'][0][0]
-                        $('.wordSentenceEn').text(enSentence)
-                        $('.wordSentenceCn').text(jsonData[value]['eg'][0][1])
+                        $('.wordSentenceEn').html(enSentence)
+                        $('.wordSentenceCn').html(jsonData[value]['eg'][0][1])
                     }
                     $('.searchResult').show()
                 }else{
