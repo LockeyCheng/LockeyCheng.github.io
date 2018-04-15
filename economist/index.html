@@ -129,8 +129,8 @@
                     $('.wordExplanationEG').text(jsonData[value]['en_definition']['defn'])
                     $('.wordRelations').text(jsonData[value]['relation'])
                     var enSentence = jsonData[value]['eg'][0][0]
-                    enSentence.replace('<vocab>','<b>')
-                    enSentence.replace('</vocab>','</b>')
+                    enSentence = enSentence.replace('<vocab>','<b>')
+                    enSentence = enSentence.replace('</vocab>','</b>')
                     $('.wordSentenceEn').text(enSentence)
                     $('.wordSentenceCn').text(jsonData[value]['eg'][0][1])
                     $('.searchResult').show()
