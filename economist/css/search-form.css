@@ -195,7 +195,10 @@ a{
 /* ---------------------------------------------------------------------------- */
 /* ----------------------------------Footer------------------------------------ */
 /* ---------------------------------------------------------------------------- */
-.title{color: #b74c00;width:auto;padding-left: 23px;}
+.title{
+    padding-top: 6px;
+    margin-top: 0px;
+    color: #970000;width:auto;padding-left: 23px;background: -webkit-linear-gradient(#ffc68a, #9e5f19);background:linear-gradient(#ffc68a, #9e5f19);}
 .title img{
     width: 25px;
     margin-right: 6px;
@@ -246,7 +249,7 @@ footer ul.social-buttons li a i{margin-top: 7px;}
 .widget_recent_entries li a {font-weight:bold;text-transform:uppercase;color: #b74c00;display:inline-block;position:relative;padding-left:14px;letter-spacing:1px;font-size: 10px;}
 .pull-right{
     margin-right: 10px;
-    margin-top: -88px;
+    margin-top: -40px;
 }
 .links a{
     color: #9e43d8;
