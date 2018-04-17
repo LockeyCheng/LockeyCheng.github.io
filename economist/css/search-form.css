@@ -290,6 +290,9 @@ a:hover{
 .cet-li .icheckbox_polaris{
     margin-left: -66px;
 }
+#loadtips{
+       margin-top: 22%
+    }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
     .everydayMotto{
@@ -306,6 +309,11 @@ a:hover{
     }
     .todayMotto{
     font-size: 16px;
+    }
+    #loadtips{
+        position: absolute;
+        top: 23%;
+        left: 37%;
     }
    /* .icheckbox_polaris, .iradio_polaris{
         display: block;

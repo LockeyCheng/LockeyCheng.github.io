@@ -70,22 +70,34 @@
         <p class="todayMottoCn"></p>
     </div>
     <div class="everydayMotto" id="radioChoice">
-        <ul class="list">
+        <ul class="list" id="dictChoice">
               <li>
-                <input type="checkbox" id="polaris-checkbox-1"  checked>
-                <label for="polaris-checkbox-1">The Economist</label>
+                <input type="checkbox" id="polaris-checkbox-disabled-checked"  name='economist' value='economist' checked disabled>
+                <label for="polaris-checkbox-disabled-checked">The Economist</label>
               </li>
               <li class="cet-li">
-                <input type="checkbox" id="polaris-checkbox-2">
+                <input type="checkbox" id="polaris-checkbox-2" value="cet4">
                 <label for="polaris-checkbox-2">CET-4</label>
               </li>
               <li class="cet-li">
-                <input type="checkbox" id="polaris-checkbox-3">
+                <input type="checkbox" id="polaris-checkbox-3" value="cet6">
                 <label for="polaris-checkbox-3">CET-6</label>
               </li>
-            </ul>
-        <input type="radio" name="iCheck" value="load" class="ifloadDict" checked>Load
-        <input type="radio" name="iCheck" value='cancel' class="ifloadDict">Cancel
+          </ul>
+         <!--  <ul class="list">
+              <li>
+                <input tabindex="23" type="radio" id="polaris-radio-1" name="polaris-radio-dict-choice">
+                <label for="polaris-radio-1">Load</label>
+              </li>
+              <li>
+                <input tabindex="24" type="radio" id="polaris-radio-2" name="polaris-radio-dict-choice" checked>
+                <label for="polaris-radio-2">Cancel</label>
+              </li>
+            </ul> -->
+            <div id="load_cancel">
+            <input type="radio" id="polaris-radio-2" name="polaris-radio-dict-choice" value='load'>Load
+            <input type="radio" id="polaris-radio-2" name="polaris-radio-dict-choice" value='cancel'>Cancel
+          </div>
     </div>
     <footer>
     <div class="row">
@@ -99,11 +111,31 @@
 
     </div> <!-- /row -->     
 </footer>  
-	
+<style type="text/css">
+  #floatDiv{
+  /*display:none;*/
+  top:0;
+  z-index:0;
+  height:100%;
+  width:100%;
+  position:fixed;
+  background-size: 100% 100%;
+  background: #d4fff7;
+  opacity: 0.8;
+}
+
+</style>
+<div id="floatDiv">
+  <div><h5 align="right"  id="closeFloat"><i class="fa fa-arrows-alt" style="font-size:2em;margin-right: 13px;margin-top:-5px"></i></h6></div>
+  <div id="loadtips"><h3 align="center"><i class="fa fa-spinner"></i></h3><h3 align="center">词典加载中...</h3></div>
+</div>
 	<script src="../js/jquery-2.1.1.js"></script>
   <script src="../js/icheck.min.js"></script>
 	<script type="text/javascript">
-        var dictData = $.get("https://lockeycheng.github.io/economist/explanations/economist.json",function(data,status){console.log(status)});
+        var dictData={}
+        dictData['economist'] = $.get("https://lockeycheng.github.io/economist/explanations/economist.json",function(data,status){
+            console.log('loaded!');$('#floatDiv').slideUp(567)
+        });
         var searchDiv = $('#searchForm')
         function searchToggle(obj, evt){
             var container = $(obj).closest('.search-wrapper');
@@ -112,7 +144,6 @@
                   container.addClass('active');
                   evt.preventDefault();
                   $('.search-input').focus()
-                  $('footer').hide()
             }
             else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
                   container.removeClass('active');
@@ -146,7 +177,13 @@
                     $(searchDiv).find('.result-container').html('<span>' + _html + '</span>');
                     return false
                 }
-                var jsonData = dictData.responseJSON
+                var jsonData = dictData['economist'].responseJSON
+                if(!jsonData[value] && dictData['cet4']){
+                    jsonData = dictData['cet4'].responseJSON
+                }
+                if(!jsonData[value] && dictData['cet6']){
+                    jsonData = dictData['cet6'].responseJSON
+                }
                 $('#everydayMotto').hide()
                 if(jsonData[value]){
                     $(searchDiv).find('.result-container').html('')
@@ -154,22 +191,20 @@
                     $('.pronEg').html(jsonData[value]['pro_en'])
                     $('.pronAm').html(jsonData[value]['pro_am'])
                     $('.wordExplanationCN').text(jsonData[value]['detail'])
-                    //$('.wordExplanationEG').text(jsonData[value]['en_definition']['defn'])
-                    //$('.wordRelations').text(jsonData[value]['relation'])
-                    //if(jsonData[value]['similar'] != ''){
-                    //$('.similar').html(jsonData[value]['similar'])
-                    //}
-                    //if(jsonData[value]['reverse'] != ''){
-                    //$('.reverse').html(jsonData[value]['reverse'])
-                    //}
                     if(jsonData[value]['eg'] != []){
                         var enSentence = jsonData[value]['eg'][0][0]
                         $('.wordSentenceEn').html(enSentence)
                         $('.wordSentenceCn').html(jsonData[value]['eg'][0][1])
                     }
+                    $('.everydayMotto').hide()
+                    $('footer').hide()
                     $('.searchResult').show()
                 }else{
-                    $(searchDiv).find('.result-container').html('<span class="error">' + value + '</span> is not in my dictionary!');
+                    $(searchDiv).find('.result-container').html('<span class="error">' + value + '</span> meets 404. May switch dictionary!');
+                    setTimeout(function(){
+                      $('#dictSetting').trigger('click')
+                    },2190)
+                    
                 }
                 $(searchDiv).find('.result-container').fadeIn(100);
                 return false
@@ -193,30 +228,37 @@
           $('.searchResult').hide()
           $('.everydayMotto').hide()
           $('#radioChoice').show()
+          $('.result-container').hide(334)
         })
-        $('.ifloadDict').click(function(){
-              var choice = $(this).val()
-              alert(choice)
-              if(choice == 'load'){
-                  alert('loading')
-              }
-              $('#radioChoice').hide()
+        $('input').on('ifChanged', function(){
+          var value = $(this).val()
+          if(value == 'load'){
+              $('#dictChoice').find('li').each(function(){
+                if($(this).find('.icheckbox_polaris').hasClass('checked')){
+                  var dict = $(this).find('.icheckbox_polaris').find('input').val()
+                  if(dict == 'cet4'){
+                    $('#floatDiv').show()
+                      dictData['cet4'] = $.get("https://lockeycheng.github.io/economist/explanations/cet4.json",function(data,status){$('#floatDiv').hide()});
+                  }
+                  if(dict == 'cet6'){
+                    $('#floatDiv').show()
+                      dictData['cet6'] = $.get("https://lockeycheng.github.io/economist/explanations/cet6.json",function(data,status){$('#floatDiv').hide()});
+                  }
+                }
+              })
+          }
+          else if(value == 'cancel'){
+            $('#radioChoice').hide()
+            $('#everydayMotto').show()
+             $('footer').show()
+            $('input').iCheck('uncheck');
+          }else{
+            $('input[name="polaris-radio-dict-choice"]').iCheck('uncheck'); 
+          }
+        });
+        $('#closeFloat').click(function(){
+            $('#floatDiv').fadeOut(556)
         })
     </script>
-<style type="text/css">
-  #floatDiv{
-  display:none;
-  top:0;
-  z-index:0;
-  height:100%;
-  width:100%;
-  position:fixed;
-  background-size: 100% 100%;
-  background:#0a3a42;
-}
-
-</style>
-<div id="floatDiv">
-</div>
 </body>
 </html>
