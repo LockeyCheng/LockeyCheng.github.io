@@ -209,7 +209,7 @@ background: -webkit-linear-gradient(#ffc68a, #9e5f19);background:linear-gradient
 }
 footer{color: #b74c00;font-size: 13px;position: absolute;bottom:10px;text-align: center;width: 100%;}
 .everydayMotto,.searchResult{
-    color: #b74c00;position: absolute;margin-top:16%;text-align: center;width: 100%;
+    color: #b74c00;position: absolute;margin-top:10%;text-align: center;width: 100%;
 }
 #radioChoice{
     display: none
@@ -304,7 +304,7 @@ a:hover{
     }
     .searchResult{
         position: absolute;
-        margin-top:32%;
+        margin-top:23%;
         margin-left: 10%
     }
     .todayMotto{

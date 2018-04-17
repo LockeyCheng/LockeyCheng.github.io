@@ -60,8 +60,9 @@
             <!-- <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
             <p><span class="wordTitle">近义：</span><span class="similar"></span></p>
             <p><span class="wordTitle">反义：</span><span class="reverse"></span></p> -->
-            <p><span class="wordTitle">例句：</span><span class="wordSentenceEn"></span></p>
-            <p><span class="wordTitle">例译：</span><span class="wordSentenceCn"></span></p>
+            <div id="centences">
+              
+            </div>
         </div>
     </div>
     <div class="everydayMotto" id="everydayMotto">
@@ -192,9 +193,16 @@
                     $('.pronAm').html(jsonData[value]['pro_am'])
                     $('.wordExplanationCN').text(jsonData[value]['detail'])
                     if(jsonData[value]['eg'] != []){
-                        var enSentence = jsonData[value]['eg'][0][0]
-                        $('.wordSentenceEn').html(enSentence)
-                        $('.wordSentenceCn').html(jsonData[value]['eg'][0][1])
+                        var toFillSentence = ''
+                        var example = jsonData[value]['eg']
+                         for(var i in example){
+                          var nu = i*1+1
+                          toFillSentence += '<p><span class="wordTitle">例句'+nu+'：</span><span class="wordSentenceEn">'+example[i][0]+'</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">'+example[i][1]+'</span></p>'
+                         }
+                         $('#centences').html(toFillSentence)
+                        // var enSentence = jsonData[value]['eg'][0][0]
+                        // $('.wordSentenceEn').html(enSentence)
+                        // $('.wordSentenceCn').html(jsonData[value]['eg'][0][1])
                     }
                     $('.everydayMotto').hide()
                     $('footer').hide()
