@@ -211,6 +211,9 @@ footer{color: #b74c00;font-size: 13px;position: absolute;bottom:10px;text-align:
 .everydayMotto,.searchResult{
     color: #b74c00;position: absolute;margin-top:16%;text-align: center;width: 100%;
 }
+#radioChoice{
+    display: none
+}
 .todayMotto{
     color:#ff6a00;
     font-size: 23px;
@@ -253,7 +256,7 @@ footer ul.social-buttons li a i{margin-top: 7px;}
 .widget_recent_entries li a {font-weight:bold;text-transform:uppercase;color: #b74c00;display:inline-block;position:relative;padding-left:14px;letter-spacing:1px;font-size: 10px;}
 .pull-right{
     margin-right: 10px;
-    margin-top: -40px;
+    margin-top: -71px;
 }
 .links a{
     color: #9e43d8;
@@ -264,7 +267,7 @@ a:hover{
 }
 .searchResult{
     width: auto;
-    margin-left: 35%;
+    margin-left: 26%;
     display: none;
     text-align: justify;
     padding-right:12px; 
@@ -281,17 +284,31 @@ a:hover{
     color:red;
     font-size: 1.3em;
 }
+#radioChoice{
+    color:#19da9d;
+}
+.cet-li .icheckbox_polaris{
+    margin-left: -66px;
+}
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
     .everydayMotto{
         position: absolute;
         margin-top:45%;
     }
+    #radioChoice{
+        margin-top:23%;
+    }
     .searchResult{
         position: absolute;
-        margin-top:43%;
+        margin-top:32%;
         margin-left: 10%
     }
     .todayMotto{
     font-size: 16px;
     }
+   /* .icheckbox_polaris, .iradio_polaris{
+        display: block;
+        margin-left: 25%;
+    }*/
+}

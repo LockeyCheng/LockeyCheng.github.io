@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<title>The Economist</title>
+  <link rel="stylesheet" type="text/css" href="../css/polaris.css">
 	<link rel="stylesheet" type="text/css" href="css/search-form.css">
     <link rel="stylesheet" href="../font-awesome-4.4.0/css/font-awesome.min.css"  type="text/css">
     <link rel="icon" type="image/x-icon" class="js-site-favicon" href="../images/favicon.ico">
@@ -21,6 +22,9 @@
         <div class="col-six tab-full pull-right social">
 
             <ul class="links"> 
+              <li><a href="javascript:void(0)" id="dictSetting"><i class="fa fa-gear"  style="font-size:28px;color:#b9f2ff"></i></a></li>
+              <li>&nbsp;</li>  
+              <li>&nbsp;</li>  
              <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>        
              <li><a href="https://blog.csdn.net/lockey23" target="_blank"><i class="fa fa-edit"></i></a></li>
              <li><a href="https://www.facebook.com/chen.yang.98031506"><i class="fa fa-facebook"></i></a></li>
@@ -36,14 +40,17 @@
                 <div class="input-holder">
                     <input type="text" class="search-input" placeholder="Type to search" />
                     <button class="search-icon" onclick="searchToggle(this, event);"><span id="submitGo"></span></button>
+                    <i class="fa fa-">
                 </div>
                 <span class="close" onclick="searchToggle(this, event);"></span>
                 <div class="result-container">
 
                 </div>
+                
             </div>
         </div>
 	</section>
+    
     <div class="searchResult">
         <div>
             <p class="wordName">tragedy</p>
@@ -57,10 +64,28 @@
             <p><span class="wordTitle">例译：</span><span class="wordSentenceCn"></span></p>
         </div>
     </div>
-    <div class="everydayMotto">
+    <div class="everydayMotto" id="everydayMotto">
         <p class="todayMotto"></p>
         <p class="todayMottoAuthor"></p>
         <p class="todayMottoCn"></p>
+    </div>
+    <div class="everydayMotto" id="radioChoice">
+        <ul class="list">
+              <li>
+                <input type="checkbox" id="polaris-checkbox-1"  checked>
+                <label for="polaris-checkbox-1">The Economist</label>
+              </li>
+              <li class="cet-li">
+                <input type="checkbox" id="polaris-checkbox-2">
+                <label for="polaris-checkbox-2">CET-4</label>
+              </li>
+              <li class="cet-li">
+                <input type="checkbox" id="polaris-checkbox-3">
+                <label for="polaris-checkbox-3">CET-6</label>
+              </li>
+            </ul>
+        <input type="radio" name="iCheck" value="load" class="ifloadDict" checked>Load
+        <input type="radio" name="iCheck" value='cancel' class="ifloadDict">Cancel
     </div>
     <footer>
     <div class="row">
@@ -76,8 +101,9 @@
 </footer>  
 	
 	<script src="../js/jquery-2.1.1.js"></script>
+  <script src="../js/icheck.min.js"></script>
 	<script type="text/javascript">
-        var dictData = $.get("https://lockeycheng.github.io/economist/explanations/explanation.json",function(data,status){console.log(status)});
+        var dictData = $.get("https://lockeycheng.github.io/economist/explanations/economist.json",function(data,status){console.log(status)});
         var searchDiv = $('#searchForm')
         function searchToggle(obj, evt){
             var container = $(obj).closest('.search-wrapper');
@@ -94,7 +120,7 @@
                   container.find('.search-input').val('');
                   // clear and hide result container when we press close
                   container.find('.result-container').fadeOut(100, function(){$(this).empty();});
-                  $('.everydayMotto').show()
+                  $('#everydayMotto').show()
                   $('footer').show()
                   $('.searchResult').hide()
 
@@ -121,7 +147,7 @@
                     return false
                 }
                 var jsonData = dictData.responseJSON
-                $('.everydayMotto').hide()
+                $('#everydayMotto').hide()
                 if(jsonData[value]){
                     $(searchDiv).find('.result-container').html('')
                     $('.wordName').text(value)
@@ -158,7 +184,39 @@
                 submitSearch()
             }
             }; 
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_polaris',
+          radioClass: 'iradio_polaris',
+          increaseArea: '-10%' // optional
+        });
+        $('#dictSetting').click(function(){
+          $('.searchResult').hide()
+          $('.everydayMotto').hide()
+          $('#radioChoice').show()
+        })
+        $('.ifloadDict').click(function(){
+              var choice = $(this).val()
+              alert(choice)
+              if(choice == 'load'){
+                  alert('loading')
+              }
+              $('#radioChoice').hide()
+        })
     </script>
+<style type="text/css">
+  #floatDiv{
+  display:none;
+  top:0;
+  z-index:0;
+  height:100%;
+  width:100%;
+  position:fixed;
+  background-size: 100% 100%;
+  background:#0a3a42;
+}
 
+</style>
+<div id="floatDiv">
+</div>
 </body>
 </html>
