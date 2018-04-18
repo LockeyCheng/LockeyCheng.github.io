@@ -38,7 +38,7 @@
 		<div id="searchForm">
             <div class="search-wrapper">
                 <div class="input-holder">
-                    <input type="text" class="search-input" placeholder="Type to search" />
+                    <input type="text" class="search-input" placeholder="Type word to search" />
                     <button class="search-icon" onclick="searchToggle(this, event);"><span id="submitGo"></span></button>
                     <i class="fa fa-">
                 </div>
@@ -65,7 +65,7 @@
             </div>
         </div>
     </div>
-    <div class="everydayMotto" id="everydayMotto">
+    <div class="everydayMotto with_motto_footer" id="everydayMotto">
         <p class="todayMotto"></p>
         <p class="todayMottoAuthor"></p>
         <p class="todayMottoCn"></p>
@@ -100,7 +100,7 @@
             <input type="radio" id="polaris-radio-2" name="polaris-radio-dict-choice" value='cancel'>Cancel
           </div>
     </div>
-    <footer>
+    <footer class="with_motto_footer">
     <div class="row">
     <div class="col-six tab-full">
         <div class="copyright">
@@ -145,7 +145,7 @@
             if(!container.hasClass('active')){
                   container.addClass('active');
                   evt.preventDefault();
-                   $('footer').hide()
+                   $('.with_motto_footer').hide()
                   $('.search-input').focus()
             }
             else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
@@ -155,8 +155,7 @@
                   // clear and hide result container when we press close
                   container.find('.result-container').fadeOut(100, function(){$(this).empty();});
                   $('#radioChoice').hide()
-                  $('#everydayMotto').show()
-                  $('footer').show()
+                  $('.with_motto_footer').show()
                   $('.searchResult').hide()
 
             }
@@ -209,9 +208,6 @@
                           toFillSentence += '<p><span class="wordTitle">例句'+nu+'：</span><span class="wordSentenceEn">'+example[i][0]+'</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">'+example[i][1]+'</span></p>'
                          }
                          $('#centences').html(toFillSentence)
-                        // var enSentence = jsonData[value]['eg'][0][0]
-                        // $('.wordSentenceEn').html(enSentence)
-                        // $('.wordSentenceCn').html(jsonData[value]['eg'][0][1])
                     }
                     $('.everydayMotto').hide()
                     $('footer').hide()
