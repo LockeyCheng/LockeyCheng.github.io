@@ -22,8 +22,9 @@
         <div class="col-six tab-full pull-right social">
 
             <ul class="links"> 
-              <li><a href="javascript:void(0)" id="dictSetting"><i class="fa fa-gear"  style="font-size:28px;color:#00d0ff"></i></a></li>
+              <li><a href="javascript:void(0)" id="dictSetting"><i class="fa fa-gear"  style="font-size:30px;color:#00d0ff"></i></a></li>
               <li>&nbsp;</li>  
+              <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
              <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>        
              <li><a href="https://blog.csdn.net/lockey23" target="_blank"><i class="fa fa-edit"></i></a></li>
              <li><a href="https://www.facebook.com/chen.yang.98031506"><i class="fa fa-facebook"></i></a></li>
@@ -104,7 +105,7 @@
     <div class="col-six tab-full">
         <div class="copyright">
                 <span><p class="time"></p></span>
-                <span>Copyright © 2017-2018 Created by Lockey All rights reserved.<a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
+                <span>Copyright @ 2017-2018 Created by Lockey All rights reserved.<a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
 
              </div>                       
         </div>
@@ -132,6 +133,7 @@
 	<script src="../js/jquery-2.1.1.js"></script>
   <script src="../js/icheck.min.js"></script>
 	<script type="text/javascript">
+        var testAlpha = /^[a-zA-Z]+$/i
         var dictData={}
         dictData['economist'] = $.get("https://lockeycheng.github.io/economist/explanations/economist.json",function(data,status){
             console.log('loaded!');$('#floatDiv').slideUp(567)
@@ -152,6 +154,7 @@
                   container.find('.search-input').val('');
                   // clear and hide result container when we press close
                   container.find('.result-container').fadeOut(100, function(){$(this).empty();});
+                  $('#radioChoice').hide()
                   $('#everydayMotto').show()
                   $('footer').show()
                   $('.searchResult').hide()
@@ -170,14 +173,20 @@
         $('.todayMottoAuthor').html("- William Allen White")
         $('.todayMottoCn').html("我并不害怕明天，因为我已见过昨天并且热爱今天。")
         function submitSearch(){
+                $('#radioChoice').hide()
                 var value = $(searchDiv).find('.search-input').val().trim();
-
-                var _html = "Yup yup! Your search text sounds like this: ";
+                
                 if(!value.length){
                     _html = "Yup yup! Add some text friend :D";
                     $(searchDiv).find('.result-container').html('<span>' + _html + '</span>');
                     return false
                 }
+                if(!testAlpha.test(value)){
+                    $(searchDiv).find('.result-container').html('<span class="error">[' + value + ']</span> Illegal input, must be English word!');
+                    $(searchDiv).find('.result-container').show()
+                    return false
+                }
+                value = value.toLocaleLowerCase()
                 var jsonData = dictData['economist'].responseJSON
                 if(!jsonData[value] && dictData['cet4']){
                     jsonData = dictData['cet4'].responseJSON
