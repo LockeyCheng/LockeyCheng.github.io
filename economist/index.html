@@ -22,8 +22,7 @@
         <div class="col-six tab-full pull-right social">
 
             <ul class="links"> 
-              <li><a href="javascript:void(0)" id="dictSetting"><i class="fa fa-gear"  style="font-size:28px;color:#b9f2ff"></i></a></li>
-              <li>&nbsp;</li>  
+              <li><a href="javascript:void(0)" id="dictSetting"><i class="fa fa-gear"  style="font-size:28px;color:#00d0ff"></i></a></li>
               <li>&nbsp;</li>  
              <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>        
              <li><a href="https://blog.csdn.net/lockey23" target="_blank"><i class="fa fa-edit"></i></a></li>
@@ -144,6 +143,7 @@
             if(!container.hasClass('active')){
                   container.addClass('active');
                   evt.preventDefault();
+                   $('footer').hide()
                   $('.search-input').focus()
             }
             else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
@@ -241,16 +241,16 @@
         $('input').on('ifChanged', function(){
           var value = $(this).val()
           if(value == 'load'){
+            $('#floatDiv').fadeIn(456)
               $('#dictChoice').find('li').each(function(){
                 if($(this).find('.icheckbox_polaris').hasClass('checked')){
                   var dict = $(this).find('.icheckbox_polaris').find('input').val()
                   if(dict == 'cet4'){
-                    $('#floatDiv').show()
-                      dictData['cet4'] = $.get("https://lockeycheng.github.io/economist/explanations/cet4.json",function(data,status){$('#floatDiv').hide()});
+                    
+                      dictData['cet4'] = $.get("https://lockeycheng.github.io/economist/explanations/cet4.json",function(data,status){$('#floatDiv').fadeOut(456)});
                   }
                   if(dict == 'cet6'){
-                    $('#floatDiv').show()
-                      dictData['cet6'] = $.get("https://lockeycheng.github.io/economist/explanations/cet6.json",function(data,status){$('#floatDiv').hide()});
+                      dictData['cet6'] = $.get("https://lockeycheng.github.io/economist/explanations/cet6.json",function(data,status){$('#floatDiv').fadeOut(456)});
                   }
                 }
               })

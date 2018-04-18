@@ -256,10 +256,10 @@ footer ul.social-buttons li a i{margin-top: 7px;}
 .widget_recent_entries li a {font-weight:bold;text-transform:uppercase;color: #b74c00;display:inline-block;position:relative;padding-left:14px;letter-spacing:1px;font-size: 10px;}
 .pull-right{
     margin-right: 10px;
-    margin-top: -71px;
+    margin-top: -76px;
 }
 .links a{
-    color: #9e43d8;
+    color: #43d88e;
 }
 a:hover{
     color:red;
@@ -292,6 +292,12 @@ a:hover{
 }
 #loadtips{
        margin-top: 22%
+    }
+
+::-webkit-scrollbar{
+        width: 5px;
+        height: 5px;
+        background-color: #2faf84;
     }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
