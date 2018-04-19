@@ -7,9 +7,22 @@
 	<title>The Economist</title>
   <link rel="stylesheet" type="text/css" href="../css/polaris.css">
 	<link rel="stylesheet" type="text/css" href="css/search-form.css">
-    <link rel="stylesheet" href="../font-awesome-4.4.0/css/font-awesome.min.css"  type="text/css">
-    <link rel="icon" type="image/x-icon" class="js-site-favicon" href="../images/favicon.ico">
-	
+  <link rel="stylesheet" href="../font-awesome-4.4.0/css/font-awesome.min.css"  type="text/css">
+  <link rel="icon" type="image/x-icon" class="js-site-favicon" href="../images/favicon.ico">
+	<style type="text/css">
+  #floatDiv{
+  /*display:none;*/
+  top:0;
+  z-index:0;
+  height:100%;
+  width:100%;
+  position:fixed;
+  background-size: 100% 100%;
+  background: #d4fff7;
+  opacity: 0.8;
+}
+
+</style>
 	<!--[if IE]>
 		<script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
 	<![endif]-->
@@ -38,7 +51,7 @@
 		<div id="searchForm">
             <div class="search-wrapper">
                 <div class="input-holder">
-                    <input type="text" class="search-input" placeholder="Type word to search" />
+                    <input type="text" class="search-input" placeholder="Type to search" />
                     <button class="search-icon" onclick="searchToggle(this, event);"><span id="submitGo"></span></button>
                     <i class="fa fa-">
                 </div>
@@ -121,20 +134,6 @@
 
     </div> <!-- /row -->     
 </footer>  
-<style type="text/css">
-  #floatDiv{
-  /*display:none;*/
-  top:0;
-  z-index:0;
-  height:100%;
-  width:100%;
-  position:fixed;
-  background-size: 100% 100%;
-  background: #d4fff7;
-  opacity: 0.8;
-}
-
-</style>
 <div id="floatDiv">
   <div><h5 align="right"  id="closeFloat"><i class="fa fa-arrows-alt" style="font-size:2em;margin-right: 13px;margin-top:-5px"></i></h6></div>
   <div id="loadtips"><h3 align="center"><i class="fa fa-spinner"></i></h3><h3 align="center" id="loadWords"></h3></div>
@@ -240,7 +239,7 @@
                     return false
                 }
                 value = value.toLocaleLowerCase()
-                var jsonData = dictData['economist_basic'].responseJSON
+                var jsonData = dictData['economist_basic']
                 if(!jsonData[value] && dictData['cet4_basic']){
                     jsonData = dictData['cet4_basic'].responseJSON
                 }
