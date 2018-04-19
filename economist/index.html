@@ -137,7 +137,7 @@
 </style>
 <div id="floatDiv">
   <div><h5 align="right"  id="closeFloat"><i class="fa fa-arrows-alt" style="font-size:2em;margin-right: 13px;margin-top:-5px"></i></h6></div>
-  <div id="loadtips"><h3 align="center"><i class="fa fa-spinner"></i></h3><h3 align="center">词典加载中...</h3></div>
+  <div id="loadtips"><h3 align="center"><i class="fa fa-spinner"></i></h3><h3 align="center" id="loadWords"></h3></div>
 </div>
 	<script src="../js/jquery-2.1.1.js"></script>
   <script src="../js/icheck.min.js"></script>
@@ -146,9 +146,37 @@
         var youdaoWordAudio = 'https://dict.youdao.com/dictvoice?audio='//+criteria&type=2 or type=1
         var testAlpha = /^[a-zA-Z]+$/i
         var dictData={}
-        dictData['economist_basic'] = $.get("https://lockeycheng.github.io/economist/explanations/economist_basic.json",function(data,status){
-            console.log('loaded!');$('#floatDiv').slideUp(567)
-        });
+        var type2Dict={
+          'economist_basic':'The Economist Dict ',
+          'cet4_basic':'CET-4 Dict ',
+          'cet6_basic':'CET-6 Dict ',
+          'economist_model':'The Economist Model ',
+          'cet4_model':'CET-4 Model ',
+          'cet6_model':'CET-6 Model '
+        }
+        function getData(type){
+          var toDict = type2Dict[type]
+          $('#loadWords').html('Loading '+toDict)
+          $('#floatDiv').fadeIn(456)
+          var baseUrl = './explanations/'
+          var getUrl = baseUrl+type+'.json'
+          $.ajax({
+                type:"GET",
+                url: 'getUrl',
+                data: null,
+                dataType:'json',
+                cache:false,
+                success: function(data) {
+                    dictData[type] = data
+                    $('#loadWords').html(toDict+'loaded!')
+                    $('#floatDiv').fadeOut(556)
+                },
+                error: function(data) {
+                    $('#loadWords').html(toDict+'failed to load!')
+                }
+            });
+        }
+        getData('economist_basic')
         var searchDiv = $('#searchForm')
         function getAudio(arr){
             var y = arr.split(' ')
@@ -223,8 +251,8 @@
                 if(jsonData[value]){
                     $(searchDiv).find('.result-container').html('')
                     $('.wordName').text(value)
-                    $('.pronEg').html(jsonData[value]['pron']['peg'])
-                    $('.pronAm').html(jsonData[value]['pron']['pam'])
+                    $('.pronEg').html('英'+jsonData[value]['pron']['peg'])
+                    $('.pronAm').html('美'+jsonData[value]['pron']['pam'])
                     exLi = ''
                     exArr = jsonData[value]['ex']
                     for(var i in exArr){
@@ -277,22 +305,20 @@
         $('input').on('ifChanged', function(){
           var value = $(this).val()
           if(value == 'load'){
-            $('#floatDiv').fadeIn(456)
               $('#dictChoice').find('li').each(function(){
                 if($(this).find('.icheckbox_polaris').hasClass('checked')){
                   var dict = $(this).find('.icheckbox_polaris').find('input').val()
                   if(dict == 'cet4'){
-                    
-                      dictData['cet4_basic'] = $.get("https://lockeycheng.github.io/economist/explanations/cet4_basic.json",function(data,status){$('#floatDiv').fadeOut(456)});
+                    getData('cet4_basic')
                   }
                   if(dict == 'cet6'){
-                      dictData['cet6_basic'] = $.get("https://lockeycheng.github.io/economist/explanations/cet6_basic.json",function(data,status){$('#floatDiv').fadeOut(456)});
+                     getData('cet6_basic')
                   }
                 }
               })
           }
           else if(value == 'cancel'){
-            $('dictsChoose').hide()
+            $('.dictsChoose').hide()
             $('#everydayMotto').show()
              $('footer').show()
             $('input').iCheck('uncheck');
