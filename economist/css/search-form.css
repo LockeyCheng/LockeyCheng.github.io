@@ -187,7 +187,7 @@ a{
 .search-wrapper .result-container {
     width: 100%;
     position: absolute;
-    top:80px;
+    top:96px;
     left:0px;
     text-align: center;
     font-family: "Open Sans", Arial, Verdana;
@@ -211,7 +211,7 @@ footer{color: #b74c00;font-size: 13px;position: absolute;bottom:10px;text-align:
 .everydayMotto,.searchResult{
     color: #b74c00;position: absolute;margin-top:9%;text-align: center;width: 100%;
 }
-#radioChoice{
+.dictsChoose{
     display: none
 }
 .todayMotto{
@@ -299,6 +299,13 @@ a:hover{
         height: 5px;
         background-color: #2faf84;
     }
+#wordItemChoose label{
+    color: #008990;
+    font-weight: bold;
+}
+#wordItems{
+    display: none
+}
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
     .everydayMotto{
