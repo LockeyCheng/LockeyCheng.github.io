@@ -63,7 +63,8 @@
         <div>
             <p class="wordName">tragedy</p>
             <p><span class="wordTitle">发音：</span><span class="pronEg"></span> <span class="pronAm"></span></span></p>
-            <p><span class="wordTitle">释义：</span><span class="wordExplanationCN"></span></p>
+            <p><span class="wordTitle">释义：</span></p>
+            <p><ul id="wordExplanationCN"></ul></p>
             <!-- <p><span class="wordTitle">释义（英）：</span><span class="wordExplanationEG"></span></p> -->
             <!-- <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
             <p><span class="wordTitle">近义：</span><span class="similar"></span></p>
@@ -145,7 +146,7 @@
         var youdaoWordAudio = 'https://dict.youdao.com/dictvoice?audio='//+criteria&type=2 or type=1
         var testAlpha = /^[a-zA-Z]+$/i
         var dictData={}
-        dictData['economist'] = $.get("https://lockeycheng.github.io/economist/explanations/economist.json",function(data,status){
+        dictData['economist_basic'] = $.get("https://lockeycheng.github.io/economist/explanations/economist_basic.json",function(data,status){
             console.log('loaded!');$('#floatDiv').slideUp(567)
         });
         var searchDiv = $('#searchForm')
@@ -211,23 +212,28 @@
                     return false
                 }
                 value = value.toLocaleLowerCase()
-                var jsonData = dictData['economist'].responseJSON
-                if(!jsonData[value] && dictData['cet4']){
-                    jsonData = dictData['cet4'].responseJSON
+                var jsonData = dictData['economist_basic'].responseJSON
+                if(!jsonData[value] && dictData['cet4_basic']){
+                    jsonData = dictData['cet4_basic'].responseJSON
                 }
-                if(!jsonData[value] && dictData['cet6']){
-                    jsonData = dictData['cet6'].responseJSON
+                if(!jsonData[value] && dictData['cet6_basic']){
+                    jsonData = dictData['cet6_basic'].responseJSON
                 }
                 $('#everydayMotto').hide()
                 if(jsonData[value]){
                     $(searchDiv).find('.result-container').html('')
                     $('.wordName').text(value)
-                    $('.pronEg').html(jsonData[value]['pro_en'])
-                    $('.pronAm').html(jsonData[value]['pro_am'])
-                    $('.wordExplanationCN').text(jsonData[value]['detail'])
-                    if(jsonData[value]['eg'] != []){
+                    $('.pronEg').html(jsonData[value]['pron']['peg'])
+                    $('.pronAm').html(jsonData[value]['pron']['pam'])
+                    exLi = ''
+                    exArr = jsonData[value]['ex']
+                    for(var i in exArr){
+                        exLi += '<li>'+exArr[i]+'</li>'
+                    }
+                    $('#wordExplanationCN').html(exLi)
+                    if(jsonData[value]['eg2'] != []){
                         var toFillSentence = ''
-                        var example = jsonData[value]['eg']
+                        var example = jsonData[value]['eg2']
                          for(var i in example){
                           var nu = i*1+1
                           toFillSentence += '<p><span class="wordTitle">例句'+nu+'：</span><span class="wordSentenceEn">'+example[i][0]+'</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">'+example[i][1]+'</span></p>'
@@ -277,10 +283,10 @@
                   var dict = $(this).find('.icheckbox_polaris').find('input').val()
                   if(dict == 'cet4'){
                     
-                      dictData['cet4'] = $.get("https://lockeycheng.github.io/economist/explanations/cet4.json",function(data,status){$('#floatDiv').fadeOut(456)});
+                      dictData['cet4_basic'] = $.get("https://lockeycheng.github.io/economist/explanations/cet4_basic.json",function(data,status){$('#floatDiv').fadeOut(456)});
                   }
                   if(dict == 'cet6'){
-                      dictData['cet6'] = $.get("https://lockeycheng.github.io/economist/explanations/cet6.json",function(data,status){$('#floatDiv').fadeOut(456)});
+                      dictData['cet6_basic'] = $.get("https://lockeycheng.github.io/economist/explanations/cet6_basic.json",function(data,status){$('#floatDiv').fadeOut(456)});
                   }
                 }
               })
