@@ -9,31 +9,31 @@
 
 <div data-role="page" id="pageone">
   <div data-role="header">
-    <h1>欢迎访问我的主页</h1>
+    <h1>欢迎来到我的主页</h1>
   </div>
 
   <div data-role="content">
-    <p>点击链接来查看流效果。</p>
-    <a href="#pagetwo" data-transition="flow">转到页面二</a>
+    <p>点击链接来查看滑动效果（从右向左滑动到下一页）</p>
+    <a href="#pagetwo" data-transition="slide">滑动到页面二</a>
   </div>
 
   <div data-role="footer">
-    <h1>页脚文本</h1>
+  <h1>页脚文本</h1>
   </div>
 </div> 
 
 <div data-role="page" id="pagetwo">
   <div data-role="header">
-    <h1>欢迎访问我的主页</h1>
+    <h1>欢迎来到我的主页</h1>
   </div>
 
   <div data-role="content">
-    <p>点击链接返回页面一。<b>注释：</b>：fade 是默认效果。</p>
-    <a href="#pageone">返回页面一</a>
+    <p>点击链接来查看反向的滑动效果（从左向右滑动到前一页）</p>
+    <a href="#pageone" data-transition="slide" data-direction="reverse">滑动到页面一（反向）</a>
   </div>
 
   <div data-role="footer">
-    <h1>页脚文本</h1>
+  <h1>页脚文本</h1>
   </div>
 </div> 
 
