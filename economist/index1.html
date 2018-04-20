@@ -1,35 +1,40 @@
-<!doctype html>
-<html lang="zh">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<title>The Economist</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>The Economist</title>
+  <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
   <link rel="stylesheet" type="text/css" href="../css/polaris.css">
-	<link rel="stylesheet" type="text/css" href="css/search-form.css">
+  <link rel="stylesheet" type="text/css" href="css/search-form.css">
   <link rel="stylesheet" href="../font-awesome-4.4.0/css/font-awesome.min.css"  type="text/css">
   <link rel="icon" type="image/x-icon" class="js-site-favicon" href="../images/favicon.ico">
-	<style type="text/css">
-  #floatDiv{
-  /*display:none;*/
-  top:0;
-  z-index:0;
-  height:100%;
-  width:100%;
-  position:fixed;
-  background-size: 100% 100%;
-  background: #d4fff7;
-  opacity: 0.8;
-}
-
-</style>
-	<!--[if IE]>
-		<script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
-	<![endif]-->
+  <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
-    <header>
+  <style type="text/css">
+  #floatDiv{
+    top:0;
+    z-index:0;
+    height:100%;
+    width:100%;
+    position:fixed;
+    background-size: 100% 100%;
+    background: #d4fff7;
+    opacity: 0.8;
+  }
+
+</style>
+<!--
+<a href="#pagetwo" data-transition="slide">淡入第二个页面</a>
+<a href="#pageone" data-transition="slide" data-direction="reverse">淡入第一个页面(reversed)</a>
+-->
+<div data-role="page" id="pageone">
+ <header>
         <h1 class="title"><img src="./img/econfinal_favicon.ico">The Economist</h1>
+        <a href="#pagetwo" data-transition="slide">淡入第二个页面</a>
         <div class="row">
 
         <div class="col-six tab-full pull-right social">
@@ -47,8 +52,8 @@
       </div>
       </div>
     </header>
-	<section class="container">
-		<div id="searchForm">
+  <section class="container">
+    <div id="searchForm">
             <div class="search-wrapper">
                 <div class="input-holder">
                     <input type="text" class="search-input" placeholder="Type to search" />
@@ -70,7 +75,7 @@
                 
             </div>
         </div>
-	</section>
+  </section>
     
     <div class="searchResult">
         <div>
@@ -107,6 +112,16 @@
                 <label for="polaris-checkbox-3">CET-6</label>
               </li>
           </ul>
+         <!--  <ul class="list">
+              <li>
+                <input tabindex="23" type="radio" id="polaris-radio-1" name="polaris-radio-dict-choice">
+                <label for="polaris-radio-1">Load</label>
+              </li>
+              <li>
+                <input tabindex="24" type="radio" id="polaris-radio-2" name="polaris-radio-dict-choice" checked>
+                <label for="polaris-radio-2">Cancel</label>
+              </li>
+            </ul> -->
             <div id="load_cancel">
             <input type="radio" id="polaris-radio-2" name="polaris-radio-dict-choice" value='load'>Load
             <input type="radio" id="polaris-radio-2" name="polaris-radio-dict-choice" value='cancel'>Cancel
@@ -114,21 +129,39 @@
     </div>
     <footer class="with_motto_footer">
     <div class="row">
-      <div class="col-six tab-full">
+    <div class="col-six tab-full">
         <div class="copyright">
                 <span><p class="time"></p></span>
                 <span>Copyright @ 2017-2018 Created by Lockey All rights reserved.<a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
-        </div>                       
-      </div>
-    </div>
+
+             </div>                       
+        </div>
+
+    </div> <!-- /row -->     
 </footer>  
 <div id="floatDiv">
   <div><h5 align="right"  id="closeFloat"><i class="fa fa-arrows-alt" style="font-size:2em;margin-right: 13px;margin-top:-5px"></i></h6></div>
   <div id="loadtips"><h3 align="center"><i class="fa fa-spinner"></i></h3><h3 align="center" id="loadWords"></h3></div>
 </div>
-	<script src="../js/jquery-2.1.1.js"></script>
-  <script src="../js/icheck.min.js"></script>
-	<script type="text/javascript">
+</div> 
+
+<div data-role="page" id="pagetwo">
+  <div data-role="header">
+    <h1>欢迎来到我的主页</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>点击链接查看相反方向的淡入效果 (页面从左至右淡入)。</p>
+    <a href="#pageone" data-transition="slide" data-direction="reverse">淡入第一个页面(reversed)</a>
+    
+  </div>
+
+  <div data-role="footer">
+    <h1>底部文本</h1>
+  </div>
+</div> 
+<script src="../js/icheck.min.js"></script>
+<script type="text/javascript">
         var youdaoSentenceAudio = 'https://dict.youdao.com/dictvoice?audio='//+sentence+&le=eng
         var youdaoWordAudio = 'https://dict.youdao.com/dictvoice?audio='//+criteria&type=2 or type=1
         var testAlpha = /^[a-zA-Z]+$/i
@@ -145,7 +178,7 @@
           var toDict = type2Dict[type]
           $('#loadWords').html('Loading '+toDict)
           $('#floatDiv').fadeIn(456)
-          var baseUrl = './explanations/'
+          var baseUrl = 'https://lockeycheng.github.io/economist/explanations/'
           var getUrl = baseUrl+type+'.json'
           $.ajax({
                 type:"GET",
