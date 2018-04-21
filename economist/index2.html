@@ -47,7 +47,7 @@
 
 <div data-role="page" id="pageone">
   <div data-role="main" class="ui-content">
-    <a href="#pagetwo" data-transition="slide" class="fa fa-search switchfa" style="font-size:30px;color:#00d0ff"></a>
+    <a href="#pagetwo" data-transition="slide" id="toPage2" class="fa fa-search switchfa" style="font-size:30px;color:#00d0ff"></a>
     <div id="page-content" class="single-page">
         <h3 class="heading3" id="mainTitle">loading/h3>
         <h5 class="heading5" id="createDate">loading</h5>
@@ -60,7 +60,7 @@
 
 <div data-role="page" id="pagetwo">
   <div data-role="main" class="ui-content">
-    <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-etsy switchfa"></a>
+    <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-etsy switchfa" id="toPage1"></a>
     <section class="container">
     <div id="searchForm">
             <div class="search-wrapper">
@@ -565,14 +565,19 @@
         distanceY = endY-startY;
         //判断滑动方向
         if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>0){
-            alert('往右滑动');
+            if(!$('#pagetwo').is(':hidden')){
+              $('#toPage2').trigger('click')
+            }
         }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<0){
-            alert('往左滑动');
+            console.log('往左滑动');
+            if(!$('#pageone').is(':hidden')){
+              $('#toPage1').trigger('click')
+            }
         }else
         if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<0){
-            alert('往上滑动');
+            console.log('往上滑动');
         } else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY>0){
-            alert('往下滑动');
+            console.log('往下滑动');
 
         }
       })
