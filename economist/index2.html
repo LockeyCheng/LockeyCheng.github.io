@@ -197,7 +197,7 @@
       <div class="col-six tab-full">
         <div class="copyright">
                 <span><p class="time"></p></span>
-                <span>Copyright <i class="fa fa-copyright"></i>2018 Created by Lockey All rights reserved.<a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
+                <span>Copyright <i class="fa fa-copyright"></i> 2018 Created by Lockey All rights reserved.<a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
         </div>                       
       </div>
     </div>
@@ -449,9 +449,10 @@
                             if(jsonDataModel[value]['wp'] != []){
                               var phrases = jsonDataModel[value]['wp']
                               var phraseLi = ''
-                              for(var i in phrases){
-                                var nu = i*1+1
-                                phraseLi += '<li><span class="wordTitle">'+nu+'：</span><span class="wordSentenceEn">'+phrases[i][0]+'</span></li><li><span class="wordSentenceCn">'+phrases[i][1]+'</span></li>'
+                              var no = 0
+                              for(var item in phrases){
+                                nu += 1
+                                phraseLi += '<li><span class="wordTitle">'+nu+'：</span><span class="wordSentenceEn">'+item+'</span></li><li><span class="wordSentenceCn">'+phrases[item]+'</span></li>'
                               }
                               $('#wordPhrases').html(phraseLi)
                             }
