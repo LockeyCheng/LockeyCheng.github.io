@@ -933,8 +933,20 @@ input{
     top: 39%;
     color: #e5f4ff;
 }
-#wordPro li{
+#wordPro li,#wordPhrases li{
     display: block;
+}
+#pageone{
+    margin-top: 66px
+}
+#pageone .heading3,#pageone .heading5{
+    text-align: center;
+}
+#pageone .heading3,{
+    font-size:1.35em;
+}
+#pageone .heading5{
+    font-size:1em;
 }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}

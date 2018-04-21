@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
 <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="../blogs/showdown.min.js"></script>
 </head>
 <body>
 <style type="text/css">
@@ -47,33 +48,12 @@
 <div data-role="page" id="pageone">
   <div data-role="main" class="ui-content">
     <a href="#pagetwo" data-transition="slide" class="fa fa-search switchfa" style="font-size:30px;color:#00d0ff"></a>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
-    <p>sdfdsf</p>
+    <div id="page-content" class="single-page">
+        <h3 class="heading3" id="mainTitle">loading/h3>
+        <h5 class="heading5" id="createDate">loading</h5>
+        <div id="articleContent"></div>
+    </div>
+
   </div>
 </div> 
 
@@ -302,14 +282,31 @@
             arrayPageSize = new Array(pageWidth, pageHeight, windowWidth, windowHeight);
             return arrayPageSize;
         }
-        function getData(type){
-          var toDict = type2Dict[type]
-          var tips = '<span class="normalItem">'+toDict+' ...</span>'
-          dealWithFloatDiv(tips,true,false,false)
-          var baseUrl = 'https://lockeycheng.github.io/economist/explanations/'
-          //var baseUrl = './explanations/'
-          var getUrl = baseUrl+type+'.json'
-          console.log(getUrl)
+        function getMdfile(){
+            var today = new Date()
+            var  year = today.getFullYear()
+            var day = today.getDate()
+            var month = today.getMonth()
+            //if(day.length == 1){day = '0'+day}
+            //if(month.length == 1){month = '0'+month}
+            var filename = year+'_'+month+'_'+day+'.md'
+            var getUrl = 'https://lockeycheng.github.io/economist/mds/'+filename
+            htmlobj=$.ajax({url:getUrl,async:false})
+            $('#mainTitle').html('Why a licence plate costs more than a car in Shanghai')
+            $('#createDate').html('Lockey 2018/4/21')
+            var content = htmlobj//innerObj['content']
+            var converter = new showdown.Converter();
+            var html = converter.makeHtml(content);
+            document.getElementById("articleContent").innerHTML = html;
+        }
+        function getData(type,ifmd){
+            var toDict = type2Dict[type]
+            var tips = '<span class="normalItem">'+toDict+' ...</span>'
+            dealWithFloatDiv(tips,true,false,false)
+            var baseUrl = 'https://lockeycheng.github.io/economist/explanations/'
+            //var baseUrl = './explanations/'
+            var getUrl = baseUrl+type+'.json'
+            console.log(getUrl)
           $.ajax({
                 type:"GET",
                 url: getUrl,
@@ -322,13 +319,15 @@
                     dealWithFloatDiv('<span class="success">'+toDict+'</span>  successfully loaded!',false,false,true,true)
                 },
                 error: function(data) {
-
-                    dealWithFloatDiv('<span class="error">'+toDict+'</span> failed to load!',false,true,false,false)
+                      dealWithFloatDiv('<span class="error">'+toDict+'</span> failed to load!',false,true,false,false)
                 }
             });
         }
-        getData('economist_basic')
-        getData('economist_model')
+         getMdfile()
+         setTimeout(function(){
+            getData('economist_basic',false)
+            getData('economist_model',false)
+         },2000)
         var searchDiv = $('#searchForm')
         function getAudio(arr){
             var y = arr.split(' ')
@@ -515,9 +514,9 @@
                 continue
               }
               if( item != 'sentence_phrase'){
-                  getData(item+'_basic')
+                  getData(item+'_basic',false)
                   if(seg>=0){
-                      getData(item+'_model')
+                      getData(item+'_model',false)
                   }
               }
             }
@@ -540,6 +539,61 @@
           $('.dictsChoose').show()
           $(this).hide()
          })
+         $('body').bind('touchstart',function(e){
+        startX = e.originalEvent.changedTouches[0].pageX;
+        startY = e.originalEvent.changedTouches[0].pageY;
+    });
+    $("body").bind("touchmove",function(e){
+        //获取滑动屏幕时的X,Y
+        endX = e.originalEvent.changedTouches[0].pageX;
+        endY = e.originalEvent.changedTouches[0].pageY;
+        //获取滑动距离
+        distanceX = endX-startX;
+        distanceY = endY-startY;
+        //判断滑动方向
+        if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>0){
+            alert('往右滑动');
+        }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<0){
+            alert('往左滑动');
+        }else
+        if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<0){
+            alert('往上滑动');
+        } else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY>0){
+            alert('往下滑动');
+
+        }
+      })
+    var scrollDirect=function () {
+        var dalta = document.body.scrollTop;
+        window.addEventListener("scroll", function (event) {
+        event = event || window.event;
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        var totalScroll = scrollHeight - windowHeight
+        var change = totalScroll- scrollTop
+        if((dalta - change) >0 ){
+          if(scrollTop > 10)
+          {
+            $('#header').hide()
+            $('footer').show()
+          }
+          
+        }else{
+          $('#header').show()
+          $('footer').hide()
+        }
+        dalta = change
+       if(totalScroll - scrollTop <5){
+        $('#header').show()
+       }
+       if(totalScroll - scrollTop > totalScroll-5){
+        $('footer').show()
+       }
+    }, false);
+}
+scrollDirect(function (direction) {
+ })
     </script>
 </body>
 </html>
