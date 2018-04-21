@@ -35,8 +35,8 @@
             <ul class="links"> 
              <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
              <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>
-             <li><a href="#"><i class="fa fa-twitter"></i></a></li>        
              <li><a href="https://www.facebook.com/chen.yang.98031506"><i class="fa fa-facebook"></i></a></li>
+             <li><a href="#"><i class="fa fa-twitter"></i></a></li> 
              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
              <li><a href="https://blog.csdn.net/lockey23" target="_blank"><i class="fa fa-edit ibold"></i></a></li>
              <!-- <li><a href="https://lockeycheng.github.io/economist/index.html" target="_blank"><i class="fa fa-etsy"></i></a></li>      -->
@@ -295,7 +295,7 @@
             var day = today.getDate()
             var month = today.getMonth()+1
              var filename = year+'_'+month+'_'+day+'.md'
-            var getUrl = 'https://lockeycheng.github.io/economist/mds/'+filename
+            var getUrl = 'https://lockeycheng.github.io/economist/mds/'+'2018_3_21.md'//filename
             var dataType = 'text'
           }else{
              var toDict = type2Dict[type]
@@ -563,11 +563,11 @@
         distanceX = endX-startX;
         distanceY = endY-startY;
         //判断滑动方向
-        if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>6){
+        if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>15){
             if($('#pageone').is(':hidden')){
               $('#toPage1').trigger('click')
             }
-        }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<6){
+        }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-15){
             console.log('往左滑动');
             if($('#pagetwo').is(':hidden')){
               $('#toPage2').trigger('click')
