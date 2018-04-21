@@ -538,8 +538,8 @@ a{
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    top:27%;
-    left:49%;
+    top:46%;
+    left:50.5%;
 }
 .search-wrapper.active {}
 
@@ -718,7 +718,6 @@ a{
     text-align: center;
     font-family: "Open Sans", Arial, Verdana;
     font-size: 21px;
-    display:none;
     color:#B7B7B7;
 }
 /* ---------------------------------------------------------------------------- */
@@ -743,11 +742,11 @@ footer{
     padding-bottom: 8px;
     color: #b74c00;font-size: 13px;bottom:0px;text-align: center;width: 100%;
     opacity: 0.9;
-    background: -webkit-linear-gradient(#044e5a, #3f2100);
-    background: linear-gradient(#044e5a, #3f2100);
+    background: -webkit-linear-gradient(#044e5a, #231302);
+    background: linear-gradient(#044e5a, #231302);
 }
 .everydayMotto,.searchResult{
-    color: #b74c00;position: absolute;margin-top:9%;text-align: center;width: 100%;
+    color: #b74c00;position: absolute;margin-top:23%;text-align: center;width: 100%;
 }
 .dictsChoose{
     display: none
@@ -797,12 +796,9 @@ footer ul.social-buttons li a i{margin-top: 7px;}
     margin-top: -76px;
 }
 .links a{
-    color: #43d88e;
+    color: #0a6d3c;
 }
-a:hover{
-    color:red;
-    text-decoration: none;
-}
+
 .searchResult{
     width: auto;
     margin-left: 26%;
@@ -838,7 +834,7 @@ a:hover{
         background-color: #2faf84;
     }
 */
-#wordItemChoose label{
+.wordItemChoose label{
     color: #008990;
     font-weight: bold;
 }
@@ -862,13 +858,70 @@ a:hover{
     position: fixed;
     top:2px;
 }
-/*
-.links{
-    right: 6px;
-    position: fixed;
-    top:36px;
+.links a:hover{
+    color:red;
+    text-decoration: none;
 }
-*/
+input{
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+}
+.ui-checkbox{
+    display: inline-block;
+}
+.hide{
+    display: none;
+}
+.checkboxSpan-circle,.checkboxSpan-square{
+    display: inline-block;
+    background: url(../img/polaris.png);
+    margin-right: 6px;
+}
+.checkboxSpan-square{
+    width: 17px;
+    height: 18px;
+    background-size: 230px;
+    background-position: 119% 27%;
+}
+
+.wordItemChoose i.selected{
+    background-position: 24% 27%;
+}
+.eternal{
+    background-position: -62.5% 27%;
+}
+.checkboxSpan-circle{
+    width: 20px;
+    height: 22px;
+    background-size: 310px;
+    background-position: 66% 16%;
+}
+.confirm_dict i.selected{
+    background-position: 76% -13%;
+}
+#dictSelect li,#wordItemSelect li{
+    display: block;
+}
+#wordItemSelect label{
+    color:#00863d;/*#008990;*/
+    font-weight: bold;
+}
+
+#dictSelect label{
+    color:#008990;
+}
+#wordItems{
+    display: none;
+}
+#loadWords{
+    font-size: 1.6em;
+    color: #31ffaa;
+}
+#loadingImg img{
+        width:100%;
+        height:186px;
+    }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
     .everydayMotto{
@@ -887,10 +940,8 @@ a:hover{
     .todayMotto{
     font-size: 16px;
     }
-    #loadtips{
-        position: absolute;
-        top: 23%;
-        left: 37%;
+    .search-wrapper{
+        top:36%;
     }
    /* .icheckbox_polaris, .iradio_polaris{
         display: block;

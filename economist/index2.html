@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>The Economist</title>
 <link rel="icon" type="image/x-icon" class="js-site-favicon" href="../images/favicon.ico">
-<link rel="stylesheet" type="text/css" href="../css/polaris.css">
+<!-- <link rel="stylesheet" type="text/css" href="../css/polaris.css"> -->
 <link rel="stylesheet" type="text/css" href="css/search-form.css">
 <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
 <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -16,13 +16,13 @@
 <style type="text/css">
   #floatDiv{
   display:none;
-  top:0;
-  z-index:0;
-  height:100%;
+  z-index:111111;
+  top:8%;
+  height:92%;
   width:100%;
   position:fixed;
   background-size: 100% 100%;
-  background: #d4fff7;
+  background: #090d0c;
   opacity: 0.8;
 }
 
@@ -86,15 +86,48 @@
             <div class="search-wrapper">
                 <div class="input-holder">
                     <input type="text" class="search-input" placeholder="Type to search" />
-                    <button class="search-icon" onclick="searchToggle(this, event);"><span id="submitGo"></span></button>
+                    <button class="search-icon" id='searchWordBtn' onclick="searchToggle(this, event);"><span id="submitGo"></span></button>
                 </div>
                 <div id="wordItems"  class="dictsChoose">
-                  <ul class="list" id="wordItemChoose">
-                    <li style="margin-left: -23px;">
-                      <input type="checkbox" id="polaris-checkbox-checked-worditem"  name='economist' value='economist'>
-                      <label for="polaris-checkbox-disabled-checked">Model sentence</label>
-                    </li>
-                  </ul>
+
+                  <div id='dictSelect'>
+                    <ul class="wordItemChoose">
+                      <li style="margin-left: -16px;">
+                        <i class="checkboxSpan-square eternal"></i><input type="checkbox" id="polaris-checkbox-economist"  class="hide" name='economist' value='economist'><label for="polaris-checkbox-economist">The Economist</label>
+                      </li>
+                      <li style="margin-left: -16px;">
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-cet46"  class="hide" name='cet46' value='cet46'><label for="polaris-checkbox-cet46">CET4-CET6</label>
+                      </li>
+                      <li style="margin-left: -16px;">
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-pupil"  class="hide" name='pupil' value='pupil'><label for="polaris-checkbox-pupil">The Pupil</label>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div id='wordItemSelect'>
+                    <ul class="wordItemChoose">
+                      <li style="margin-left: -23px;">
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-sentence"  class="hide" name='sentence' value='sentence_phrase'><label for="polaris-checkbox-sentence">Model sentence</label>
+                      </li>
+                      <li style="margin-left: -23px;">
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-phrase"  class="hide" name='phrase' value='sentence_phrase'><label for="polaris-checkbox-phrase">Common Phrase</label>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div id='confirm_cancel'>
+                    <ul class="confirm_dict">
+                      <li style="margin-left: -15px;color:#1bffc2">
+                        <i class="checkboxSpan-circle"></i><input type="checkbox" id="polaris-checkbox-confirm"  class="hide" name='confirm_cancel' value='confirm'><label for="polaris-checkbox-confirm">Load</label>
+                      </li>
+                      <li style="margin-left: 0px;color:#cea324">
+                        <i class="checkboxSpan-circle"></i><input type="checkbox" id="polaris-checkbox-cancel"  class="hide" name='confirm_cancel' value='cancel'><label for="polaris-checkbox-cancel">Cancel</label>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <hr/>
+
                 </div>
                 <div class="result-container">
 
@@ -158,30 +191,105 @@
       <div class="col-six tab-full">
         <div class="copyright">
                 <span><p class="time"></p></span>
-                <span>Copyright @ 2017-2018 Created by Lockey All rights reserved.<a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
+                <span>Copyright @ 2018 Created by Lockey All rights reserved.<a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
         </div>                       
       </div>
     </div>
 </footer>  
 
 <div id="floatDiv">
-  <div><h5 align="right"  id="closeFloat"><i class="fa fa-arrows-alt" style="font-size:2em;margin-right: 13px;margin-top:-5px"></i></h6></div>
-  <div id="loadtips"><h3 align="center"><i class="fa fa-spinner"></i></h3><h3 align="center" id="loadWords"></h3></div>
+  <div>
+    <h5 align="right"  id="closeFloat"><i class="fa fa-quora" alt="close" style="font-size:2em;margin-right: 13px;margin-top:-5px;color:#d90000">t</i>
+    </h5>
+  </div>
+  <div id="loadtips">
+    <h5 align="center" id="loadingImg" style="margin-top: -10%;"><img src="../images/loading.gif"></h5>
+    <h5 align="center" id="wariningIcon" style="margin-top: -10%;display: none;font-size:5em;color:#ffa500"><i class="fa fa-warning"></i></h5>
+    <h3 align="center" id="loadWords"></h3></div>
 </div>
-<script src="../js/jquery-2.1.1.js"></script>
-  <script src="../js/icheck.min.js"></script>
-  <script type="text/javascript">
+<!-- <script src="../js/jquery-2.1.1.js"></script> -->
+<script type="text/javascript">
+        var currentDict = []
+        var searchTimes = 0
         var youdaoSentenceAudio = 'https://dict.youdao.com/dictvoice?audio='//+sentence+&le=eng
         var youdaoWordAudio = 'https://dict.youdao.com/dictvoice?audio='//+criteria&type=2 or type=1
         var testAlpha = /^[a-zA-Z]+$/i
         var dictData={}
         var type2Dict={
-          'economist_basic':'The Economist Dict ',
-          'cet4_basic':'CET-4 Dict ',
-          'cet6_basic':'CET-6 Dict ',
-          'economist_model':'The Economist Model ',
-          'cet4_model':'CET-4 Model ',
-          'cet6_model':'CET-6 Model '
+          'economist_basic':'The Economist Dict',
+          'economist_model':'The Economist Model',
+          'cet46_basic':'CET-4 && CET-6 Dict ',
+          'cet46_model':'CET-4 && CET-6 Model ',
+          'pupil_basic':'The Pupil Dict ',
+          'pupil_model':'The Pupil Model '
+        }
+        function dealWithFloatDiv(words,img,icon,ifhide){
+              $('#loadWords').html(words);
+              if(img){
+                $('#loadingImg').show()
+              }else{
+                $('#loadingImg').hide()
+              }
+              if(icon){
+                $('#wariningIcon').show()
+              }else{
+                $('#wariningIcon').hide()
+              }
+              $('#floatDiv').slideDown(356)
+              if(ifhide){
+                setTimeout(function(){
+                      $('#floatDiv').fadeOut(456)
+                    },2000)
+              }
+              
+        }
+        function getPageSize() {
+            var xScroll, yScroll;
+            if (window.innerHeight && window.scrollMaxY) {
+                xScroll = window.innerWidth + window.scrollMaxX;
+                yScroll = window.innerHeight + window.scrollMaxY;
+            } else {
+                if (document.body.scrollHeight > document.body.offsetHeight) { // all but Explorer Mac    
+                    xScroll = document.body.scrollWidth;
+                    yScroll = document.body.scrollHeight;
+                } else { // Explorer Mac...would also work in Explorer 6 Strict, Mozilla and Safari    
+                    xScroll = document.body.offsetWidth;
+                    yScroll = document.body.offsetHeight;
+                }
+            }
+            var windowWidth, windowHeight;
+            if (self.innerHeight) { // all except Explorer    
+                if (document.documentElement.clientWidth) {
+                    windowWidth = document.documentElement.clientWidth;
+                } else {
+                    windowWidth = self.innerWidth;
+                }
+                windowHeight = self.innerHeight;
+            } else {
+                if (document.documentElement && document.documentElement.clientHeight) { // Explorer 6 Strict Mode    
+                    windowWidth = document.documentElement.clientWidth;
+                    windowHeight = document.documentElement.clientHeight;
+                } else {
+                    if (document.body) { // other Explorers    
+                        windowWidth = document.body.clientWidth;
+                        windowHeight = document.body.clientHeight;
+                    }
+                }
+            }       
+            // for small pages with total height less then height of the viewport    
+            if (yScroll < windowHeight) {
+                pageHeight = windowHeight;
+            } else {
+                pageHeight = yScroll;
+            }    
+            // for small pages with total width less then width of the viewport    
+            if (xScroll < windowWidth) {
+                pageWidth = xScroll;
+            } else {
+                pageWidth = windowWidth;
+            }
+            arrayPageSize = new Array(pageWidth, pageHeight, windowWidth, windowHeight);
+            return arrayPageSize;
         }
         function getData(type){
           var toDict = type2Dict[type]
@@ -189,6 +297,7 @@
           $('#floatDiv').fadeIn(456)
           var baseUrl = './explanations/'
           var getUrl = baseUrl+type+'.json'
+          console.log(getUrl)
           $.ajax({
                 type:"GET",
                 url: getUrl,
@@ -197,15 +306,15 @@
                 cache:false,
                 success: function(data) {
                     dictData[type] = data
-                    $('#loadWords').html(toDict+'loaded!')
-                    $('#floatDiv').fadeOut(556)
+                    dealWithFloatDiv(toDict+' successfully loaded!',false,false,false)
                 },
                 error: function(data) {
-                    $('#loadWords').html(toDict+'failed to load!')
+                    dealWithFloatDiv(toDict+'failed to load!',false,false,false)
                 }
             });
         }
-        //getData('economist_basic')
+        getData('economist_basic')
+        getData('economist_model')
         var searchDiv = $('#searchForm')
         function getAudio(arr){
             var y = arr.split(' ')
@@ -223,24 +332,30 @@
         }
         function searchToggle(obj, evt){
             var container = $(obj).closest('.search-wrapper');
-
+            var windowHW = getPageSize()
             if(!container.hasClass('active')){
                   container.addClass('active');
                   evt.preventDefault();
-                   $('.with_motto_footer').hide()
+                  if(windowHW[0] < 500){
+                      $('.search-wrapper').css('margin-top','26%')
+                  }
+                  $('.with_motto_footer').hide()
                   $('.search-input').focus()
-                  $('.dictsChoose').show()
+                  $('#wordItems').show(345)
             }
-            else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
-                  container.removeClass('active');
-                  // clear input
-                  container.find('.search-input').val('');
-                  // clear and hide result container when we press close
-                  container.find('.result-container').fadeOut(100, function(){$(this).empty();});
-                  $('.dictsChoose').hide()
-                  $('.with_motto_footer').show()
-                  $('.searchResult').hide()
-
+            else if(container.hasClass('active')){// && $(obj).closest('.input-holder').length == 0){alert(12)
+                  var value = $(searchDiv).find('.search-input').val().trim();
+                   if(value.length < 1){
+                    container.removeClass('active');
+                    if(windowHW[0] < 500){
+                      $('.search-wrapper').css('margin-top','3%')
+                    }
+                    container.find('.result-container').fadeOut(100, function(){$(this).empty();});
+                    $('#wordItems').hide(123)
+                    $('.with_motto_footer').show()
+                    $('.searchResult').hide()
+                   }
+                  
             }
         }
         setInterval(
@@ -255,74 +370,125 @@
         $('.todayMottoAuthor').html("- William Allen White")
         $('.todayMottoCn').html("我并不害怕明天，因为我已见过昨天并且热爱今天。")
         function submitSearch(){
-                $('.dictsChoose').hide()
+                if(searchTimes == 0){
+                    searchTimes += 1
+                    return false
+                }
+                //$('.dictsChoose').hide()
                 var value = $(searchDiv).find('.search-input').val().trim();
                 
                 if(!value.length){
-                    _html = "Yup yup! Add some text friend :D";
-                    $(searchDiv).find('.result-container').html('<span>' + _html + '</span>');
+                     $('.search-input').focus()
                     return false
                 }
                 if(!testAlpha.test(value)){
-                    $(searchDiv).find('.result-container').html('<span class="error">[' + value + ']</span> Illegal input, must be English word!');
-                    $(searchDiv).find('.result-container').show()
+                    var tips = '<span class="error">[' + value + ']</span> Illegal input, must be English word!'
+                    dealWithFloatDiv(tips,false,true,true)
                     return false
                 }
-                $('#everydayMotto').hide()
                 value = value.toLocaleLowerCase()
                 try{
-                  var jsonData = dictData['economist_basic']
-                  if(!jsonData[value] && dictData['cet4_basic']){
-                      jsonData = dictData['cet4_basic'].responseJSON
-                  }
-                  if(!jsonData[value] && dictData['cet6_basic']){
-                      jsonData = dictData['cet6_basic'].responseJSON
-                  }
-                } catch(err) { 
-                  $(searchDiv).find('.result-container').html('<span class="error">' + value + '</span> meets 404. May switch dictionary!');
-                  $(searchDiv).find('.result-container').show(345)
-                  setTimeout(function(){
-                      $('#dictSetting').trigger('click')
-                    },2190)
+                    var jsonDataBasic = dictData['economist_basic']
+                    if(!jsonDataBasic[value] && dictData['cet46_basic']){
+                        jsonDataBasic = dictData['cet46_basic']
+                    }
+
+                    if(jsonDataBasic[value]){
+                      $(searchDiv).find('.result-container').html('')
+                      $('.wordName').text(value)
+                      $('.pronEg').html('英'+jsonDataBasic[value]['pron']['peg'])
+                      $('.pronAm').html('美'+jsonDataBasic[value]['pron']['pam'])
+                      exLi = ''
+                      exArr = jsonDataBasic[value]['ex']
+                      for(var i in exArr){
+                          exLi += '<li>'+exArr[i]+'</li>'
+                      }
+                      $('#wordExplanationCN').html(exLi)
+                      $('.everydayMotto').hide()
+                      $('footer').hide()
+                      $('.searchResult').show()
+                      $('.dictsChoose').hide()
+                      try{
+                            var jsonDataModel = dictData['economist_model']
+                            if(!jsonDataModel[value] && dictData['cet46_model']){
+                                jsonDataModel = dictData['cet46_model']
+                            }
+                            if(jsonDataModel[value]['eg2'] != []){
+                                var toFillSentence = ''
+                                var example = jsonData[value]['eg2']
+                                 for(var i in example){
+                                  var nu = i*1+1
+                                  toFillSentence += '<p><span class="wordTitle">例句'+nu+'：</span><span class="wordSentenceEn">'+example[i][0]+'</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">'+example[i][1]+'</span></p>'
+                                 }
+                                 $('#centences').html(toFillSentence)
+                            }
+                          } catch(err) { 
+                              console.log('No model sentence and phrase!')
+                              return false
+                          }
+                          
+                      }else{
+                          var tips = '<span class="error">' + value + '</span> meets 404. May switch dictionary!'
+                          dealWithFloatDiv(tips,false,true,true)
+                          
+                      }
+                      return false
+                  
+                }catch(err) { 
+                  var tips = '<span class="error">' + value + '</span> meets 404. May find another dictionary!'
+                  dealWithFloatDiv(tips,false,true,true)
                   return false
                 }
-                
-                
-                if(jsonData[value]){
-                    $(searchDiv).find('.result-container').html('')
-                    $('.wordName').text(value)
-                    $('.pronEg').html('英'+jsonData[value]['pron']['peg'])
-                    $('.pronAm').html('美'+jsonData[value]['pron']['pam'])
-                    exLi = ''
-                    exArr = jsonData[value]['ex']
-                    for(var i in exArr){
-                        exLi += '<li>'+exArr[i]+'</li>'
-                    }
-                    $('#wordExplanationCN').html(exLi)
-                    if(jsonData[value]['eg2'] != []){
-                        var toFillSentence = ''
-                        var example = jsonData[value]['eg2']
-                         for(var i in example){
-                          var nu = i*1+1
-                          toFillSentence += '<p><span class="wordTitle">例句'+nu+'：</span><span class="wordSentenceEn">'+example[i][0]+'</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">'+example[i][1]+'</span></p>'
-                         }
-                         $('#centences').html(toFillSentence)
-                    }
-                    $('.everydayMotto').hide()
-                    $('footer').hide()
-                    $('.searchResult').show()
-                }else{
-                    $(searchDiv).find('.result-container').html('<span class="error">' + value + '</span> meets 404. May switch dictionary!');
-                    setTimeout(function(){
-                      $('#dictSetting').trigger('click')
-                    },2190)
-                    
-                }
-                $(searchDiv).find('.result-container').fadeIn(100);
-                return false
         }
         $('#submitGo').click(function(){
                 submitSearch()
+        })
+        $('#wordItems li').click(function(){
+          var radio = $(this).find('input').val()
+          var childi = $(this).find('i')
+          if($(childi).hasClass('eternal')){
+                  return false
+          }
+          if(!$(childi).hasClass('selected')){
+                  $(childi).addClass('selected');
+                  currentDict.push(radio)
+            }else if($(childi).hasClass('selected')){// && $(obj).closest('.input-holder').length == 0){alert(12)
+                  $(childi).removeClass('selected');
+                  currentDict.splice($.inArray(radio,currentDict),1);
+            }else{
+              cnosole.log('both yes no')
+            }
+          if(radio == 'cancel'){
+            $(searchDiv).find('.search-input').val('')
+            $('#searchWordBtn').trigger('click')
+            $(childi).removeClass('selected');
+          }else if(radio == 'confirm'){
+            $(childi).removeClass('selected');
+            var seg = currentDict.indexOf('sentence_phrase')
+            if(currentDict.length ==1 && currentDict[0] == 'confirm'){
+              dealWithFloatDiv('No item selected!',false,true,true)
+              return false
+            }
+            var indexbasecet46 = currentDict.indexOf('cet46')
+            var indexbasepupil = currentDict.indexOf('pupil')
+
+            if (indexbasecet46<0 && indexbasepupil<0){
+                dealWithFloatDiv('No basic Dicts selected!',false,true,true)
+            }
+            for(i in currentDict){
+              var item = currentDict[i]
+              if (item == 'confirm' || item == 'cancel'){
+                continue
+              }
+              if( item != 'sentence_phrase'){
+                  getData(item+'_basic')
+                  if(seg>=0){
+                      getData(item+'_model')
+                  }
+              }
+            }
+
+          }
         })
         document.onkeydown=function(event){
             var e = event || window.event || arguments.callee.caller.arguments[0];
@@ -331,41 +497,6 @@
                 submitSearch()
             }
             }; 
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_polaris',
-          radioClass: 'iradio_polaris',
-          increaseArea: '-10%' // optional
-        });
-        $('#dictSetting').click(function(){
-          $('.searchResult').hide()
-          $('.everydayMotto').hide()
-          $('.dictsChoose').show()
-          $('.result-container').hide(334)
-        })
-        $('input').on('ifChanged', function(){
-          var value = $(this).val()
-          if(value == 'load'){
-              $('#dictChoice').find('li').each(function(){
-                if($(this).find('.icheckbox_polaris').hasClass('checked')){
-                  var dict = $(this).find('.icheckbox_polaris').find('input').val()
-                  if(dict == 'cet4'){
-                    getData('cet4_basic')
-                  }
-                  if(dict == 'cet6'){
-                     getData('cet6_basic')
-                  }
-                }
-              })
-          }
-          else if(value == 'cancel'){
-            $('.dictsChoose').hide()
-            $('#everydayMotto').show()
-             $('footer').show()
-            $('input').iCheck('uncheck');
-          }else{
-            $('input[name="polaris-radio-dict-choice"]').iCheck('uncheck'); 
-          }
-        });
         $('#closeFloat').click(function(){
             $('#floatDiv').fadeOut(556)
         })
