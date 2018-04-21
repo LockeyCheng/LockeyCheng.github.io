@@ -9,7 +9,7 @@
 <!-- <link rel="stylesheet" type="text/css" href="../css/polaris.css"> -->
 <link rel="stylesheet" type="text/css" href="css/search-form.css">
 <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
-<script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript" src="../blogs/showdown.min.js"></script>
 </head>
@@ -283,47 +283,60 @@
             return arrayPageSize;
         }
         function getMdfile(){
+            
+            //if(day.length == 1){day = '0'+day}
+            //if(month.length == 1){month = '0'+month}
+           
+           
+           
+        }
+        function getData(type,ifmd){
+          if(ifmd){
             var today = new Date()
             var  year = today.getFullYear()
             var day = today.getDate()
             var month = today.getMonth()
-            //if(day.length == 1){day = '0'+day}
-            //if(month.length == 1){month = '0'+month}
-            var filename = year+'_'+month+'_'+day+'.md'
+             var filename = year+'_'+month+'_'+day+'.md'
             var getUrl = 'https://lockeycheng.github.io/economist/mds/'+filename
-            htmlobj=$.ajax({url:getUrl,async:false})
-            $('#mainTitle').html('Why a licence plate costs more than a car in Shanghai')
-            $('#createDate').html('Lockey 2018/4/21')
-            var content = htmlobj//innerObj['content']
-            var converter = new showdown.Converter();
-            var html = converter.makeHtml(content);
-            document.getElementById("articleContent").innerHTML = html;
-        }
-        function getData(type,ifmd){
-            var toDict = type2Dict[type]
+            var dataType = 'text'
+          }else{
+             var toDict = type2Dict[type]
             var tips = '<span class="normalItem">'+toDict+' ...</span>'
             dealWithFloatDiv(tips,true,false,false)
             var baseUrl = 'https://lockeycheng.github.io/economist/explanations/'
             //var baseUrl = './explanations/'
             var getUrl = baseUrl+type+'.json'
-            console.log(getUrl)
+             var dataType = 'json'
+             }
           $.ajax({
                 type:"GET",
                 url: getUrl,
                 data: null,
-                dataType:'json',
+                dataType:dataType,
                 cache:false,
                 success: function(data) {
-                    dictData[type] = data
+                  if(ifmd){
+                      $('#mainTitle').html('Why a licence plate costs more than a car in Shanghai')
+                      $('#createDate').html('Lockey 2018/4/21')
+                      var content = data
+                      var converter = new showdown.Converter();
+                      var html = converter.makeHtml(content);
+                      document.getElementById("articleContent").innerHTML = html;
+                  }else{
+                     dictData[type] = data
                     $('#successIcon').show()
                     dealWithFloatDiv('<span class="success">'+toDict+'</span>  successfully loaded!',false,false,true,true)
+                  }
                 },
                 error: function(data) {
-                      dealWithFloatDiv('<span class="error">'+toDict+'</span> failed to load!',false,true,false,false)
+                  if(ifmd){
+                    toDict = filename
+                  }
+                    dealWithFloatDiv('<span class="error">'+toDict+'</span> failed to load!',false,true,false,false)
                 }
             });
         }
-         getMdfile()
+         getData('type',true)
          setTimeout(function(){
             getData('economist_basic',false)
             getData('economist_model',false)
