@@ -841,7 +841,7 @@ footer ul.social-buttons li a i{margin-top: 7px;}
 #wordItems{
     display: none
 }
-.switchfa{
+.switchfa/*{
     z-index: 1000;
     top:6px;
     position: fixed;
@@ -851,6 +851,19 @@ footer ul.social-buttons li a i{margin-top: 7px;}
     background: #085e5f;
     padding: 6px 7px;
     border-radius: 41px;
+}*/
+{
+    z-index: 1000;
+    top: 6px;
+    position: fixed;
+    color: #00d0ff;
+    right: 9px;
+    font-size: 30px !important;
+    background: #085e5f;
+    /* padding: 6px 7px; */
+    height: 27px;
+    border-radius: 41px;
+    width: 26px;
 }
 #header{
     width: 100%;

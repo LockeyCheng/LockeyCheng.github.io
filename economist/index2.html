@@ -60,7 +60,7 @@
 
 <div data-role="page" id="pagetwo">
   <div data-role="main" class="ui-content">
-    <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-etsy switchfa" id="toPage1"></a>
+    <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa" style="font-size: 25px !important;" id="toPage1"></a>
     <section class="container">
     <div id="searchForm">
             <div class="search-wrapper">
@@ -564,13 +564,13 @@
         distanceY = endY-startY;
         //判断滑动方向
         if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>0){
-            if($('#pagetwo').is(':hidden')){
-              $('#toPage2').trigger('click')
+            if($('#pageone').is(':hidden')){
+              $('#toPage1').trigger('click')
             }
         }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<0){
             console.log('往左滑动');
-            if($('#pageone').is(':hidden')){
-              $('#toPage1').trigger('click')
+            if($('#pagetwo').is(':hidden')){
+              $('#toPage2').trigger('click')
             }
         }else
         if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<0){
