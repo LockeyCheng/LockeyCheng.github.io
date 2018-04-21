@@ -29,7 +29,7 @@
 </style>
   <div data-role="header" id='header'>
     <h1 class="title"><img src="./img/econfinal_favicon.ico">The Economist</h1>
-     <div class="row" style="margin-left: 8%;margin-top: -16px;">
+     <div class="row" style="margin-left: 7%;margin-top: -16px;">
         <div class="col-six tab-full social">
             <ul class="links"> 
              <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
@@ -38,7 +38,7 @@
              <li><a href="https://www.facebook.com/chen.yang.98031506"><i class="fa fa-facebook"></i></a></li>
              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-             <li><a href="https://lockeycheng.github.io/economist/index.html" target="_blank"><i class="fa fa-money"></i></a></li>     
+             <li><a href="https://lockeycheng.github.io/economist/index.html" target="_blank"><i class="fa fa-etsy"></i></a></li>     
            </ul> 
         </div>
     </div>
@@ -117,10 +117,10 @@
 
                   <div id='confirm_cancel'>
                     <ul class="confirm_dict">
-                      <li style="margin-left: -15px;color:#1bffc2">
+                      <li style="margin-left: -15px;color:#1bffc2;font-size: 1.3em;">
                         <i class="checkboxSpan-circle"></i><input type="checkbox" id="polaris-checkbox-confirm"  class="hide" name='confirm_cancel' value='confirm'><label for="polaris-checkbox-confirm">Load</label>
                       </li>
-                      <li style="margin-left: 0px;color:#cea324">
+                      <li style="margin-left: 0px;color:#cea324;font-size: 1.3em;">
                         <i class="checkboxSpan-circle"></i><input type="checkbox" id="polaris-checkbox-cancel"  class="hide" name='confirm_cancel' value='cancel'><label for="polaris-checkbox-cancel">Cancel</label>
                       </li>
                     </ul>
@@ -144,12 +144,18 @@
                     </li>
                   </ul>
                 </div> -->
+    <a href="javascript:void(0)" class="fa fa-search" id="showSearchForm"></a>
     <div class="searchResult">
         <div>
-            <p class="wordName">tragedy</p>
-            <p><span class="wordTitle">发音：</span><span class="pronEg"></span> <span class="pronAm"></span></span></p>
+            <p class="wordName" align="center">tragedy</p>
+            <p><span class="wordTitle">发音：</span></p>
+            <p><ul id="wordPro"></ul></p>
+
             <p><span class="wordTitle">释义：</span></p>
             <p><ul id="wordExplanationCN"></ul></p>
+
+            <p><span class="wordTitle">短语：</span></p>
+            <p><ul id="wordPhrases"></ul></p>
             <!-- <p><span class="wordTitle">释义（英）：</span><span class="wordExplanationEG"></span></p> -->
             <!-- <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
             <p><span class="wordTitle">近义：</span><span class="similar"></span></p>
@@ -191,7 +197,7 @@
       <div class="col-six tab-full">
         <div class="copyright">
                 <span><p class="time"></p></span>
-                <span>Copyright @ 2018 Created by Lockey All rights reserved.<a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
+                <span>Copyright <i class="fa fa-copyright"></i>2018 Created by Lockey All rights reserved.<a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
         </div>                       
       </div>
     </div>
@@ -204,7 +210,8 @@
   </div>
   <div id="loadtips">
     <h5 align="center" id="loadingImg" style="margin-top: -10%;"><img src="../images/loading.gif"></h5>
-    <h5 align="center" id="wariningIcon" style="margin-top: -10%;display: none;font-size:5em;color:#ffa500"><i class="fa fa-warning"></i></h5>
+    <h5 align="center" id="successIcon" style="margin-top: -10%;display: none;font-size:4em;color:#13da13"><i class="fa fa-check-circle"></i></h5>
+    <h5 align="center" id="wariningIcon" style="margin-top: -10%;display: none;font-size:4em;color:#ffa500"><i class="fa fa-warning"></i></h5>
     <h3 align="center" id="loadWords"></h3></div>
 </div>
 <!-- <script src="../js/jquery-2.1.1.js"></script> -->
@@ -223,21 +230,25 @@
           'pupil_basic':'The Pupil Dict ',
           'pupil_model':'The Pupil Model '
         }
-        function dealWithFloatDiv(words,img,icon,ifhide){
+        function dealWithFloatDiv(words,img,warningIcon,ifhide,successIcon){
               $('#loadWords').html(words);
               if(img){
                 $('#loadingImg').show()
               }else{
                 $('#loadingImg').hide()
               }
-              if(icon){
+              if(warningIcon){
                 $('#wariningIcon').show()
               }else{
                 $('#wariningIcon').hide()
               }
+
               $('#floatDiv').slideDown(356)
               if(ifhide){
                 setTimeout(function(){
+                      if(successIcon){
+                        $('#successIcon').hide()
+                      }
                       $('#floatDiv').fadeOut(456)
                     },2000)
               }
@@ -293,9 +304,10 @@
         }
         function getData(type){
           var toDict = type2Dict[type]
-          $('#loadWords').html('Loading '+toDict)
-          $('#floatDiv').fadeIn(456)
-          var baseUrl = './explanations/'
+          var tips = '<span class="normalItem">'+toDict+' ...</span>'
+          dealWithFloatDiv(tips,true,false,false)
+          var baseUrl = 'https://lockeycheng.github.io/economist/explanations/'
+          //var baseUrl = './explanations/'
           var getUrl = baseUrl+type+'.json'
           console.log(getUrl)
           $.ajax({
@@ -306,10 +318,12 @@
                 cache:false,
                 success: function(data) {
                     dictData[type] = data
-                    dealWithFloatDiv(toDict+' successfully loaded!',false,false,false)
+                    $('#successIcon').show()
+                    dealWithFloatDiv('<span class="success">'+toDict+'</span>  successfully loaded!',false,false,true,true)
                 },
                 error: function(data) {
-                    dealWithFloatDiv(toDict+'failed to load!',false,false,false)
+
+                    dealWithFloatDiv('<span class="error">'+toDict+'</span> failed to load!',false,true,false,false)
                 }
             });
         }
@@ -396,13 +410,23 @@
                     if(jsonDataBasic[value]){
                       $(searchDiv).find('.result-container').html('')
                       $('.wordName').text(value)
-                      $('.pronEg').html('英'+jsonDataBasic[value]['pron']['peg'])
-                      $('.pronAm').html('美'+jsonDataBasic[value]['pron']['pam'])
-                      exLi = ''
-                      exArr = jsonDataBasic[value]['ex']
+                      var proEn = jsonDataBasic[value]['pron']['peg']
+                      var proAm = jsonDataBasic[value]['pron']['pam']
+                      var proLi = ''
+                      if(proEn){
+                        proLi += '<li><span class="normalItem">英音</span> '+proEn+'</li>'
+                      }
+                      if(proAm){
+                        proLi += '<li><span class="normalItem">美音</span> '+proAm+'</li>'
+                      }
+                      $('#wordPro').html(proLi)
+                      var exLi = ''
+                      var exArr = jsonDataBasic[value]['ex']
                       for(var i in exArr){
                           exLi += '<li>'+exArr[i]+'</li>'
                       }
+                      $('#searchForm').hide()
+                      $('#showSearchForm').show()
                       $('#wordExplanationCN').html(exLi)
                       $('.everydayMotto').hide()
                       $('footer').hide()
@@ -415,12 +439,21 @@
                             }
                             if(jsonDataModel[value]['eg2'] != []){
                                 var toFillSentence = ''
-                                var example = jsonData[value]['eg2']
+                                var example = jsonDataModel[value]['eg2']
                                  for(var i in example){
                                   var nu = i*1+1
                                   toFillSentence += '<p><span class="wordTitle">例句'+nu+'：</span><span class="wordSentenceEn">'+example[i][0]+'</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">'+example[i][1]+'</span></p>'
                                  }
                                  $('#centences').html(toFillSentence)
+                            }
+                            if(jsonDataModel[value]['wp'] != []){
+                              var phrases = jsonDataModel[value]['wp']
+                              var phraseLi = ''
+                              for(var i in phrases){
+                                var nu = i*1+1
+                                phraseLi += '<li><span class="wordTitle">'+nu+'：</span><span class="wordSentenceEn">'+phrases[i][0]+'</span></li><li><span class="wordSentenceCn">'+phrases[i][1]+'</span></li>'
+                              }
+                              $('#wordPhrases').html(phraseLi)
                             }
                           } catch(err) { 
                               console.log('No model sentence and phrase!')
@@ -500,6 +533,12 @@
         $('#closeFloat').click(function(){
             $('#floatDiv').fadeOut(556)
         })
+         $('#showSearchForm').click(function(){
+          $('#searchForm').show()
+          $('.searchResult').hide()
+          $('.dictsChoose').show()
+          $(this).hide()
+         })
     </script>
 </body>
 </html>
