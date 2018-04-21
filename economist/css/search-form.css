@@ -2,7 +2,7 @@ html{
     width:100%;height:100%;
 }
 
-body{padding: 0px;width:100%;height:100%;margin: 0;background:url(../img/image.jpg) ; background-position: center; background-size: cover; background-attachment: fixed; background-repeat: no-repeat;}
+body{padding: 0px;width:100%;height:100%;margin: 0;background:url(http://www.jq22.com/demo/jquery-SearchBar20160307/img/image.jpg) ; background-position: center; background-size: cover; background-attachment: fixed; background-repeat: no-repeat;}
 
 a{
     text-decoration: none;
@@ -729,6 +729,7 @@ background: -webkit-linear-gradient(#ffc68a, #9e5f19);background:linear-gradient
     margin-top: -2px;
     color: #970000;
     width: auto;
+    font-size: 23px;
     padding-left: 23px;
     opacity: 0.9;
     background: -webkit-linear-gradient(#c5f7ff, #ffdfbd);background:linear-gradient(#c5f7ff, #ffdfbd);
@@ -739,7 +740,7 @@ background: -webkit-linear-gradient(#ffc68a, #9e5f19);background:linear-gradient
 }
 footer{
     position: fixed;
-    padding-bottom: 8px;
+    padding: 10px 0px;
     color: #b74c00;font-size: 13px;bottom:0px;text-align: center;width: 100%;
     opacity: 0.9;
     background: -webkit-linear-gradient(#044e5a, #231302);
@@ -836,7 +837,6 @@ footer ul.social-buttons li a i{margin-top: 7px;}
 */
 .wordItemChoose label{
     color: #00b2bb;
-    font-weight: bold;
 }
 #wordItems{
     display: none
@@ -847,7 +847,7 @@ footer ul.social-buttons li a i{margin-top: 7px;}
     position: fixed;
     color: #00d0ff;
     right: 9px;
-    font-size: 28px !important;
+    font-size: 20px !important;
     background: #085e5f;
     padding: 6px 7px;
     border-radius: 41px;
@@ -947,6 +947,9 @@ input{
 }
 #pageone .heading5{
     font-size:1em;
+}
+.ibold{
+    font-weight: bold !important;
 }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}

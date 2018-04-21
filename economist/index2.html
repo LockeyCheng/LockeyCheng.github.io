@@ -18,8 +18,8 @@
   #floatDiv{
   display:none;
   z-index:111111;
-  top:8%;
-  height:92%;
+  top:6.5%;
+  height:84.2%;
   width:100%;
   position:fixed;
   background-size: 100% 100%;
@@ -29,17 +29,17 @@
 
 </style>
   <div data-role="header" id='header'>
-    <h1 class="title"><img src="./img/econfinal_favicon.ico">The Economist</h1>
-     <div class="row" style="margin-left: 7%;margin-top: -16px;">
+    <h3 class="title"><img src="./img/econfinal_favicon.ico">The Economist</h3>
+     <div class="row" style="margin-left: 11%;margin-top: -23px;">
         <div class="col-six tab-full social">
             <ul class="links"> 
              <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
-             <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>        
-             <li><a href="https://blog.csdn.net/lockey23" target="_blank"><i class="fa fa-edit"></i></a></li>
+             <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>
+             <li><a href="#"><i class="fa fa-twitter"></i></a></li>        
              <li><a href="https://www.facebook.com/chen.yang.98031506"><i class="fa fa-facebook"></i></a></li>
-             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-             <li><a href="https://lockeycheng.github.io/economist/index.html" target="_blank"><i class="fa fa-etsy"></i></a></li>     
+             <li><a href="https://blog.csdn.net/lockey23" target="_blank"><i class="fa fa-edit ibold"></i></a></li>
+             <!-- <li><a href="https://lockeycheng.github.io/economist/index.html" target="_blank"><i class="fa fa-etsy"></i></a></li>      -->
            </ul> 
         </div>
     </div>
@@ -73,7 +73,7 @@
                   <div id='dictSelect'>
                     <ul class="wordItemChoose">
                       <li style="margin-left: -16px;">
-                        <i class="checkboxSpan-square eternal"></i><input type="checkbox" id="polaris-checkbox-economist"  class="hide" name='economist' value='economist'><label for="polaris-checkbox-economist">The Economist</label>
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-economist"  class="hide" name='economist' value='economist'><label for="polaris-checkbox-economist">The Economist</label>
                       </li>
                       <li style="margin-left: -16px;">
                         <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-cet46"  class="hide" name='cet46' value='cet46'><label for="polaris-checkbox-cet46">CET4-CET6</label>
@@ -95,7 +95,7 @@
                     </ul>
                   </div>
 
-                  <div id='confirm_cancel'>
+                  <div id='confirm_cancel' style="margin-top: 23px">
                     <ul class="confirm_dict">
                       <li style="margin-left: -15px;color:#1bffc2;font-size: 1.3em;">
                         <i class="checkboxSpan-circle"></i><input type="checkbox" id="polaris-checkbox-confirm"  class="hide" name='confirm_cancel' value='confirm'><label for="polaris-checkbox-confirm">Load</label>
@@ -105,9 +105,6 @@
                       </li>
                     </ul>
                   </div>
-
-                  <hr/>
-
                 </div>
                 <div class="result-container">
 
@@ -176,7 +173,7 @@
     <div class="row">
       <div class="col-six tab-full">
         <div class="copyright">
-                <span><p class="time"></p></span>
+                <!-- <span><p class="time"></p></span> -->
                 <span>Copyright <i class="fa fa-copyright"></i> 2018 Created by Lockey All rights reserved.<a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
         </div>                       
       </div>
@@ -222,8 +219,9 @@
               }else{
                 $('#wariningIcon').hide()
               }
-
-              $('#floatDiv').slideDown(356)
+               if($('#floatDiv').is(':hidden')){
+                $('#floatDiv').slideDown(356)
+               }
               if(ifhide){
                 setTimeout(function(){
                       if(successIcon){
@@ -325,7 +323,8 @@
                   }else{
                      dictData[type] = data
                     $('#successIcon').show()
-                    dealWithFloatDiv('<span class="success">'+toDict+'</span>  successfully loaded!',false,false,true,true)
+                    //dealWithFloatDiv('',false,false,true,true)
+                    dealWithFloatDiv('<span class="success">'+toDict+'</span>',false,false,true,true)
                   }
                 },
                 error: function(data) {
@@ -384,14 +383,14 @@
                   
             }
         }
-        setInterval(
-          function welcome(){
-          var timeNow = Date()
-          var timeSplit = timeNow.split(" ")
-          var hms = timeSplit[4]
-          var timeStr = timeSplit[0]+" "+timeSplit[1]+" "+ timeSplit[2]+" "+timeSplit[3]+" "+hms
-          $('.time').html(timeStr)
-        },1000)
+        // setInterval(
+        //   function welcome(){
+        //   var timeNow = Date()
+        //   var timeSplit = timeNow.split(" ")
+        //   var hms = timeSplit[4]
+        //   var timeStr = timeSplit[0]+" "+timeSplit[1]+" "+ timeSplit[2]+" "+timeSplit[3]+" "+hms
+        //   $('.time').html(timeStr)
+        // },1000)
         $('.todayMotto').html("I am not afraid of tomorrow for I have seen yesterday and I love today.")
         $('.todayMottoAuthor').html("- William Allen White")
         $('.todayMottoCn').html("我并不害怕明天，因为我已见过昨天并且热爱今天。")
@@ -492,9 +491,9 @@
         $('#wordItems li').click(function(){
           var radio = $(this).find('input').val()
           var childi = $(this).find('i')
-          if($(childi).hasClass('eternal')){
-                  return false
-          }
+          // if($(childi).hasClass('eternal')){
+          //         return false
+          // }
           if(!$(childi).hasClass('selected')){
                   $(childi).addClass('selected');
                   currentDict.push(radio)
@@ -557,7 +556,7 @@
         startY = e.originalEvent.changedTouches[0].pageY;
     });
     $("body").bind("touchmove",function(e){
-        //获取滑动屏幕时的X,Y
+        
         endX = e.originalEvent.changedTouches[0].pageX;
         endY = e.originalEvent.changedTouches[0].pageY;
         //获取滑动距离
@@ -565,12 +564,12 @@
         distanceY = endY-startY;
         //判断滑动方向
         if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>0){
-            if(!$('#pagetwo').is(':hidden')){
+            if($('#pagetwo').is(':hidden')){
               $('#toPage2').trigger('click')
             }
         }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<0){
             console.log('往左滑动');
-            if(!$('#pageone').is(':hidden')){
+            if($('#pageone').is(':hidden')){
               $('#toPage1').trigger('click')
             }
         }else
