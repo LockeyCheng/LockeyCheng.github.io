@@ -15,7 +15,6 @@ a{
     top: 0;
     left: 0;
     width: 98.5%;
-    min-height: 100%;
     position: absolute;
     display: none;
     border: none
@@ -757,7 +756,7 @@ footer{
     font-size: 23px;
 }
 footer ul {padding: 0;margin-bottom: 10px;}
-ul li{list-style: none;display: inline-block}
+ul li{list-style: none;}
 footer a {color: #28cdb6;}  
 footer .col-footer{margin: 10px 0 30px;}
 
@@ -841,23 +840,12 @@ footer ul.social-buttons li a i{margin-top: 7px;}
 #wordItems{
     display: none
 }
-.switchfa/*{
-    z-index: 1000;
-    top:6px;
-    position: fixed;
-    color: #00d0ff;
-    right: 9px;
-    font-size: 20px !important;
-    background: #085e5f;
-    padding: 6px 7px;
-    border-radius: 41px;
-}*/
-{
+.switchfa{
     z-index: 1000;
     top: 6px;
     position: fixed;
     color: #00d0ff;
-    right: 9px;
+    right: 10.5px;
     font-size: 30px !important;
     background: #085e5f;
     /* padding: 6px 7px; */

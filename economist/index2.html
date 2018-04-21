@@ -30,7 +30,7 @@
 </style>
   <div data-role="header" id='header'>
     <h3 class="title"><img src="./img/econfinal_favicon.ico">The Economist</h3>
-     <div class="row" style="margin-left: 11%;margin-top: -23px;">
+     <div class="row pull-right" style="margin-top: -32px; margin-right: 3px">
         <div class="col-six tab-full social">
             <ul class="links"> 
              <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
@@ -293,7 +293,7 @@
             var today = new Date()
             var  year = today.getFullYear()
             var day = today.getDate()
-            var month = today.getMonth()
+            var month = today.getMonth()+1
              var filename = year+'_'+month+'_'+day+'.md'
             var getUrl = 'https://lockeycheng.github.io/economist/mds/'+filename
             var dataType = 'text'
@@ -563,11 +563,11 @@
         distanceX = endX-startX;
         distanceY = endY-startY;
         //判断滑动方向
-        if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>0){
+        if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>6){
             if($('#pageone').is(':hidden')){
               $('#toPage1').trigger('click')
             }
-        }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<0){
+        }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<6){
             console.log('往左滑动');
             if($('#pagetwo').is(':hidden')){
               $('#toPage2').trigger('click')
