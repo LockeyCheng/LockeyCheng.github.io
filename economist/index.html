@@ -411,23 +411,27 @@
         $('.todayMotto').html("I am not afraid of tomorrow for I have seen yesterday and I love today.")
         $('.todayMottoAuthor').html("- William Allen White")
         $('.todayMottoCn').html("我并不害怕明天，因为我已见过昨天并且热爱今天。")
-        function submitSearch(){
+        function submitSearch(word){
                 if(searchTimes == 0){
                     searchTimes += 1
                     return false
                 }
-                //$('.dictsChoose').hide()
-                var value = $(searchDiv).find('.search-input').val().trim();
+                if(word){
+                  var value = word
+                }else{
+                  var value = $(searchDiv).find('.search-input').val().trim();
                 
-                if(!value.length){
-                     $('.search-input').focus()
-                    return false
+                  if(!value.length){
+                       $('.search-input').focus()
+                      return false
+                  }
+                  if(!testAlpha.test(value)){
+                      var tips = '<span class="error">[' + value + ']</span> Illegal input, must be English word!'
+                      dealWithFloatDiv(tips,false,true,true)
+                      return false
+                  }
                 }
-                if(!testAlpha.test(value)){
-                    var tips = '<span class="error">[' + value + ']</span> Illegal input, must be English word!'
-                    dealWithFloatDiv(tips,false,true,true)
-                    return false
-                }
+                
                 value = value.toLocaleLowerCase()
                 try{
                     var jsonDataBasic = dictData['default']
@@ -656,8 +660,10 @@ $('.switchPaper').click(function(){
 $('#articleContent').on('click','.fa-info-circle',function(){
                var toSearch = $(this).text()
                if(toSearch){
+                $('#toPage2').trigger('click')
                 $('#search-input').val(toSearch)
                 $('#searchWordBtn').trigger('click')
+                submitSearch(toSearch)
                }
                
         })
