@@ -2,8 +2,14 @@ html{
     width:100%;height:100%;
 }
 
-body{padding: 0px;width:100%;height:100%;margin: 0;background:url(http://www.jq22.com/demo/jquery-SearchBar20160307/img/image.jpg) ; background-position: center; background-size: cover; background-attachment: fixed; background-repeat: no-repeat;}
-
+body{padding: 0px;
+    width:100%;height:100%;margin: 0;
+    background:url(http://www.jq22.com/demo/jquery-SearchBar20160307/img/image.jpg);
+     background-position: center; background-size: cover; background-attachment: fixed; background-repeat: no-repeat;
+ }
+/*
+http://www.jq22.com/demo/jquery-SearchBar20160307/img/image.jpg
+*/
 a{
     text-decoration: none;
     font-size: 1.5em;
@@ -540,8 +546,6 @@ a{
     top:36%;
     left:50.5%;
 }
-.search-wrapper.active {}
-
 .search-wrapper .input-holder {
     overflow: hidden;
     height: 50px;
@@ -920,7 +924,7 @@ input{
 }
 #loadingImg img{
         width:100%;
-        height:186px;
+        height:100%;
 }
 .success{
     color:#00fd0a;
@@ -928,6 +932,9 @@ input{
 .normalItem{
     color:#00ffd4;
     padding-right:5px;
+}
+#wordPro .normalItem,#wordPhrases .wordTitle{
+    color:#0d6b5b;
 }
 #showSearchForm{
     z-index: 22222222;
@@ -965,6 +972,10 @@ input{
 .dictTips{
     color: #006879;
 }
+.fa-info-circle{
+    font-size: 6px;
+    color:gray;
+}
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
     .everydayMotto{
@@ -982,6 +993,9 @@ input{
     }
     .todayMotto{
     font-size: 16px;
+    }
+    .search-wrapper.active {
+    margin-top: 39% !important;
     }
     /*.search-wrapper{
         top:51%;

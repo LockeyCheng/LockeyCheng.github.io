@@ -1,68 +1,112 @@
-<!doctype html>
-<html lang="zh">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<title>The Economist</title>
-  <link rel="stylesheet" type="text/css" href="../css/polaris.css">
-	<link rel="stylesheet" type="text/css" href="css/search-form.css">
-  <link rel="stylesheet" href="../font-awesome-4.4.0/css/font-awesome.min.css"  type="text/css">
-  <link rel="icon" type="image/x-icon" class="js-site-favicon" href="../images/favicon.ico">
-	<style type="text/css">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>The Economist</title>
+<link rel="icon" type="image/x-icon" class="js-site-favicon" href="../images/favicon.ico">
+<!-- <link rel="stylesheet" type="text/css" href="../css/polaris.css"> -->
+<link rel="stylesheet" type="text/css" href="css/search-form.css">
+<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
+<script src="https://cdn.staticfile.org/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="../blogs/showdown.min.js"></script>
+</head>
+<body>
+<style type="text/css">
   #floatDiv{
-  /*display:none;*/
-  top:0;
-  z-index:0;
-  height:100%;
+  display:none;
+  z-index:111111;
+  top: 0;
+  height: 100%;
   width:100%;
   position:fixed;
   background-size: 100% 100%;
-  background: #d4fff7;
+  background: #090d0c;
   opacity: 0.8;
 }
 
 </style>
-	<!--[if IE]>
-		<script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
-	<![endif]-->
-</head>
-<body>
-    <header>
-        <h1 class="title"><img src="./img/econfinal_favicon.ico">The Economist</h1>
-        <div class="row">
-
-        <div class="col-six tab-full pull-right social">
-
+  <div data-role="header" id='header'>
+    <h3 class="title"><img src="./img/econfinal_favicon.ico">The Economist</h3>
+     <div class="row pull-right" style="margin-top: -32px; margin-right: 3px">
+        <div class="col-six tab-full social">
             <ul class="links"> 
-              <li><a href="javascript:void(0)" id="dictSetting"><i class="fa fa-gear"  style="font-size:30px;color:#00d0ff"></i></a></li>
-              <li>&nbsp;</li>  
-              <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
-             <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>        
-             <li><a href="https://blog.csdn.net/lockey23" target="_blank"><i class="fa fa-edit"></i></a></li>
+             <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
+             <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>
              <li><a href="https://www.facebook.com/chen.yang.98031506"><i class="fa fa-facebook"></i></a></li>
-             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>   
+             <li><a href="#"><i class="fa fa-twitter"></i></a></li> 
+             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+             <li><a href="https://blog.csdn.net/lockey23" target="_blank"><i class="fa fa-edit ibold"></i></a></li>
+             <!-- <li><a href="https://lockeycheng.github.io/economist/index.html" target="_blank"><i class="fa fa-etsy"></i></a></li>      -->
            </ul> 
-      </div>
-      </div>
-    </header>
-	<section class="container">
-		<div id="searchForm">
+        </div>
+    </div>
+  </div>
+
+<div data-role="page" id="pageone">
+  <div data-role="main" class="ui-content">
+    <a href="#pagetwo" data-transition="slide" id="toPage2" class="fa fa-search switchfa" style="font-size:30px;color:#00d0ff"></a>
+    <div id="page-content" class="single-page">
+        <h3 class="heading3" id="mainTitle">loading</h3>
+        <h5 class="heading5" id="createDate">loading</h5>
+        <div id="articleContent"></div>
+    </div>
+
+  </div>
+</div> 
+
+
+<div data-role="page" id="pagetwo">
+  <div data-role="main" class="ui-content">
+    <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa" style="font-size: 25px !important;" id="toPage1"></a>
+    <section class="container">
+    <div id="searchForm">
             <div class="search-wrapper">
                 <div class="input-holder">
                     <input type="text" class="search-input" placeholder="Type to search" />
-                    <button class="search-icon" onclick="searchToggle(this, event);"><span id="submitGo"></span></button>
-                    <i class="fa fa-">
+                    <button class="search-icon" id='searchWordBtn' onclick="searchToggle(this, event);"><span id="submitGo"></span></button>
                 </div>
-                <span class="close" onclick="searchToggle(this, event);"></span>
                 <div id="wordItems"  class="dictsChoose">
-                  <ul class="list" id="wordItemChoose">
-                    <li style="margin-left: -23px;">
-                      <input type="checkbox" id="polaris-checkbox-checked-worditem"  name='economist' value='economist'>
-                      <label for="polaris-checkbox-disabled-checked">Model sentence</label>
-                    </li>
-                  </ul>
+
+                  <div id='dictSelect'>
+                    <h3 class="dictTips">Dictionaries</h3>
+                    <ul class="wordItemChoose">
+                      <li style="margin-left: -16px;">
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-economist"  class="hide" name='economist' value='economist'><label for="polaris-checkbox-economist">The Economist</label>
+                      </li>
+                      <li style="margin-left: -16px;">
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-cet46"  class="hide" name='cet46' value='cet46'><label for="polaris-checkbox-cet46">CET4-CET6</label>
+                      </li>
+                      <li style="margin-left: -16px;">
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-pupil"  class="hide" name='pupil' value='pupil'><label for="polaris-checkbox-pupil">The Pupil</label>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div id='wordItemSelect'>
+                    <h3 class="dictTips">Extensions</h3>
+                    <ul class="wordItemChoose">
+                      <li style="margin-left: -16px;">
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-sentence"  class="hide" name='sentence' value='sentence_phrase'><label for="polaris-checkbox-sentence">Model sentence</label>
+                      </li>
+                      <li style="margin-left: -16px;">
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-phrase"  class="hide" name='phrase' value='sentence_phrase'><label for="polaris-checkbox-phrase">Common Phrase</label>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div id='confirm_cancel' style="margin-top: 36px">
+                    <ul class="confirm_dict">
+                      <li style="margin-left: -32px;color:#1bffc2;font-size: 1.3em;">
+                        <i class="checkboxSpan-circle"></i><input type="checkbox" id="polaris-checkbox-confirm"  class="hide" name='confirm_cancel' value='confirm'><label for="polaris-checkbox-confirm">Load</label>
+                      </li>
+                      <li style="margin-left: 0px;color:#cea324;font-size: 1.3em;">
+                        <i class="checkboxSpan-circle"></i><input type="checkbox" id="polaris-checkbox-cancel"  class="hide" name='confirm_cancel' value='cancel'><label for="polaris-checkbox-cancel">Cancel</label>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <div class="result-container">
 
@@ -70,14 +114,27 @@
                 
             </div>
         </div>
-	</section>
-    
+  </section>
+   <!--  <div id="wordItems"  class="dictsChoose">
+                  <ul class="list" id="wordItemChoose">
+                    <li style="margin-left: -23px;">
+                      <input type="checkbox" id="polaris-checkbox-checked-worditem"  name='economist' value='economist'>
+                      <label for="polaris-checkbox-disabled-checked">Model sentence</label>
+                    </li>
+                  </ul>
+                </div> -->
+    <a href="javascript:void(0)" class="fa fa-search" id="showSearchForm"></a>
     <div class="searchResult">
         <div>
             <p class="wordName">tragedy</p>
-            <p><span class="wordTitle">发音：</span><span class="pronEg"></span> <span class="pronAm"></span></span></p>
+            <p><span class="wordTitle">发音：</span></p>
+            <p><ul id="wordPro"></ul></p>
+
             <p><span class="wordTitle">释义：</span></p>
             <p><ul id="wordExplanationCN"></ul></p>
+
+            <p><span class="wordTitle">短语：</span></p>
+            <p><ul id="wordPhrases"></ul></p>
             <!-- <p><span class="wordTitle">释义（英）：</span><span class="wordExplanationEG"></span></p> -->
             <!-- <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
             <p><span class="wordTitle">近义：</span><span class="similar"></span></p>
@@ -92,7 +149,7 @@
         <p class="todayMottoAuthor"></p>
         <p class="todayMottoCn"></p>
     </div>
-    <div class="everydayMotto dictsChoose" id="radioChoice">
+    <!-- <div class="everydayMotto dictsChoose" id="radioChoice">
         <ul class="list" id="dictChoice">
               <li>
                 <input type="checkbox" id="polaris-checkbox-disabled-checked"  name='economist' value='economist' checked disabled>
@@ -111,59 +168,182 @@
             <input type="radio" id="polaris-radio-2" name="polaris-radio-dict-choice" value='load'>Load
             <input type="radio" id="polaris-radio-2" name="polaris-radio-dict-choice" value='cancel'>Cancel
           </div>
-    </div>
-    <footer class="with_motto_footer">
+    </div> -->
+  </div>
+</div> 
+ <footer class="with_motto_footer">
     <div class="row">
       <div class="col-six tab-full">
         <div class="copyright">
-                <span><p class="time"></p></span>
-                <span>Copyright @ 2017-2018 Created by Lockey All rights reserved.<a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
+                <!-- <span><p class="time"></p></span> -->
+                <span>Copyright <i class="fa fa-copyright"></i> 2018 Created by Lockey All rights reserved.<a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
         </div>                       
       </div>
     </div>
 </footer>  
+
 <div id="floatDiv">
-  <div><h5 align="right"  id="closeFloat"><i class="fa fa-arrows-alt" style="font-size:2em;margin-right: 13px;margin-top:-5px"></i></h6></div>
-  <div id="loadtips"><h3 align="center"><i class="fa fa-spinner"></i></h3><h3 align="center" id="loadWords"></h3></div>
+  <div>
+    <h5 align="right"  id="closeFloat"><i class="fa fa-quora" alt="close" style="font-size:2em;margin-right: 13px;margin-top:-5px;color:#d90000">t</i>
+    </h5>
+  </div>
+  <div id="loadtips">
+    <h5 align="center" id="loadingImg" style="margin-top: -32%;"><img src="http://dribbble.s3.amazonaws.com/users/121337/screenshots/1024835/loading2.gif"></h5>
+    <h5 align="center" id="successIcon" style="margin-top: -10%;display: none;font-size:4em;color:#13da13"><i class="fa fa-check-circle"></i></h5>
+    <h5 align="center" id="normalTips_free-code-camp" style="margin-top: -10%;display: none;font-size:4em;color:#13da13"><i class="fa fa-free-code-camp"></i></h5>
+    <h5 align="center" id="wariningIcon" style="margin-top: -10%;display: none;font-size:4em;color:#ffa500"><i class="fa fa-warning"></i></h5>
+    <h3 align="center" id="loadWords"></h3></div>
 </div>
-	<script src="../js/jquery-2.1.1.js"></script>
-  <script src="../js/icheck.min.js"></script>
-	<script type="text/javascript">
+<!-- <script src="../js/jquery-2.1.1.js"></script> -->
+<script type="text/javascript">
+        var loadedDict = []
+        var currentDict = []
+        var searchTimes = 0
         var youdaoSentenceAudio = 'https://dict.youdao.com/dictvoice?audio='//+sentence+&le=eng
         var youdaoWordAudio = 'https://dict.youdao.com/dictvoice?audio='//+criteria&type=2 or type=1
         var testAlpha = /^[a-zA-Z]+$/i
         var dictData={}
+        var currentFloat = 0
         var type2Dict={
-          'economist_basic':'The Economist Dict ',
-          'cet4_basic':'CET-4 Dict ',
-          'cet6_basic':'CET-6 Dict ',
-          'economist_model':'The Economist Model ',
-          'cet4_model':'CET-4 Model ',
-          'cet6_model':'CET-6 Model '
+          'economist_basic':'The Economist ',
+          'economist_model':'The Economist ',
+          'cet46_basic':'CET-4&&6 ',
+          'cet46_model':'CET-4&&-6 ',
+          'pupil_basic':'The Pupil ',
+          'pupil_model':'The Pupil '
         }
-        function getData(type){
-          var toDict = type2Dict[type]
-          $('#loadWords').html('Loading '+toDict)
-          $('#floatDiv').fadeIn(456)
-          var baseUrl = './explanations/'
-          var getUrl = baseUrl+type+'.json'
+        function dealWithFloatDiv(words,img,warningIcon,ifhide,successIcon,freecode){
+              $('#loadWords').html(words);
+              if(img){
+                $('#loadingImg').show()
+              }else{
+                $('#loadingImg').hide()
+              }
+              if(warningIcon){
+                $('#wariningIcon').show()
+              }else{
+                $('#wariningIcon').hide()
+              }
+               if($('#floatDiv').is(':hidden')){
+                $('#floatDiv').slideDown(356)
+               }
+               if(freecode){
+                $('#normalTips_free-code-camp').show()
+               }else{
+                $('#normalTips_free-code-camp').hide()
+               }
+               if(successIcon){
+                $('#successIcon').show()
+               }
+              if(ifhide){
+                setTimeout(function(){
+                      if(successIcon){
+                        $('#successIcon').hide()
+                      }
+                      $('#floatDiv').fadeOut(456)
+                    },2000)
+              }
+              
+        }
+        function getPageSize() {
+            var xScroll, yScroll;
+            if (window.innerHeight && window.scrollMaxY) {
+                xScroll = window.innerWidth + window.scrollMaxX;
+                yScroll = window.innerHeight + window.scrollMaxY;
+            } else {
+                if (document.body.scrollHeight > document.body.offsetHeight) { // all but Explorer Mac    
+                    xScroll = document.body.scrollWidth;
+                    yScroll = document.body.scrollHeight;
+                } else { // Explorer Mac...would also work in Explorer 6 Strict, Mozilla and Safari    
+                    xScroll = document.body.offsetWidth;
+                    yScroll = document.body.offsetHeight;
+                }
+            }
+            var windowWidth, windowHeight;
+            if (self.innerHeight) { // all except Explorer    
+                if (document.documentElement.clientWidth) {
+                    windowWidth = document.documentElement.clientWidth;
+                } else {
+                    windowWidth = self.innerWidth;
+                }
+                windowHeight = self.innerHeight;
+            } else {
+                if (document.documentElement && document.documentElement.clientHeight) { // Explorer 6 Strict Mode    
+                    windowWidth = document.documentElement.clientWidth;
+                    windowHeight = document.documentElement.clientHeight;
+                } else {
+                    if (document.body) { // other Explorers    
+                        windowWidth = document.body.clientWidth;
+                        windowHeight = document.body.clientHeight;
+                    }
+                }
+            }       
+            // for small pages with total height less then height of the viewport    
+            if (yScroll < windowHeight) {
+                pageHeight = windowHeight;
+            } else {
+                pageHeight = yScroll;
+            }    
+            // for small pages with total width less then width of the viewport    
+            if (xScroll < windowWidth) {
+                pageWidth = xScroll;
+            } else {
+                pageWidth = windowWidth;
+            }
+            arrayPageSize = new Array(pageWidth, pageHeight, windowWidth, windowHeight);
+            return arrayPageSize;
+        }
+        function getData(type,ifmd){
+          if(ifmd){
+            var today = new Date()
+            var  year = today.getFullYear()
+            var day = today.getDate()
+            var month = today.getMonth()+1
+             var filename = year+'_'+month+'_'+day+'.md'
+            var getUrl = 'https://lockeycheng.github.io/economist/mds/'+'2018_3_21.md'//filename
+            var dataType = 'text'
+            dealWithFloatDiv('',true,false,false)
+          }else{
+             var toDict = type2Dict[type]
+            var tips = '<span class="normalItem">'+toDict+' ...</span>'
+            dealWithFloatDiv(tips,true,false,false)
+            var baseUrl = 'https://lockeycheng.github.io/economist/explanations/'
+            //var baseUrl = './explanations/'
+            var getUrl = baseUrl+type+'.json'
+             var dataType = 'json'
+             }
           $.ajax({
                 type:"GET",
                 url: getUrl,
                 data: null,
-                dataType:'json',
+                dataType:dataType,
                 cache:false,
                 success: function(data) {
-                    dictData[type] = data
-                    $('#loadWords').html(toDict+'loaded!')
-                    $('#floatDiv').fadeOut(556)
+                  if(ifmd){
+                      $('#mainTitle').html('Why a licence plate costs more than a car in Shanghai')
+                      $('#createDate').html('Lockey 2018/4/21')
+                      var content = data
+                      var converter = new showdown.Converter();
+                      var html = converter.makeHtml(content);
+                      document.getElementById("articleContent").innerHTML = html;
+                      dealWithFloatDiv('<span class="success">Page Ready!</span>',false,false,true,true)
+                  }else{
+                     dictData[type] = data
+                    $('#successIcon').show()
+                     loadedDict.push(type)
+                    //dealWithFloatDiv('',false,false,true,true)
+                    dealWithFloatDiv('<span class="success">'+toDict+' loaded!</span>',false,false,true,true)
+                  }
                 },
                 error: function(data) {
-                    $('#loadWords').html(toDict+'failed to load!')
+                  if(ifmd){
+                    toDict = filename
+                  }
+                    dealWithFloatDiv('<span class="error">'+toDict+'</span> failed!',false,true,false,false)
                 }
             });
         }
-        getData('economist_basic')
+        getData('type',true)
         var searchDiv = $('#searchForm')
         function getAudio(arr){
             var y = arr.split(' ')
@@ -181,96 +361,195 @@
         }
         function searchToggle(obj, evt){
             var container = $(obj).closest('.search-wrapper');
-
+            var windowHW = getPageSize()
             if(!container.hasClass('active')){
                   container.addClass('active');
                   evt.preventDefault();
-                   $('.with_motto_footer').hide()
+                  if(windowHW[0] < 500){
+                      $('.search-wrapper').css('margin-top','26%')
+                  }
+                  $('.with_motto_footer').hide()
                   $('.search-input').focus()
-                  $('.dictsChoose').show()
+                  $('#wordItems').show(345)
             }
-            else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
-                  container.removeClass('active');
-                  // clear input
-                  container.find('.search-input').val('');
-                  // clear and hide result container when we press close
-                  container.find('.result-container').fadeOut(100, function(){$(this).empty();});
-                  $('.dictsChoose').hide()
-                  $('.with_motto_footer').show()
-                  $('.searchResult').hide()
-
+            else if(container.hasClass('active')){// && $(obj).closest('.input-holder').length == 0){alert(12)
+                  var value = $(searchDiv).find('.search-input').val().trim();
+                   if(value.length < 1){
+                    container.removeClass('active');
+                    if(windowHW[0] < 500){
+                      $('.search-wrapper').css('margin-top','3%')
+                    }
+                    container.find('.result-container').fadeOut(100, function(){$(this).empty();});
+                    $('#wordItems').hide(123)
+                    $('.with_motto_footer').show()
+                    $('.searchResult').hide()
+                   }
+                  
             }
         }
-        setInterval(
-          function welcome(){
-          var timeNow = Date()
-          var timeSplit = timeNow.split(" ")
-          var hms = timeSplit[4]
-          var timeStr = timeSplit[0]+" "+timeSplit[1]+" "+ timeSplit[2]+" "+timeSplit[3]+" "+hms
-          $('.time').html(timeStr)
-        },1000)
+        // setInterval(
+        //   function welcome(){
+        //   var timeNow = Date()
+        //   var timeSplit = timeNow.split(" ")
+        //   var hms = timeSplit[4]
+        //   var timeStr = timeSplit[0]+" "+timeSplit[1]+" "+ timeSplit[2]+" "+timeSplit[3]+" "+hms
+        //   $('.time').html(timeStr)
+        // },1000)
         $('.todayMotto').html("I am not afraid of tomorrow for I have seen yesterday and I love today.")
         $('.todayMottoAuthor').html("- William Allen White")
         $('.todayMottoCn').html("我并不害怕明天，因为我已见过昨天并且热爱今天。")
         function submitSearch(){
-                $('.dictsChoose').hide()
+                if(searchTimes == 0){
+                    searchTimes += 1
+                    return false
+                }
+                //$('.dictsChoose').hide()
                 var value = $(searchDiv).find('.search-input').val().trim();
                 
                 if(!value.length){
-                    _html = "Yup yup! Add some text friend :D";
-                    $(searchDiv).find('.result-container').html('<span>' + _html + '</span>');
+                     $('.search-input').focus()
                     return false
                 }
                 if(!testAlpha.test(value)){
-                    $(searchDiv).find('.result-container').html('<span class="error">[' + value + ']</span> Illegal input, must be English word!');
-                    $(searchDiv).find('.result-container').show()
+                    var tips = '<span class="error">[' + value + ']</span> Illegal input, must be English word!'
+                    dealWithFloatDiv(tips,false,true,true)
                     return false
                 }
                 value = value.toLocaleLowerCase()
-                var jsonData = dictData['economist_basic']
-                if(!jsonData[value] && dictData['cet4_basic']){
-                    jsonData = dictData['cet4_basic'].responseJSON
-                }
-                if(!jsonData[value] && dictData['cet6_basic']){
-                    jsonData = dictData['cet6_basic'].responseJSON
-                }
-                $('#everydayMotto').hide()
-                if(jsonData[value]){
-                    $(searchDiv).find('.result-container').html('')
-                    $('.wordName').text(value)
-                    $('.pronEg').html('英'+jsonData[value]['pron']['peg'])
-                    $('.pronAm').html('美'+jsonData[value]['pron']['pam'])
-                    exLi = ''
-                    exArr = jsonData[value]['ex']
-                    for(var i in exArr){
-                        exLi += '<li>'+exArr[i]+'</li>'
+                try{
+                    var jsonDataBasic = dictData['economist_basic']
+                    if(!jsonDataBasic[value] && dictData['cet46_basic']){
+                        jsonDataBasic = dictData['cet46_basic']
                     }
-                    $('#wordExplanationCN').html(exLi)
-                    if(jsonData[value]['eg2'] != []){
-                        var toFillSentence = ''
-                        var example = jsonData[value]['eg2']
-                         for(var i in example){
-                          var nu = i*1+1
-                          toFillSentence += '<p><span class="wordTitle">例句'+nu+'：</span><span class="wordSentenceEn">'+example[i][0]+'</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">'+example[i][1]+'</span></p>'
-                         }
-                         $('#centences').html(toFillSentence)
-                    }
-                    $('.everydayMotto').hide()
-                    $('footer').hide()
-                    $('.searchResult').show()
-                }else{
-                    $(searchDiv).find('.result-container').html('<span class="error">' + value + '</span> meets 404. May switch dictionary!');
-                    setTimeout(function(){
-                      $('#dictSetting').trigger('click')
-                    },2190)
-                    
+
+                    if(jsonDataBasic[value]){
+                      $(searchDiv).find('.result-container').html('')
+                      $('.wordName').text(value)
+                      var proEn = jsonDataBasic[value]['pron']['peg']
+                      var proAm = jsonDataBasic[value]['pron']['pam']
+                      var proLi = ''
+                      if(proEn){
+                        proLi += '<li><span class="normalItem">英音</span> '+proEn+'</li>'
+                      }
+                      if(proAm){
+                        proLi += '<li><span class="normalItem">美音</span> '+proAm+'</li>'
+                      }
+                      $('#wordPro').html(proLi)
+                      var exLi = ''
+                      var exArr = jsonDataBasic[value]['ex']
+                      for(var i in exArr){
+                          exLi += '<li>'+exArr[i]+'</li>'
+                      }
+                      $('#searchForm').hide()
+                      $('#showSearchForm').show()
+                      $('#wordExplanationCN').html(exLi)
+                      $('.everydayMotto').hide()
+                      $('footer').hide()
+                      $('.searchResult').show()
+                      $('.dictsChoose').hide()
+                      try{
+                            var jsonDataModel = dictData['economist_model']
+                            if(!jsonDataModel[value] && dictData['cet46_model']){
+                                jsonDataModel = dictData['cet46_model']
+                            }
+                            if(jsonDataModel[value]['eg2'] != []){
+                                var toFillSentence = ''
+                                var example = jsonDataModel[value]['eg2']
+                                 for(var i in example){
+                                  var nu = i*1+1
+                                  toFillSentence += '<p><span class="wordTitle">例句'+nu+'：</span><span class="wordSentenceEn">'+example[i][0]+'</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">'+example[i][1]+'</span></p>'
+                                 }
+                                 $('#centences').html(toFillSentence)
+                            }
+                            if(jsonDataModel[value]['wp'] != []){
+                              var phrases = jsonDataModel[value]['wp']
+                              var phraseLi = ''
+                              var no = 0
+                              for(var item in phrases){
+                                no += 1
+                                phraseLi += '<li><span class="wordTitle">'+no+'：</span><span class="wordSentenceEn">'+item+'</span></li><li><span class="wordSentenceCn">'+phrases[item]+'</span></li>'
+                              }
+                              $('#wordPhrases').html(phraseLi)
+                            }
+                          } catch(err) { 
+                              console.log('No model sentence and phrase!')
+                              return false
+                          }
+                          
+                      }else{
+                          var tips = '<span class="error">' + value + '</span> meets 404. May choose or switch dictionary!'
+                          dealWithFloatDiv(tips,false,true,true)
+                          
+                      }
+                      return false
+                  
+                }catch(err) { 
+                  var tips = '<span class="error">' + value + '</span> meets 404. May choose or switch dictionary!'
+                  dealWithFloatDiv(tips,false,true,true)
+                  return false
                 }
-                $(searchDiv).find('.result-container').fadeIn(100);
-                return false
         }
         $('#submitGo').click(function(){
                 submitSearch()
         })
+        $('#wordItems li').click(function(){
+          var radio = $(this).find('input').val()
+          var childi = $(this).find('i')
+          // if($(childi).hasClass('eternal')){
+          //         return false
+          // }
+          if(!$(childi).hasClass('selected')){
+                  $(childi).addClass('selected');
+                  currentDict.push(radio)
+            }else if($(childi).hasClass('selected')){// && $(obj).closest('.input-holder').length == 0){alert(12)
+                  $(childi).removeClass('selected');
+                  currentDict.splice($.inArray(radio,currentDict),1);
+            }else{
+              cnosole.log('both yes no')
+            }
+          if(radio == 'cancel'){
+            $(searchDiv).find('.search-input').val('')
+            $('#searchWordBtn').trigger('click')
+            $(childi).removeClass('selected');
+          }else if(radio == 'confirm'){
+            $(childi).removeClass('selected');
+            var seg = currentDict.indexOf('sentence_phrase')
+            if(currentDict.length ==0 && currentDict[0] == 'confirm'){
+              dealWithFloatDiv('No item selected!',false,true,true)
+              return false
+            }
+            var indexbaseeconomist = currentDict.indexOf('economist')
+            var indexbasecet46 = currentDict.indexOf('cet46')
+            var indexbasepupil = currentDict.indexOf('pupil')
+
+            if (indexbasecet46<0 && indexbasepupil<0 && indexbaseeconomist<0){
+                dealWithFloatDiv('No basic Dicts selected!',false,true,true)
+            }
+            for(i in currentDict){
+              var item = currentDict[i]
+              if (item == 'confirm' || item == 'cancel'){
+                continue
+              }
+              if(item != 'sentence_phrase'){
+                  var dictTypeBasic = item+'_basic'
+                  var dictTypeModel = item+'_model'
+                  if(loadedDict.indexOf(dictTypeBasic) <0){
+                      getData(dictTypeBasic,false)
+                  }else{
+                    dealWithFloatDiv(dictTypeBasic+' has loaded!',false,false,true,false,true)
+                  }
+                  if(seg>=0){
+                    if(loadedDict.indexOf(dictTypeModel)<0){
+                      getData(dictTypeModel,false)
+                    }
+                  }
+              }
+            }
+
+          }
+
+        
+      })
         document.onkeydown=function(event){
             var e = event || window.event || arguments.callee.caller.arguments[0];
             var value = $(searchDiv).find('.search-input').val().trim();
@@ -278,48 +557,75 @@
                 submitSearch()
             }
             }; 
-            /*
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_polaris',
-          radioClass: 'iradio_polaris',
-          increaseArea: '-10%' // optional
-        });
-        */
-        $('#dictSetting').click(function(){
-          $('.searchResult').hide()
-          $('.everydayMotto').hide()
-          $('.dictsChoose').show()
-          $('.result-container').hide(334)
-        })
-        /*
-        $('input').on('ifChanged', function(){
-          var value = $(this).val()
-          if(value == 'load'){
-              $('#dictChoice').find('li').each(function(){
-                if($(this).find('.icheckbox_polaris').hasClass('checked')){
-                  var dict = $(this).find('.icheckbox_polaris').find('input').val()
-                  if(dict == 'cet4'){
-                    getData('cet4_basic')
-                  }
-                  if(dict == 'cet6'){
-                     getData('cet6_basic')
-                  }
-                }
-              })
-          }
-          else if(value == 'cancel'){
-            $('.dictsChoose').hide()
-            $('#everydayMotto').show()
-             $('footer').show()
-            $('input').iCheck('uncheck');
-          }else{
-            $('input[name="polaris-radio-dict-choice"]').iCheck('uncheck'); 
-          }
-        });
-*/
         $('#closeFloat').click(function(){
             $('#floatDiv').fadeOut(556)
         })
+         $('#showSearchForm').click(function(){
+          $('#searchForm').show()
+          $('.searchResult').hide()
+          $('.dictsChoose').show()
+          $(this).hide()
+         })
+         $('body').bind('touchstart',function(e){
+        startX = e.originalEvent.changedTouches[0].pageX;
+        startY = e.originalEvent.changedTouches[0].pageY;
+    });
+    $("body").bind("touchmove",function(e){
+        
+        endX = e.originalEvent.changedTouches[0].pageX;
+        endY = e.originalEvent.changedTouches[0].pageY;
+        //获取滑动距离
+        distanceX = endX-startX;
+        distanceY = endY-startY;
+        //判断滑动方向
+        if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>36){
+            if($('#pageone').is(':hidden')){
+              $('#toPage1').trigger('click')
+            }
+        }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-36){
+            console.log('往左滑动');
+            if($('#pagetwo').is(':hidden')){
+              $('#toPage2').trigger('click')
+            }
+        }else
+        if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<0){
+            console.log('往上滑动');
+        } else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY>0){
+            console.log('往下滑动');
+
+        }
+      })
+    var scrollDirect=function () {
+        var dalta = document.body.scrollTop;
+        window.addEventListener("scroll", function (event) {
+        event = event || window.event;
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        var totalScroll = scrollHeight - windowHeight
+        var change = totalScroll- scrollTop
+        if((dalta - change) >0 ){
+          if(scrollTop > 20)
+          {
+            $('#header').hide()
+            $('footer').show()
+          }
+          
+        }else{
+          $('#header').show()
+          $('footer').hide()
+        }
+        dalta = change
+       if(totalScroll - scrollTop <5){
+        $('#header').show()
+       }
+       if(totalScroll - scrollTop > totalScroll-5){
+        $('footer').show()
+       }
+    }, false);
+}
+scrollDirect(function (direction) {
+ })
     </script>
 </body>
 </html>
