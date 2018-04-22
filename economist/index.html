@@ -350,9 +350,12 @@
                 },
                 error: function(data) {
                   if(ifmd){
-                    toDict = filename
+                    toDict = 'Sorry, but no more paper to read!'
+                  }else{
+                    toDict = '<span class="error">'+toDict+'</span> failed!'
                   }
-                    dealWithFloatDiv('<span class="error">'+toDict+'</span> failed!',false,true,false,false)
+                    dealWithFloatDiv(toDict,false,true,false,false)
+                  
                 }
             });
         }
@@ -433,14 +436,47 @@
                 }
                 
                 value = value.toLocaleLowerCase()
+                valueArr = []
+                if(value.match("ing")){
+                    value = value.slice(0,-3)
+                    valueArr.push(value)
+                    value += 'e'
+                    valueArr.push(value)
+                }
+                lastStr = value.slice(-1)
+                if(lastStr == 's'){
+                    value = value.slice(0,-1)
+                    valueArr.push(value)
+                }
+                if(value.match("tion")){
+                    value = value.slice(0,-4)
+                    valueArr.push(value)
+                    value += 'te'
+                    valueArr.push(value)
+                }
+                lastStr = value.slice(-2)
+                if(lastStr == 'ed'){
+                    value = value.slice(0,-2)
+                    valueArr.push(value)
+                    value += 'e'
+                    valueArr.push(value)
+                }
                 try{
                     var jsonDataBasic = dictData['default']
-                    if(!jsonDataBasic[value] && dictData['economist_basic']){
+                    console.log(valueArr)
+                    for(item in valueArr){
+                      value = valueArr[item]
+                      if(!jsonDataBasic[value] && dictData['economist_basic']){
                         jsonDataBasic = dictData['economist_basic']
+                      }
+                      if(!jsonDataBasic[value] && dictData['cet46_basic']){
+                          jsonDataBasic = dictData['cet46_basic']
+                      }
+                      if(jsonDataBasic[value]){
+                        break
+                      }
                     }
-                    if(!jsonDataBasic[value] && dictData['cet46_basic']){
-                        jsonDataBasic = dictData['cet46_basic']
-                    }
+                    
 
                     if(jsonDataBasic[value]){
                       $(searchDiv).find('.result-container').html('')
@@ -654,7 +690,7 @@ $('.switchPaper').click(function(){
   if(paperName){
     getData('type',true,paperName)
   }else{
-    dealWithFloatDiv('Sorry, but no another paper to show!',false,false,true,false,true)
+    dealWithFloatDiv('Sorry, but no more paper to read!',false,false,true,false,true)
   }
 })
 $('#articleContent').on('click','.fa-info-circle',function(){
