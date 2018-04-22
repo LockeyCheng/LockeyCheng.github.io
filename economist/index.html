@@ -30,7 +30,7 @@
 
 </style>
   <div data-role="header" id='header'>
-    <h3 class="title"><img src="./img/econfinal_favicon.ico">The Economist</h3>
+    <h3 class="title"><a onclick="location.reload(true)"><img src="./img/econfinal_favicon.ico">The Economist</a></h3>
      <div class="row pull-right" style="margin-top: -32px; margin-right: 3px">
         <div class="col-six tab-full social">
             <ul class="links"> 
@@ -48,7 +48,7 @@
 
 <div data-role="page" id="pageone">
   <div data-role="main" class="ui-content">
-    <a href="#pagetwo" data-transition="slide" id="toPage2" class="fa fa-search switchfa" style="font-size:30px;color:#00d0ff"></a>
+    <a href="#pagetwo" data-transition="slide" id="toPage2" class="fa fa-search switchfa" style="font-size:30px;color:#008cac"></a>
     <div id="page-content" class="single-page">
         <h3 class="heading3" id="mainTitle">Headline</h3>
         <h5 class="heading5" id="createDate">Author</h5>
@@ -101,7 +101,7 @@
 
                   <div id='confirm_cancel' style="margin-top: 36px">
                     <ul class="confirm_dict">
-                      <li style="margin-left: -32px;color:#1bffc2;font-size: 1.3em;">
+                      <li style="margin-left: -32px;color:#00b787;font-size: 1.3em;font-weight: bold">
                         <i class="checkboxSpan-circle"></i><input type="checkbox" id="polaris-checkbox-confirm"  class="hide" name='confirm_cancel' value='confirm'><label for="polaris-checkbox-confirm">Load</label>
                       </li>
                       <li style="margin-left: 0px;color:#cea324;font-size: 1.3em;">
@@ -186,12 +186,12 @@
 
 <div id="floatDiv">
   <div>
-    <h5 align="right"  id="closeFloat"><i class="fa fa-quora" alt="close" style="font-size:2em;margin-right: 13px;margin-top:-5px;color:#d90000">t</i>
+    <h5 align="right"  id="closeFloat"><i class="fa fa-quora" alt="close" style="font-size:2em;margin-right: 13px;margin-top:-5px;color:#08d6c5">t</i>
     </h5>
   </div>
   <div id="loadtips">
     <h5 align="center" id="loadingImg" style="margin-top: -32%;"><img src="http://dribbble.s3.amazonaws.com/users/121337/screenshots/1024835/loading2.gif"></h5>
-    <h5 align="center" id="successIcon" style="margin-top: -10%;display: none;font-size:4em;color:#13da13"><i class="fa fa-check-circle"></i></h5>
+    <h5 align="center" id="successIcon" style="margin-top: -10%;display: none;font-size:4em;color:#5cdc61"><i class="fa fa-check-circle"></i></h5>
     <h5 align="center" id="normalTips_free-code-camp" style="margin-top: -10%;display: none;font-size:4em;color:#13da13"><i class="fa fa-free-code-camp"></i></h5>
     <h5 align="center" id="wariningIcon" style="margin-top: -10%;display: none;font-size:4em;color:#ffa500"><i class="fa fa-warning"></i></h5>
     <h3 align="center" id="loadWords"></h3></div>
@@ -339,7 +339,7 @@
                       dictData['default'] = content['assistent']
                       var html = converter.makeHtml(content['content']);
                       document.getElementById("articleContent").innerHTML = html;
-                      dealWithFloatDiv('<span class="success">Page Ready!</span>',false,false,true,true)
+                      dealWithFloatDiv('<span class="success">Paper Ready!</span>',false,false,true,true)
                   }else{
                      dictData[type] = data
                     $('#successIcon').show()
@@ -412,10 +412,10 @@
         $('.todayMottoAuthor').html("- William Allen White")
         $('.todayMottoCn').html("我并不害怕明天，因为我已见过昨天并且热爱今天。")
         function submitSearch(word){
-                if(searchTimes == 0){
-                    searchTimes += 1
-                    return false
-                }
+                // if(searchTimes == 0){
+                //     searchTimes += 1
+                //     return false
+                // }
                 if(word){
                   var value = word
                 }else{

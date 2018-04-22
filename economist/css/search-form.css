@@ -4,7 +4,8 @@ html{
 
 body{padding: 0px;
     width:100%;height:100%;margin: 0;
-    background:url(http://www.jq22.com/demo/jquery-SearchBar20160307/img/image.jpg);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #deebff),linear-gradient(70deg, #fff0e5 32%, #e8fffa);
+    /*background:url(http://www.jq22.com/demo/jquery-SearchBar20160307/img/image.jpg);*/
      background-position: center; background-size: cover; background-attachment: fixed; background-repeat: no-repeat;
  }
 /*
@@ -544,7 +545,7 @@ a{
     -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     top:36%;
-    left:50.5%;
+    left:49.5%;
 }
 .search-wrapper .input-holder {
     overflow: hidden;
@@ -728,14 +729,14 @@ a{
 /* ---------------------------------------------------------------------------- background: -webkit-radial-gradient(red, green, blue);
 background: -webkit-linear-gradient(#ffc68a, #9e5f19);background:linear-gradient(#ffc68a, #9e5f19);*/
 .title{
-    padding: 6px 0px;
+    padding: 16px 0px;
     margin-top: -2px;
     color: #970000;
     width: auto;
-    font-size: 23px;
+    font-size: 26px;
     padding-left: 23px;
     opacity: 0.9;
-    background: -webkit-linear-gradient(#c5f7ff, #ffdfbd);background:linear-gradient(#c5f7ff, #ffdfbd);
+    background: -webkit-linear-gradient(#ff8300, #ffe3b9);background:linear-gradient(#ff8300, #ffe3b9);
     }
 .title img{
     width: 25px;
@@ -744,10 +745,12 @@ background: -webkit-linear-gradient(#ffc68a, #9e5f19);background:linear-gradient
 footer{
     position: fixed;
     padding: 10px 0px;
-    color: #b74c00;font-size: 13px;bottom:0px;text-align: center;width: 100%;
+    color: #970000;/*#b74c00;*/
+    font-size: 13px;bottom:0px;text-align: center;width: 100%;
     opacity: 0.9;
-    background: -webkit-linear-gradient(#044e5a, #231302);
-    background: linear-gradient(#044e5a, #231302);
+    background: linear-gradient(#fff4e8, #97f0ff);
+   /* background: -webkit-linear-gradient(#044e5a, #231302);
+    background: linear-gradient(#044e5a, #231302);*/
 }
 .everydayMotto,.searchResult{
     color: #b74c00;position: absolute;margin-top:23%;text-align: center;width: 100%;
@@ -759,12 +762,18 @@ footer{
     display: none
 }
 .todayMotto{
-    color:#ff6a00;
+    color:#006456;
     font-size: 23px;
+}
+.todayMottoAuthor{
+    color:#00d4b6;
+}
+.todayMottoCn{
+    color:#0fb6df;
 }
 footer ul {padding: 0;margin-bottom: 10px;}
 ul li{list-style: none;}
-footer a {color: #28cdb6;}  
+footer a {color:#02483e }/*#28cdb6;}  */
 footer .col-footer{margin: 10px 0 30px;}
 
 footer .wrap-footer{padding:40px 0; background-color:#151515;}
@@ -850,7 +859,7 @@ footer ul.social-buttons li a i{margin-top: 7px;}
 }
 .switchfa{
     z-index: 1000;
-    top: 6px;
+    top: 20px;
     position: fixed;
     color: #00d0ff;
     right: 10.5px;
@@ -891,7 +900,7 @@ input{
     width: 17px;
     height: 18px;
     background-size: 230px;
-    background-position: 119% 27%;
+    background-position: 141% -24%;
 }
 
 .wordItemChoose i.selected{
@@ -904,7 +913,7 @@ input{
     width: 20px;
     height: 22px;
     background-size: 310px;
-    background-position: 66% 16%;
+    background-position: 87% 15%;
 }
 .confirm_dict i.selected{
     background-position: 76% -13%;
@@ -913,7 +922,7 @@ input{
     display: block;
 }
 #dictSelect label{
-    color:#80ecff;
+    color:#00b2bb;
 }
 #wordItems{
     display: none;
@@ -927,7 +936,7 @@ input{
         height:100%;
 }
 .success{
-    color:#00fd0a;
+    color:#5cdc61;
 }
 .normalItem{
     color:#00ffd4;
@@ -942,8 +951,8 @@ input{
      position: fixed;
     font-size: 32px;
     right: 6px;
-    top: 39%;
-    color: #e5f4ff;
+    top: 46%;
+    color: #00c7ab;
 }
 #wordPro li,#wordPhrases li{
     display: block;
@@ -954,11 +963,13 @@ input{
 #pageone .heading3,#pageone .heading5{
     text-align: center;
 }
-#pageone .heading3,{
+#pageone .heading3{
     font-size:1.35em;
+    color:#900000;
 }
 #pageone .heading5{
     font-size:1em;
+    color:#158772;
 }
 .ibold{
     font-weight: bold !important;
@@ -967,32 +978,50 @@ input{
     display: inline-block;
 }
 #articleContent{
-    padding-bottom: 50px;
+    padding-bottom: 66px;
 }
 .dictTips{
     color: #006879;
+    margin-left: 9px;
 }
 .fa-info-circle{
     font-size: 6px;
-    color:gray;
+    color:#900000;
 }
 .fixleft,.fixright{
 position: fixed;
-bottom: 70px;
+bottom: 62px;
+z-index: 1111;
 }
 .fixleft{
-left:9px;
+left:-3px;
 }
 .fixright{
-right:9px;
+right:-3px;
 }
 .arrow a{
-    color: #5e939b;
+    color: #052d27;
     font-size:1.2em;
+    background: #f0fdff;
+    padding: 3px;
+    border-radius: 6px;
 }
 .arrow a:hover{
      color:#4dbacb;
      font-size: 1.3em
+}
+.ui-loader{
+    display: none !important;
+}
+#articleContent p{
+    text-indent: 36px;
+    color: #00372f;
+}
+#articleContent p span{
+    text-indent: 3px;
+}
+.title a{
+    font-size: 26px !important;
 }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
@@ -1006,11 +1035,11 @@ right:9px;
     }
     .searchResult{
         position: absolute;
-        margin-top:3%;
+        margin-top:9%;
         margin-left: 2.5%;
     }
     .todayMotto{
-    font-size: 16px;
+    font-size: 19px;
     }
     .search-wrapper.active {
     margin-top: 32% !important;
