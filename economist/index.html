@@ -196,6 +196,7 @@
 </div>
 <!-- <script src="../js/jquery-2.1.1.js"></script> -->
 <script type="text/javascript">
+        var test = true
         var loadedDict = []
         var currentDict = []
         var searchTimes = 0
@@ -300,7 +301,10 @@
             var day = today.getDate()
             var month = today.getMonth()+1
              var filename = year+'_'+month+'_'+day+'.md'
-            var getUrl = 'https://lockeycheng.github.io/economist/mds/'+'2018_3_21.md'//filename
+             if(test){
+              filename = 'test.md'
+             }
+            var getUrl = 'https://lockeycheng.github.io/economist/mds/'+filename
             var dataType = 'text'
             dealWithFloatDiv('',true,false,false)
           }else{
