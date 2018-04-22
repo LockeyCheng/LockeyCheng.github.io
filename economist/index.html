@@ -67,7 +67,7 @@
     <div id="searchForm">
             <div class="search-wrapper">
                 <div class="input-holder">
-                    <input type="text" class="search-input" placeholder="Type to search" />
+                    <input type="text" class="search-input" id="search-input" placeholder="Type to search" />
                     <button class="search-icon" id='searchWordBtn' onclick="searchToggle(this, event);"><span id="submitGo"></span></button>
                 </div>
                 <div id="wordItems"  class="dictsChoose">
@@ -653,6 +653,14 @@ $('.switchPaper').click(function(){
     dealWithFloatDiv('Sorry, but no another paper to show!',false,false,true,false,true)
   }
 })
+$('#articleContent').on('click','.fa-info-circle',function(){
+               var toSearch = $(this).text()
+               if(toSearch){
+                $('#search-input').val(toSearch)
+                $('#searchWordBtn').trigger('click')
+               }
+               
+        })
     </script>
 </body>
 </html>
