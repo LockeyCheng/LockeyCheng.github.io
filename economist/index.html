@@ -14,6 +14,7 @@
 <script type="text/javascript" src="../blogs/showdown.min.js"></script>
 </head>
 <body>
+  <img src="../images/5.jpg" style="display: none">
 <style type="text/css">
   #floatDiv{
   display:none;
@@ -53,7 +54,8 @@
         <h5 class="heading5" id="createDate">loading</h5>
         <div id="articleContent"></div>
     </div>
-
+    <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"</span>Last Paper</a></span>
+    <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper">Next Paper<span  class="fa fa-arrow-right"></span></a></span>
   </div>
 </div> 
 
@@ -294,19 +296,22 @@
             arrayPageSize = new Array(pageWidth, pageHeight, windowWidth, windowHeight);
             return arrayPageSize;
         }
-        function getData(type,ifmd){
+        function getData(type,ifmd,filename){
           if(ifmd){
-            var today = new Date()
-            var  year = today.getFullYear()
-            var day = today.getDate()
-            var month = today.getMonth()+1
-             var filename = year+'_'+month+'_'+day+'.md'
-             if(test){
-              filename = 'test.md'
-             }
+            if(!filename){
+              var today = new Date()
+              var  year = today.getFullYear()
+              var day = today.getDate()
+              var month = today.getMonth()+1
+              var filename = year+'_'+month+'_'+day+'.md'
+              var tips = ''
+            }else{
+              var filename = filename
+              var tips = 'Just a moment, please.'
+            }
             var getUrl = 'https://lockeycheng.github.io/economist/mds/'+filename
-            var dataType = 'text'
-            dealWithFloatDiv('',true,false,false)
+            var dataType = 'json'
+            dealWithFloatDiv(tips,true,false,false)
           }else{
              var toDict = type2Dict[type]
             var tips = '<span class="normalItem">'+toDict+' ...</span>'
@@ -324,11 +329,13 @@
                 cache:false,
                 success: function(data) {
                   if(ifmd){
-                      $('#mainTitle').html('Why a licence plate costs more than a car in Shanghai')
-                      $('#createDate').html('Lockey 2018/4/21')
                       var content = data
+                      $('#mainTitle').html(content['title'])
+                      $('#createDate').html(content['date'])
                       var converter = new showdown.Converter();
-                      var html = converter.makeHtml(content);
+                      $('#lastArt').attr('href',content['last'])
+                      $('#nextArt').attr('href',content['next'])
+                      var html = converter.makeHtml(content['content']);
                       document.getElementById("articleContent").innerHTML = html;
                       dealWithFloatDiv('<span class="success">Page Ready!</span>',false,false,true,true)
                   }else{
@@ -347,7 +354,7 @@
                 }
             });
         }
-        getData('type',true)
+        getData('type',true,false)
         var searchDiv = $('#searchForm')
         function getAudio(arr){
             var y = arr.split(' ')
@@ -630,6 +637,14 @@
 }
 scrollDirect(function (direction) {
  })
+$('.switchPaper').click(function(){
+  var paperName = $(this).attr('href')
+  if(paperName){
+    getData('type',true,paperName)
+  }else{
+    dealWithFloatDiv('Sorry, but no another paper to show!',false,false,true,false,true)
+  }
+})
     </script>
 </body>
 </html>

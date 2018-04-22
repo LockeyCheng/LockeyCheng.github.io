@@ -976,6 +976,24 @@ input{
     font-size: 6px;
     color:gray;
 }
+.fixleft,.fixright{
+position: fixed;
+bottom: 70px;
+}
+.fixleft{
+left:9px;
+}
+.fixright{
+right:9px;
+}
+.arrow a{
+    color: #5e939b;
+    font-size:1.2em;
+}
+.arrow a:hover{
+     color:#4dbacb;
+     font-size: 1.3em
+}
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
     .everydayMotto{
