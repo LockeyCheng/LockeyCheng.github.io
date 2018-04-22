@@ -533,11 +533,11 @@ a{
 
 
 .search-wrapper {
-    position: absolute;
+    position: fixed;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    top:46%;
+    top:36%;
     left:50.5%;
 }
 .search-wrapper.active {}
@@ -748,6 +748,9 @@ footer{
 .everydayMotto,.searchResult{
     color: #b74c00;position: absolute;margin-top:23%;text-align: center;width: 100%;
 }
+.searchResult{
+    padding-bottom: 50px;
+}
 .dictsChoose{
     display: none
 }
@@ -806,6 +809,7 @@ footer ul.social-buttons li a i{margin-top: 7px;}
     text-align: justify;
     padding-right:12px; 
     color:#ffcaa4;
+    margin-top: 3%;
 }
 .wordName{
     font-size: 1.5em;
@@ -825,7 +829,7 @@ footer ul.social-buttons li a i{margin-top: 7px;}
     margin-left: -66px;
 }
 #loadtips{
-       margin-top: 22%
+       margin-top: 40%
     }
 /*
 ::-webkit-scrollbar{
@@ -856,7 +860,7 @@ footer ul.social-buttons li a i{margin-top: 7px;}
 #header{
     width: 100%;
     z-index: 100;
-    position: fixed;
+   /* position: absolute;*/
     top:2px;
 }
 .links a:hover{
@@ -922,7 +926,7 @@ input{
     color:#00fd0a;
 }
 .normalItem{
-    color:#088973;
+    color:#00ffd4;
     padding-right:5px;
 }
 #showSearchForm{
@@ -952,11 +956,20 @@ input{
 .ibold{
     font-weight: bold !important;
 }
+#confirm_cancel li{
+    display: inline-block;
+}
+#articleContent{
+    padding-bottom: 50px;
+}
+.dictTips{
+    color: #006879;
+}
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
     .everydayMotto{
-        position: absolute;
-        margin-top:68%;
+        position: fixed;
+        margin-top: 82%;
         margin-left:-13px;
     }
     #radioChoice{
@@ -964,14 +977,17 @@ input{
     }
     .searchResult{
         position: absolute;
-        margin-top:18%;
-        margin-left: 2.5%
+        margin-top:3%;
+        margin-left: 2.5%;
     }
     .todayMotto{
     font-size: 16px;
     }
-    .search-wrapper{
-        top:36%;
+    /*.search-wrapper{
+        top:51%;
+    }*/
+    .wordName{
+        text-align: center;
     }
    /* .icheckbox_polaris, .iradio_polaris{
         display: block;

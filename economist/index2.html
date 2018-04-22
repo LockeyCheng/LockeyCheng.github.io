@@ -18,8 +18,8 @@
   #floatDiv{
   display:none;
   z-index:111111;
-  top:6.5%;
-  height:84.2%;
+  top: 0;
+  height: 100%;
   width:100%;
   position:fixed;
   background-size: 100% 100%;
@@ -71,6 +71,7 @@
                 <div id="wordItems"  class="dictsChoose">
 
                   <div id='dictSelect'>
+                    <h3 class="dictTips">Dictionaries</h3>
                     <ul class="wordItemChoose">
                       <li style="margin-left: -16px;">
                         <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-economist"  class="hide" name='economist' value='economist'><label for="polaris-checkbox-economist">The Economist</label>
@@ -85,19 +86,20 @@
                   </div>
 
                   <div id='wordItemSelect'>
+                    <h3 class="dictTips">Extensions</h3>
                     <ul class="wordItemChoose">
-                      <li style="margin-left: -23px;">
+                      <li style="margin-left: -16px;">
                         <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-sentence"  class="hide" name='sentence' value='sentence_phrase'><label for="polaris-checkbox-sentence">Model sentence</label>
                       </li>
-                      <li style="margin-left: -23px;">
+                      <li style="margin-left: -16px;">
                         <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-phrase"  class="hide" name='phrase' value='sentence_phrase'><label for="polaris-checkbox-phrase">Common Phrase</label>
                       </li>
                     </ul>
                   </div>
 
-                  <div id='confirm_cancel' style="margin-top: 23px">
+                  <div id='confirm_cancel' style="margin-top: 36px">
                     <ul class="confirm_dict">
-                      <li style="margin-left: -15px;color:#1bffc2;font-size: 1.3em;">
+                      <li style="margin-left: -32px;color:#1bffc2;font-size: 1.3em;">
                         <i class="checkboxSpan-circle"></i><input type="checkbox" id="polaris-checkbox-confirm"  class="hide" name='confirm_cancel' value='confirm'><label for="polaris-checkbox-confirm">Load</label>
                       </li>
                       <li style="margin-left: 0px;color:#cea324;font-size: 1.3em;">
@@ -124,7 +126,7 @@
     <a href="javascript:void(0)" class="fa fa-search" id="showSearchForm"></a>
     <div class="searchResult">
         <div>
-            <p class="wordName" align="center">tragedy</p>
+            <p class="wordName">tragedy</p>
             <p><span class="wordTitle">发音：</span></p>
             <p><ul id="wordPro"></ul></p>
 
@@ -563,11 +565,11 @@
         distanceX = endX-startX;
         distanceY = endY-startY;
         //判断滑动方向
-        if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>15){
+        if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>25){
             if($('#pageone').is(':hidden')){
               $('#toPage1').trigger('click')
             }
-        }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-15){
+        }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-25){
             console.log('往左滑动');
             if($('#pagetwo').is(':hidden')){
               $('#toPage2').trigger('click')
@@ -590,7 +592,7 @@
         var totalScroll = scrollHeight - windowHeight
         var change = totalScroll- scrollTop
         if((dalta - change) >0 ){
-          if(scrollTop > 10)
+          if(scrollTop > 20)
           {
             $('#header').hide()
             $('footer').show()
