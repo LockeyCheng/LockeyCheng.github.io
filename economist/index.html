@@ -486,12 +486,6 @@
                     value = valueO.slice(0,-4)
                     valueArr.push(value)
                 }
-                if(value.match("er")){
-                    value = valueO.slice(0,-2)
-                    valueArr.push(value)
-                    value = valueO.slice(0,-1)
-                    valueArr.push(value)
-                }
                 if(value.match("ers")){
                     value = valueO.slice(0,-3)
                     valueArr.push(value)
@@ -756,6 +750,18 @@ $('.switchPaper').click(function(){
 })
 $('#articleContent').on('click','.fa-info-circle',function(){
                var toSearch = $(this).text()
+               if(toSearch.match(',')){
+                  var index = toSearch.match(',')['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match('"')){
+                  var index = toSearch.match('"')['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("'")){
+                  var index = toSearch.match("'")['index']
+                  toSearch = toSearch.slice(0,index)
+               }
                if(toSearch){
                 $('#toPage2').trigger('click')
                 $('#search-input').val(toSearch)
