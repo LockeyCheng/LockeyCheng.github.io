@@ -586,6 +586,10 @@
                           
                       }else{
                           var tips = '<span class="error">' + value + '</span> meets 404. May choose or switch dictionary!'
+                          $('#search-input').val('')
+                          $('#searchForm').show()
+                          $('.searchResult').hide()
+                          $('.dictsChoose').show()
                           dealWithFloatDiv(tips,false,true,true)
                           
                       }
@@ -593,6 +597,10 @@
                   
                 }catch(err) { 
                   var tips = '<span class="error">' + value + '</span> meets 404. May choose or switch dictionary!'
+                  $('#search-input').val('')
+                  $('#searchForm').show()
+                  $('.searchResult').hide()
+                  $('.dictsChoose').show()
                   dealWithFloatDiv(tips,false,true,true)
                   return false
                 }
