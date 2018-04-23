@@ -307,18 +307,18 @@
         }
         function getData(type,ifmd,filename){
           if(ifmd){
+            var today = new Date()
+            var  year = today.getFullYear()
+            var month = today.getMonth()+1
             if(!filename){
-              var today = new Date()
-              var  year = today.getFullYear()
               var day = today.getDate()
-              var month = today.getMonth()+1
               var filename = year+'_'+month+'_'+day+'_1.json'
               var tips = ''
             }else{
               var filename = filename
               var tips = 'Just a moment, please.'
             }
-            var getUrl = 'https://lockeycheng.github.io/economist/mds/'+filename
+            var getUrl = 'https://lockeycheng.github.io/economist/articles/a'+year+'a'+month+filename
             var dataType = 'json'
             dealWithFloatDiv(tips,true,false,false)
           }else{
