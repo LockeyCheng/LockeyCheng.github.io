@@ -54,15 +54,15 @@
         <h5 class="heading5" id="createDate">Author</h5>
         <div id="articleContent"></div>
     </div>
-    <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"</span>Last Paper</a></span>
-    <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper">Next Paper<span  class="fa fa-arrow-right"></span></a></span>
+    <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"></span></a></span>
+    <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper"><span  class="fa fa-arrow-right"></span></a></span>
   </div>
 </div> 
 
 
 <div data-role="page" id="pagetwo">
   <div data-role="main" class="ui-content">
-    <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa" style="font-size: 25px !important;" id="toPage1"></a>
+    <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa"  id="toPage1"></a>
     <section class="container">
     <div id="searchForm">
             <div class="search-wrapper">
@@ -216,6 +216,14 @@
           'pupil_basic':'The Pupil ',
           'pupil_model':'The Pupil '
         }
+        var mottoArr = [
+          {'en':"I am not afraid of tomorrow for I have seen yesterday and I love today.",'auth':"—— William Allen White",'cn':'我并不害怕明天，因为我已见过昨天并且热爱今天。'},
+          {'en':"Other men live to eat, while I eat to live. ",'auth':"—— Socrates",'cn':"别人为食而生存，我为生存而食。"},
+          {'en':"Easy come, easy go. ",'auth':"—— Hazlitt",'cn':"易得者亦易失。"},
+          {'en':"The darkest hour is that before the dawn. ",'auth':"—— Fuller",'cn':"黎明前的时分是最黑暗的。"},
+          {'en':"Cowards die many times before their deaths. ",'auth':"—— Julius Caesar",'cn':"懦夫在未死之前，已身历多次死亡的恐怖了。"},
+          {'en':"Truth is beautiful. Withoutdoubt; and so are lies.",'auth':"——Emerson.",'cn':"真理是美的；毫无疑问，谎言也是如此。"}
+        ]
         function dealWithFloatDiv(words,img,warningIcon,ifhide,successIcon,freecode){
               $('#loadWords').html(words);
               if(img){
@@ -304,7 +312,7 @@
               var  year = today.getFullYear()
               var day = today.getDate()
               var month = today.getMonth()+1
-              var filename = year+'_'+month+'_'+day+'.json'
+              var filename = year+'_'+month+'_'+day+'_1.json'
               var tips = ''
             }else{
               var filename = filename
@@ -411,9 +419,15 @@
         //   var timeStr = timeSplit[0]+" "+timeSplit[1]+" "+ timeSplit[2]+" "+timeSplit[3]+" "+hms
         //   $('.time').html(timeStr)
         // },1000)
-        $('.todayMotto').html("I am not afraid of tomorrow for I have seen yesterday and I love today.")
-        $('.todayMottoAuthor').html("- William Allen White")
-        $('.todayMottoCn').html("我并不害怕明天，因为我已见过昨天并且热爱今天。")
+        function fillMotto(){
+          var mottoLen = mottoArr.length
+          var randomNum = Math.random()*(mottoLen-1)
+          var toInt = parseInt(randomNum,10)
+          var chooseMotto = mottoArr[toInt]
+          $('.todayMotto').html(chooseMotto['en'])
+          $('.todayMottoAuthor').html(chooseMotto['auth'])
+          $('.todayMottoCn').html(chooseMotto['cn'])
+        }
         function submitSearch(word){
                 // if(searchTimes == 0){
                 //     searchTimes += 1
@@ -435,30 +449,65 @@
                   }
                 }
                 
-                value = value.toLocaleLowerCase()
-                valueArr = []
+                valueO = value.toLocaleLowerCase()
+                valueArr = [value]
+                value = valueO.slice(-4)
+                if(value.match("ies") || value.match("ied")){
+                    value = valueO.slice(0,-3)+'y'
+                    valueArr.push(value)
+                }
                 if(value.match("ing")){
-                    value = value.slice(0,-3)
+                    value = valueO.slice(0,-3)
                     valueArr.push(value)
                     value += 'e'
                     valueArr.push(value)
                 }
                 lastStr = value.slice(-1)
                 if(lastStr == 's'){
-                    value = value.slice(0,-1)
+                    value = valueO.slice(0,-1)
                     valueArr.push(value)
                 }
                 if(value.match("tion")){
-                    value = value.slice(0,-4)
+                    value = valueO.slice(0,-4)
                     valueArr.push(value)
                     value += 'te'
                     valueArr.push(value)
                 }
                 lastStr = value.slice(-2)
                 if(lastStr == 'ed'){
-                    value = value.slice(0,-2)
+                    value = valueO.slice(0,-2)
                     valueArr.push(value)
                     value += 'e'
+                    valueArr.push(value)
+                }
+                if(value.match("est")){
+                    value = valueO.slice(0,-3)
+                    valueArr.push(value)
+                    value = valueO.slice(0,-4)
+                    valueArr.push(value)
+                }
+                if(value.match("er")){
+                    value = valueO.slice(0,-2)
+                    valueArr.push(value)
+                    value = valueO.slice(0,-1)
+                    valueArr.push(value)
+                }
+                if(value.match("ers")){
+                    value = valueO.slice(0,-3)
+                    valueArr.push(value)
+                    value = valueO.slice(0,-2)
+                    valueArr.push(value)
+                    value = valueO.slice(0,-1)
+                    valueArr.push(value)
+                }
+                if(value.match("ly")){
+                    value = valueO.slice(0,-1)
+                    valueArr.push(value)
+                    value = valueO.slice(0,-2)
+                    valueArr.push(value)
+                }
+                if(value.match("ily")){
+                    value = valueO.slice(0,-3) + 'y'
                     valueArr.push(value)
                 }
                 try{
@@ -637,14 +686,18 @@
         distanceX = endX-startX;
         distanceY = endY-startY;
         //判断滑动方向
-        if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>36){
+        if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>50){
             if($('#pageone').is(':hidden')){
               $('#toPage1').trigger('click')
+            }else{
+              $('#toPage2').trigger('click')
             }
-        }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-36){
+        }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-50){
             console.log('往左滑动');
             if($('#pagetwo').is(':hidden')){
               $('#toPage2').trigger('click')
+            }else{
+              $('#toPage1').trigger('click')
             }
         }else
         if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<0){
@@ -703,6 +756,7 @@ $('#articleContent').on('click','.fa-info-circle',function(){
                }
                
         })
+fillMotto()
     </script>
 </body>
 </html>

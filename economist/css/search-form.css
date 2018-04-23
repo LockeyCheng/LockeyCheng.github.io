@@ -859,11 +859,11 @@ footer ul.social-buttons li a i{margin-top: 7px;}
 }
 .switchfa{
     z-index: 1000;
-    top: 20px;
+    top: 16px;
     position: fixed;
     color: #00d0ff;
-    right: 10.5px;
-    font-size: 30px !important;
+    right: 12px;
+    font-size: 36px !important;
    /* background: #085e5f;*/
     /* padding: 6px 7px; */
     height: 27px;
@@ -990,25 +990,28 @@ input{
 }
 .fixleft,.fixright{
 position: fixed;
-bottom: 62px;
+bottom: 9px;
 z-index: 1111;
 }
 .fixleft{
-left:-3px;
+left:-4px;
 }
 .fixright{
-right:-3px;
+right:2px;
 }
 .arrow a{
     color: #052d27;
     font-size:1.2em;
     background: #f0fdff;
-    padding: 3px;
-    border-radius: 6px;
+    padding: 6.5px 5px;
+    border-radius: 25px;
 }
 .arrow a:hover{
      color:#4dbacb;
      font-size: 1.3em
+}
+.fa-arrow-right,.fa-arrow-left{
+    padding: 0px 5.5px;
 }
 .ui-loader{
     display: none !important;
