@@ -31,7 +31,9 @@
 </style>
   <div data-role="header" id='header'>
     <h3 class="title"><a onclick="location.reload(true)"><img src="./img/econfinal_favicon.ico">The Economist</a></h3>
-     <div class="row pull-right" style="margin-top: -32px; margin-right: 1.5px">
+     
+  </div>
+  <div class="row pull-right" id="linkIcons" style="top: 19%;right: -10px;position: fixed;z-index: 11111;">
         <div class="col-six tab-full social">
             <ul class="links"> 
              <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
@@ -44,7 +46,6 @@
            </ul> 
         </div>
     </div>
-  </div>
 
 <div data-role="page" id="pageone">
   <div data-role="main" class="ui-content">
@@ -719,11 +720,13 @@
           if(scrollTop > 20)
           {
             $('#header').hide()
+            $('#linkIcons').hide()
             $('footer').show()
           }
           
         }else{
           $('#header').show()
+          $('#linkIcons').show()
           $('footer').hide()
         }
         dalta = change

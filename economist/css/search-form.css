@@ -42,7 +42,7 @@ a{
     border-width: 0;
     overflow: visible;
     overflow-x: hidden;
-    padding: 1em
+    padding:1em 1em 1em 1.2em;
 }
 
 @-webkit-keyframes fadein {
