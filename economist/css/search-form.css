@@ -561,7 +561,7 @@ a{
 .search-wrapper.active .input-holder {
     border-radius: 50px;
     width:450px;
-    background: rgba(0,0,0,0.5);
+    background: #27f0cb;
     -webkit-transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
     -moz-transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
     transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
@@ -1039,7 +1039,7 @@ right:2px;
     border-bottom-color: #34d9da;
     position: absolute;
     right: 8px;
-    top: 12px;
+    top: 11px;
     background: #a6fde9;
 }
 
