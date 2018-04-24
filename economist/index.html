@@ -762,6 +762,18 @@ $('#articleContent').on('click','.fa-info-circle',function(){
                   var index = toSearch.match("'")['index']
                   toSearch = toSearch.slice(0,index)
                }
+               if(toSearch.match("’")){
+                 var index = toSearch.match("'")['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("“")){
+                 var index = toSearch.match("“")['index']
+                  toSearch = toSearch.slice(0,index)
+                  if(toSearch.match("”")){
+                   var index = toSearch.match("”")['index']
+                    toSearch = toSearch.slice(0,index)
+                 }
+               }
                if(toSearch){
                 $('#toPage2').trigger('click')
                 $('#search-input').val(toSearch)
