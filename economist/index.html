@@ -763,17 +763,20 @@ $('#articleContent').on('click','.fa-info-circle',function(){
                   toSearch = toSearch.slice(0,index)
                }
                if(toSearch.match("’")){
-                 var index = toSearch.match("'")['index']
+                 var index = toSearch.match("’")['index']
                   toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("”")){
+                var index = toSearch.match("”")['index']
+                if(!toSearch.match("“")){
+                  toSearch = toSearch.slice(0,index)
+                }else{
+                 toSearch = toSearch.slice(1,index)
+                }
                }
                if(toSearch.match("“")){
-                 var index = toSearch.match("“")['index']
-                  toSearch = toSearch.slice(0,index)
-                  if(toSearch.match("”")){
-                   var index = toSearch.match("”")['index']
-                    toSearch = toSearch.slice(0,index)
-                 }
-               }
+                  toSearch = toSearch.slice(1)
+                }
                if(toSearch){
                 $('#toPage2').trigger('click')
                 $('#search-input').val(toSearch)
