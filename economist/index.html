@@ -30,10 +30,12 @@
 
 </style>
   <div data-role="header" id='header'>
-    <h3 class="title"><a onclick="location.reload(true)"><img src="./img/econfinal_favicon.ico">The Economist</a></h3>
+    <h3 class="title">
+      <a onclick="location.reload(true)"><img src="./img/econfinal_favicon.ico">The Economist</a>
+      <span class="fa fa-braille" id="paperList"></span></h3>
      
   </div>
-  <div class="row pull-right" id="linkIcons" style="top: 19%;right: -10px;position: fixed;z-index: 11111;">
+  <div class="row pull-right" id="linkIcons" style="top: 16.6%;right: -10px;position: fixed;z-index: 11111;">
         <div class="col-six tab-full social">
             <ul class="links"> 
              <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
@@ -530,10 +532,10 @@
                       var proAm = jsonDataBasic[value]['pron']['pam']
                       var proLi = ''
                       if(proEn){
-                        proLi += '<li><span class="normalItem">英音</span> '+proEn+'</li>'
+                        proLi += '<li>'+proEn+'</li>'
                       }
                       if(proAm){
-                        proLi += '<li><span class="normalItem">美音</span> '+proAm+'</li>'
+                        proLi += '<li>'+proAm+'</li>'
                       }
                       $('#wordPro').html(proLi)
                       var exLi = ''

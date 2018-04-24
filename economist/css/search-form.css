@@ -729,7 +729,7 @@ a{
 /* ---------------------------------------------------------------------------- background: -webkit-radial-gradient(red, green, blue);
 background: -webkit-linear-gradient(#ffc68a, #9e5f19);background:linear-gradient(#ffc68a, #9e5f19);*/
 .title{
-    padding: 16px 0px;
+    padding:12px 0px 6px 0px;
     margin-top: -2px;
     color: #970000;
     width: auto;
@@ -821,7 +821,7 @@ footer ul.social-buttons li a i{margin-top: 7px;}
     display: none;
     text-align: justify;
     padding-right:12px; 
-    color:#ffcaa4;
+    color:#7310af;
     margin-top: 3%;
 }
 .wordName{
@@ -859,11 +859,11 @@ footer ul.social-buttons li a i{margin-top: 7px;}
 }
 .switchfa{
     z-index: 1000;
-    top: 16px;
+    bottom: 76px;
     position: fixed;
     color: #00d0ff;
-    right: 12px;
-    font-size: 36px !important;
+    right: 7px;
+    font-size: 32px !important;
    /* background: #085e5f;*/
     /* padding: 6px 7px; */
     height: 27px;
@@ -940,7 +940,8 @@ input{
 }
 .normalItem{
     color:#00ffd4;
-    padding-right:5px;
+    padding-right: 0px;
+    margin-left: -23px;
 }
 #wordPro .normalItem,#wordPhrases .wordTitle{
     color:#0d6b5b;
@@ -1001,9 +1002,9 @@ right:2px;
 }
 .arrow a{
     color: #052d27;
-    font-size:1.2em;
+    font-size:1em;
     background: #f0fdff;
-    padding: 6.5px 5px;
+    padding: 4px 3px;
     border-radius: 25px;
 }
 .arrow a:hover{
@@ -1011,7 +1012,7 @@ right:2px;
      font-size: 1.3em
 }
 .fa-arrow-right,.fa-arrow-left{
-    padding: 0px 5.5px;
+    padding:11px 5.3px;
 }
 .ui-loader{
     display: none !important;
@@ -1025,6 +1026,33 @@ right:2px;
 }
 .title a{
     font-size: 26px !important;
+}
+#paperList{
+    border: 1px solid;
+    padding: 7px 8px 5px 8px;
+    font-size: 17px;
+    border-radius: 5px;
+    color:#9e5f19;
+    border-left-color: #81db34;
+    border-right-color: #34d9da;
+    border-top-color: #81db34;
+    border-bottom-color: #34d9da;
+    position: absolute;
+    right: 8px;
+    top: 12px;
+    background: #a6fde9;
+}
+
+#paperList:hover{
+    color:#024d4a;
+    border: 2.5px solid;
+    border-left-color: #81db34;
+    border-right-color: #34d9da;
+    border-top-color: #81db34;
+    border-bottom-color: #34d9da;
+}
+#wordExplanationCN li,#wordPro li,#wordPhrases li{
+    margin-left:-21px;
 }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
@@ -1051,7 +1079,7 @@ right:2px;
         top:51%;
     }*/
     .wordName{
-        text-align: center;
+        margin-left:80px;
     }
    /* .icheckbox_polaris, .iradio_polaris{
         display: block;
