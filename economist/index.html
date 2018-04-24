@@ -691,15 +691,11 @@
         if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>50){
             if($('#pageone').is(':hidden')){
               $('#toPage1').trigger('click')
-            }else{
-              $('#toPage2').trigger('click')
             }
         }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-50){
             console.log('往左滑动');
             if($('#pagetwo').is(':hidden')){
               $('#toPage2').trigger('click')
-            }else{
-              $('#toPage1').trigger('click')
             }
         }else
         if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<0){
@@ -745,7 +741,7 @@ $('.switchPaper').click(function(){
   if(paperName){
     getData('type',true,paperName)
   }else{
-    dealWithFloatDiv('Sorry, but no more paper to read!',false,false,true,false,true)
+    dealWithFloatDiv('Sorry, but no more paper!',false,false,true,false,true)
   }
 })
 $('#articleContent').on('click','.fa-info-circle',function(){
