@@ -466,7 +466,10 @@
                       return false
                   }
                 }
-                
+                if (value.length == 1){
+                  dealWithFloatDiv('Please Remember THE26 : A~B~C~D~E~F~G~H~I~J~K~L~M~N~O~P~Q~R~S~T~U~V~W~X~Y~Z~~~!',false,false,false,false,true)
+                  return false
+                }
                 valueO = value.toLocaleLowerCase()
                 valueArr = [value]
                 value = valueO.slice(-4)
@@ -546,10 +549,18 @@
                       var proAm = jsonDataBasic[value]['pron']['pam']
                       var proLi = ''
                       if(proEn){
-                        proLi += '<li>'+proEn+'</li>'
+                        if(proEn.match("英")){
+                          proLi += '<li>'+proEn+'</li>'
+                        }else{
+                          proLi += '<li><span class="wordTitle">英 </span>'+proEn+'</li>'
+                        }
                       }
                       if(proAm){
-                        proLi += '<li>'+proAm+'</li>'
+                        if(proAm.match("美")){
+                          proLi += '<li>'+proAm+'</li>'
+                        }else{
+                          proLi += '<li><span class="wordTitle">美 </span>'+proAm+'</li>'
+                        }
                       }
                       $('#wordPro').html(proLi)
                       var exLi = ''
