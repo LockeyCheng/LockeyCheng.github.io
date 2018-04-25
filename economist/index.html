@@ -324,6 +324,7 @@
             }
             var getUrl = 'https://lockeycheng.github.io/economist/articles/a'+year+'/a'+month+'/'+filename
             var dataType = 'json'
+            console.log(getUrl)
             dealWithFloatDiv(tips,true,false,false)
           }else{
             var toDict = type2Dict[type]
@@ -362,7 +363,7 @@
                 },
                 error: function(data) {
                   if(ifmd){
-                    toDict = 'Sorry, but no more paper to read!'
+                    toDict = 'Sorry, but no more paper!'
                   }else{
                     toDict = '<span class="error">'+toDict+'</span> failed!'
                   }
