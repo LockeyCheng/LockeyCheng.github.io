@@ -32,12 +32,12 @@
   <div data-role="header" id='header'>
     <h3 class="title">
       <a onclick="location.reload(true)"><img src="./img/econfinal_favicon.ico">The Economist</a>
-      <span class="fa fa-braille" id="paperList"></span></h3>
      
   </div>
   <div class="row pull-right" id="linkIcons" style="top: 18.5%;right: -10px;position: fixed;z-index: 11111;">
         <div class="col-six tab-full social">
             <ul class="links"> 
+             <li><span class="fa fa-braille" id="paperList"></span></li>
              <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
              <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>
              <li><a href="https://www.facebook.com/chen.yang.98031506"><i class="fa fa-facebook"></i></a></li>
@@ -50,6 +50,7 @@
     </div>
 
 <div data-role="page" id="pageone">
+  <!-- <span class="fa fa-braille" id="paperList"></span></h3> -->
   <div data-role="main" class="ui-content">
     <a href="#pagetwo" data-transition="slide" id="toPage2" class="fa fa-search switchfa" style="font-size:30px;color:#008cac"></a>
     <div id="page-content" class="single-page">
@@ -757,10 +758,10 @@ scrollDirect(function (direction) {
  })
 $('.switchPaper').click(function(){
   var paperName = $(this).attr('href')
-  if(paperName){
-    getData('type',true,paperName)
-  }else{
+  if(paperName == 'abcdeflockey'){
     dealWithFloatDiv('Sorry, but no more paper!',false,false,true,false,true)
+  }else{
+    getData('type',true,paperName)
   }
 })
 $('#articleContent').on('click','.fa-info-circle',function(){
