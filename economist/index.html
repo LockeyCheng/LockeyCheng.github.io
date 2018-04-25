@@ -311,17 +311,29 @@
         }
         function getData(type,ifmd,filename){
           if(ifmd){
-            var today = new Date()
-            var  year = today.getFullYear()
-            var month = today.getMonth()+1
-            if(!filename){
-              var day = today.getDate()
-              var filename = year+'_'+month+'_'+day+'_1.json'
-              var tips = ''
+            var link = location.href
+            var query = link.indexOf('paper')
+            if(query > 0){
+              var paper = link.slice(query+6)
+              var year = paper.slice(0,4)
+              var month = paper.slice(4,6)*1
+              var day = paper.slice(6,8)*1
+              var order =paper.slice(8)*1
+              var filename = year+'_'+month+'_'+day+'_'+order+'.json'
             }else{
-              var filename = filename
-              var tips = 'Just a moment, please.'
+              var today = new Date()
+              var  year = today.getFullYear()
+              var month = today.getMonth()+1
+              if(!filename){
+                var day = today.getDate()
+                var filename = year+'_'+month+'_'+day+'_1.json'
+                var tips = ''
+              }else{
+                var filename = filename
+                var tips = 'Just a moment, please.'
+              }
             }
+            
             var getUrl = 'https://lockeycheng.github.io/economist/articles/a'+year+'/a'+month+'/'+filename
             var dataType = 'json'
             console.log(getUrl)
