@@ -561,7 +561,7 @@ a{
 .search-wrapper.active .input-holder {
     border-radius: 50px;
     width:450px;
-    background: #27f0cb;
+    background: #acfff0;
     -webkit-transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
     -moz-transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
     transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
