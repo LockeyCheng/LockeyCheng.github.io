@@ -991,7 +991,7 @@ input{
 }
 .fixleft,.fixright{
 position: fixed;
-bottom: 9px;
+bottom: 3px;
 z-index: 1111;
 }
 .fixleft{
@@ -1002,14 +1002,14 @@ right:2px;
 }
 .arrow a{
     color: #052d27;
-    font-size:1em;
-    background: #f0fdff;
+    font-size:25px；
+    /*background: #f0fdff;*/
     padding: 4px 3px;
     border-radius: 25px;
 }
 .arrow a:hover{
      color:#4dbacb;
-     font-size: 1.3em
+     font-size: 28px；
 }
 .fa-arrow-right,.fa-arrow-left{
     padding:11px 5.3px;
