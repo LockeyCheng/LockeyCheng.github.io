@@ -1037,9 +1037,9 @@ right:2px;
     border-right-color: #34d9da;
     border-top-color: #81db34;
     border-bottom-color: #34d9da;
-    position: absolute;
+    /*position: absolute;
     right: 5px;
-    top: -30px;
+    top: -30px;*/
     background: #a6fde9;
 }
 
