@@ -311,11 +311,13 @@
             arrayPageSize = new Array(pageWidth, pageHeight, windowWidth, windowHeight);
             return arrayPageSize;
         }
+        var pquery = false
         function getData(type,ifmd,filename){
           if(ifmd){
             var link = location.href
             var query = link.indexOf('paper')
-            if(query > 0){
+            if(query > 0 && pquery == false){
+              pquery = true
               var paper = link.slice(query+6)
               var year = paper.slice(0,4)
               var month = paper.slice(4,6)*1
