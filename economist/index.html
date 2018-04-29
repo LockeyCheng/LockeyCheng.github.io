@@ -13,7 +13,8 @@
 <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript" src="../blogs/showdown.min.js"></script>
 <link rel="stylesheet" href="./paperlist/css/style.css"> <!-- Resource style -->
-  <script src="./paperlist/js/modernizr.js"></script> <!-- Modernizr -->
+<script src="./paperlist/js/modernizr.js"></script> <!-- Modernizr -->
+<script src="./paperlist/js/main.js"></script>
 </head>
 <body>
   <img src="../images/5.jpg" style="display: none">
@@ -31,31 +32,12 @@
 }
 
 </style>
-  <div data-role="header" id='header'>
+   <div data-role="header" id='header'>
     <h3 class="title">
       <a onclick="location.reload(true)"><img src="./img/econfinal_favicon.ico">The Economist</a>
-     
+      <a href="#pagezero" data-transition="slide" id="tolist"><span class="fa fa-braille" id="paperList"></span></a>
   </div>
-  <div class="row pull-right" id="linkIcons" style="top: 73px;right: -10px;position: fixed;z-index: 11111;">
-        <div class="col-six tab-full social">
-            <ul class="links"> 
-             <li><a href="#pagezero" data-transition="slide" id="tolist"><span class="fa fa-braille" id="paperList"></span></a></li>
-             <li>&nbsp;</li>
-             <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
-             <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>
-             <li><a href="https://www.facebook.com/chen.yang.98031506"><i class="fa fa-facebook"></i></a></li>
-             <li><a href="#"><i class="fa fa-twitter"></i></a></li> 
-             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-             <li><a href="https://blog.csdn.net/lockey23" target="_blank"><i class="fa fa-edit ibold"></i></a></li>
-             <!-- <li><a href="https://lockeycheng.github.io/economist/index.html" target="_blank"><i class="fa fa-etsy"></i></a></li>      -->
-           </ul> 
-        </div>
-    </div>
-
-
-
 <div data-role="page" id="pageone">
-  <!-- <span class="fa fa-braille" id="paperList"></span></h3> -->
   <div data-role="main" class="ui-content">
     <div id="page-content" class="single-page">
         <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
@@ -68,7 +50,6 @@
 </div> 
 
 <div data-role="page" id="pagezero">
-  <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa"  class="topageone"></a>
   <header class="cd-main-header animate-search">
     <nav class="cd-main-nav-wrapper">
       <a href="#search" class="cd-search-trigger cd-text-replace">Search</a>
@@ -99,7 +80,6 @@
           <option value="category2">2019</option>
           <option value="category3">2020</option>
         </select>
-        <span class="selected-value">2018</span>
       </div>
     </form>
 
@@ -225,11 +205,21 @@
 </div> 
 <a class="fa fa-search" id="showSearchForm" href="#pagetwo"></a>
  <footer class="with_motto_footer">
-    <div class="row">
+    <div class="row" style="margin-top: -10px;">
       <div class="col-six tab-full">
         <div class="copyright">
+
+            <ul class="links"> 
+             <li><a href="https://blog.csdn.net/lockey23" target="_blank"><i class="fa fa-edit ibold"></i></a></li>
+             <li><a href="#"><i class="fa fa-twitter"></i></a></li> 
+             <li><a href="https://www.facebook.com/chen.yang.98031506"><i class="fa fa-facebook"></i></a></li>
+             <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
+             <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>
+             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+             <!-- <li><a href="https://lockeycheng.github.io/economist/index.html" target="_blank"><i class="fa fa-etsy"></i></a></li>      -->
+           </ul> 
                 <!-- <span><p class="time"></p></span> -->
-                <span>Copyright <i class="fa fa-copyright"></i> 2018 Created by Lockey All rights reserved.<a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
+                <span>Copyright <i class="fa fa-copyright"></i> 2018 by Lockey. All rights reserved <a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
         </div>                       
       </div>
     </div>
@@ -247,7 +237,6 @@
     <h5 align="center" id="wariningIcon" style="margin-top: -10%;display: none;font-size:4em;color:#ffa500"><i class="fa fa-warning"></i></h5>
     <h3 align="center" id="loadWords"></h3></div>
 </div>
-<script src="./paperlist/js/main.js"></script>
 <script type="text/javascript">
         var test = true
         var loadedDict = []
@@ -456,9 +445,9 @@
             if(!container.hasClass('active')){
                   container.addClass('active');
                   evt.preventDefault();
-                  if(windowHW[0] < 500){
-                      $('.search-wrapper').css('margin-top','26%')
-                  }
+                  // if(windowHW[0] < 500){
+                  //     $('.search-wrapper').css('margin-top','26%')
+                  // }
                   $('.with_motto_footer').hide()
                   $('.search-input').focus()
                   $('#wordItems').show(345)
@@ -467,9 +456,9 @@
                   var value = $(searchDiv).find('.search-input').val().trim();
                    if(value.length < 1){
                     container.removeClass('active');
-                    if(windowHW[0] < 500){
-                      $('.search-wrapper').css('margin-top','3%')
-                    }
+                    // if(windowHW[0] < 500){
+                    //   $('.search-wrapper').css('margin-top','3%')
+                    // }
                     container.find('.result-container').fadeOut(100, function(){$(this).empty();});
                     $('#wordItems').hide(123)
                     $('.with_motto_footer').show()
@@ -752,6 +741,7 @@
           $('.searchResult').hide()
           $('.dictsChoose').show()
           $('.everydayMotto').hide()
+          $('#searchWordBtn').trigger('click')
          })
          $('body').bind('touchstart',function(e){
         startX = e.originalEvent.changedTouches[0].pageX;
