@@ -947,8 +947,7 @@ input{
     color:#0d6b5b;
 }
 #showSearchForm{
-    z-index: 22222222;
-    display: none;
+    z-index: 2222;
      position: fixed;
     font-size: 32px;
     right: 6px;

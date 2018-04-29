@@ -12,6 +12,8 @@
 <script src="https://cdn.staticfile.org/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript" src="../blogs/showdown.min.js"></script>
+<link rel="stylesheet" href="./paperlist/css/style.css"> <!-- Resource style -->
+  <script src="./paperlist/js/modernizr.js"></script> <!-- Modernizr -->
 </head>
 <body>
   <img src="../images/5.jpg" style="display: none">
@@ -37,7 +39,7 @@
   <div class="row pull-right" id="linkIcons" style="top: 73px;right: -10px;position: fixed;z-index: 11111;">
         <div class="col-six tab-full social">
             <ul class="links"> 
-             <li><span class="fa fa-braille" id="paperList"></span></li>
+             <li><a href="#pagezero" data-transition="slide" id="tolist"><span class="fa fa-braille" id="paperList"></span></a></li>
              <li>&nbsp;</li>
              <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
              <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>
@@ -50,10 +52,11 @@
         </div>
     </div>
 
+
+
 <div data-role="page" id="pageone">
   <!-- <span class="fa fa-braille" id="paperList"></span></h3> -->
   <div data-role="main" class="ui-content">
-    <a href="#pagetwo" data-transition="slide" id="toPage2" class="fa fa-search switchfa" style="font-size:30px;color:#008cac"></a>
     <div id="page-content" class="single-page">
         <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
         <h5 class="heading5" id="createDate">——By Lockey</h5>
@@ -64,10 +67,73 @@
   </div>
 </div> 
 
+<div data-role="page" id="pagezero">
+  <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa"  class="topageone"></a>
+  <header class="cd-main-header animate-search">
+    <nav class="cd-main-nav-wrapper">
+      <a href="#search" class="cd-search-trigger cd-text-replace">Search</a>
+    </nav>
+    <a href="#0" class="cd-nav-trigger cd-text-replace">Menu<span></span></a>
+  </header>
+  
+  <main class="cd-main-content">
+    <!-- your content here -->
+    <div class="content-center">
+      <ul>
+        <li>aa</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+      </ul>
+    </div>
+  </main>
+
+  <div id="search" class="cd-main-search">
+    <form>
+      <input type="search" placeholder="Search..." maxlength="20">
+
+      <div class="cd-select">
+        <select name="select-category">
+          <option value="category1">2018</option>
+          <option value="category2">2019</option>
+          <option value="category3">2020</option>
+        </select>
+        <span class="selected-value">2018</span>
+      </div>
+    </form>
+
+    <div class="cd-search-suggestions">
+      <div class="news">
+        <h3>News</h3>
+        <ul>
+          <li>
+            <a class="image-wrapper" href="#0"><img src="./paperlist/img/logo.png" alt="News image"></a>
+            <h4><a class="cd-nowrap" href="#0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></h4>
+            <time datetime="2016-01-12">Feb 03, 2016</time>
+          </li>
+
+          <li>
+            <a class="image-wrapper" href="#0"><img src="./paperlist/img/logo.png" alt="News image"></a>
+            <h4><a class="cd-nowrap" href="#0">Incidunt voluptatem adipisci voluptates fugit beatae culpa eum, distinctio, assumenda est ad</a></h4>
+            <time datetime="2016-01-12">Jan 28, 2016</time>
+          </li>
+
+          <li>
+            <a class="image-wrapper" href="#0"><img src="./paperlist/img/logo.png" alt="News image"></a>
+            <h4><a class="cd-nowrap" href="#0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, esse.</a></h4>
+            <time datetime="2016-01-12">Jan 12, 2016</time>
+          </li>
+        </ul>
+      </div> <!-- .news -->
+    </div> <!-- .cd-search-suggestions -->
+
+  </div> <!-- .cd-main-search -->
+</div> 
 
 <div data-role="page" id="pagetwo">
   <div data-role="main" class="ui-content">
-    <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa"  id="toPage1"></a>
+    <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa"  class="topageone"></a>
     <section class="container">
     <div id="searchForm">
             <div class="search-wrapper">
@@ -130,7 +196,6 @@
                     </li>
                   </ul>
                 </div> -->
-    <a href="javascript:void(0)" class="fa fa-search" id="showSearchForm"></a>
     <div class="searchResult">
         <div>
             <p class="wordName">tragedy</p>
@@ -156,28 +221,9 @@
         <p class="todayMottoAuthor"></p>
         <p class="todayMottoCn"></p>
     </div>
-    <!-- <div class="everydayMotto dictsChoose" id="radioChoice">
-        <ul class="list" id="dictChoice">
-              <li>
-                <input type="checkbox" id="polaris-checkbox-disabled-checked"  name='economist' value='economist' checked disabled>
-                <label for="polaris-checkbox-disabled-checked">The Economist</label>
-              </li>
-              <li class="cet-li">
-                <input type="checkbox" id="polaris-checkbox-2" value="cet4">
-                <label for="polaris-checkbox-2">CET-4</label>
-              </li>
-              <li class="cet-li">
-                <input type="checkbox" id="polaris-checkbox-3" value="cet6">
-                <label for="polaris-checkbox-3">CET-6</label>
-              </li>
-          </ul>
-            <div id="load_cancel">
-            <input type="radio" id="polaris-radio-2" name="polaris-radio-dict-choice" value='load'>Load
-            <input type="radio" id="polaris-radio-2" name="polaris-radio-dict-choice" value='cancel'>Cancel
-          </div>
-    </div> -->
   </div>
 </div> 
+<a class="fa fa-search" id="showSearchForm" href="#pagetwo"></a>
  <footer class="with_motto_footer">
     <div class="row">
       <div class="col-six tab-full">
@@ -201,7 +247,7 @@
     <h5 align="center" id="wariningIcon" style="margin-top: -10%;display: none;font-size:4em;color:#ffa500"><i class="fa fa-warning"></i></h5>
     <h3 align="center" id="loadWords"></h3></div>
 </div>
-<!-- <script src="../js/jquery-2.1.1.js"></script> -->
+<script src="./paperlist/js/main.js"></script>
 <script type="text/javascript">
         var test = true
         var loadedDict = []
@@ -572,7 +618,6 @@
                           exLi += '<li>'+exArr[i]+'</li>'
                       }
                       $('#searchForm').hide()
-                      $('#showSearchForm').show()
                       $('#wordExplanationCN').html(exLi)
                       $('.everydayMotto').hide()
                       $('footer').hide()
@@ -706,7 +751,7 @@
           $('#searchForm').show()
           $('.searchResult').hide()
           $('.dictsChoose').show()
-          $(this).hide()
+          $('.everydayMotto').hide()
          })
          $('body').bind('touchstart',function(e){
         startX = e.originalEvent.changedTouches[0].pageX;
@@ -808,7 +853,7 @@ $('#articleContent').on('click','.fa-info-circle',function(){
                   toSearch = toSearch.slice(1)
                 }
                if(toSearch){
-                $('#toPage2').trigger('click')
+                $('#showSearchForm').trigger('click')
                 $('#search-input').val(toSearch)
                 $('#searchWordBtn').trigger('click')
                 submitSearch(toSearch)
