@@ -220,6 +220,7 @@
         var searchForm = $('.cd-main-search')
         var requestPaper = 0
         var paperListJson = null
+        var totalPaper = 0
         var type2Dict={
           'default':'Paper Assistent',
           'economist_basic':'The Economist ',
@@ -245,30 +246,54 @@
         $('.topageone').click(function(){
           $('.overlap').slideUp(456)
         })
-        function paper_list_fill(yearArr){
+        function paper_list_fill(yearArr,searchPaperKey){
+          var windowHW = getPageSize()
+          var dispalyNo = 20
+          var appendLi = ''
+          var searchPaperNo = 0
+          if(windowHW[0] < 500){
+                dispalyNo = 6
+          }
           for(var year in yearArr){
+            var yearStr = yearArr[year]
+            var thisYearJson = paperListJson[yearStr]
+            console.log(yearStr,searchPaperKey)
             for(var month in thisYearJson){
                       for(var day in thisYearJson[month]){
                           for(var item in thisYearJson[month][day]){
-                            totalPaper += 1
-                            if(totalPaper < 7){
-                              var title = thisYearJson[month][day][item][1]
-                              var filename = thisYearJson[month][day][item][0]
-                              var timeStr = filename.slice(0,-5)
-                              var imgSrc = timeStr+'.png'
-                              var timeArr = imgSrc.slice(0,9).split('_')
-                              var dateStr = noTomonth[timeArr[1]*1]+' '+timeArr[2]+', '+timeArr[0] + ' By Lockey.'
+                            var title = thisYearJson[month][day][item][1]
+                            var filename = thisYearJson[month][day][item][0]
+                            var timeStr = filename.slice(0,-5)
+                            var imgSrc = timeStr+'.png'
+                            var timeArr = imgSrc.slice(0,9).split('_')
+                            var preSearch = searchPaperNo
+                            if(searchPaperKey){
+                              var keyWords = thisYearJson[month][day][item][2]
+                              if(keyWords.match(searchPaperKey)){
+                                  searchPaperNo += 1
+                              }
+                            }else{
+                              searchPaperNo += 1
+                            }
+                            if(searchPaperNo < 7 && preSearch!=searchPaperNo){
+                              var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+', '+timeArr[0] + ' By Lockey.'
                               appendLi += '<li><a class="image-wrapper listHref" href="javascript:void(0)" data="'+filename+'"><img src="./img/qrcode/'+imgSrc+'" alt="'+title+'" class="newsa"><time class="paperTime-list">'+dateStr+'</time></a><a class="cd-nowrap paperTitle-list listHref" href="javascript:void(0)" data="'+filename+'">'+title+'.</a></li>'
                             }
                           }
                       }
                     }
           }
+          
+          var countPage = Math.ceil(searchPaperNo/6)
+          if(searchPaperNo ==0){
+            $('#paperListUl').html('<li>No matched paper to show!</li>')
+            return false
+          }
           $('#paperListUl').empty()
           $('#paperListUl').html(appendLi)
-          totalPaper = Math.ceil(totalPaper/6)
+
           $("#paperPagninate").paginate({
-            count     : totalPaper,
+            count     : countPage,
             start     : 1,
             display     : dispalyNo,
             border          : false,
@@ -285,10 +310,6 @@
             return false
           }
           $('#floatList').slideDown(569)
-          var windowHW = getPageSize()
-          var dispalyNo = 20
-          var totalPaper = 0
-          var appendLi = ''
           $.ajax({
                 type:"GET",
                 url: 'https://lockeycheng.github.io/economist/paperRecords.json',
@@ -296,23 +317,22 @@
                 dataType:'json',
                 cache:false,
                 success: function(data) {
-                  if(windowHW[0] < 500){
-                    dispalyNo = 6
-                  }
                   paperListJson = data
                   var today = new Date()
-                  var  year = today.getFullYear()
+                  var year = today.getFullYear()
                   var thisYear = 'a'+year
-                  var thisYearJson = paperListJson[thisYear]
-                   for(var year in paperListJson){
-                        for(var month in paperListJson[year]){
-                                for(var day in paperListJson[year][month]){
-                                  dayPaper = paperListJson[year][month][day].length
-                                  totalPaper += dayPaper
-                                }
-                              }
-                            }
-                  paper_list_fill([thisYear])
+                 for(var year in paperListJson){
+                  if(year.length >5){
+                    continue
+                  }
+                  for(var month in paperListJson[year]){
+                          for(var day in paperListJson[year][month]){
+                            var dayPaper = paperListJson[year][month][day].length
+                            totalPaper += dayPaper
+                          }
+                        }
+                      }
+                  paper_list_fill([thisYear],false)
                 },
                 error: function(data) {
                     var listInfo = '<span class="error">Paper list</span> failed to load!'
@@ -335,16 +355,19 @@
                     dispalyNo = 6
                   }
             var searchPaperKey = $('#searchPaper').val()
-            var choose = searchForm.children('option:selected').text()
+            var choose = $('.selected-value').text()
             yearArr = []
-            if(choose.length == a){
+            if(choose.length == 3){
               for(var year in paperListJson){
+                if(year == 'lastPaper'){
+                  continue
+                }
                   yearArr.push('a'+year)
-              }
+                }
             }else{
               yearArr = ['a'+choose]
             }
-            paper_list_fill(yearArr)
+            paper_list_fill(yearArr,searchPaperKey)
 
         })
         function dealWithFloatDiv(words,img,warningIcon,ifhide,successIcon,freecode){
@@ -489,7 +512,7 @@
                         $('#mainTitle').html(content['title'])
                         var paperJsonDate = content['date']
                         var timeArr = paperJsonDate.slice(0,10).split('_')
-                        var dateStr = noTomonth[timeArr[1]*1]+' '+timeArr[2]+', '+timeArr[0] + ' By Lockey.'
+                        var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+', '+timeArr[0] + ' By Lockey.'
                         $('#createDate').html(dateStr)
                         if (requestPaper >0){
                           $('#todayPaperTitle').html(content['title'])
