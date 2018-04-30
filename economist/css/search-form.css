@@ -623,7 +623,7 @@ a{
 .search-wrapper.active .input-holder .search-icon {
     width: 42px;
     height: 40px;
-    margin: -1px;
+    margin: 0px;
     border-radius: 30px;
 }
 .search-wrapper .input-holder .search-icon span {
@@ -860,10 +860,10 @@ footer ul.social-buttons li a i{margin-top: 7px;}
 }
 .switchfa{
     z-index: 1000;
-    bottom: 90px;
+    bottom: 82px;
     position: fixed;
     color: #00d0ff;
-    right: 7px;
+    right: 9px;
     font-size: 32px !important;
    /* background: #085e5f;*/
     /* padding: 6px 7px; */
@@ -970,11 +970,11 @@ input{
 }
 #pageone .heading3{
     font-size:1.35em;
-    color:#900000;
+    color:#00a679;
 }
 #pageone .heading5{
     font-size:1em;
-    color:#158772;
+    color:#00f4eb;
 }
 .ibold{
     font-weight: bold !important;
@@ -990,8 +990,8 @@ input{
     margin-left: 9px;
 }
 .fa-info-circle{
-    font-size: 6px;
-    color:#900000;
+    font-size:15px !important;
+    color:#06cab0;
 }
 .fixleft,.fixright{
 position: fixed;
@@ -1028,15 +1028,18 @@ right:0px;
 #articleContent p span{
     text-indent: 3px;
 }
-.title a{
+.title a.anormal{
     font-size: 26px !important;
 }
 #paperList{
-    border: 1px solid;
-    padding:4px 6px 3px 6px;
-    font-size: 17px;
+   padding: 6px 5px 3px 8px;
+    font-size: 20px;
     border-radius: 5px;
-    color:#9e5f19;
+    color: #9e5f19;
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    border: solid 1px;
     border-left-color: #81db34;
     border-right-color: #34d9da;
     border-top-color: #81db34;
@@ -1048,8 +1051,8 @@ right:0px;
 }
 
 #paperList:hover{
-    color:#024d4a;
-    border: 2.5px solid;
+    color:#ff8607;
+    border: 2px solid;
     border-left-color: #81db34;
     border-right-color: #34d9da;
     border-top-color: #81db34;
@@ -1062,6 +1065,20 @@ right:0px;
     position: absolute;
     right: 12px;
     top: 6px;
+}
+.phraseCn
+{
+    text-indent: 23px;
+}
+.pkeywords{
+    color: #ff6a00;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+#spankeywords{
+    color: #00d339;
+    font-size: 0.9em;
+    word-break: break-all;
 }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
@@ -1087,9 +1104,9 @@ right:0px;
     /*.search-wrapper{
         top:51%;
     }*/
-    .wordName{
+   /* .wordName{
         margin-left:80px;
-    }
+    }*/
    /* .icheckbox_polaris, .iradio_polaris{
         display: block;
         margin-left: 25%;

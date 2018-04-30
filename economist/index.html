@@ -12,9 +12,6 @@
 <script src="https://cdn.staticfile.org/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript" src="../blogs/showdown.min.js"></script>
-<link rel="stylesheet" href="./paperlist/css/style.css"> <!-- Resource style -->
-<script src="./paperlist/js/modernizr.js"></script> <!-- Modernizr -->
-<script src="./paperlist/js/main.js"></script>
 </head>
 <body>
   <img src="../images/5.jpg" style="display: none">
@@ -31,86 +28,35 @@
   opacity: 0.8;
 }
 
+#floatList{
+  display:none;
+  z-index:111110;
+  top: 0;
+  height: 100%;
+  width:100%;
+  position:fixed;
+  background-size: 100% 100%;
+  background: #ffffff;
+  opacity: 0.96;
+}
 </style>
    <div data-role="header" id='header'>
     <h3 class="title">
-      <a onclick="location.reload(true)"><img src="./img/econfinal_favicon.ico">The Economist</a>
-      <a href="#pagezero" data-transition="slide" id="tolist"><span class="fa fa-braille" id="paperList"></span></a>
+      <a onclick="location.reload(true)" class="anormal"><img src="./img/econfinal_favicon.ico">The Economist</a>
+      <a href="javascript:void(0)" class="fa fa-braille"  id="paperList"></a>
   </div>
 <div data-role="page" id="pageone">
   <div data-role="main" class="ui-content">
     <div id="page-content" class="single-page">
         <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
         <h5 class="heading5" id="createDate">——By Lockey</h5>
+        <p class="pkeywords">Key Words: <span id="spankeywords"></span></p>
         <div id="articleContent"></div>
     </div>
     <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"></span></a></span>
     <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper"><span  class="fa fa-arrow-right"></span></a></span>
   </div>
 </div> 
-
-<div data-role="page" id="pagezero">
-  <header class="cd-main-header animate-search">
-    <nav class="cd-main-nav-wrapper">
-      <a href="#search" class="cd-search-trigger cd-text-replace">Search</a>
-    </nav>
-    <a href="#0" class="cd-nav-trigger cd-text-replace">Menu<span></span></a>
-  </header>
-  
-  <main class="cd-main-content">
-    <!-- your content here -->
-    <div class="content-center">
-      <ul>
-        <li>aa</li>
-        <li>a</li>
-        <li>a</li>
-        <li>a</li>
-        <li>a</li>
-      </ul>
-    </div>
-  </main>
-
-  <div id="search" class="cd-main-search">
-    <form>
-      <input type="search" placeholder="Search..." maxlength="20">
-
-      <div class="cd-select">
-        <select name="select-category">
-          <option value="category1">2018</option>
-          <option value="category2">2019</option>
-          <option value="category3">2020</option>
-        </select>
-      </div>
-    </form>
-
-    <div class="cd-search-suggestions">
-      <div class="news">
-        <h3>News</h3>
-        <ul>
-          <li>
-            <a class="image-wrapper" href="#0"><img src="./paperlist/img/logo.png" alt="News image"></a>
-            <h4><a class="cd-nowrap" href="#0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></h4>
-            <time datetime="2016-01-12">Feb 03, 2016</time>
-          </li>
-
-          <li>
-            <a class="image-wrapper" href="#0"><img src="./paperlist/img/logo.png" alt="News image"></a>
-            <h4><a class="cd-nowrap" href="#0">Incidunt voluptatem adipisci voluptates fugit beatae culpa eum, distinctio, assumenda est ad</a></h4>
-            <time datetime="2016-01-12">Jan 28, 2016</time>
-          </li>
-
-          <li>
-            <a class="image-wrapper" href="#0"><img src="./paperlist/img/logo.png" alt="News image"></a>
-            <h4><a class="cd-nowrap" href="#0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, esse.</a></h4>
-            <time datetime="2016-01-12">Jan 12, 2016</time>
-          </li>
-        </ul>
-      </div> <!-- .news -->
-    </div> <!-- .cd-search-suggestions -->
-
-  </div> <!-- .cd-main-search -->
-</div> 
-
 <div data-role="page" id="pagetwo">
   <div data-role="main" class="ui-content">
     <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa"  class="topageone"></a>
@@ -213,8 +159,8 @@
              <li><a href="https://blog.csdn.net/lockey23" target="_blank"><i class="fa fa-edit ibold"></i></a></li>
              <li><a href="#"><i class="fa fa-twitter"></i></a></li> 
              <li><a href="https://www.facebook.com/chen.yang.98031506"><i class="fa fa-facebook"></i></a></li>
-             <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
              <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>
+             <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
              <!-- <li><a href="https://lockeycheng.github.io/economist/index.html" target="_blank"><i class="fa fa-etsy"></i></a></li>      -->
            </ul> 
@@ -225,7 +171,7 @@
     </div>
 </footer>  
 
-<div id="floatDiv">
+<div id="floatDiv" class="overlap">
   <div>
     <h5 align="right"  id="closeFloat"><i class="fa fa-quora" alt="close" style="font-size:2em;margin-right: 13px;margin-top:-5px;color:#08d6c5">t</i>
     </h5>
@@ -236,6 +182,9 @@
     <h5 align="center" id="normalTips_free-code-camp" style="margin-top: -10%;display: none;font-size:4em;color:#13da13"><i class="fa fa-free-code-camp"></i></h5>
     <h5 align="center" id="wariningIcon" style="margin-top: -10%;display: none;font-size:4em;color:#ffa500"><i class="fa fa-warning"></i></h5>
     <h3 align="center" id="loadWords"></h3></div>
+</div>
+
+<div id="floatList" class="overlap">
 </div>
 <script type="text/javascript">
         var test = true
@@ -265,6 +214,10 @@
           {'en':"Truth is beautiful. Withoutdoubt; and so are lies.",'auth':"——Emerson.",'cn':"真理是美的；毫无疑问，谎言也是如此。"},
           {'en':"One can not see what itself in until leave it.",'auth':"——Lockey.",'cn':"不识庐山真面目，只缘身在此山中。"}
         ]
+        $('#paperList').click(function(){
+          console.log(11111111111111111111111111)
+          $('#floatList').slideDown(569)
+        })
         function dealWithFloatDiv(words,img,warningIcon,ifhide,successIcon,freecode){
               $('#loadWords').html(words);
               if(img){
@@ -395,6 +348,13 @@
                 success: function(data) {
                   if(ifmd){
                       var content = data
+                      var keyWords = content['keywords']
+                      var keyArr = keyWords.split(',')
+                      var wordsSpan = keyArr.join(', ')
+                      // for(var i in keyArr){
+                      //     wordsSpan += '<span class="innerKeywordSpan">'+keyArr[i]+'&nbsp'+'</span>'
+                      // }
+                      $('#spankeywords').html(wordsSpan)
                       $('#mainTitle').html(content['title'])
                       $('#createDate').html(content['date'])
                       var converter = new showdown.Converter();
@@ -635,7 +595,7 @@
                               var no = 0
                               for(var item in phrases){
                                 no += 1
-                                phraseLi += '<li><span class="wordTitle">'+no+'：</span><span class="wordSentenceEn">'+item+'</span></li><li><span class="wordSentenceCn">'+phrases[item]+'</span></li>'
+                                phraseLi += '<li><span class="wordTitle">'+no+'：</span><span class="wordSentenceEn">'+item+'</span></li><li class="phraseCn"><span class="wordSentenceCn">'+phrases[item]+'</span></li>'
                               }
                               $('#wordPhrases').html(phraseLi)
                             }
@@ -766,7 +726,9 @@
             }
         }else
         if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<0){
-            console.log('往上滑动');
+            if(!$('.overlap').is(':hidden')){
+              $('.overlap').hide()
+            }
         } else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY>0){
             console.log('往下滑动');
 
