@@ -14,7 +14,6 @@
 <script type="text/javascript" src="../blogs/showdown.min.js"></script>
 </head>
 <body>
-  <img src="../images/5.jpg" style="display: none">
 <style type="text/css">
   #floatDiv{
   display:none;
@@ -469,7 +468,7 @@
                   return false
                 }
                 valueO = value.toLocaleLowerCase()
-                valueArr = [value]
+                valueArr = [valueO]
                 value = valueO.slice(-4)
                 if(value.match("ies") || value.match("ied")){
                     value = valueO.slice(0,-3)+'y'
@@ -631,9 +630,6 @@
         $('#wordItems li').click(function(){
           var radio = $(this).find('input').val()
           var childi = $(this).find('i')
-          // if($(childi).hasClass('eternal')){
-          //         return false
-          // }
           if(!$(childi).hasClass('selected')){
                   $(childi).addClass('selected');
                   currentDict.push(radio)
@@ -717,12 +713,12 @@
         //判断滑动方向
         if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>50){
             if($('#pageone').is(':hidden')){
-              $('#toPage1').trigger('click')
+              $('.topageone').trigger('click')
             }
         }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-50){
             console.log('往左滑动');
             if($('#pagetwo').is(':hidden')){
-              $('#toPage2').trigger('click')
+              $('#showSearchForm').trigger('click')
             }
         }else
         if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<0){
