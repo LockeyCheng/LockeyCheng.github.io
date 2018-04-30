@@ -729,7 +729,7 @@ a{
 /* ---------------------------------------------------------------------------- background: -webkit-radial-gradient(red, green, blue);
 background: -webkit-linear-gradient(#ffc68a, #9e5f19);background:linear-gradient(#ffc68a, #9e5f19);*/
 .title{
-    padding:12px 0px 6px 0px;
+    padding:16px 0px 12px 0px;
     margin-top: -2px;
     color: #970000;
     width: auto;
@@ -953,10 +953,10 @@ input{
 }
 #showSearchForm{
     z-index: 2222;
-     position: fixed;
+    position: fixed;
     font-size: 32px;
     right: 6px;
-    top: 46%;
+    top: 45%;
     color: #00c7ab;
 }
 #wordPro li,#wordPhrases li{
@@ -970,11 +970,11 @@ input{
 }
 #pageone .heading3{
     font-size:1.35em;
-    color:#00a679;
+    color:#08607b;
 }
 #pageone .heading5{
     font-size:1em;
-    color:#00f4eb;
+    color:#33d4e6;
 }
 .ibold{
     font-weight: bold !important;
@@ -1038,7 +1038,7 @@ right:0px;
     border-radius: 5px;
     color: #9e5f19;
     position: absolute;
-    top: 13px;
+    top: 18px;
     right: 10px;
     border: solid 1px;
     border-left-color: #81db34;
@@ -1080,6 +1080,89 @@ right:0px;
     color: #00d339;
     font-size: 0.9em;
     word-break: break-all;
+}
+
+select {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.cd-main-search {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    -webkit-transition: opacity 0.3s, visibility 0.3s;
+    -moz-transition: opacity 0.3s, visibility 0.3s;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+.cd-main-search form {
+    width:96%;
+    position: relative;
+    margin: 13px calc(5% + 116px) 0 calc(5% + 170px);
+}
+#searchPaper{
+    display: inline-block;
+    font-size: 23px;
+    background-color: transparent;
+    margin-left: -156px;
+    width: 50%;
+    height: 36px;
+    border: none;
+    color: #00ffba;
+}
+
+#searchPaper input[type="search"]::-webkit-search-decoration,
+#searchPaper input[type="search"]::-webkit-search-cancel-button,
+#searchPaper input[type="search"]::-webkit-search-results-button,
+#searchPaper input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+.cd-main-search input[type="search"]:focus {
+    font-size: 18px;
+    background-color: transparent;
+    margin-left: -156px;
+    width: 50%;
+    height: 36px;
+    outline: none;
+    border-bottom:solid 1px #00fff3 !important;
+}
+.cd-main-search .cd-select {
+    display: inline-block;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 20%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #5c5d6a;
+    font-size: 1.4rem;
+    overflow: hidden;
+}
+span.selected-value{
+    font-size: 1.1em !important;
+}
+.cd-main-search select, .cd-main-search .selected-value {
+    padding: 8px 23px 9px 6px;
+    border-radius: 3px;
+    font-size: 16px;
+}
+.cd-main-search select {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    bottom: auto;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    opacity: 0;
+    color: transparent;
 }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
