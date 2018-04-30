@@ -180,12 +180,13 @@
   <div id="search" class="cd-main-search">
     <div class="paperSearchForm">
     <form>
-      <input type="search" placeholder="Search Paper..." maxlength="20" id="searchPaper">
+      <input type="search" placeholder="Search Paper..." maxlength="20" id="searchPaper"><span class="fa fa-search" id="searchPaperIcon"></span>
       <div class="cd-select">
         <select name="select-category">
-          <option value="category1">2018</option>
-          <option value="category2">2019</option>
-          <option value="category3">2020</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="all">All</option>
         </select>
         <span class="selected-value fa fa-caret-down">2018</span>
       </div>
@@ -218,6 +219,7 @@
         var currentFloat = 0
         var searchForm = $('.cd-main-search')
         var requestPaper = 0
+        var paperListJson = null
         var type2Dict={
           'default':'Paper Assistent',
           'economist_basic':'The Economist ',
@@ -243,7 +245,45 @@
         $('.topageone').click(function(){
           $('.overlap').slideUp(456)
         })
+        function paper_list_fill(yearArr){
+          for(var year in yearArr){
+            for(var month in thisYearJson){
+                      for(var day in thisYearJson[month]){
+                          for(var item in thisYearJson[month][day]){
+                            totalPaper += 1
+                            if(totalPaper < 7){
+                              var title = thisYearJson[month][day][item][1]
+                              var filename = thisYearJson[month][day][item][0]
+                              var timeStr = filename.slice(0,-5)
+                              var imgSrc = timeStr+'.png'
+                              var timeArr = imgSrc.slice(0,9).split('_')
+                              var dateStr = noTomonth[timeArr[1]*1]+' '+timeArr[2]+', '+timeArr[0] + ' By Lockey.'
+                              appendLi += '<li><a class="image-wrapper listHref" href="javascript:void(0)" data="'+filename+'"><img src="./img/qrcode/'+imgSrc+'" alt="'+title+'" class="newsa"><time class="paperTime-list">'+dateStr+'</time></a><a class="cd-nowrap paperTitle-list listHref" href="javascript:void(0)" data="'+filename+'">'+title+'.</a></li>'
+                            }
+                          }
+                      }
+                    }
+          }
+          $('#paperListUl').empty()
+          $('#paperListUl').html(appendLi)
+          totalPaper = Math.ceil(totalPaper/6)
+          $("#paperPagninate").paginate({
+            count     : totalPaper,
+            start     : 1,
+            display     : dispalyNo,
+            border          : false,
+            text_color        : '#79B5E3',
+            background_color      : 'none', 
+            text_hover_color      : '#2573AF',
+            background_hover_color  : 'none', 
+            images    : false,
+            mouse   : 'press'
+          });
+        }
         $('#paperList').click(function(){
+          if(paperListJson){
+            return false
+          }
           $('#floatList').slideDown(569)
           var windowHW = getPageSize()
           var dispalyNo = 20
@@ -251,7 +291,7 @@
           var appendLi = ''
           $.ajax({
                 type:"GET",
-                url: 'https://lockeycheng.github.io/economist/paperList.json',
+                url: 'https://lockeycheng.github.io/economist/paperRecords.json',
                 data: null,
                 dataType:'json',
                 cache:false,
@@ -259,49 +299,20 @@
                   if(windowHW[0] < 500){
                     dispalyNo = 6
                   }
-                  var listData = data
-                  for(var year in listData){
-                    for(var month in listData[year]){
-                      for(var day in listData[year][month]){
-                          for(var item in listData[year][month][day]){
-                            totalPaper += 1
-                            if(totalPaper < 7){
-                              var title = listData[year][month][day][item][1]
-                              var timeStr = title.slice(0,-5)
-                              var imgSrc = timeStr+'.png'
-                              var timeArr = imgSrc.slice(0,9).split('_')
-                              var dateStr = noTomonth[timeArr[1]*1]+' '+timeArr[2]+', '+timeArr[0] + ' By Lockey.'
-                              appendLi += '<li><a class="image-wrapper" href="javascript:void(0)" ><img src="'+imgSrc+'" alt="'+title+'" class="newsa"><time class="paperTime-list">'+dateStr+'</time></a><a class="cd-nowrap paperTitle-list" href="javascript:void(0)">'+title+'.</a></li>'
-                            }else{
-                              $('#paperListUl').html(appendLi)
-                              return
+                  paperListJson = data
+                  var today = new Date()
+                  var  year = today.getFullYear()
+                  var thisYear = 'a'+year
+                  var thisYearJson = paperListJson[thisYear]
+                   for(var year in paperListJson){
+                        for(var month in paperListJson[year]){
+                                for(var day in paperListJson[year][month]){
+                                  dayPaper = paperListJson[year][month][day].length
+                                  totalPaper += dayPaper
+                                }
+                              }
                             }
-                          }
-                      }
-                    }
-                  }
-                  $("#paperPagninate").paginate({
-                    count     : 100,
-
-                    start     : 1,
-
-                    display     : dispalyNo,
-
-                    border          : false,
-
-                    text_color        : '#79B5E3',
-
-                    background_color      : 'none', 
-
-                    text_hover_color      : '#2573AF',
-
-                    background_hover_color  : 'none', 
-
-                    images    : false,
-
-                    mouse   : 'press'
-
-                  });
+                  paper_list_fill([thisYear])
                 },
                 error: function(data) {
                     var listInfo = '<span class="error">Paper list</span> failed to load!'
@@ -310,6 +321,31 @@
                 }
               })
           
+        })
+        $('#paperListUl').on('click','.listHref',function(){
+            var paperJson = $(this).attr('data')
+            getData('type',true,paperJson)
+        })
+        $('#searchPaperIcon').click(function(){
+            var windowHW = getPageSize()
+            var dispalyNo = 20
+            var totalPaper = 0
+            var appendLi = ''
+            if(windowHW[0] < 500){
+                    dispalyNo = 6
+                  }
+            var searchPaperKey = $('#searchPaper').val()
+            var choose = searchForm.children('option:selected').text()
+            yearArr = []
+            if(choose.length == a){
+              for(var year in paperListJson){
+                  yearArr.push('a'+year)
+              }
+            }else{
+              yearArr = ['a'+choose]
+            }
+            paper_list_fill(yearArr)
+
         })
         function dealWithFloatDiv(words,img,warningIcon,ifhide,successIcon,freecode){
               $('#loadWords').html(words);
@@ -339,7 +375,7 @@
                       if(successIcon){
                         $('#successIcon').hide()
                       }
-                      $('#floatDiv').fadeOut(456)
+                      $('.overlap').fadeOut(456)
                     },1000)
               }
               
@@ -442,31 +478,37 @@
                   if(ifmd){
                       requestPaper +=1
                       var content = data
-                      var keyWords = content['keywords']
-                      var keyArr = keyWords.split(',')
-                      var wordsSpan = keyArr.join(', ')
+                      try{
+                        var keyWords = content['keywords']
+                        var keyArr = keyWords.split(',')
+                        var wordsSpan = keyArr.join(', ')
+                        $('#spankeywords').html(wordsSpan)
+                      } catch(err) {
+                        console.log(err,'no keywords')
+                      }finally{
+                        $('#mainTitle').html(content['title'])
+                        var paperJsonDate = content['date']
+                        var timeArr = paperJsonDate.slice(0,10).split('_')
+                        var dateStr = noTomonth[timeArr[1]*1]+' '+timeArr[2]+', '+timeArr[0] + ' By Lockey.'
+                        $('#createDate').html(dateStr)
+                        if (requestPaper >0){
+                          $('#todayPaperTitle').html(content['title'])
+                          $('#todayPaperDate').html(dateStr)
+                          var srcPath = './img/qrcode/'+filename.slice(0,-4)+'png'
+                          $('#todayQrcode').attr('src',srcPath)
+                        }
+                        var converter = new showdown.Converter();
+                        $('#lastArt').attr('href',content['last'])
+                        $('#nextArt').attr('href',content['next'])
+                        dictData['default'] = content['assistent']
+                        var html = converter.makeHtml(content['content']);
+                        document.getElementById("articleContent").innerHTML = html;
+                        dealWithFloatDiv('<span class="success">Paper Ready!</span>',false,false,true,true)
+                      }
                       // for(var i in keyArr){
                       //     wordsSpan += '<span class="innerKeywordSpan">'+keyArr[i]+'&nbsp'+'</span>'
                       // }
-                      $('#spankeywords').html(wordsSpan)
-                      $('#mainTitle').html(content['title'])
-                      var paperJsonDate = content['date']
-                      var timeArr = paperJsonDate.slice(0,10).split('_')
-                      var dateStr = noTomonth[timeArr[1]*1]+' '+timeArr[2]+', '+timeArr[0] + ' By Lockey.'
-                      $('#createDate').html(dateStr)
-                      if (requestPaper >0){
-                        $('#todayPaperTitle').html(content['title'])
-                        $('#todayPaperDate').html(dateStr)
-                        var srcPath = './img/qrcode/'+filename.slice(0,-4)+'png'
-                        $('#todayQrcode').attr('src',srcPath)
-                      }
-                      var converter = new showdown.Converter();
-                      $('#lastArt').attr('href',content['last'])
-                      $('#nextArt').attr('href',content['next'])
-                      dictData['default'] = content['assistent']
-                      var html = converter.makeHtml(content['content']);
-                      document.getElementById("articleContent").innerHTML = html;
-                      dealWithFloatDiv('<span class="success">Paper Ready!</span>',false,false,true,true)
+                      
                   }else{
                      dictData[type] = data
                     $('#successIcon').show()
