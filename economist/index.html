@@ -57,7 +57,7 @@
   </div>
 </div> 
 <div data-role="page" id="pagetwo" style="margin-top: 66px;">
-  <div data-role="main" class="ui-content" style="margin-top: -50px;">
+  <div data-role="main" class="ui-content" style="margin-top: -66px;">
     <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa topageone"></a>
     <section class="container">
     <div id="searchForm">
@@ -113,14 +113,6 @@
             </div>
         </div>
   </section>
-   <!--  <div id="wordItems"  class="dictsChoose">
-                  <ul class="list" id="wordItemChoose">
-                    <li style="margin-left: -23px;">
-                      <input type="checkbox" id="polaris-checkbox-checked-worditem"  name='economist' value='economist'>
-                      <label for="polaris-checkbox-disabled-checked">Model sentence</label>
-                    </li>
-                  </ul>
-                </div> -->
     <div class="searchResult">
         <div>
             <p class="wordName">tragedy</p>
@@ -164,7 +156,7 @@
              <!-- <li><a href="https://lockeycheng.github.io/economist/index.html" target="_blank"><i class="fa fa-etsy"></i></a></li>      -->
            </ul> 
                 <!-- <span><p class="time"></p></span> -->
-                <span>Copyright <i class="fa fa-copyright"></i> 2018 by Lockey. All rights reserved <a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
+                <span>Copyright <i class="fa fa-copyright"></i>for ever and ever. All rights reserved <a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
         </div>                       
       </div>
     </div>
@@ -200,34 +192,10 @@
     </form>
   </div>
   <div class="paperListdiv">
-        <ul>
+        <ul id="paperListUl">
           <li>
-            <a class="image-wrapper" href="javascript:void(0)" ><img src="./img/economist_index.png" alt="News image" class="newsa"><time datetime="2016-01-12" class="paperTime-list">Feb 03, 2016</time></a>
-            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
-          </li>
-          <li>
-            <a class="image-wrapper" href="javascript:void(0)" ><img src="./img/economist_index.png" alt="News image" class="newsa"><time datetime="2016-01-12" class="paperTime-list">Feb 03, 2016</time></a>
-            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
-          </li>
-          <li>
-            <a class="image-wrapper" href="javascript:void(0)" ><img src="./img/economist_index.png" alt="News image" class="newsa"><time datetime="2016-01-12" class="paperTime-list">Feb 03, 2016</time></a>
-            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
-          </li>
-          <li>
-            <a class="image-wrapper" href="javascript:void(0)" ><img src="./img/economist_index.png" alt="News image" class="newsa"><time datetime="2016-01-12" class="paperTime-list">Feb 03, 2016</time></a>
-            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
-          </li>
-          <li>
-            <a class="image-wrapper" href="javascript:void(0)" ><img src="./img/economist_index.png" alt="News image" class="newsa"><time datetime="2016-01-12" class="paperTime-list">Feb 03, 2016</time></a>
-            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
-          </li>
-          <li>
-            <a class="image-wrapper" href="javascript:void(0)" ><img src="./img/economist_index.png" alt="News image" class="newsa"><time datetime="2016-01-12" class="paperTime-list">Feb 03, 2016</time></a>
-            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
-          </li>
-          <li>
-            <a class="image-wrapper" href="javascript:void(0)" ><img src="./img/economist_index.png" alt="News image" class="newsa"><time datetime="2016-01-12" class="paperTime-list">Feb 03, 2016</time></a>
-            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
+            <a class="image-wrapper" href="javascript:void(0)" ><img src="" alt="News image" id="todayQrcode" class="newsa"><time class="paperTime-list" id="todayPaperDate"></time></a>
+            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)" id="todayPaperTitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
           </li>
         </ul>
     </div> <!-- .cd-search-suggestions -->
@@ -249,6 +217,7 @@
         var dictData={}
         var currentFloat = 0
         var searchForm = $('.cd-main-search')
+        var requestPaper = 0
         var type2Dict={
           'default':'Paper Assistent',
           'economist_basic':'The Economist ',
@@ -433,6 +402,7 @@
                 cache:false,
                 success: function(data) {
                   if(ifmd){
+                      requestPaper +=1
                       var content = data
                       var keyWords = content['keywords']
                       var keyArr = keyWords.split(',')
@@ -442,8 +412,14 @@
                       // }
                       $('#spankeywords').html(wordsSpan)
                       $('#mainTitle').html(content['title'])
-                      var paperDate = content['date'].split('_')
+                      var paperJsonDate = content['date']
+                      var paperDate = paperJsonDate.split('_')
                       $('#createDate').html(paperDate.join('.'))
+                      if (requestPaper >0){
+                        $('#todayPaperTitle').html(content['title'])
+                        $('#todayPaperDate').html(paperDate.join('.'))
+                        $('#todayQrcode').attr('src',paperJsonDate.slice(0,-4)+'png')
+                      }
                       var converter = new showdown.Converter();
                       $('#lastArt').attr('href',content['last'])
                       $('#nextArt').attr('href',content['next'])
@@ -811,9 +787,16 @@
               return false
             }
         }else
-        if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<0){
+        if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<50){
           console.log('往up滑动');
               $('#floatDiv').slideUp(345)
+              var paperNo = $('#paperListUl li').length
+              if(!$('#floatList').is(':hidden') && paperNo >4){
+                var $parentUl = $('#paperListUl');
+                var $firstPaperLi = $parentUl.find('li:first');
+                var paperLi = $firstPaperLi.detach();
+                $parentUl.append(paperLi)
+              }
         } else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY>0){
             console.log('往down滑动');
 

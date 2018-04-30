@@ -1088,10 +1088,6 @@ select {
 }
 
 .cd-main-search {
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
     height: 100%;
     width: 100%;
     -webkit-transition: opacity 0.3s, visibility 0.3s;
@@ -1221,7 +1217,7 @@ ul.jPag-pages li a{
     background: #f7fffe;
 }
 span.jPag-current{
-    font-size: 2.5em;
+    font-size: 2.1em;
     cursor:default;
     font-weight:normal;
     line-height:15px;
@@ -1269,7 +1265,7 @@ span.jPag-sprevious-img{
     color:#0bbcda;
 }
 a.jPag-last,a.jPag-first{
-    font-size: 26px;
+    font-size: 23px;
 }
 span.jPag-snext,
 span.jPag-snext-img{
@@ -1286,7 +1282,7 @@ span.jPag-snext-img{
     padding: 12px 1px;
     background: linear-gradient(#fff4e8, #97f0ff);
     position: fixed;
-    bottom: 0px;
+    bottom: -1px;
     z-index: 10000;
 }
 .paperSearchForm{
@@ -1309,7 +1305,7 @@ span.jPag-snext-img{
 }
 .paperListdiv ul li{
     margin-left: -30px;
-    padding:6px 5px;
+    padding:2px 5px;
     border-bottom: solid 1px #94fffc;
     border-left: solid 1px #07c7b5;
     margin-top: 5px;
@@ -1326,7 +1322,7 @@ span.jPag-snext-img{
     }
     .searchResult{
         position: absolute;
-        margin-top:9%;
+        margin-top:10%;
         margin-left: 2.5%;
     }
     .todayMotto{
