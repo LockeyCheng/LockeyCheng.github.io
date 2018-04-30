@@ -995,7 +995,7 @@ input{
 }
 .fixleft,.fixright{
 position: fixed;
-bottom: 16px;
+bottom: 15px;
 z-index: 1111;
 }
 .fixleft{
