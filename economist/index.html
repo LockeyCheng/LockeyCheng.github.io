@@ -244,35 +244,59 @@
           $('.overlap').slideUp(456)
         })
         $('#paperList').click(function(){
-          console.log(11111111111111111111111111)
           $('#floatList').slideDown(569)
           var windowHW = getPageSize()
           var dispalyNo = 20
-          if(windowHW[0] < 500){
-            dispalyNo = 6
-          }
-          $("#paperPagninate").paginate({
-            count     : 150,
+          $.ajax({
+                type:"GET",
+                url: './paperList.json',
+                data: null,
+                dataType:'json',
+                cache:false,
+                success: function(data) {
+                  if(windowHW[0] < 500){
+                    dispalyNo = 6
+                  }
+                  var listData = data
+                  for(var year in listData){
+                    for(var month in listData[year]){
+                      for(var day in listData[year][month]){
+                          for(var item in listData[year][month][day]){
+                            console.log(item)
+                          }
+                      }
+                    }
+                  }
+                  $("#paperPagninate").paginate({
+                    count     : 150,
 
-            start     : 1,
+                    start     : 1,
 
-            display     : dispalyNo,
+                    display     : dispalyNo,
 
-            border          : false,
+                    border          : false,
 
-            text_color        : '#79B5E3',
+                    text_color        : '#79B5E3',
 
-            background_color      : 'none', 
+                    background_color      : 'none', 
 
-            text_hover_color      : '#2573AF',
+                    text_hover_color      : '#2573AF',
 
-            background_hover_color  : 'none', 
+                    background_hover_color  : 'none', 
 
-            images    : false,
+                    images    : false,
 
-            mouse   : 'press'
+                    mouse   : 'press'
 
-          });
+                  });
+                },
+                error: function(data) {
+                    var listInfo = '<span class="error">Paper list</span> failed to load!'
+                    dealWithFloatDiv(listInfo,false,true,false,false)
+                  
+                }
+              })
+          
         })
         function dealWithFloatDiv(words,img,warningIcon,ifhide,successIcon,freecode){
               $('#loadWords').html(words);
@@ -366,7 +390,7 @@
               var year = paper.slice(0,4)
               var month = paper.slice(4,6)*1
               var day = paper.slice(6,8)*1
-              var order =paper.slice(8)*1
+              var order =paper.slice(8,10)*1
               var filename = year+'_'+month+'_'+day+'_'+order+'.json'
             }else{
               var today = new Date()

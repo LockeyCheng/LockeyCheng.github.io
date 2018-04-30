@@ -1212,7 +1212,7 @@ ul.jPag-pages li{
 ul.jPag-pages li a{
     color:#10a95d !important;
     float:left;
-    padding:2px 5px;
+    padding:4px 2px 2px 0px;
     border-radius: 5px;
     background: #f7fffe;
 }
@@ -1300,7 +1300,6 @@ span.jPag-snext-img{
     font-size: 0.65em;
 }
 .paperTitle-list{
-    word-break: break-all;
     color: #55005e;
     font-size: 1.2em;
 }
