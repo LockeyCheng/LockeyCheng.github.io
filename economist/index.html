@@ -56,9 +56,9 @@
     <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper"><span  class="fa fa-arrow-right"></span></a></span>
   </div>
 </div> 
-<div data-role="page" id="pagetwo">
-  <div data-role="main" class="ui-content">
-    <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa"  id="topageone"></a>
+<div data-role="page" id="pagetwo" style="margin-top: 66px;">
+  <div data-role="main" class="ui-content" style="margin-top: -50px;">
+    <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa topageone"></a>
     <section class="container">
     <div id="searchForm">
             <div class="search-wrapper">
@@ -184,7 +184,9 @@
 </div>
 
 <div id="floatList" class="overlap">
+  <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa topageone"></a>
   <div id="search" class="cd-main-search">
+    <div class="paperSearchForm">
     <form>
       <input type="search" placeholder="Search Paper..." maxlength="20" id="searchPaper">
       <div class="cd-select">
@@ -196,22 +198,46 @@
         <span class="selected-value fa fa-caret-down">2018</span>
       </div>
     </form>
-
-    <div class="cd-search-suggestions">
-      <div class="news">
-        <h3>News</h3>
+  </div>
+  <div class="paperListdiv">
         <ul>
           <li>
-            <a class="image-wrapper" href="#0"><img src="./paperlist/img/logo.png" alt="News image"></a>
-            <h4><a class="cd-nowrap" href="#0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></h4>
-            <time datetime="2016-01-12">Feb 03, 2016</time>
+            <a class="image-wrapper" href="javascript:void(0)" ><img src="./img/economist_index.png" alt="News image" class="newsa"><time datetime="2016-01-12" class="paperTime-list">Feb 03, 2016</time></a>
+            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
+          </li>
+          <li>
+            <a class="image-wrapper" href="javascript:void(0)" ><img src="./img/economist_index.png" alt="News image" class="newsa"><time datetime="2016-01-12" class="paperTime-list">Feb 03, 2016</time></a>
+            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
+          </li>
+          <li>
+            <a class="image-wrapper" href="javascript:void(0)" ><img src="./img/economist_index.png" alt="News image" class="newsa"><time datetime="2016-01-12" class="paperTime-list">Feb 03, 2016</time></a>
+            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
+          </li>
+          <li>
+            <a class="image-wrapper" href="javascript:void(0)" ><img src="./img/economist_index.png" alt="News image" class="newsa"><time datetime="2016-01-12" class="paperTime-list">Feb 03, 2016</time></a>
+            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
+          </li>
+          <li>
+            <a class="image-wrapper" href="javascript:void(0)" ><img src="./img/economist_index.png" alt="News image" class="newsa"><time datetime="2016-01-12" class="paperTime-list">Feb 03, 2016</time></a>
+            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
+          </li>
+          <li>
+            <a class="image-wrapper" href="javascript:void(0)" ><img src="./img/economist_index.png" alt="News image" class="newsa"><time datetime="2016-01-12" class="paperTime-list">Feb 03, 2016</time></a>
+            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
+          </li>
+          <li>
+            <a class="image-wrapper" href="javascript:void(0)" ><img src="./img/economist_index.png" alt="News image" class="newsa"><time datetime="2016-01-12" class="paperTime-list">Feb 03, 2016</time></a>
+            <a class="cd-nowrap paperTitle-list" href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
           </li>
         </ul>
-      </div> <!-- .news -->
     </div> <!-- .cd-search-suggestions -->
-
-  </div> <!-- .cd-main-search -->
+  </div>
+   <div class="pageDivision">
+                <div id="paperPagninate">                   
+                </div>
+            </div>
 </div>
+<script src="./js/jquery.paginate.js" type="text/javascript"></script>
 <script type="text/javascript">
         var test = true
         var loadedDict = []
@@ -222,6 +248,7 @@
         var testAlpha = /^[a-zA-Z]+$/i
         var dictData={}
         var currentFloat = 0
+        var searchForm = $('.cd-main-search')
         var type2Dict={
           'default':'Paper Assistent',
           'economist_basic':'The Economist ',
@@ -240,9 +267,42 @@
           {'en':"Truth is beautiful. Withoutdoubt; and so are lies.",'auth':"——Emerson.",'cn':"真理是美的；毫无疑问，谎言也是如此。"},
           {'en':"One can not see what itself in until leave it.",'auth':"——Lockey.",'cn':"不识庐山真面目，只缘身在此山中。"}
         ]
+        searchForm.on('change', 'select', function(){
+          searchForm.find('.selected-value').text($(this).children('option:selected').text());
+        });
+        $('.topageone').click(function(){
+          $('.overlap').slideUp(456)
+        })
         $('#paperList').click(function(){
           console.log(11111111111111111111111111)
           $('#floatList').slideDown(569)
+          var windowHW = getPageSize()
+          var dispalyNo = 20
+          if(windowHW[0] < 500){
+            dispalyNo = 6
+          }
+          $("#paperPagninate").paginate({
+            count     : 150,
+
+            start     : 1,
+
+            display     : dispalyNo,
+
+            border          : false,
+
+            text_color        : '#79B5E3',
+
+            background_color      : 'none', 
+
+            text_hover_color      : '#2573AF',
+
+            background_hover_color  : 'none', 
+
+            images    : false,
+
+            mouse   : 'press'
+
+          });
         })
         function dealWithFloatDiv(words,img,warningIcon,ifhide,successIcon,freecode){
               $('#loadWords').html(words);
@@ -724,6 +784,7 @@
           $('.dictsChoose').show()
           $('.everydayMotto').hide()
           $('#searchWordBtn').trigger('click')
+          $('.overlap').fadeOut(456)
          })
          $('body').bind('touchstart',function(e){
         startX = e.originalEvent.changedTouches[0].pageX;
@@ -740,7 +801,7 @@
         if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>60){
           console.log('向右边滑动')
             if($('#pageone').is(':hidden')){
-              $('#topageone').trigger('click')
+              $('.topageone').trigger('click')
               return false
             }
         }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-60){
@@ -752,7 +813,7 @@
         }else
         if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<0){
           console.log('往up滑动');
-              $('.overlap').slideUp(345)
+              $('#floatDiv').slideUp(345)
         } else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY>0){
             console.log('往down滑动');
 
