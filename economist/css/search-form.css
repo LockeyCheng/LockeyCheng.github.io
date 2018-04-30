@@ -1294,8 +1294,9 @@ span.jPag-snext-img{
 }
 .paperTime-list{
     position: absolute;
-    margin-top: 16px;
-    color: #945a00;
+    margin-top: 10px;
+    color: #e78c00;
+    text-indent: 12px;
     font-size: 0.65em;
 }
 .paperTitle-list{

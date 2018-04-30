@@ -227,6 +227,7 @@
           'pupil_basic':'The Pupil ',
           'pupil_model':'The Pupil '
         }
+        var noTomonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         var mottoArr = [
           {'en':"I am not afraid of tomorrow for I have seen yesterday and I love today.",'auth':"—— William Allen White",'cn':'我并不害怕明天，因为我已见过昨天并且热爱今天。'},
           {'en':"Other men live to eat, while I eat to live. ",'auth':"—— Socrates",'cn':"别人为食而生存，我为生存而食。"},
@@ -413,12 +414,14 @@
                       $('#spankeywords').html(wordsSpan)
                       $('#mainTitle').html(content['title'])
                       var paperJsonDate = content['date']
-                      var paperDate = paperJsonDate.split('_')
-                      $('#createDate').html(paperDate.join('.'))
+                      var timeArr = paperJsonDate.slice(0,10).split('_')
+                      var dateStr = noTomonth[timeArr[1]*1]+' '+timeArr[2]+', '+timeArr[0] + ' By Lockey.'
+                      $('#createDate').html(dateStr)
                       if (requestPaper >0){
                         $('#todayPaperTitle').html(content['title'])
-                        $('#todayPaperDate').html(paperDate.join('.'))
-                        $('#todayQrcode').attr('src',paperJsonDate.slice(0,-4)+'png')
+                        $('#todayPaperDate').html(dateStr)
+                        var srcPath = './img/qrcode/'+filename.slice(0,-4)+'png'
+                        $('#todayQrcode').attr('src',srcPath)
                       }
                       var converter = new showdown.Converter();
                       $('#lastArt').attr('href',content['last'])
