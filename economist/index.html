@@ -247,9 +247,11 @@
           $('#floatList').slideDown(569)
           var windowHW = getPageSize()
           var dispalyNo = 20
+          var totalPaper = 0
+          var appendLi = ''
           $.ajax({
                 type:"GET",
-                url: './paperList.json',
+                url: 'https://lockeycheng.github.io/economist/paperList.json',
                 data: null,
                 dataType:'json',
                 cache:false,
@@ -262,13 +264,24 @@
                     for(var month in listData[year]){
                       for(var day in listData[year][month]){
                           for(var item in listData[year][month][day]){
-                            console.log(item)
+                            totalPaper += 1
+                            if(totalPaper < 7){
+                              var title = listData[year][month][day][item][1]
+                              var timeStr = title.slice(0,-5)
+                              var imgSrc = timeStr+'.png'
+                              var timeArr = imgSrc.slice(0,9).split('_')
+                              var dateStr = noTomonth[timeArr[1]*1]+' '+timeArr[2]+', '+timeArr[0] + ' By Lockey.'
+                              appendLi += '<li><a class="image-wrapper" href="javascript:void(0)" ><img src="'+imgSrc+'" alt="'+title+'" class="newsa"><time class="paperTime-list">'+dateStr+'</time></a><a class="cd-nowrap paperTitle-list" href="javascript:void(0)">'+title+'.</a></li>'
+                            }else{
+                              $('#paperListUl').html(appendLi)
+                              return
+                            }
                           }
                       }
                     }
                   }
                   $("#paperPagninate").paginate({
-                    count     : 150,
+                    count     : 100,
 
                     start     : 1,
 
