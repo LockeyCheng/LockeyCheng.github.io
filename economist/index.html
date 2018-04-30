@@ -443,90 +443,87 @@
           $('.todayMottoAuthor').html(chooseMotto['auth'])
           $('.todayMottoCn').html(chooseMotto['cn'])
         }
-        function submitSearch(word){
-                // if(searchTimes == 0){
-                //     searchTimes += 1
-                //     return false
-                // }
-                if(word){
-                  var value = word
-                }else{
-                  var value = $(searchDiv).find('.search-input').val().trim();
-                
-                  if(!value.length){
-                       $('.search-input').focus()
-                      return false
-                  }
-                  if(!testAlpha.test(value)){
-                      var tips = '<span class="error">[' + value + ']</span> Illegal input, must be English word!'
-                      dealWithFloatDiv(tips,false,true,true)
-                      return false
-                  }
+        function submitSearch(){
+               
+                var value = $(searchDiv).find('.search-input').val().trim();
+              
+                if(!value.length){
+                     $('.search-input').focus()
+                    return false
                 }
+                if(!testAlpha.test(value)){
+                    var tips = '<span class="error">[' + value + ']</span> Illegal input, must be English word!'
+                    dealWithFloatDiv(tips,false,true,true)
+                    return false
+                }
+              
                 if (value.length == 1){
                   dealWithFloatDiv('Please Remember THE 26 : A~B~C~D~E~F~G~H~I~J~K~L~M~N~O~P~Q~R~S~T~U~V~W~X~Y~Z~~~!',false,false,false,false,true)
                   return false
                 }
-                valueO = value.toLocaleLowerCase()
-                valueArr = [valueO]
+                var valueO = value.toLocaleLowerCase()
+                var valueArr = [valueO]
                 value = valueO.slice(-4)
                 if(value.match("ies") || value.match("ied")){
-                    value = valueO.slice(0,-3)+'y'
-                    valueArr.push(value)
+                    valuetmp = valueO.slice(0,-3)+'y'
+                    valueArr.push(valuetmp)
                 }
                 if(value.match("ing")){
-                    value = valueO.slice(0,-3)
-                    valueArr.push(value)
-                    value += 'e'
-                    valueArr.push(value)
+                    valuetmp = valueO.slice(0,-3)
+                    valueArr.push(valuetmp)
+                    valuetmp += 'e'
+                    valueArr.push(valuetmp)
                 }
-                lastStr = value.slice(-1)
+                var lastStr = valueO.slice(-1)
                 if(lastStr == 's'){
-                    value = valueO.slice(0,-1)
-                    valueArr.push(value)
+                    valuetmp = valueO.slice(0,-1)
+                    valueArr.push(valuetmp)
                 }
                 if(value.match("tion")){
-                    value = valueO.slice(0,-4)
-                    valueArr.push(value)
+                    valuetmp = valueO.slice(0,-4)
+                    valueArr.push(valuetmp)
                     value += 'te'
-                    valueArr.push(value)
+                    valueArr.push(valuetmp)
                 }
-                lastStr = value.slice(-2)
+                lastStr = valueO.slice(-2)
                 if(lastStr == 'ed'){
-                    value = valueO.slice(0,-2)
-                    valueArr.push(value)
-                    value += 'e'
-                    valueArr.push(value)
+                    valuetmp = valueO.slice(0,-2)
+                    valueArr.push(valuetmp)
+                    valuetmp += 'e'
+                    valueArr.push(valuetmp)
                 }
                 if(value.match("est")){
-                    value = valueO.slice(0,-3)
-                    valueArr.push(value)
-                    value = valueO.slice(0,-4)
-                    valueArr.push(value)
+                    valuetmp = valueO.slice(0,-3)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-4)
+                    valueArr.push(valuetmp)
                 }
                 if(value.match("ers")){
-                    value = valueO.slice(0,-3)
-                    valueArr.push(value)
-                    value = valueO.slice(0,-2)
-                    valueArr.push(value)
-                    value = valueO.slice(0,-1)
-                    valueArr.push(value)
+                    valuetmp = valueO.slice(0,-3)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-2)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-1)
+                    valueArr.push(valuetmp)
                 }
                 if(value.match("ly")){
-                    value = valueO.slice(0,-1)
-                    valueArr.push(value)
-                    value = valueO.slice(0,-2)
-                    valueArr.push(value)
+                    valuetmp = valueO.slice(0,-1)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-2)
+                    valueArr.push(valuetmp)
                 }
                 if(value.match("ily")){
-                    value = valueO.slice(0,-3) + 'y'
-                    valueArr.push(value)
+                    valuetmp = valueO.slice(0,-3) + 'y'
+                    valueArr.push(valuetmp)
                 }
+                
                 try{
                     var jsonDataBasic = dictData['default']
-                    console.log(valueArr)
-                    for(item in valueArr){
+                    for(var item in valueArr){
                       value = valueArr[item]
+                      if(jsonDataBasic[value]){
+                        break
+                      }
                       if(!jsonDataBasic[value] && dictData['economist_basic']){
                         jsonDataBasic = dictData['economist_basic']
                       }
@@ -536,9 +533,9 @@
                       if(jsonDataBasic[value]){
                         break
                       }
+                      
                     }
                     
-
                     if(jsonDataBasic[value]){
                       $(searchDiv).find('.result-container').html('')
                       $('.wordName').text(value)
@@ -573,11 +570,13 @@
                       $('.dictsChoose').hide()
                       try{
                             var jsonDataModel = dictData['default']
-                            if(!jsonDataModel[value] && dictData['economist_model']){
+                            if(!jsonDataModel[value]){
+                              if(dictData['economist_model']){
                                 jsonDataModel = dictData['economist_model']
-                            }
-                            if(!jsonDataModel[value] && dictData['cet46_model']){
+                              }
+                              if(!jsonDataModel[value] && dictData['cet46_model']){
                                 jsonDataModel = dictData['cet46_model']
+                              }
                             }
                             if(jsonDataModel[value]['eg2'] != []){
                                 var toFillSentence = ''
@@ -612,7 +611,6 @@
                           dealWithFloatDiv(tips,false,true,true)
                           
                       }
-                      return false
                   
                 }catch(err) { 
                   var tips = '<span class="error">' + value + '</span> meets 404. May choose or switch dictionary!'
@@ -725,11 +723,10 @@
             }
         }else
         if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<0){
-            if(!$('.overlap').is(':hidden')){
-              $('.overlap').hide()
-            }
+          console.log('往up滑动');
+              $('.overlap').slideUp(345)
         } else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY>0){
-            console.log('往下滑动');
+            console.log('往down滑动');
 
         }
       })
@@ -804,12 +801,12 @@ $('#articleContent').on('click','.fa-info-circle',function(){
                   toSearch = toSearch.slice(1)
                 }
                if(toSearch){
-                $('#showSearchForm').trigger('click')
                 $('#search-input').val(toSearch)
-                $('#searchWordBtn').trigger('click')
-                submitSearch(toSearch)
+                $('#showSearchForm').trigger('click')
+                setTimeout(function(){
+                  submitSearch()
+                },169)
                }
-               
         })
 fillMotto()
     </script>
