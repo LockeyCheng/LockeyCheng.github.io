@@ -1016,6 +1016,7 @@ right:0px;
      font-size: 28px；
 }
 .fa-arrow-right,.fa-arrow-left{
+    color: #70f0f1 !important;
     padding:11px 5.3px;
 }
 .ui-loader{
@@ -1032,12 +1033,12 @@ right:0px;
     font-size: 26px !important;
 }
 #paperList{
-   padding: 6px 5px 3px 8px;
+    padding: 4px 4px 2px 6px;
     font-size: 20px;
     border-radius: 5px;
     color: #9e5f19;
     position: absolute;
-    top: 12px;
+    top: 13px;
     right: 10px;
     border: solid 1px;
     border-left-color: #81db34;
