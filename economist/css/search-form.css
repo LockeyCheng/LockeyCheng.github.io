@@ -1212,7 +1212,7 @@ ul.jPag-pages li{
 ul.jPag-pages li a{
     color:#10a95d !important;
     float:left;
-    padding: 3px 7px 1px 7px;
+    padding: 3px 6px 1px 6px;
     border-radius: 3px;
     background: #f7fffe;
 }
@@ -1265,7 +1265,7 @@ span.jPag-sprevious-img{
     color:#0bbcda;
 }
 a.jPag-last,a.jPag-first{
-    font-size: 23px;
+    font-size: 21px;
 }
 span.jPag-snext,
 span.jPag-snext-img{
@@ -1282,7 +1282,7 @@ span.jPag-snext-img{
     padding:8px 1px 0px 0px;
     background: linear-gradient(#fff4e8, #97f0ff);
     position: fixed;
-    bottom: -6px;
+    bottom: -1px;
     z-index: 10000;
 }
 .paperSearchForm{
@@ -1320,7 +1320,8 @@ span.jPag-snext-img{
 #paperCountp{
     padding: 0;
     text-align: center;
-    margin-top: 0px;
+    margin-top: -3px;
+    margin-bottom: 6px;
 }
 #searchTotal{
     color: #ff6c00;
