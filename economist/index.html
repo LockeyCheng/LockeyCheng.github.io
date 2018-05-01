@@ -306,10 +306,10 @@
           });
         }
         $('#paperList').click(function(){
+          $('#floatList').slideDown(569)
           if(paperListJson){
             return false
           }
-          $('#floatList').slideDown(569)
           $.ajax({
                 type:"GET",
                 url: 'https://lockeycheng.github.io/economist/paperRecords.json',

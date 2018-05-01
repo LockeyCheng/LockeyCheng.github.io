@@ -1290,18 +1290,18 @@ span.jPag-snext-img{
     padding: 5px;
 }
 .newsa{
-    width:56px;
+    width:50px;
 }
 .paperTime-list{
     position: absolute;
     margin-top: 10px;
     color: #e78c00;
-    text-indent: 12px;
-    font-size: 0.65em;
+    text-indent: 8px;
+    font-size: 0.6em;
 }
 .paperTitle-list{
     color: #55005e;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 .paperListdiv ul li{
     margin-left: -30px;
