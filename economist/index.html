@@ -36,7 +36,7 @@
   position:fixed;
   background-size: 100% 100%;
   background: #ffffff;
-  opacity: 0.96;
+  opacity: 0.98;
 }
 </style>
    <div data-role="header" id='header'>
@@ -180,9 +180,11 @@
   <div id="search" class="cd-main-search">
     <div class="paperSearchForm">
     <form>
-      <input type="search" placeholder="Search Paper..." maxlength="20" id="searchPaper"><span class="fa fa-search" id="searchPaperIcon"></span>
+      <input type="search" placeholder="Search..." maxlength="20" id="searchPaper">
+      <span class="fa fa-info-circle searchPaperInfo"></span>
+      <span class="fa fa-search" id="searchPaperIcon"></span>
       <div class="cd-select">
-        <select name="select-category">
+        <select name="select-category" id="select-category">
           <option value="2018">2018</option>
           <option value="2019">2019</option>
           <option value="2020">2020</option>
@@ -250,6 +252,19 @@
           $('.overlap').slideUp(456)
         })
         $('#searchPaper').keydown(function(){
+          $('.searchPaperInfo').hide()
+          showPages = 0
+          reList = true
+        }).blur(function(){
+          $('.searchPaperInfo').show()
+        })
+        $('.searchPaperInfo').mouseenter(function(){
+          $('#paperListUl').prepend("<li style='color:#7000d3'>Please type year[YYYY] month[aMM] day[aDD] and keywords to search, every item should be seperated by blank.</li>");
+          setTimeout(function(){
+            $('#paperListUl').find('li:first').remove()
+          },5000)
+        })
+        $('#select-category').change(function(){
           showPages = 0
           reList = true
         })
@@ -265,6 +280,7 @@
           if(windowHW[0] < 500){
                 dispalyNo = 6
           }
+          console.log(yearArr,firstFill,searchPaperKey)
           if(searchPaperKey){
             var keywordsArr = searchPaperKey.split(' ')
             for(var i in keywordsArr){
@@ -318,9 +334,10 @@
                             if(searchPaperKey && wordsArr.length >0){
                               //console.log('pass day',searchPaperKey,wordsArr)
                               var keyWords = thisYearJson[month][day][item][2].toLowerCase()
+                              var titleToLower = title.toLowerCase()
                               for(var i in wordsArr){
                                 word = wordsArr[i].toLowerCase()
-                                if(keyWords.match(word)){
+                                if(keyWords.match(word) || titleToLower.match(word)){
                                   searchPaperNo += 1
                                   break
                                 }
@@ -390,6 +407,7 @@
                           }
                         }
                       }
+                  showPages = Math.floor(totalPaper/6)
                   $('#paperTotal').html(totalPaper)
                   paper_list_fill([thisYear],true,false)
                 },
@@ -421,7 +439,7 @@
                 if(year == 'lastPaper'){
                   continue
                 }
-                  yearArr.push('a'+year)
+                  yearArr.push(year)
                 }
             }else{
               yearArr = ['a'+choose]
@@ -1012,7 +1030,7 @@ scrollDirect(function (direction) {
 $('.switchPaper').click(function(){
   var paperName = $(this).attr('href')
   if(paperName == 'abcdeflockey'){
-    dealWithFloatDiv('Sorry, but no more paper!',false,false,true,false,true)
+    getData('type',true,false)
   }else{
     getData('type',true,paperName)
   }

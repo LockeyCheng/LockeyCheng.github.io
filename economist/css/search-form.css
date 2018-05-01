@@ -1332,6 +1332,10 @@ span.jPag-snext-img{
     padding: 0px 10px 0px 13px;
     font-size:23px;
 }
+.searchPaperInfo{
+    margin-left: -36px;
+    padding: 6px;
+}
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
     .everydayMotto{
