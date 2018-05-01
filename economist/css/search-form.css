@@ -1012,11 +1012,11 @@ right:0px;
     border-radius: 25px;
 }
 .arrow a:hover{
-     color:#4dbacb;
+     color:#00dbdc;
      font-size: 28px；
 }
 .fa-arrow-right,.fa-arrow-left{
-    color: #70f0f1 !important;
+    color: #32dfe0 !important;
     padding:11px 5.3px;
 }
 .ui-loader{
@@ -1077,7 +1077,7 @@ right:0px;
     font-weight: bold;
 }
 #spankeywords{
-    color: #00d339;
+    color: #089763;
     font-size: 0.9em;
     word-break: break-all;
 }
@@ -1212,8 +1212,8 @@ ul.jPag-pages li{
 ul.jPag-pages li a{
     color:#10a95d !important;
     float:left;
-    padding:4px 6px 3px 6px;
-    border-radius: 5px;
+    padding: 3px 7px 1px 7px;
+    border-radius: 3px;
     background: #f7fffe;
 }
 span.jPag-current{
@@ -1279,10 +1279,10 @@ span.jPag-snext-img{
 
 .pageDivision{
     width:100%;
-    padding: 12px 1px;
+    padding:8px 1px 0px 0px;
     background: linear-gradient(#fff4e8, #97f0ff);
     position: fixed;
-    bottom: -1px;
+    bottom: -6px;
     z-index: 10000;
 }
 .paperSearchForm{
@@ -1297,11 +1297,11 @@ span.jPag-snext-img{
     margin-top: 10px;
     color: #e78c00;
     text-indent: 8px;
-    font-size: 0.6em;
+    font-size: 0.55em;
 }
 .paperTitle-list{
     color: #55005e;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 .paperListdiv ul li{
     margin-left: -30px;
@@ -1316,6 +1316,21 @@ span.jPag-snext-img{
 }
 .jPag-pages{
     width:500px !important;
+}
+#paperCountp{
+    padding: 0;
+    text-align: center;
+    margin-top: 0px;
+}
+#searchTotal{
+    color: #ff6c00;
+}
+#paperTotal{
+    color: #8d00a5;
+}
+#paperCountp span{
+    padding: 0px 10px 0px 13px;
+    font-size:23px;
 }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}

@@ -202,6 +202,11 @@
 		_ulwrapdiv.find('li').click(function(e){
 			selobj.html('<a>'+selobj.find('.jPag-current').html()+'</a>'); 
 			var currval = $(this).find('a').html();
+			if(currval != showPages+1){
+				showPages = currval - 1
+				reList = false
+				$('#searchPaperIcon').trigger('click')
+			}
 			$(this).html('<span class="jPag-current">'+currval+'</span>');
 			selobj = $(this);
 			$.fn.applystyle(o,$(this).parent().parent().parent(),a_css,hover_css,_first,_ul,_ulwrapdiv,_divwrapright);	
