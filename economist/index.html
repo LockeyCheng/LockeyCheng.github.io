@@ -69,7 +69,7 @@
                 <div id="wordItems"  class="dictsChoose">
 
                   <div id='dictSelect'>
-                    <h3 class="dictTips">Dictionaries</h3>
+                    <h3 class="dictTips">Dictionary</h3>
                     <ul class="wordItemChoose">
                       <li style="margin-left: -16px;">
                         <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-economist"  class="hide" name='economist' value='economist'><label for="polaris-checkbox-economist">The Economist</label>
@@ -77,14 +77,14 @@
                       <li style="margin-left: -16px;">
                         <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-cet46"  class="hide" name='cet46' value='cet46'><label for="polaris-checkbox-cet46">CET4-CET6</label>
                       </li>
-                      <li style="margin-left: -16px;">
+                      <!-- <li style="margin-left: -16px;">
                         <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-pupil"  class="hide" name='pupil' value='pupil'><label for="polaris-checkbox-pupil">The Pupil</label>
-                      </li>
+                      </li> -->
                     </ul>
                   </div>
 
                   <div id='wordItemSelect'>
-                    <h3 class="dictTips">Extensions</h3>
+                    <h3 class="dictTips">Extension</h3>
                     <ul class="wordItemChoose">
                       <li style="margin-left: -16px;">
                         <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-sentence"  class="hide" name='sentence' value='sentence_phrase'><label for="polaris-checkbox-sentence">Model sentence</label>
@@ -226,6 +226,7 @@
         var totalPaper = 0
         var showPages = 0
         var reList = true
+        var hideFloat = 0
         var type2Dict={
           'default':'Paper Assistent',
           'economist_basic':'The Economist ',
@@ -472,11 +473,14 @@
                }
               if(ifhide){
                 setTimeout(function(){
-                      if(successIcon){
+                  if(hideFloat <= 0){
+                    if(successIcon){
                         $('#successIcon').hide()
                       }
                       $('.overlap').fadeOut(456)
-                    },1000)
+                  }
+                      
+                },1300)
               }
               
         }
@@ -530,6 +534,7 @@
         }
         var pquery = false
         function getData(type,ifmd,filename){
+          hideFloat +=1
           if(ifmd){
             var link = location.href
             var query = link.indexOf('paper')
@@ -577,6 +582,7 @@
                 dataType:dataType,
                 cache:false,
                 success: function(data) {
+                  hideFloat -= 1
                   if(ifmd){
                       requestPaper +=1
                       var content = data
@@ -620,6 +626,7 @@
                   }
                 },
                 error: function(data) {
+                  hideFloat -=1
                   if(ifmd){
                     toDict = 'Sorry, but no more paper!'
                   }else{
