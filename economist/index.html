@@ -407,7 +407,7 @@
                           }
                         }
                       }
-                  showPages = Math.floor(totalPaper/6)
+                  //showPages = Math.floor(totalPaper/6)
                   $('#paperTotal').html(totalPaper)
                   paper_list_fill([thisYear],true,false)
                 },
@@ -1053,6 +1053,17 @@ $('#articleContent').on('click','.fa-info-circle',function(){
                  var index = toSearch.match("’")['index']
                   toSearch = toSearch.slice(0,index)
                }
+               if(toSearch.indexOf("[") == 0 || toSearch.indexOf("(") == 0){
+                  toSearch = toSearch.slice(1)
+               }
+               if(toSearch.indexOf("]") >0){
+                  var index = toSearch.indexOf("]")
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.indexOf(")") >0){
+                  var index = toSearch.indexOf(")")
+                  toSearch = toSearch.slice(0,index)
+               }
                if(toSearch.match("”")){
                 var index = toSearch.match("”")['index']
                 if(!toSearch.match("“")){
@@ -1061,7 +1072,7 @@ $('#articleContent').on('click','.fa-info-circle',function(){
                  toSearch = toSearch.slice(1,index)
                 }
                }
-               if(toSearch.match("“")){
+               if(toSearch.match("“") || toSearch.match("“")){
                   toSearch = toSearch.slice(1)
                 }
                if(toSearch){
