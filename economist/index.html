@@ -263,7 +263,7 @@
           $('#paperListUl').prepend("<li style='color:#7000d3'>Please type year[YYYY] month[aMM] day[aDD] and keywords to search, every item should be seperated by blank.</li>");
           setTimeout(function(){
             $('#paperListUl').find('li:first').remove()
-          },5000)
+          },6000)
         })
         $('#select-category').change(function(){
           showPages = 0
@@ -771,7 +771,6 @@
                     valuetmp = valueO.slice(0,-3) + 'y'
                     valueArr.push(valuetmp)
                 }
-                
                 try{
                     var jsonDataBasic = dictData['default']
                     for(var item in valueArr){
@@ -782,6 +781,9 @@
                       if(!jsonDataBasic[value] && dictData['economist_basic']){
                         jsonDataBasic = dictData['economist_basic']
                       }
+                      if(jsonDataBasic[value]){
+                        break
+                      }
                       if(!jsonDataBasic[value] && dictData['cet46_basic']){
                           jsonDataBasic = dictData['cet46_basic']
                       }
@@ -790,12 +792,16 @@
                       }
                       
                     }
-                    
                     if(jsonDataBasic[value]){
                       $(searchDiv).find('.result-container').html('')
                       $('.wordName').text(value)
+                      try{
                       var proEn = jsonDataBasic[value]['pron']['peg']
                       var proAm = jsonDataBasic[value]['pron']['pam']
+                    } catch(err) { 
+                        var proEn = jsonDataBasic[value]['pro_en']
+                      var proAm = jsonDataBasic[value]['pro_am']
+                    }
                       var proLi = ''
                       if(proEn){
                         if(proEn.match("英")){
@@ -833,9 +839,15 @@
                                 jsonDataModel = dictData['cet46_model']
                               }
                             }
-                            if(jsonDataModel[value]['eg2'] != []){
+                             try{
+                              var example = jsonDataModel[value]['eg2']
+                             }catch(err) { 
+                              console.log(err)
+                               var example = jsonDataModel[value]['eg']
+                            }
+                            
+                            if(example){
                                 var toFillSentence = ''
-                                var example = jsonDataModel[value]['eg2']
                                  for(var i in example){
                                   var nu = i*1+1
                                   toFillSentence += '<p><span class="wordTitle">例句'+nu+'：</span><span class="wordSentenceEn">'+example[i][0]+'</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">'+example[i][1]+'</span></p>'
