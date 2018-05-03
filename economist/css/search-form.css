@@ -15,12 +15,16 @@ http://www.jq22.com/demo/jquery-SearchBar20160307/img/image.jpg
 #loadingImg{
     position: fixed;
     top: 39.5%;
-    left: 42.5%;
+    left: 40%;
     z-index: 11111;
     font-size: 3.95em;
     color:#11cc53;
 }
 
+.fa-loading-fa{
+    position: absolute;
+    font-size: 0.8em;
+}
 #fa-x{
     border-radius: 36px;
     animation-name:myfirst;
@@ -60,41 +64,40 @@ http://www.jq22.com/demo/jquery-SearchBar20160307/img/image.jpg
     89%  {color:#2fffb3;opacity: 0.85;transform:rotate(295deg)}
     100% {color:#11cc53;opacity: 1;;transform:rotate(360deg)}
 }
-.fa-loading-fa{
-    position: absolute;
-}
+
 #fa-1{
-    top: 80px;
-    transform: rotate(179deg);
-    left: -6px;
+    top: 75px;
+    /* transform: rotate(179deg); */
+    left: 0px;
+    font-size: 0.925em;
 }
 #fa-2{
-    top: -96px;
-    left: -5px;
-    font-size: 1.15em;
+    top: -90px;
+    left: -9px;
+    /*font-size: 1.15em;*/
 }
 #fa-3{
     top: -46px;
     left: -88px;
-    font-size: 1.25em;
+    font-size:1em
     /*transform: rotate(-69deg);*/
 }
 #fa-4{
     top: 39px;
     left: -73px;
     transform: rotate(41deg);
-    font-size: 1.06em;
+    font-size: 0.81em;
 }
 #fa-5{
     top: 26px;
     left: 80px;
-    font-size: 1.2em;
+    font-size: 0.95em;
     transform: rotate(115deg);
 }
 #fa-6{
     top: -50px;
     left: 74px;
-    font-size: 1.06em;
+    font-size: 0.9em;
 }
 a{
     text-decoration: none;
@@ -1186,7 +1189,7 @@ select {
     display: inline-block;
     font-size: 23px;
     background-color: transparent;
-    margin-left: -156px;
+    margin-left: -176px;
     width: 50%;
     height: 36px;
     border: none;
