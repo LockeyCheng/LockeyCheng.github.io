@@ -23,7 +23,7 @@ http://www.jq22.com/demo/jquery-SearchBar20160307/img/image.jpg
 
 .fa-loading-fa{
     position: absolute;
-    font-size: 0.8em;
+    font-size: 0.6em;
 }
 #fa-x{
     border-radius: 36px;
@@ -67,37 +67,34 @@ http://www.jq22.com/demo/jquery-SearchBar20160307/img/image.jpg
 
 #fa-1{
     top: 75px;
-    /* transform: rotate(179deg); */
     left: 0px;
-    font-size: 0.925em;
+    font-size: 0.69em;
 }
 #fa-2{
     top: -90px;
-    left: -9px;
-    /*font-size: 1.15em;*/
+    left: -8px;
 }
 #fa-3{
     top: -46px;
     left: -88px;
-    font-size:1em
-    /*transform: rotate(-69deg);*/
+    font-size:0.76em
 }
 #fa-4{
     top: 39px;
     left: -73px;
     transform: rotate(41deg);
-    font-size: 0.81em;
+    font-size: 0.67em;
 }
 #fa-5{
     top: 26px;
     left: 80px;
-    font-size: 0.95em;
+    font-size: 0.68em;
     transform: rotate(115deg);
 }
 #fa-6{
     top: -50px;
     left: 74px;
-    font-size: 0.9em;
+    font-size: 0.66em;
 }
 a{
     text-decoration: none;
