@@ -164,8 +164,8 @@
 
 <div id="floatDiv" class="overlap">
   <div>
-    <!-- <h5 align="right"  id="closeFloat"><i class="fa fa-quora" alt="close" style="font-size:2em;margin-right: 13px;margin-top:-5px;color:#08d6c5">t</i>
-    </h5> -->
+    <h5 align="right"  id="closeFloat"><i class="fa fa-quora" alt="close" style="font-size:2em;margin-right: 13px;margin-top:-5px;color:#08d6c5">t</i>
+    </h5>
   </div>
   <div id="loadtips">
     <div id="loadingImg">
@@ -574,11 +574,11 @@
             
             var getUrl = 'https://lockeycheng.github.io/economist/articles/a'+year+'/a'+month+'/'+filename
             var dataType = 'json'
-            dealWithFloatDiv(tips,true,false,false)
+            dealWithFloatDiv('',true,false,false)
           }else{
             var toDict = type2Dict[type]
-            var tips = '<span class="normalItem">'+toDict+' ...</span>'
-            dealWithFloatDiv(tips,true,false,false)
+            //var tips = '<span class="normalItem">'+toDict+' ...</span>'
+            dealWithFloatDiv('',true,false,false)
             var baseUrl = 'https://lockeycheng.github.io/economist/explanations/'
             //var baseUrl = './explanations/'
             var getUrl = baseUrl+type+'.json'
@@ -631,7 +631,8 @@
                     $('#successIcon').show()
                      loadedDict.push(type)
                     //dealWithFloatDiv('',false,false,true,true)
-                    dealWithFloatDiv('<span class="success">'+toDict+' loaded!</span>',false,false,true,true)
+                    var tips='<span class="success">'+toDict+' loaded!</span>'
+                    dealWithFloatDiv(tips,false,false,true,true)
                   }
                 },
                 error: function(data) {
