@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Lockey's Git Page</title>
+<link rel="icon" type="image/x-icon" class="js-site-favicon" href="../images/favicon.ico">
+<!-- <link rel="stylesheet" type="text/css" href="../css/polaris.css"> -->
+<link rel="stylesheet" type="text/css" href="css/search-form.css">
+<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
+<script src="https://cdn.staticfile.org/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="../js/showdown.min.js"></script>
+</head>
+<body>
+<style type="text/css">
+  #floatDiv{
+  display:none;
+  z-index:111111;
+  top: 0;
+  height: 100%;
+  width:100%;
+  position:fixed;
+  background-size: 100% 100%;
+  background: #5f6f6b;
+  opacity: 0.9;
+}
+
+#floatList{
+  display:none;
+  z-index:111110;
+  top: 0;
+  height: 100%;
+  width:100%;
+  position:fixed;
+  background-size: 100% 100%;
+  background: #ffffff;
+  opacity: 0.98;
+}
+</style>
+   <div data-role="header" id='header'>
+    <h3 class="title">
+      <a onclick="location.reload(true)" class="anormal" id="logo"><img src="./img/econfinal_favicon.ico">The Economist</a>
+      <a href="javascript:void(0)" class="fa fa-braille"  id="paperList"></a>
+  </div>
+<div data-role="page" id="pageone">
+  <div data-role="main" class="ui-content">
+    <div id="page-content" class="single-page">
+        <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
+        <h5 class="heading5" id="createDate">——By Lockey</h5>
+        <p class="pkeywords">Key Words: <span id="spankeywords"></span></p>
+        <div id="articleContent"></div>
+    </div>
+    <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"></span></a></span>
+    <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper"><span  class="fa fa-arrow-right"></span></a></span>
+  </div>
+</div> 
+<div data-role="page" id="pagetwo" style="margin-top: 66px;">
+  <div data-role="main" class="ui-content" style="margin-top: -66px;">
+    <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa topageone"></a>
+    <section class="container">
+    <div id="searchForm">
+            <div class="search-wrapper">
+                <div class="input-holder">
+                    <input type="text" class="search-input" id="search-input" placeholder="Type to search" />
+                    <button class="search-icon" id='searchWordBtn' onclick="searchToggle(this, event);"><span id="submitGo"></span></button>
+                </div>
+                <div id="wordItems"  class="dictsChoose">
+
+                  <div id='dictSelect'>
+                    <h3 class="dictTips">Dictionary</h3>
+                    <ul class="wordItemChoose">
+                      <li style="margin-left: -16px;">
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-economist"  class="hide" name='economist' value='economist'><label for="polaris-checkbox-economist">The Economist</label>
+                      </li>
+                      <li style="margin-left: -16px;">
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-cet46"  class="hide" name='cet46' value='cet46'><label for="polaris-checkbox-cet46">CET4-CET6</label>
+                      </li>
+                      <!-- <li style="margin-left: -16px;">
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-pupil"  class="hide" name='pupil' value='pupil'><label for="polaris-checkbox-pupil">The Pupil</label>
+                      </li> -->
+                    </ul>
+                  </div>
+
+                  <div id='wordItemSelect'>
+                    <h3 class="dictTips">Extension</h3>
+                    <ul class="wordItemChoose">
+                      <li style="margin-left: -16px;">
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-sentence"  class="hide" name='sentence' value='sentence_phrase'><label for="polaris-checkbox-sentence">Model sentence</label>
+                      </li>
+                      <li style="margin-left: -16px;">
+                        <i class="checkboxSpan-square"></i><input type="checkbox" id="polaris-checkbox-phrase"  class="hide" name='phrase' value='sentence_phrase'><label for="polaris-checkbox-phrase">Common Phrase</label>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div id='confirm_cancel' style="margin-top: 36px">
+                    <ul class="confirm_dict">
+                      <li style="margin-left: -32px;color:#00b787;font-size: 1.3em;font-weight: bold">
+                        <i class="checkboxSpan-circle"></i><input type="checkbox" id="polaris-checkbox-confirm"  class="hide" name='confirm_cancel' value='confirm'><label for="polaris-checkbox-confirm">Load</label>
+                      </li>
+                      <li style="margin-left: 0px;color:#cea324;font-size: 1.3em;">
+                        <i class="checkboxSpan-circle"></i><input type="checkbox" id="polaris-checkbox-cancel"  class="hide" name='confirm_cancel' value='cancel'><label for="polaris-checkbox-cancel">Cancel</label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="result-container">
+
+                </div>
+                
+            </div>
+        </div>
+  </section>
+    <div class="searchResult">
+        <div>
+            <p class="wordName">tragedy</p>
+            <p><span class="wordTitle">发音：</span></p>
+            <p><ul id="wordPro"></ul></p>
+
+            <p><span class="wordTitle">释义：</span></p>
+            <p><ul id="wordExplanationCN"></ul></p>
+
+            <p><span class="wordTitle">短语：</span></p>
+            <p><ul id="wordPhrases"></ul></p>
+            <!-- <p><span class="wordTitle">释义（英）：</span><span class="wordExplanationEG"></span></p> -->
+            <!-- <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
+            <p><span class="wordTitle">近义：</span><span class="similar"></span></p>
+            <p><span class="wordTitle">反义：</span><span class="reverse"></span></p> -->
+            <div id="centences">
+              
+            </div>
+        </div>
+    </div>
+    <div class="everydayMotto with_motto_footer" id="everydayMotto">
+        <p class="todayMotto"></p>
+        <p class="todayMottoAuthor"></p>
+        <p class="todayMottoCn"></p>
+    </div>
+  </div>
+</div> 
+<a class="fa fa-search" id="showSearchForm" href="#pagetwo"></a>
+ <footer class="with_motto_footer">
+    <div class="row" style="margin-top: -10px;">
+      <div class="col-six tab-full">
+        <div class="copyright">
+
+            <ul class="links"> 
+             <li><a href="https://blog.csdn.net/lockey23" target="_blank"><i class="fa fa-edit ibold"></i></a></li>
+             <li><a href="#"><i class="fa fa-twitter"></i></a></li> 
+             <li><a href="https://www.facebook.com/chen.yang.98031506"><i class="fa fa-facebook"></i></a></li>
+             <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>
+             <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
+             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+             <!-- <li><a href="https://lockeycheng.github.io/economist/index.html" target="_blank"><i class="fa fa-etsy"></i></a></li>      -->
+           </ul> 
+                <!-- <span><p class="time"></p></span> -->
+                <span>Copyright <i class="fa fa-copyright"></i>for ever and ever. All rights reserved <a target="_blank" href="https://lockeycheng.github.io">www.lockey.io</a></span> 
+        </div>                       
+      </div>
+    </div>
+</footer>  
+
+<div id="floatDiv" class="overlap">
+  <div>
+    <h5 align="right"  id="closeFloat"><i class="fa fa-quora" alt="close" style="font-size:2em;margin-right: 13px;margin-top:-5px;color:#08d6c5">t</i>
+    </h5>
+  </div>
+  <div id="loadtips">
+    <div id="loadingImg">
+      <div id="fa-5" class="fa-loading-fa"><i class="fa fa-github"></i></div>
+      <div id="fa-4" class="fa-loading-fa"><i class="fa fa-firefox"></i></div>
+      <div id="fa-2" class="fa-loading-fa"><i class="fa fa-free-code-camp"></i></div>
+      <div id="fa-x" class="fa-loading-fa"><i class="fa fa-chrome"></i></div>
+      <div id="fa-1" class="fa-loading-fa"><i class="fa fa-github-alt"></i></div>
+      <div id="fa-3" class="fa-loading-fa"><i class="fa fa-twitter"></i></div>
+      <div id="fa-6" class="fa-loading-fa"><i class="fa fa-google-plus"></i></div>
+    </div>
+      <!-- <img src="http://dribbble.s3.amazonaws.com/users/121337/screenshots/1024835/loading2.gif"> -->
+    <h5 align="center" id="successIcon" style="margin-top: -10%;display: none;font-size:4em;color:#5cdc61"><i class="fa fa-check-circle"></i></h5>
+    <h5 align="center" id="normalTips_free-code-camp" style="margin-top: -10%;display: none;font-size:4em;color:#13da13"><i class="fa fa-free-code-camp"></i></h5>
+    <h5 align="center" id="wariningIcon" style="margin-top: -10%;display: none;font-size:4em;color:#ffa500"><i class="fa fa-warning"></i></h5>
+    <h3 align="center" id="loadWords"></h3></div>
+</div>
+
+<div id="floatList" class="overlap">
+  <a href="#pageone" data-transition="slide" data-direction="reverse" class="fa fa-reply switchfa topageone"></a>
+  <div id="search" class="cd-main-search">
+    <div class="paperSearchForm">
+    <form>
+      <input type="search" placeholder="Search..." maxlength="20" id="searchPaper">
+      <span class="fa fa-info-circle searchPaperInfo"></span>
+      <span class="fa fa-search" id="searchPaperIcon"></span>
+      <div class="cd-select">
+        <select name="select-category" id="select-category">
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="all">All</option>
+        </select>
+        <span class="selected-value fa fa-caret-down">2018</span>
+      </div>
+    </form>
+  </div>
+  <div class="paperListdiv">
+        <ul id="paperListUl">
+          
+        </ul>
+    </div> <!-- .cd-search-suggestions -->
+  </div>
+   <div class="pageDivision">
+      <P id="paperCountp"><span id="searchTotal"></span>find in<span id="paperTotal"></span>papers</P>
+      <div id="paperPagninate">                   
+      </div>     
+  </div>
+</div>
+<script src="./js/jquery.paginate.js" type="text/javascript"></script>
+<script type="text/javascript">
+        var Request = new Object();
+        Request = GetRequest();
+        try{
+          var defaultSource = Request['source']
+        }catch(err) {
+          console.log(err,'source not found')
+        }
+        if(!defaultSource){
+          defaultSource = 'The_Economist'
+        }
+        
+        var test = true
+        var loadedDict = []
+        var currentDict = []
+        var searchTimes = 0
+        var youdaoSentenceAudio = 'https://dict.youdao.com/dictvoice?audio='//+sentence+&le=eng
+        var youdaoWordAudio = 'https://dict.youdao.com/dictvoice?audio='//+criteria&type=2 or type=1
+        var testAlpha = /^[a-zA-Z]+$/i
+        var dictData={}
+        var currentFloat = 0
+        var searchForm = $('.cd-main-search')
+        var requestPaper = 0
+        var paperListJson = null
+        var totalPaper = 0
+        var showPages = 0
+        var reList = true
+        var hideFloat = 0
+        var type2Dict={
+          'default':'Paper Assistent',
+          'economist_basic':'The Economist ',
+          'economist_model':'The Economist ',
+          'cet46_basic':'CET-4&&6 ',
+          'cet46_model':'CET-4&&-6 ',
+          'pupil_basic':'The Pupil ',
+          'pupil_model':'The Pupil '
+        }
+        var noTomonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        var mottoArr = [
+          {'en':"I am not afraid of tomorrow for I have seen yesterday and I love today.",'auth':"—— William Allen White",'cn':'我并不害怕明天，因为我已见过昨天并且热爱今天。'},
+          {'en':"Other men live to eat, while I eat to live. ",'auth':"—— Socrates",'cn':"别人为食而生存，我为生存而食。"},
+          {'en':"Easy come, easy go. ",'auth':"—— Hazlitt",'cn':"易得者亦易失。"},
+          {'en':"The darkest hour is that before the dawn. ",'auth':"—— Fuller",'cn':"黎明前的时分是最黑暗的。"},
+          {'en':"Cowards die many times before their deaths. ",'auth':"—— Julius Caesar",'cn':"懦夫在未死之前，已身历多次死亡的恐怖了。"},
+          {'en':"Truth is beautiful. Withoutdoubt; and so are lies.",'auth':"——Emerson.",'cn':"真理是美的；毫无疑问，谎言也是如此。"},
+          {'en':"One can not see what itself in until leave it.",'auth':"——Lockey.",'cn':"不识庐山真面目，只缘身在此山中。"}
+        ]
+        searchForm.on('change', 'select', function(){
+          searchForm.find('.selected-value').text($(this).children('option:selected').text());
+        });
+        $('.topageone').click(function(){
+          $('.overlap').slideUp(456)
+        })
+        $('#searchPaper').focus(function(){
+          $('.searchPaperInfo').hide()
+          showPages = 0
+          reList = true
+        }).blur(function(){
+          $('.searchPaperInfo').show()
+        })
+        $('.searchPaperInfo').mouseenter(function(){
+          $('#paperListUl').prepend("<li style='color:#7000d3'>Please type year[YYYY] month[aMM] day[aDD] and keywords to search, every item should be seperated by blank.</li>");
+          setTimeout(function(){
+            $('#paperListUl').find('li:first').remove()
+          },6000)
+        })
+        $('#select-category').change(function(){
+          showPages = 0
+          reList = true
+        })
+        function GetRequest() {
+          var url = location.search; //获取url中"?"符后的字串
+           var theRequest = new Object();
+           if (url.indexOf("?") != -1) {
+              var str = url.substr(1);
+              strs = str.split("&");
+              for(var i = 0; i < strs.length; i ++) {
+                 theRequest[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+              }
+           }
+           return theRequest;
+        }
+        function paper_list_fill(yearArr,firstFill,searchPaperKey){
+          var yearArr = yearArr
+          var monthArr = []
+          var dayArr = []
+          var wordsArr = []
+          var windowHW = getPageSize()
+          var dispalyNo = 20
+          var appendLi = ''
+          var searchPaperNo = 0
+          if(windowHW[0] < 500){
+                dispalyNo = 6
+          }
+          console.log(yearArr,firstFill,searchPaperKey)
+          if(searchPaperKey){
+            var keywordsArr = searchPaperKey.split(' ')
+            for(var i in keywordsArr){
+              if(!isNaN(keywordsArr[i]) && keywordsArr[i].length == 4){
+                var keyYear = 'a'+keywordsArr[i]
+                if(!(keyYear in yearArr)){
+                  yearArr.push(keyYear)
+                }
+              }
+              else if((keywordsArr[i].slice(0,1) == 'm') && (!isNaN(keywordsArr[i].slice(1)))){
+                var keyMonth = 'a'+keywordsArr[i].slice(1)*1
+                if(!(keyMonth in monthArr)){
+                  monthArr.push(keyMonth)
+                }
+              }
+              else if((keywordsArr[i].slice(0,1) == 'd')  && (!isNaN(keywordsArr[i].slice(1)))){
+                var keyDay = 'a'+keywordsArr[i].slice(1)*1
+                if(!(keyDay in dayArr)){
+                  dayArr.push(keyDay)
+                }
+              }else{
+                wordsArr.push(keywordsArr[i])
+              }
+            }
+          }
+          console.log(wordsArr,monthArr,yearArr)
+          for(var year in yearArr){
+            var yearStr = yearArr[year]
+            var thisYearJson = paperListJson[yearStr]
+            for(var month in thisYearJson){
+                      if(monthArr.length >0 && monthArr.indexOf(month) <0){
+                        if(!firstFill){
+                          continue
+                        }
+                      }
+                      //console.log('pass month',month)
+                      for(var day in thisYearJson[month]){
+                          if(dayArr.length >0 && dayArr.indexOf(day)<0 ){
+                            if(!firstFill){
+                              continue
+                            }
+                          }
+                          //console.log('pass day')
+                          for(var item in thisYearJson[month][day]){
+                            var title = thisYearJson[month][day][item][1]
+                            var filename = thisYearJson[month][day][item][0]
+                            var timeStr = filename.slice(0,-5)
+                            var imgSrc = timeStr+'.png'
+                            var timeArr = imgSrc.slice(0,9).split('_')
+                            var preSearch = searchPaperNo
+                            if(searchPaperKey && wordsArr.length >0){
+                              //console.log('pass day',searchPaperKey,wordsArr)
+                              var keyWords = thisYearJson[month][day][item][2].toLowerCase()
+                              var titleToLower = title.toLowerCase()
+                              for(var i in wordsArr){
+                                word = wordsArr[i].toLowerCase()
+                                if(keyWords.match(word) || titleToLower.match(word)){
+                                  searchPaperNo += 1
+                                  break
+                                }
+                              }
+                              
+                            }else{
+                              searchPaperNo += 1
+                            }
+                            if(searchPaperNo >6*showPages && searchPaperNo <= 6*(showPages+1) && preSearch!=searchPaperNo){
+                              var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+', '+timeArr[0] + ' By Lockey.'
+                              appendLi += '<li><a class="image-wrapper listHref" href="javascript:void(0)" data="'+filename+'"><img src="./'+defaultSource+'/QRimages/'+imgSrc+'" alt="'+title+'" class="newsa"><time class="paperTime-list">'+dateStr+'</time></a><a class="cd-nowrap paperTitle-list listHref" href="javascript:void(0)" data="'+filename+'">'+title+'.</a></li>'
+                            }
+                          }
+                      }
+                    }
+          }
+          $('#searchTotal').html(searchPaperNo)
+          var countPage = Math.ceil(searchPaperNo/6)
+          if(searchPaperNo ==0){
+            $('#paperListUl').html('<li>No matched paper to show!</li>')
+            return false
+          }
+          $('#paperListUl').empty()
+          $('#paperListUl').html(appendLi)
+          if(reList){
+              $("#paperPagninate").paginate({
+              count     : countPage,
+              start     : 1,
+              display     : dispalyNo,
+              border          : false,
+              text_color        : '#79B5E3',
+              background_color      : 'none', 
+              text_hover_color      : '#2573AF',
+              background_hover_color  : 'none', 
+              images    : false,
+              mouse   : 'press'
+            });
+            if(countPage<6){
+              $('.jPag-control-front').hide()
+            }
+          }
+          var jPagpages_width = 42*countPage +' !important'
+          $('.jPag-pages').css('width',jPagpages_width)
+        }
+        $('#paperList').click(function(){
+          $('#floatList').slideDown(569)
+          if(paperListJson){
+            return false
+          }
+          $.ajax({
+                type:"GET",
+                url: './'+defaultSource+'/paperRecords.json',
+                data: null,
+                dataType:'json',
+                cache:false,
+                success: function(data) {
+                  paperListJson = data
+                  var today = new Date()
+                  var year = today.getFullYear()
+                  var thisYear = 'a'+year
+                 for(var year in paperListJson){
+                  if(year.length >5){
+                    continue
+                  }
+                  for(var month in paperListJson[year]){
+                          for(var day in paperListJson[year][month]){
+                            var dayPaper = paperListJson[year][month][day].length
+                            totalPaper += dayPaper
+                          }
+                        }
+                      }
+                  //showPages = Math.floor(totalPaper/6)
+                  $('#paperTotal').html(totalPaper)
+                  paper_list_fill([thisYear],true,false)
+                },
+                error: function(data) {
+                    var listInfo = '<span class="error">Paper list</span> failed to load!'
+                    dealWithFloatDiv(listInfo,false,true,false,false)
+                  
+                }
+              })
+          
+        })
+        $('#paperListUl').on('click','.listHref',function(){
+            var paperJson = $(this).attr('data')
+            getData('type',true,paperJson)
+        })
+        $('#searchPaperIcon').click(function(){
+            var windowHW = getPageSize()
+            var dispalyNo = 20
+            var totalPaper = 0
+            var appendLi = ''
+            if(windowHW[0] < 500){
+                    dispalyNo = 6
+                  }
+            var searchPaperKey = $('#searchPaper').val()
+            var choose = $('.selected-value').text()
+            yearArr = []
+            if(choose.length == 3){
+              for(var year in paperListJson){
+                if(year == 'lastPaper'){
+                  continue
+                }
+                  yearArr.push(year)
+                }
+            }else{
+              yearArr = ['a'+choose]
+            }
+            paper_list_fill(yearArr,false,searchPaperKey)
+
+        })
+        function dealWithFloatDiv(words,img,warningIcon,ifhide,successIcon,freecode){
+              $('#loadWords').html(words);
+              if(img){
+                $('#loadingImg').show()
+              }else{
+                $('#loadingImg').hide()
+              }
+              if(warningIcon){
+                $('#wariningIcon').show()
+              }else{
+                $('#wariningIcon').hide()
+              }
+               if($('#floatDiv').is(':hidden')){
+                $('#floatDiv').slideDown(356)
+               }
+               if(freecode){
+                $('#normalTips_free-code-camp').show()
+               }else{
+                $('#normalTips_free-code-camp').hide()
+               }
+               if(successIcon){
+                $('#successIcon').show()
+               }
+              if(ifhide){
+                setTimeout(function(){
+                  if(hideFloat <= 0){
+                    if(successIcon){
+                        $('#successIcon').hide()
+                      }
+                      $('.overlap').fadeOut(456)
+                  }
+                      
+                },1300)
+              }
+              
+        }
+        function getPageSize() {
+            var xScroll, yScroll;
+            if (window.innerHeight && window.scrollMaxY) {
+                xScroll = window.innerWidth + window.scrollMaxX;
+                yScroll = window.innerHeight + window.scrollMaxY;
+            } else {
+                if (document.body.scrollHeight > document.body.offsetHeight) { // all but Explorer Mac    
+                    xScroll = document.body.scrollWidth;
+                    yScroll = document.body.scrollHeight;
+                } else { // Explorer Mac...would also work in Explorer 6 Strict, Mozilla and Safari    
+                    xScroll = document.body.offsetWidth;
+                    yScroll = document.body.offsetHeight;
+                }
+            }
+            var windowWidth, windowHeight;
+            if (self.innerHeight) { // all except Explorer    
+                if (document.documentElement.clientWidth) {
+                    windowWidth = document.documentElement.clientWidth;
+                } else {
+                    windowWidth = self.innerWidth;
+                }
+                windowHeight = self.innerHeight;
+            } else {
+                if (document.documentElement && document.documentElement.clientHeight) { // Explorer 6 Strict Mode    
+                    windowWidth = document.documentElement.clientWidth;
+                    windowHeight = document.documentElement.clientHeight;
+                } else {
+                    if (document.body) { // other Explorers    
+                        windowWidth = document.body.clientWidth;
+                        windowHeight = document.body.clientHeight;
+                    }
+                }
+            }       
+            // for small pages with total height less then height of the viewport    
+            if (yScroll < windowHeight) {
+                pageHeight = windowHeight;
+            } else {
+                pageHeight = yScroll;
+            }    
+            // for small pages with total width less then width of the viewport    
+            if (xScroll < windowWidth) {
+                pageWidth = xScroll;
+            } else {
+                pageWidth = windowWidth;
+            }
+            arrayPageSize = new Array(pageWidth, pageHeight, windowWidth, windowHeight);
+            return arrayPageSize;
+        }
+        var pquery = false
+        function getData(type,ifmd,filename){
+          hideFloat +=1
+          if(ifmd){
+            if(filename && pquery == false){
+              pquery = true
+              var dateArr = filename.split('_')
+              var year = dateArr[0]
+              var month = dateArr[1]
+              var day = dateArr[2]
+            }else{
+              var today = new Date()
+              var year = today.getFullYear()
+              var month = today.getMonth()+1
+              var day = today.getDate()
+              if(!filename){
+                var filename = year+'_'+month+'_'+day+'_1.json'
+                var tips = ''
+              }else{
+                var dataArr = filename.split('_')
+                var year = dataArr[0]
+                var month = dataArr[1]
+                var filename = filename
+                var tips = 'Just a moment, please.'
+              }
+            }
+            var getUrl = './'+defaultSource+'/a'+year+'/a'+month+'/'+filename
+            var dataType = 'json'
+            dealWithFloatDiv('',true,false,false)
+          }else{
+            var toDict = type2Dict[type]
+            //var tips = '<span class="normalItem">'+toDict+' ...</span>'
+            dealWithFloatDiv('',true,false,false)
+            var baseUrl = './dictionary/'
+            //var baseUrl = './explanations/'
+            var getUrl = baseUrl+type+'.json'
+             var dataType = 'json'
+             }
+          $.ajax({
+                type:"GET",
+                url: getUrl,
+                data: null,
+                dataType:dataType,
+                cache:false,
+                success: function(data) {
+                  hideFloat -= 1
+                  if(ifmd){
+                      requestPaper +=1
+                      var content = data
+                      try{
+                        var keyWords = content['keywords']
+                        var keyArr = keyWords.split(',')
+                        var wordsSpan = keyArr.join(', ')
+                        $('#spankeywords').html(wordsSpan)
+                      } catch(err) {
+                        console.log(err,'no keywords')
+                      }finally{
+                        $('#mainTitle').html(content['title'])
+                        var paperJsonDate = content['date']
+                        var timeArr = paperJsonDate.slice(0,10).split('-')
+                        var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+', '+timeArr[0] + ' By Lockey.'
+                        $('#createDate').html(dateStr)
+                        if (requestPaper >0){
+                          $('#todayPaperTitle').html(content['title'])
+                          $('#todayPaperDate').html(dateStr)
+                          var srcPath = './img/qrcode/'+filename.slice(0,-4)+'png'
+                          $('#todayQrcode').attr('src',srcPath)
+                        }
+                        var converter = new showdown.Converter();
+                        $('#lastArt').attr('href',content['last'])
+                        $('#nextArt').attr('href',content['next'])
+                        dictData['default'] = content['assistent']
+                        var html = converter.makeHtml(content['content']);
+                        document.getElementById("articleContent").innerHTML = html;
+                        dealWithFloatDiv('<span class="success">Paper Ready!</span>',false,false,true,true)
+                      }
+                      // for(var i in keyArr){
+                      //     wordsSpan += '<span class="innerKeywordSpan">'+keyArr[i]+'&nbsp'+'</span>'
+                      // }
+                      
+                  }else{
+                     dictData[type] = data
+                    $('#successIcon').show()
+                     loadedDict.push(type)
+                    //dealWithFloatDiv('',false,false,true,true)
+                    var tips='<span class="success">'+toDict+' loaded!</span>'
+                    dealWithFloatDiv(tips,false,false,true,true)
+                  }
+                },
+                error: function(data) {
+                  hideFloat -=1
+                  if(ifmd){
+                    toDict = 'Sorry, but no more paper!'
+                  }else{
+                    toDict = '<span class="error">'+toDict+'</span> failed!'
+                  }
+                    dealWithFloatDiv(toDict,false,true,false,false)
+                  
+                }
+            });
+        }
+        getData('type',true,false)
+        var searchDiv = $('#searchForm')
+        function getAudio(arr){
+            var y = arr.split(' ')
+            var tmp = []
+            for(var i in y){
+              if(i!=''){
+                var item = y[i]
+                if(item == ','){item = '%2C'}
+                if(item == '?'){item = '%3F'}
+                tmp.push(y[i])
+              }
+            }
+            out = tmp.join('+')
+            return youdaoSentenceAudio+out
+        }
+        function searchToggle(obj, evt){
+            var container = $(obj).closest('.search-wrapper');
+            var windowHW = getPageSize()
+            if(!container.hasClass('active')){
+                  container.addClass('active');
+                  evt.preventDefault();
+                  // if(windowHW[0] < 500){
+                  //     $('.search-wrapper').css('margin-top','26%')
+                  // }
+                  $('.with_motto_footer').hide()
+                  $('.search-input').focus()
+                  $('#wordItems').show(345)
+            }
+            else if(container.hasClass('active')){// && $(obj).closest('.input-holder').length == 0){alert(12)
+                  var value = $(searchDiv).find('.search-input').val().trim();
+                   if(value.length < 1){
+                    container.removeClass('active');
+                    // if(windowHW[0] < 500){
+                    //   $('.search-wrapper').css('margin-top','3%')
+                    // }
+                    container.find('.result-container').fadeOut(100, function(){$(this).empty();});
+                    $('#wordItems').hide(123)
+                    $('.with_motto_footer').show()
+                    $('.searchResult').hide()
+                   }
+                  
+            }
+        }
+        // setInterval(
+        //   function welcome(){
+        //   var timeNow = Date()
+        //   var timeSplit = timeNow.split(" ")
+        //   var hms = timeSplit[4]
+        //   var timeStr = timeSplit[0]+" "+timeSplit[1]+" "+ timeSplit[2]+" "+timeSplit[3]+" "+hms
+        //   $('.time').html(timeStr)
+        // },1000)
+        function fillMotto(){
+          var mottoLen = mottoArr.length
+          var randomNum = Math.random()*(mottoLen-1)
+          var toInt = parseInt(randomNum,10)
+          var chooseMotto = mottoArr[toInt]
+          $('.todayMotto').html(chooseMotto['en'])
+          $('.todayMottoAuthor').html(chooseMotto['auth'])
+          $('.todayMottoCn').html(chooseMotto['cn'])
+        }
+        function submitSearch(){
+               
+                var value = $(searchDiv).find('.search-input').val().trim();
+              
+                if(!value.length){
+                     $('.search-input').focus()
+                    return false
+                }
+                if(!testAlpha.test(value)){
+                    var tips = '<span class="error">[' + value + ']</span> Illegal input, must be English word!'
+                    dealWithFloatDiv(tips,false,true,true)
+                    return false
+                }
+              
+                if (value.length == 1){
+                  dealWithFloatDiv('Please Remember THE 26 : A~B~C~D~E~F~G~H~I~J~K~L~M~N~O~P~Q~R~S~T~U~V~W~X~Y~Z~~~!',false,false,false,false,true)
+                  return false
+                }
+                var valueO = value.toLocaleLowerCase()
+                var valueArr = [valueO]
+                value = valueO.slice(-4)
+                if(value.match("ies") || value.match("ied")){
+                    valuetmp = valueO.slice(0,-3)+'y'
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("ing")){
+                    valuetmp = valueO.slice(0,-3)
+                    valueArr.push(valuetmp)
+                    valuetmp += 'e'
+                    valueArr.push(valuetmp)
+                }
+                var lastStr = valueO.slice(-1)
+                if(lastStr == 's'){
+                    valuetmp = valueO.slice(0,-1)
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("tion")){
+                    valuetmp = valueO.slice(0,-4)
+                    valueArr.push(valuetmp)
+                    value += 'te'
+                    valueArr.push(valuetmp)
+                }
+                lastStr = valueO.slice(-2)
+                if(lastStr == 'ed'){
+                    valuetmp = valueO.slice(0,-2)
+                    valueArr.push(valuetmp)
+                    valuetmp += 'e'
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("est")){
+                    valuetmp = valueO.slice(0,-3)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-4)
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("ers")){
+                    valuetmp = valueO.slice(0,-3)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-2)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-1)
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("ly")){
+                    valuetmp = valueO.slice(0,-1)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-2)
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("ily")){
+                    valuetmp = valueO.slice(0,-3) + 'y'
+                    valueArr.push(valuetmp)
+                }
+                try{
+                    var jsonDataBasic = dictData['default']
+                    for(var item in valueArr){
+                      value = valueArr[item]
+                      if(jsonDataBasic[value]){
+                        break
+                      }
+                      if(!jsonDataBasic[value] && dictData['economist_basic']){
+                        jsonDataBasic = dictData['economist_basic']
+                      }
+                      if(jsonDataBasic[value]){
+                        break
+                      }
+                      if(!jsonDataBasic[value] && dictData['cet46_basic']){
+                          jsonDataBasic = dictData['cet46_basic']
+                      }
+                      if(jsonDataBasic[value]){
+                        break
+                      }
+                      
+                    }
+                    if(jsonDataBasic[value]){
+                      $(searchDiv).find('.result-container').html('')
+                      $('.wordName').text(value)
+                      try{
+                      var proEn = jsonDataBasic[value]['pron']['peg']
+                      var proAm = jsonDataBasic[value]['pron']['pam']
+                    } catch(err) { 
+                        var proEn = jsonDataBasic[value]['pro_en']
+                      var proAm = jsonDataBasic[value]['pro_am']
+                    }
+                      var proLi = ''
+                      if(proEn){
+                        if(proEn.match("英")){
+                          proLi += '<li>'+proEn+'</li>'
+                        }else{
+                          proLi += '<li><span class="wordTitle">英 </span>'+proEn+'</li>'
+                        }
+                      }
+                      if(proAm){
+                        if(proAm.match("美")){
+                          proLi += '<li>'+proAm+'</li>'
+                        }else{
+                          proLi += '<li><span class="wordTitle">美 </span>'+proAm+'</li>'
+                        }
+                      }
+                      $('#wordPro').html(proLi)
+                      var exLi = ''
+                      var exArr = jsonDataBasic[value]['ex']
+                      for(var i in exArr){
+                          exLi += '<li>'+exArr[i]+'</li>'
+                      }
+                      $('#searchForm').hide()
+                      $('#wordExplanationCN').html(exLi)
+                      $('.everydayMotto').hide()
+                      $('footer').hide()
+                      $('.searchResult').show()
+                      $('.dictsChoose').hide()
+                      try{
+                            var jsonDataModel = dictData['default']
+                            if(!jsonDataModel[value]){
+                              if(dictData['economist_model']){
+                                jsonDataModel = dictData['economist_model']
+                              }
+                              if(!jsonDataModel[value] && dictData['cet46_model']){
+                                jsonDataModel = dictData['cet46_model']
+                              }
+                            }
+                             try{
+                              var example = jsonDataModel[value]['eg2']
+                             }catch(err) { 
+                              console.log(err)
+                               var example = jsonDataModel[value]['eg']
+                            }
+                            
+                            if(example){
+                                var toFillSentence = ''
+                                 for(var i in example){
+                                  var nu = i*1+1
+                                  toFillSentence += '<p><span class="wordTitle">例句'+nu+'：</span><span class="wordSentenceEn">'+example[i][0]+'</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">'+example[i][1]+'</span></p>'
+                                 }
+                                 $('#centences').html(toFillSentence)
+                            }
+                            if(jsonDataModel[value]['wp'] != []){
+                              var phrases = jsonDataModel[value]['wp']
+                              var phraseLi = ''
+                              var no = 0
+                              for(var item in phrases){
+                                no += 1
+                                phraseLi += '<li><span class="wordTitle">'+no+'：</span><span class="wordSentenceEn">'+item+'</span></li><li class="phraseCn"><span class="wordSentenceCn">'+phrases[item]+'</span></li>'
+                              }
+                              $('#wordPhrases').html(phraseLi)
+                            }
+                          } catch(err) { 
+                              console.log('No model sentence and phrase!')
+                              return false
+                          }
+                          
+                      }else{
+                          var tips = '<span class="error">' + value + '</span> meets 404. May choose or switch dictionary!'
+                          $('#search-input').val('')
+                          $('#searchForm').show()
+                          $('.searchResult').hide()
+                          $('.dictsChoose').show()
+                          dealWithFloatDiv(tips,false,true,true)
+                          
+                      }
+                  
+                }catch(err) { 
+                  var tips = '<span class="error">' + value + '</span> meets 404. May choose or switch dictionary!'
+                  $('#search-input').val('')
+                  $('#searchForm').show()
+                  $('.searchResult').hide()
+                  $('.dictsChoose').show()
+                  dealWithFloatDiv(tips,false,true,true)
+                  return false
+                }
+        }
+        $('#submitGo').click(function(){
+                submitSearch()
+        })
+        $('#wordItems li').click(function(){
+          var radio = $(this).find('input').val()
+          var childi = $(this).find('i')
+          if(!$(childi).hasClass('selected')){
+                  $(childi).addClass('selected');
+                  currentDict.push(radio)
+            }else if($(childi).hasClass('selected')){// && $(obj).closest('.input-holder').length == 0){alert(12)
+                  $(childi).removeClass('selected');
+                  currentDict.splice($.inArray(radio,currentDict),1);
+            }else{
+              cnosole.log('both yes no')
+            }
+          if(radio == 'cancel'){
+            $(searchDiv).find('.search-input').val('')
+            $('#searchWordBtn').trigger('click')
+            $(childi).removeClass('selected');
+          }else if(radio == 'confirm'){
+            $(childi).removeClass('selected');
+            var seg = currentDict.indexOf('sentence_phrase')
+            if(currentDict.length ==0 && currentDict[0] == 'confirm'){
+              dealWithFloatDiv('No item selected!',false,true,true)
+              return false
+            }
+            var indexbaseeconomist = currentDict.indexOf('economist')
+            var indexbasecet46 = currentDict.indexOf('cet46')
+            var indexbasepupil = currentDict.indexOf('pupil')
+
+            if (indexbasecet46<0 && indexbasepupil<0 && indexbaseeconomist<0){
+                dealWithFloatDiv('No basic Dicts selected!',false,true,true)
+            }
+            for(i in currentDict){
+              var item = currentDict[i]
+              if (item == 'confirm' || item == 'cancel'){
+                continue
+              }
+              if(item != 'sentence_phrase'){
+                  var dictTypeBasic = item+'_basic'
+                  var dictTypeModel = item+'_model'
+                  if(loadedDict.indexOf(dictTypeBasic) <0){
+                      getData(dictTypeBasic,false)
+                  }else{
+                    dealWithFloatDiv(dictTypeBasic+' has loaded!',false,false,true,false,true)
+                  }
+                  if(seg>=0){
+                    if(loadedDict.indexOf(dictTypeModel)<0){
+                      getData(dictTypeModel,false)
+                    }
+                  }
+              }
+            }
+
+          }
+
+        
+      })
+        document.onkeydown=function(event){
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            
+            if(e && e.keyCode == 13){
+              if(!$('#floatList').is(':hidden')){
+                $('#searchPaperIcon').trigger('click')
+              }
+              if(!$('#pagetwo').is(':hidden')){
+                var value = $(searchDiv).find('.search-input').val().trim();
+                if(value.length>1){
+                  submitSearch()
+                }
+              }
+            }
+        }; 
+        $('#closeFloat').click(function(){
+            $('#floatDiv').fadeOut(556)
+        })
+         $('#showSearchForm').click(function(){
+          $('#searchForm').show()
+          $('.searchResult').hide()
+          $('.dictsChoose').show()
+          $('.everydayMotto').hide()
+          $('#searchWordBtn').trigger('click')
+          $('.overlap').fadeOut(456)
+         })
+         $('body').bind('touchstart',function(e){
+        startX = e.originalEvent.changedTouches[0].pageX;
+        startY = e.originalEvent.changedTouches[0].pageY;
+    });
+    $("body").bind("touchmove",function(e){
+        
+        endX = e.originalEvent.changedTouches[0].pageX;
+        endY = e.originalEvent.changedTouches[0].pageY;
+        //获取滑动距离
+        distanceX = endX-startX;
+        distanceY = endY-startY;
+        //判断滑动方向
+        if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>60){
+          console.log('向右边滑动')
+            if($('#pageone').is(':hidden')){
+              $('.topageone').trigger('click')
+              return false
+            }
+        }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-60){
+            console.log('往左滑动');
+            if($('#pagetwo').is(':hidden')){
+              //window.location.href='#pagetwo'
+              return false
+            }
+        }else
+        if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<50){
+          console.log('往up滑动');
+              $('#floatDiv').slideUp(345)
+              var paperNo = $('#paperListUl li').length
+              if(!$('#floatList').is(':hidden') && paperNo >4){
+                var $parentUl = $('#paperListUl');
+                var $firstPaperLi = $parentUl.find('li:first');
+                var paperLi = $firstPaperLi.detach();
+                $parentUl.append(paperLi)
+              }
+        } else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY>0){
+            console.log('往down滑动');
+
+        }
+      })
+    var scrollDirect=function () {
+        var dalta = document.body.scrollTop;
+        window.addEventListener("scroll", function (event) {
+        event = event || window.event;
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        var totalScroll = scrollHeight - windowHeight
+        var change = totalScroll- scrollTop
+        if((dalta - change) >0 ){
+          if(scrollTop > 20)
+          {
+            $('#header').hide()
+            $('#linkIcons').hide()
+            $('footer').show()
+          }
+          
+        }else{
+          $('#header').show()
+          $('#linkIcons').show()
+          $('footer').hide()
+        }
+        dalta = change
+       if(totalScroll - scrollTop <5){
+        $('#header').show()
+       }
+       if(totalScroll - scrollTop > totalScroll-5){
+        $('footer').show()
+       }
+    }, false);
+}
+scrollDirect(function (direction) {
+ })
+$('.switchPaper').click(function(){
+  var paperName = $(this).attr('href')
+  if(paperName == 'abcdeflockey'){
+    getData('type',true,false)
+  }else{
+    getData('type',true,paperName)
+  }
+})
+$('#articleContent').on('click','.fa-info-circle',function(){
+               var toSearch = $(this).text()
+               if(toSearch.match(',')){
+                  var index = toSearch.match(',')['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match('"')){
+                  var index = toSearch.match('"')['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("'")){
+                  var index = toSearch.match("'")['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("’")){
+                 var index = toSearch.match("’")['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.indexOf("[") == 0 || toSearch.indexOf("(") == 0){
+                  toSearch = toSearch.slice(1)
+               }
+               if(toSearch.indexOf("]") >0){
+                  var index = toSearch.indexOf("]")
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.indexOf(")") >0){
+                  var index = toSearch.indexOf(")")
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("”")){
+                var index = toSearch.match("”")['index']
+                if(!toSearch.match("“")){
+                  toSearch = toSearch.slice(0,index)
+                }else{
+                 toSearch = toSearch.slice(1,index)
+                }
+               }
+               if(toSearch.match("“") || toSearch.match("“")){
+                  toSearch = toSearch.slice(1)
+                }
+               if(toSearch){
+                $('#search-input').val(toSearch)
+                $('#showSearchForm').trigger('click')
+                setTimeout(function(){
+                  submitSearch()
+                },169)
+               }
+        })
+fillMotto()
+    </script>
+</body>
+</html>
