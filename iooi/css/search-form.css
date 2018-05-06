@@ -1064,9 +1064,9 @@ input{
 #confirm_cancel li{
     display: inline-block;
 }
-#articleContent{
+/*#articleContent{
     padding-bottom: 66px;
-}
+}*/
 .dictTips{
     color: #006879;
     margin-left: 9px;

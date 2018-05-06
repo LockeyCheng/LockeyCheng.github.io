@@ -51,6 +51,7 @@
         <h5 class="heading5" id="createDate">——By Lockey</h5>
         <p class="pkeywords">Key Words: <span id="spankeywords"></span></p>
         <div id="articleContent"></div>
+        <img src="./img/zhi.jpg" style='width: 50%;margin-left: 25%;padding-bottom: 69px;'>
     </div>
     <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"></span></a></span>
     <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper"><span  class="fa fa-arrow-right"></span></a></span>
@@ -238,7 +239,6 @@
         var dictData={}
         var currentFloat = 0
         var searchForm = $('.cd-main-search')
-        var requestPaper = 0
         var paperListJson = null
         var totalPaper = 0
         var showPages = 0
@@ -567,12 +567,16 @@
         function getData(type,ifmd,filename){
           hideFloat +=1
           if(ifmd){
-            if(filename && pquery == false){
+            var queryPaper = Request['paper']
+
+            if(queryPaper && pquery == false){
               pquery = true
-              var dateArr = filename.split('_')
-              var year = dateArr[0]
-              var month = dateArr[1]
-              var day = dateArr[2]
+              var year = queryPaper.slice(0,4)
+              var month = queryPaper.slice(4,6)*1
+              var day = queryPaper.slice(6,8)*1
+              var no = queryPaper.slice(8)
+              var filename = year+'_'+month+'_'+day+'_'+no*1+'.json'
+              console.log(year,month,day,no,filename)
             }else{
               var today = new Date()
               var year = today.getFullYear()
@@ -589,6 +593,7 @@
                 var tips = 'Just a moment, please.'
               }
             }
+
             var getUrl = './'+defaultSource+'/a'+year+'/a'+month+'/'+filename
             var dataType = 'json'
             dealWithFloatDiv('',true,false,false)
@@ -610,35 +615,25 @@
                 success: function(data) {
                   hideFloat -= 1
                   if(ifmd){
-                      requestPaper +=1
-                      var content = data
-                      try{
+                        var content = data
+                        var converter = new showdown.Converter();
+                        var html = converter.makeHtml(content['content']);
+                        document.getElementById("articleContent").innerHTML = html;
                         var keyWords = content['keywords']
                         var keyArr = keyWords.split(',')
                         var wordsSpan = keyArr.join(', ')
                         $('#spankeywords').html(wordsSpan)
-                      } catch(err) {
-                        console.log(err,'no keywords')
-                      }finally{
                         $('#mainTitle').html(content['title'])
                         var paperJsonDate = content['date']
                         var timeArr = paperJsonDate.slice(0,10).split('-')
                         var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+', '+timeArr[0] + ' By Lockey.'
                         $('#createDate').html(dateStr)
-                        if (requestPaper >0){
-                          $('#todayPaperTitle').html(content['title'])
-                          $('#todayPaperDate').html(dateStr)
-                          var srcPath = './img/qrcode/'+filename.slice(0,-4)+'png'
-                          $('#todayQrcode').attr('src',srcPath)
-                        }
-                        var converter = new showdown.Converter();
                         $('#lastArt').attr('href',content['last'])
                         $('#nextArt').attr('href',content['next'])
                         dictData['default'] = content['assistent']
-                        var html = converter.makeHtml(content['content']);
-                        document.getElementById("articleContent").innerHTML = html;
-                        dealWithFloatDiv('<span class="success">Paper Ready!</span>',false,false,true,true)
-                      }
+                        $('.topageone').trigger('click')
+                        
+                      //}
                       // for(var i in keyArr){
                       //     wordsSpan += '<span class="innerKeywordSpan">'+keyArr[i]+'&nbsp'+'</span>'
                       // }
