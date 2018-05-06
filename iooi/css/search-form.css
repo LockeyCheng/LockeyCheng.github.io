@@ -15,10 +15,13 @@ http://www.jq22.com/demo/jquery-SearchBar20160307/img/image.jpg
 #loadingImg{
     position: fixed;
     top: 39.5%;
-    left: 41.5%;
+    left: 45%;
     z-index: 11111;
     font-size: 3.95em;
     color:#11cc53;
+}
+.wordPro_p,.wordPhrases_p,.wordExplanationCN_p{
+display: none
 }
 
 .fa-loading-fa{
