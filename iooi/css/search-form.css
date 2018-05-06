@@ -23,7 +23,9 @@ http://www.jq22.com/demo/jquery-SearchBar20160307/img/image.jpg
 .wordPro_p,.wordPhrases_p,.wordExplanationCN_p{
 display: none
 }
-
+.wordsNo{
+    color: #8311c8;
+}
 .fa-loading-fa{
     position: absolute;
     font-size: 0.6em;
