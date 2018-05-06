@@ -117,14 +117,14 @@
     <div class="searchResult">
         <div>
             <p class="wordName">tragedy</p>
-            <p><span class="wordTitle">发音：</span></p>
-            <p><ul id="wordPro"></ul></p>
+            <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
+            <p class="wordPro_p"><ul id="wordPro"></ul></p>
 
-            <p><span class="wordTitle">释义：</span></p>
-            <p><ul id="wordExplanationCN"></ul></p>
+            <p class="wordExplanationCN_p"><span class="wordTitle">释义：</span></p>
+            <p class="wordExplanationCN_p"><ul id="wordExplanationCN"></ul></p>
 
-            <p><span class="wordTitle">短语：</span></p>
-            <p><ul id="wordPhrases"></ul></p>
+            <p class="wordPhrases_p"><span class="wordTitle">短语：</span></p>
+            <p class="wordPhrases_p"><ul id="wordPhrases"></ul></p>
             <!-- <p><span class="wordTitle">释义（英）：</span><span class="wordExplanationEG"></span></p> -->
             <!-- <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
             <p><span class="wordTitle">近义：</span><span class="similar"></span></p>
@@ -826,11 +826,14 @@
                     }
                       var proLi = ''
                       if(proEn){
+                        $('.wordPro_p').show()
                         if(proEn.match("英")){
                           proLi += '<li>'+proEn+'</li>'
                         }else{
                           proLi += '<li><span class="wordTitle">英 </span>'+proEn+'</li>'
                         }
+                      }else{
+                        $('.wordPro_p').hide()
                       }
                       if(proAm){
                         if(proAm.match("美")){
@@ -846,7 +849,12 @@
                           exLi += '<li>'+exArr[i]+'</li>'
                       }
                       $('#searchForm').hide()
-                      $('#wordExplanationCN').html(exLi)
+                      if(exLi){
+                        $('.wordExplanationCN_p').show()
+                        $('#wordExplanationCN').html(exLi)
+                      }else{
+                        $('.wordExplanationCN_p').hide()
+                      }
                       $('.everydayMotto').hide()
                       $('footer').hide()
                       $('.searchResult').show()
@@ -869,14 +877,18 @@
                             }
                             
                             if(example){
+                              $('#centences').show()
                                 var toFillSentence = ''
                                  for(var i in example){
                                   var nu = i*1+1
                                   toFillSentence += '<p><span class="wordTitle">例句'+nu+'：</span><span class="wordSentenceEn">'+example[i][0]+'</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">'+example[i][1]+'</span></p>'
                                  }
                                  $('#centences').html(toFillSentence)
+                            }else{
+                               $('#centences').hide()
                             }
                             if(jsonDataModel[value]['wp'] != []){
+                              $('.wordPhrases_p').show()
                               var phrases = jsonDataModel[value]['wp']
                               var phraseLi = ''
                               var no = 0
@@ -885,6 +897,8 @@
                                 phraseLi += '<li><span class="wordTitle">'+no+'：</span><span class="wordSentenceEn">'+item+'</span></li><li class="phraseCn"><span class="wordSentenceCn">'+phrases[item]+'</span></li>'
                               }
                               $('#wordPhrases').html(phraseLi)
+                            }else{
+                              $('.wordPhrases_p').hide()
                             }
                           } catch(err) { 
                               console.log('No model sentence and phrase!')
