@@ -50,7 +50,7 @@
         <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
         <h5 class="heading5" id="createDate">——By Lockey</h5>
         <p class="pkeywords">Key Words: <span id="spankeywords"></span></p>
-        <p class="pkeywords">Statistics: <span id="spanstatistics"></span></p>
+        <p class="pkeywords">Words Statistics: <span id="spanstatistics"></span></p>
         <p class="pkeywords">Suggested Focus: <span id="spansfocus"></span></p>
         <div id="articleContent"></div>
         <img src="./img/zhi.jpg" style='width: 50%;margin-left: 25%;margin-bottom: 66px;border-radius: 50%'>
@@ -623,15 +623,17 @@
                         var converter = new showdown.Converter();
                         var html = converter.makeHtml(content['content']);
                         document.getElementById("articleContent").innerHTML = html;
-                        var keyWords = content['keywords']
+
+                        var statistics = content['paperStatistics']
+                        var keyWords = statistics['keywords']
                         var keyArr = keyWords.split(',')
                         var wordsSpan = keyArr.join(', ')
                         $('#spankeywords').html(wordsSpan)
 
-                        var statistics =  '<span class="statistics-no">'+content['toughwords']+'</span> Advanced in a set of '+'<span class="statistics-no">'+content['total']+' words</span>'
+                        var wordsCount =  '<span class="statistics-no">Advanced: '+statistics['toughwords']+'</span><span class="statistics-no">Set: '+statistics['wordsset']+'</span><span class="statistics-no">Total: '+statistics['allwords']+'</span>'
 
-                        $('#spanstatistics').html(statistics)
-                        $('#spansfocus').html(content['suggestedfocus'])
+                        $('#spanstatistics').html(wordsCount)
+                        $('#spansfocus').html(statistics['suggestedfocus'])
                         $('#mainTitle').html(content['title'])
                         var paperJsonDate = content['date']
                         var timeArr = paperJsonDate.slice(0,10).split('-')

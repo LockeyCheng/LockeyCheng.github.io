@@ -1425,8 +1425,12 @@ span.jPag-snext-img{
     color:#089763;
 }
 .statistics-no,#spansfocus{
-    color: #9300d3;
+    color: #40e7d1;
     font-size: 1.2em;
+}
+.statistics-no{
+    display: block;
+    text-indent: 12px;
 }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
