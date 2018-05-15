@@ -1160,12 +1160,11 @@ right:0px;
 }
 .pkeywords{
     color: #ff6a00;
-    font-size: 1.1em;
+    /*font-size: 1.1em;*/
     font-weight: bold;
 }
 #spankeywords{
-    color: #089763;
-    font-size: 0.9em;
+    color: #40e7d1;/*#089763;font-size: 0.9em;*/
     word-break: break-all;
 }
 
@@ -1427,9 +1426,10 @@ span.jPag-snext-img{
 .statistics-no,#spansfocus{
     color: #40e7d1;
 }
-.statistics-no{
+.statistics-no,#spankeywords,#spansfocus{
     display: block;
     text-indent: 12px;
+    padding-top: 5px;
 }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
