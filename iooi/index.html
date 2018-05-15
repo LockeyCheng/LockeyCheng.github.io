@@ -623,17 +623,21 @@
                         var converter = new showdown.Converter();
                         var html = converter.makeHtml(content['content']);
                         document.getElementById("articleContent").innerHTML = html;
+                        try{
+                          var statistics = content['paperStatistics']
+                          var keyWords = statistics['keywords']
+                          var keyArr = keyWords.split(',')
+                          var wordsSpan = keyArr.join(', ')
+                          $('#spankeywords').html(wordsSpan)
 
-                        var statistics = content['paperStatistics']
-                        var keyWords = statistics['keywords']
-                        var keyArr = keyWords.split(',')
-                        var wordsSpan = keyArr.join(', ')
-                        $('#spankeywords').html(wordsSpan)
+                          var wordsCount =  '<span class="statistics-no">Advanced: '+statistics['toughwords']+'</span><span class="statistics-no">Set: '+statistics['wordsset']+'</span><span class="statistics-no">Total: '+statistics['allwords']+'</span>'
 
-                        var wordsCount =  '<span class="statistics-no">Advanced: '+statistics['toughwords']+'</span><span class="statistics-no">Set: '+statistics['wordsset']+'</span><span class="statistics-no">Total: '+statistics['allwords']+'</span>'
-
-                        $('#spanstatistics').html(wordsCount)
-                        $('#spansfocus').html(statistics['suggestedfocus'])
+                          $('#spanstatistics').html(wordsCount)
+                          $('#spansfocus').html(statistics['suggestedfocus'])
+                        }catch(err){
+                          console.log(err)
+                        }
+                        
                         $('#mainTitle').html(content['title'])
                         var paperJsonDate = content['date']
                         var timeArr = paperJsonDate.slice(0,10).split('-')
