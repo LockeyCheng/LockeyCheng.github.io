@@ -1421,6 +1421,13 @@ span.jPag-snext-img{
     margin-left: -36px;
     padding: 6px;
 }
+#spanstatistics{
+    color:#089763;
+}
+.statistics-no,#spansfocus{
+    color: #9300d3;
+    font-size: 1.2em;
+}
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
     .everydayMotto{
