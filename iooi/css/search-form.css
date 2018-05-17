@@ -1078,7 +1078,7 @@ input{
 }
 .fa-info-circle{
     font-size:15px !important;
-    color:#06cab0;
+    color:#096b5e;
 }
 .fixleft,.fixright{
 position: fixed;
@@ -1428,11 +1428,11 @@ span.jPag-snext-img{
 }
 .statistics-no,#spankeywords,#spansfocus{
     display: block;
-    text-indent: 12px;
+    /*text-indent: 12px;*/
     padding-top: 5px;
 }
 #clickWordsDict{
-   padding: 6px;
+    padding: 6px;
     display: none;
     position: fixed;
     top: 56px;
@@ -1442,11 +1442,12 @@ span.jPag-snext-img{
     min-height: 256px;
     border-radius: 16px;
     color: #7310af;
-    border: solid 1px #cafdff;
+    border-top: solid 1px #cafdff;
+    border-bottom: solid 1px #cafdff;
     opacity: 0.93;
 }
 .clickWordsDict_title{
-    color:#835dbc;
+    color: #914915;
 }
 #clickWordsDict_detail{
 padding-left:9%;

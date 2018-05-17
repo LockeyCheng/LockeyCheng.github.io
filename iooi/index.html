@@ -48,16 +48,15 @@
   <div data-role="main" class="ui-content">
     <div id="clickWordsDict">
       <p><a class="fa fa-remove showNone" style="
-    margin-top: -25px;
+    margin-top: -24px;
     position: absolute;
-    right: -1px;
+    right: -4px;
     font-size: 1.6em;
-    background: #ddf7ff;
     padding: 12px 12.5px;
     border-radius: 34px;
     color: #e65757;
-    border-left: solid 2px #8afbff;
-    border-right: solid 2px #8afbff;
+    border-left: solid 3px #8afbff;
+    border-right: solid 3px #8afbff;
 "></a></p>
       <h3 class="wordName" align="center">Forumn<h3>
           <div id="clickWordsDict_detail">
@@ -73,9 +72,9 @@
         <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
         <h5 class="heading5" id="createDate">——By Lockey</h5>
         <!-- <p class="pkeywords">[ Key Words ]<span id="spankeywords"></span></p> -->
-        <p class="pkeywords">[ Words Statistics ]<span id="spanstatistics"></span></p>
-        <p class="pkeywords">[ Suggested Focus ]<span id="spansfocus"></span></p>
-        <p class="pkeywords">[ Article Content ]</p>
+        <p class="pkeywords"><span id="spanstatistics"></span></p>
+        <!-- <p class="pkeywords"><span id="spansfocus"></span></p> -->
+        <!-- <p class="pkeywords">[ Article Content ]</p> -->
         <div id="articleContent"></div>
         <img src="./img/zhi.png" style='width: 50%;margin-left: 25%;margin-bottom: 66px;border-radius: 20%'>
     </div>
@@ -654,10 +653,9 @@
                           var wordsSpan = keyArr.join(', ')
                           //$('#spankeywords').html(wordsSpan)
 
-                          var wordsCount =  '<span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span>'+wordsSpan+'</span><span class="statistics-no"><span class="clickWordsDict_title">Advanced: </span>'+statistics['toughwords']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Set: </span>'+statistics['wordsset']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Total: </span>'+statistics['allwords']+'</span>'
+                          var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span>'+wordsSpan+'</span><span class="statistics-no"><span class="clickWordsDict_title">Advanced: </span>'+statistics['toughwords']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Set: </span>'+statistics['wordsset']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Total: </span>'+statistics['allwords']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Suggested Focus: </span>'+statistics['suggestedfocus']+'</span>'
 
-                          $('#spanstatistics').html(wordsCount)
-                          $('#spansfocus').html(statistics['suggestedfocus'])
+                          $('#spanstatistics').html(wordsData)
                         }catch(err){
                           console.log(err)
                         }
@@ -1190,7 +1188,7 @@ $('#articleContent').on('click','.fa-info-circle',function(){
                 $('.wordName').html(toSearch)
                if(toSearch){
 
-                submitSearch(toSearch,true)
+                submitSearch(toSearch.toLowerCase(),true)
                 
                 //$('#search-input').val(toSearch)
                 //$('#showSearchForm').trigger('click')
