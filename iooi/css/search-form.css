@@ -1159,7 +1159,7 @@ right:0px;
     text-indent: 23px;
 }
 .pkeywords{
-    color: #ff6a00;
+    color: #914915;
     /*font-size: 1.1em;*/
     font-weight: bold;
 }
@@ -1444,6 +1444,9 @@ span.jPag-snext-img{
     color: #7310af;
     border: solid 1px #cafdff;
     opacity: 0.93;
+}
+.clickWordsDict_title{
+    color:#835dbc;
 }
 #clickWordsDict_detail{
 padding-left:9%;

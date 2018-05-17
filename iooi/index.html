@@ -72,7 +72,7 @@
     <div id="page-content" class="single-page">
         <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
         <h5 class="heading5" id="createDate">——By Lockey</h5>
-        <p class="pkeywords">[ Key Words ]<span id="spankeywords"></span></p>
+        <!-- <p class="pkeywords">[ Key Words ]<span id="spankeywords"></span></p> -->
         <p class="pkeywords">[ Words Statistics ]<span id="spanstatistics"></span></p>
         <p class="pkeywords">[ Suggested Focus ]<span id="spansfocus"></span></p>
         <p class="pkeywords">[ Article Content ]</p>
@@ -652,9 +652,9 @@
                           var keyWords = statistics['keywords']
                           var keyArr = keyWords.split(',')
                           var wordsSpan = keyArr.join(', ')
-                          $('#spankeywords').html(wordsSpan)
+                          //$('#spankeywords').html(wordsSpan)
 
-                          var wordsCount =  '<span class="statistics-no">Advanced: '+statistics['toughwords']+'</span><span class="statistics-no">Set: '+statistics['wordsset']+'</span><span class="statistics-no">Total: '+statistics['allwords']+'</span>'
+                          var wordsCount =  '<span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span>'+wordsSpan+'</span><span class="statistics-no"><span class="clickWordsDict_title">Advanced: </span>'+statistics['toughwords']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Set: </span>'+statistics['wordsset']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Total: </span>'+statistics['allwords']+'</span>'
 
                           $('#spanstatistics').html(wordsCount)
                           $('#spansfocus').html(statistics['suggestedfocus'])
@@ -715,6 +715,7 @@
             return youdaoSentenceAudio+out
         }
         function searchToggle(obj, evt){
+            $('#clickWordsDict').hide()
             var container = $(obj).closest('.search-wrapper');
             var windowHW = getPageSize()
             if(!container.hasClass('active')){
