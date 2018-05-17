@@ -1443,6 +1443,7 @@ span.jPag-snext-img{
     border-radius: 16px;
     color: #7310af;
     border: solid 1px #cafdff;
+    opacity: 0.95;
 }
 #clickWordsDict_detail{
 padding-left:9%;
