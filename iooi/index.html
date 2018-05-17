@@ -46,6 +46,29 @@
   </div>
 <div data-role="page" id="pageone">
   <div data-role="main" class="ui-content">
+    <div id="clickWordsDict">
+      <h3 class="wordName" align="center">Forumn<h3>
+          <div id="clickWordsDict_detail">
+            <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
+            <p class="wordPro_p"><ul class="wordPro"></ul></p>
+
+            <p class="wordExplanationCN_p"><span class="wordTitle">释义：</span></p>
+            <p class="wordExplanationCN_p"><ul class="wordExplanationCN"></ul></p>
+            <p class="basic_dict_error error"></p>
+          </div>
+          <p><a class="fa fa-remove showNone" style="
+    margin-top: -18px;
+    position: absolute;
+    left: 46%;
+    font-size: 1.6em;
+    background: #ddf7ff;
+    padding: 11px 12.5px;
+    border-radius: 34px;
+    color: #e65757;
+    border-left: solid 1.5px #8afbff;
+    border-right: solid 1.5px #8afbff;
+"></a></p>
+    </div>
     <div id="page-content" class="single-page">
         <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
         <h5 class="heading5" id="createDate">——By Lockey</h5>
@@ -123,13 +146,13 @@
         <div>
             <p class="wordName">tragedy</p>
             <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
-            <p class="wordPro_p"><ul id="wordPro"></ul></p>
+            <p class="wordPro_p"><ul class="wordPro"></ul></p>
 
             <p class="wordExplanationCN_p"><span class="wordTitle">释义：</span></p>
-            <p class="wordExplanationCN_p"><ul id="wordExplanationCN"></ul></p>
+            <p class="wordExplanationCN_p"><ul class="wordExplanationCN"></ul></p>
 
             <p class="wordPhrases_p"><span class="wordTitle">短语：</span></p>
-            <p class="wordPhrases_p"><ul id="wordPhrases"></ul></p>
+            <p class="wordPhrases_p"><ul class="wordPhrases"></ul></p>
             <!-- <p><span class="wordTitle">释义（英）：</span><span class="wordExplanationEG"></span></p> -->
             <!-- <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
             <p><span class="wordTitle">近义：</span><span class="similar"></span></p>
@@ -736,10 +759,10 @@
           $('.todayMottoAuthor').html(chooseMotto['auth'])
           $('.todayMottoCn').html(chooseMotto['cn'])
         }
-        function submitSearch(){
-               
+        
+        function submitSearch(value,basicLookup){
+              if(!value){
                 var value = $(searchDiv).find('.search-input').val().trim();
-              
                 if(!value.length){
                      $('.search-input').focus()
                     return false
@@ -754,6 +777,9 @@
                   dealWithFloatDiv('Please Remember THE 26 : A~B~C~D~E~F~G~H~I~J~K~L~M~N~O~P~Q~R~S~T~U~V~W~X~Y~Z~~~!',false,false,false,false,true)
                   return false
                 }
+              }else{
+                $('.basic_dict_error').hide()
+              }
                 var valueO = value.toLocaleLowerCase()
                 var valueArr = [valueO]
                 value = valueO.slice(-4)
@@ -831,6 +857,7 @@
                       
                     }
                     if(jsonDataBasic[value]){
+
                       $(searchDiv).find('.result-container').html('')
                       $('.wordName').text(value)
                       try{
@@ -858,7 +885,7 @@
                           proLi += '<li><span class="wordTitle">美 </span>'+proAm+'</li>'
                         }
                       }
-                      $('#wordPro').html(proLi)
+                      $('.wordPro').html(proLi)
                       var exLi = ''
                       var exArr = jsonDataBasic[value]['ex']
                       for(var i in exArr){
@@ -867,9 +894,12 @@
                       $('#searchForm').hide()
                       if(exLi){
                         $('.wordExplanationCN_p').show()
-                        $('#wordExplanationCN').html(exLi)
+                        $('.wordExplanationCN').html(exLi)
                       }else{
                         $('.wordExplanationCN_p').hide()
+                      }
+                      if(basicLookup){
+                        return false
                       }
                       $('.everydayMotto').hide()
                       $('footer').hide()
@@ -932,6 +962,10 @@
                       }
                   
                 }catch(err) { 
+                  if(basicLookup){
+                    $('.basic_dict_error').html('It seems something go bad with this word, please click search icon to do a further lookup.')
+                    $('.basic_dict_error').show()
+                  }
                   var tips = '<span class="error">' + value + '</span> meets 404. May choose or switch dictionary!'
                   $('#search-input').val('')
                   $('#searchForm').show()
@@ -1146,14 +1180,25 @@ $('#articleContent').on('click','.fa-info-circle',function(){
                if(toSearch.match("“") || toSearch.match("“")){
                   toSearch = toSearch.slice(1)
                 }
+                $('.wordName').html(toSearch)
                if(toSearch){
-                $('#search-input').val(toSearch)
-                $('#showSearchForm').trigger('click')
-                setTimeout(function(){
-                  submitSearch()
-                },169)
+
+                submitSearch(toSearch,true)
+                
+                //$('#search-input').val(toSearch)
+                //$('#showSearchForm').trigger('click')
+                //setTimeout(function(){
+                  //submitSearch()
+                //},169)
+               }else{
+                  $('.basic_dict_error').html('It seems something go bad with this word, please click search icon to do a further lookup.')
+                  $('.basic_dict_error').show()
                }
+               $('#clickWordsDict').show()
         })
+$('.showNone').click(function(){
+  $('#clickWordsDict').fadeOut(321)
+})
 fillMotto()
     </script>
 </body>

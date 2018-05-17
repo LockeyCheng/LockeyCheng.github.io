@@ -838,7 +838,7 @@ footer{
     padding: 0px 0px 6px 0px;
     color: #970000;/*#b74c00;*/
     font-size: 13px;bottom:0px;text-align: center;width: 100%;
-    opacity: 0.9;
+    opacity: 0.96;
     background: linear-gradient(#fff4e8, #97f0ff);
    /* background: -webkit-linear-gradient(#044e5a, #231302);
     background: linear-gradient(#044e5a, #231302);*/
@@ -1046,7 +1046,7 @@ input{
     top: 45%;
     color: #00c7ab;
 }
-#wordPro li,#wordPhrases li{
+.wordPro li,.wordPhrases li{
     display: block;
 }
 #pageone{
@@ -1146,7 +1146,7 @@ right:0px;
     border-top-color: #81db34;
     border-bottom-color: #34d9da;
 }
-#wordExplanationCN li,#wordPro li,#wordPhrases li{
+.wordExplanationCN li,.wordPro li,.wordPhrases li{
     margin-left:-21px;
 }
 #tolist{
@@ -1430,6 +1430,23 @@ span.jPag-snext-img{
     display: block;
     text-indent: 12px;
     padding-top: 5px;
+}
+#clickWordsDict{
+   padding: 6px;
+    display: none;
+    position: fixed;
+    top: 56px;
+    left: 10px;
+    right: 10px;
+    background: #fffef2;
+    min-height: 256px;
+    border-radius: 16px;
+    color: #7310af;
+    border: solid 1px #cafdff;
+}
+#clickWordsDict_detail{
+padding-left:9%;
+padding-bottom: 1px;
 }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
