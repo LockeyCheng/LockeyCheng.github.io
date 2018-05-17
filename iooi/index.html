@@ -47,6 +47,18 @@
 <div data-role="page" id="pageone">
   <div data-role="main" class="ui-content">
     <div id="clickWordsDict">
+      <p><a class="fa fa-remove showNone" style="
+    margin-top: -25px;
+    position: absolute;
+    right: -1px;
+    font-size: 1.6em;
+    background: #ddf7ff;
+    padding: 12px 12.5px;
+    border-radius: 34px;
+    color: #e65757;
+    border-left: solid 2px #8afbff;
+    border-right: solid 2px #8afbff;
+"></a></p>
       <h3 class="wordName" align="center">Forumn<h3>
           <div id="clickWordsDict_detail">
             <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
@@ -56,18 +68,6 @@
             <p class="wordExplanationCN_p"><ul class="wordExplanationCN"></ul></p>
             <p class="basic_dict_error error"></p>
           </div>
-          <p><a class="fa fa-remove showNone" style="
-    margin-top: -18px;
-    position: absolute;
-    left: 46%;
-    font-size: 1.6em;
-    background: #ddf7ff;
-    padding: 11px 12.5px;
-    border-radius: 34px;
-    color: #e65757;
-    border-left: solid 1.5px #8afbff;
-    border-right: solid 1.5px #8afbff;
-"></a></p>
     </div>
     <div id="page-content" class="single-page">
         <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
@@ -952,6 +952,11 @@
                           }
                           
                       }else{
+                        if(basicLookup){
+                          $('.basic_dict_error').html('It seems something go bad with this word, please click search icon to do a further lookup.')
+                          $('.basic_dict_error').show()
+                          return false
+                        }
                           var tips = '<span class="error">' + value + '</span> meets 404. May choose or switch dictionary!'
                           $('#search-input').val('')
                           $('#searchForm').show()
@@ -965,6 +970,7 @@
                   if(basicLookup){
                     $('.basic_dict_error').html('It seems something go bad with this word, please click search icon to do a further lookup.')
                     $('.basic_dict_error').show()
+                    return false
                   }
                   var tips = '<span class="error">' + value + '</span> meets 404. May choose or switch dictionary!'
                   $('#search-input').val('')
