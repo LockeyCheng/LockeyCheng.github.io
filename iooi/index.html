@@ -952,7 +952,7 @@
                           
                       }else{
                         if(basicLookup){
-                          $('.basic_dict_error').html('It seems something go bad with this word, please click search icon to do a further lookup.')
+                          $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
                           $('.basic_dict_error').show()
                           return false
                         }
@@ -967,7 +967,7 @@
                   
                 }catch(err) { 
                   if(basicLookup){
-                    $('.basic_dict_error').html('It seems something go bad with this word, please click search icon to do a further lookup.')
+                    $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
                     $('.basic_dict_error').show()
                     return false
                   }
@@ -1196,7 +1196,7 @@ $('#articleContent').on('click','.fa-info-circle',function(){
                   //submitSearch()
                 //},169)
                }else{
-                  $('.basic_dict_error').html('It seems something go bad with this word, please click search icon to do a further lookup.')
+                  $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
                   $('.basic_dict_error').show()
                }
                $('#clickWordsDict').show()
