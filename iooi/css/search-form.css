@@ -1461,6 +1461,12 @@ padding-bottom: 1px;
 .fa-volume-up:hover{
     color:#12e6f5;
 }
+#createDate{
+    margin-top: 14px;
+    margin-bottom: -10px;
+    border-top: solid 1px;
+    text-align: right !important;
+}
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
     .everydayMotto{
