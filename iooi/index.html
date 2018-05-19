@@ -675,7 +675,8 @@
                         $('#mainTitle').html(content['title'])
                         var paperJsonDate = content['date']
                         var timeArr = paperJsonDate.slice(0,10).split('-')
-                        var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+', '+timeArr[0] + ' By Lockey.'
+                        var hms = paperJsonDate.slice(10)
+                        var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+', '+timeArr[0] + hms
                         $('#createDate').html(dateStr)
                         $('#lastArt').attr('href',content['last'])
                         $('#nextArt').attr('href',content['next'])
