@@ -1453,6 +1453,14 @@ span.jPag-snext-img{
 padding-left:9%;
 padding-bottom: 1px;
 }
+
+.fa-volume-up{
+    margin-left: 5px;
+    color: #7fd4da;
+}
+.fa-volume-up:hover{
+    color:#12e6f5;
+}
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
     .everydayMotto{
