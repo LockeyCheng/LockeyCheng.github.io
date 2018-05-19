@@ -1435,16 +1435,16 @@ span.jPag-snext-img{
     padding: 6px;
     display: none;
     position: fixed;
-    top: 56px;
-    left: 10px;
-    right: 10px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
     background: #fffef2;
     min-height: 256px;
-    border-radius: 16px;
+    border-radius: 0px 0px 16px 16px;
     color: #7310af;
     border-top: solid 1px #cafdff;
     border-bottom: solid 1px #cafdff;
-    opacity: 0.93;
+    opacity: 0.96;
 }
 .clickWordsDict_title{
     color: #914915;

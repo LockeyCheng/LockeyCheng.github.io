@@ -48,15 +48,15 @@
   <div data-role="main" class="ui-content">
     <div id="clickWordsDict">
       <p><a class="fa fa-remove showNone" style="
-    margin-top: -24px;
+    margin-top: -19px;
     position: absolute;
-    right: -4px;
+    right: 3px;
     font-size: 1.6em;
-    padding: 12px 12.5px;
+    padding: 12px 13.5px;
     border-radius: 34px;
     color: #e65757;
-    border-left: solid 3px #8afbff;
-    border-right: solid 3px #8afbff;
+    border-left: solid 2px #14f7ff;
+    border-right: solid 2px #14f7ff;
 "></a></p>
       <h3 class="wordName" align="center">Forumn<h3>
           <div id="clickWordsDict_detail">
@@ -1199,10 +1199,10 @@ $('#articleContent').on('click','.fa-info-circle',function(){
                   $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
                   $('.basic_dict_error').show()
                }
-               $('#clickWordsDict').show()
+               $('#clickWordsDict').slideDown(678)
         })
 $('.showNone').click(function(){
-  $('#clickWordsDict').fadeOut(321)
+  $('#clickWordsDict').fadeOut(369)
 })
 fillMotto()
     </script>
