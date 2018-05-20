@@ -58,7 +58,7 @@
     border-left: solid 2px #14f7ff;
     border-right: solid 2px #14f7ff;
 "></a></p>
-      <h3 class="wordName" align="center">Forumn<h3>
+      <h3 class="wordName" style="text-align:center;margin-top: -12px;">Forumn<h3>
           <div id="clickWordsDict_detail">
             <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
             <p class="wordPro_p"><ul class="wordPro"></ul></p>
@@ -1232,6 +1232,11 @@ $('body').on('click','.wordsVoice',function(){
 })
 $('.showNone').click(function(){
   $('#clickWordsDict').fadeOut(369)
+})
+$('#articleContent').dblclick(function(){
+  if(!$('#clickWordsDict').is(':hidden')){
+    $('#clickWordsDict').fadeOut(369)
+  }
 })
     </script>
 </body>
