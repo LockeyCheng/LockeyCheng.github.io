@@ -80,7 +80,7 @@
     margin-top: 1px;
     margin-bottom: -5px;
     color: #914915;
-">Article Content</h5>
+" id="foucus_suggest">Article Content</h5>
         <h5 class="heading5" id="createDate">——By Lockey</h5>
 
         <div id="articleContent"></div>
@@ -402,15 +402,18 @@
                             var preSearch = searchPaperNo
                             if(searchPaperKey && wordsArr.length >0){
                               //console.log('pass day',searchPaperKey,wordsArr)
-                              var keyWords = thisYearJson[month][day][item][2].toLowerCase()
-                              var titleToLower = title.toLowerCase()
-                              for(var i in wordsArr){
-                                word = wordsArr[i].toLowerCase()
-                                if(keyWords.match(word) || titleToLower.match(word)){
-                                  searchPaperNo += 1
-                                  break
+                              try{
+                                var keyWords = thisYearJson[month][day][item][2].toLowerCase()
+                                var titleToLower = title.toLowerCase()
+                                for(var i in wordsArr){
+                                  word = wordsArr[i].toLowerCase()
+                                  if(keyWords.match(word) || titleToLower.match(word)){
+                                    searchPaperNo += 1
+                                    break
+                                  }
                                 }
-                              }
+                              }catch(err){console.log(err)}
+                              
                               
                             }else{
                               searchPaperNo += 1
@@ -665,9 +668,10 @@
                           var wordsSpan = keyArr.join(', ')
                           //$('#spankeywords').html(wordsSpan)
 
-                          var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span>'+wordsSpan+'</span><span class="statistics-no"><span class="clickWordsDict_title">Advanced: </span>'+statistics['toughwords']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Set: </span>'+statistics['wordsset']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Total: </span>'+statistics['allwords']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Suggested Focus: </span>'+statistics['suggestedfocus']+'</span>'
+                          var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title">Advanced: </span>'+statistics['toughwords']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Set: </span>'+statistics['wordsset']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Total: </span>'+statistics['allwords']+'</span><span class="statistics-no"><span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span>'+wordsSpan+'</span>'
 
                           $('#spanstatistics').html(wordsData)
+                          $('#foucus_suggest').html('<span class="clickWordsDict_title">Suggested Focus: </span>'+statistics['suggestedfocus']+'</span>')
                         }catch(err){
                           console.log(err)
                         }
@@ -1212,7 +1216,7 @@ $('#articleContent').on('click','.fa-info-circle',function(){
                   $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
                   $('.basic_dict_error').show()
                }
-               $('#clickWordsDict').slideDown(678)
+               $('#clickWordsDict').slideDown(256)
                $('.with_motto_footer').fadeOut(234)
         })
 
