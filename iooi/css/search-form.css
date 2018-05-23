@@ -1054,12 +1054,18 @@ input{
 }
 #pageone .heading3,#pageone .heading5{
     word-break: break-all;
-    text-indent: 16px;
+    
     font-family: serif;
 }
 #pageone .heading3{
-    font-size:1.35em;
-    color:#08607b;
+    font-size: 1.25em;
+    color: #08607b;
+    -webkit-box-shadow: inset 0px -1px 43px #f0ded1;
+    box-shadow: inset 0px -1px 43px #f0ded1;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    padding: 5px;
+    border-left: solid 0.5px #ffac64;
+    text-align: center;
 }
 #pageone .heading5{
     font-size:1em;
@@ -1468,7 +1474,7 @@ padding-bottom: 1px;
 #createDate{
     margin-top: 14px;
     margin-bottom: -10px;
-    border-top: solid 1px;
+    border-top: solid 1px #a8b3ff;
     text-align: right !important;
 }
 
