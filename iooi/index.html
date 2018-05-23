@@ -46,16 +46,16 @@
   </div>
 <div data-role="page" id="pageone">
   <div data-role="main" class="ui-content">
-    <div id="toughWords-div" style="
+    <div id="toughWords-div" class="touchAvoid" style="
     display: none;
     position: absolute;
     left: -8px;
-    top: -9px;
+    top: -10.5px;
     background: #fff;">
     <ol id="wordsOl">
     </ol>
 </div>
-    <div id="clickWordsDict">
+    <div id="clickWordsDict" class="touchAvoid">
       <p><a class="fa fa-remove showNone" style="
     margin-top: -19px;
     position: absolute;
@@ -1180,7 +1180,7 @@ $('.switchPaper').click(function(){
     getData('type',true,paperName)
   }
 })
-$('#articleContent').on('click','.fa-info-circle',function(){
+$('#articleContent').on('click','.fa-info-circle',function(e){
                var toSearch = $(this).text()
                if(toSearch.match(',')){
                   var index = toSearch.match(',')['index']
@@ -1236,14 +1236,22 @@ $('#articleContent').on('click','.fa-info-circle',function(){
                }
                $('#clickWordsDict').slideDown(256)
                $('.with_motto_footer').fadeOut(234)
+               $(document).one("click", function(){
+                        $("#clickWordsDict").hide();
+                    });
+                    e.stopPropagation();
         })
 
 fillMotto()
-$('body').on('click','#showTough',function(){
+$('body').on('click','#showTough',function(e){
   $('#toughWords-div').slideDown(356)
   $('.with_motto_footer').fadeOut(234)
+  $(document).one("click", function(){
+                        $("#toughWords-div").hide();
+                    });
+              e.stopPropagation();
 })
-$('#toughWords-div').on('click','#wordsOl li',function(){
+$('#toughWords-div').on('click','#wordsOl li',function(e){
   var value = $(this).text()
   var jsonDataBasic = dictData['default']
   if(jsonDataBasic[value]){
@@ -1299,6 +1307,10 @@ $('body').on('click','.wordsVoice',function(){
 $('.showNone').click(function(){
   $('#clickWordsDict').fadeOut(369)
 })
+$(".touchAvoid").on("click", function(e){
+            e.stopPropagation();
+        });
+
 $('#articleContent').dblclick(function(){
   if(!$('#clickWordsDict').is(':hidden')){
     $('#clickWordsDict').fadeOut(369)
