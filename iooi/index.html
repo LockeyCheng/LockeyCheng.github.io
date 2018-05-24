@@ -676,8 +676,16 @@
                           var keyArr = keyWords.split(',')
                           var wordsSpan = keyArr.join(', ')
                           //$('#spankeywords').html(wordsSpan)
+                          var touchWords = content['assistent']
+                          var wordsLis = ''
+                          var touchCount = 0
+                          for(let word in touchWords){
+                              touchCount += 1
+                              wordsLis += '<li>'+word+'</li>'
+                          }
+                          $('#toughWords-div').find('ol').html(wordsLis)
 
-                          var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-slideshare" id="showTough">Advanced Words: </span></span>'+statistics['toughwords']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Words Set: </span>'+statistics['wordsset']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Total Words: </span>'+statistics['allwords']+'</span><span class="statistics-no"><span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span>'+wordsSpan+'</span>'
+                          var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-slideshare" id="showTough">Advanced Words: </span></span>'+touchCount+'</span><span class="statistics-no"><span class="clickWordsDict_title">Words Set: </span>'+statistics['wordsset']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Total Words: </span>'+statistics['allwords']+'</span><span class="statistics-no"><span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span>'+wordsSpan+'</span>'
 
                           $('#spanstatistics').html(wordsData)
                           $('#foucus_suggest').html('<span class="clickWordsDict_title">Suggested Focus: </span>'+statistics['suggestedfocus']+'</span>')
@@ -695,12 +703,6 @@
                         $('#nextArt').attr('href',content['next'])
                         dictData['default'] = content['assistent']
                         $('.topageone').trigger('click')
-                        var touchWords = content['assistent']
-                        var wordsLis = ''
-                        for(let word in touchWords){
-                            wordsLis += '<li>'+word+'</li>'
-                        }
-                        $('#toughWords-div').find('ol').html(wordsLis)
                         
                       //}
                       // for(var i in keyArr){
@@ -1222,8 +1224,8 @@ $('#articleContent').on('click','.fa-info-circle',function(e){
                 }
                 $('.wordName').html(toSearch)
                if(toSearch){
-
-                submitSearch(toSearch.toLowerCase(),true)
+                fillBasicLookup(toSearch)
+                //submitSearch(toSearch.toLowerCase(),true)
                 
                 //$('#search-input').val(toSearch)
                 //$('#showSearchForm').trigger('click')
@@ -1251,8 +1253,9 @@ $('body').on('click','#showTough',function(e){
                     });
               e.stopPropagation();
 })
-$('#toughWords-div').on('click','#wordsOl li',function(e){
-  var value = $(this).text()
+
+function fillBasicLookup(value){
+  var value = value
   var jsonDataBasic = dictData['default']
   if(jsonDataBasic[value]){
                       $('.wordName').text(value)
@@ -1295,6 +1298,10 @@ $('#toughWords-div').on('click','#wordsOl li',function(e){
                       }
               $('#clickWordsDict').slideDown(256)
         }
+}
+$('#toughWords-div').on('click','#wordsOl li',function(e){
+  var value = $(this).text()
+  fillBasicLookup(value)
 })
 $('body').on('click','.wordsVoice',function(){
     var word = $('.wordName:first').text()

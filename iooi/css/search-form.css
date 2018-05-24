@@ -1053,8 +1053,7 @@ input{
     margin-top: 66px
 }
 #pageone .heading3,#pageone .heading5{
-    word-break: break-all;
-    
+    /*word-break: break-all;*/
     font-family: serif;
 }
 #pageone .heading3{
@@ -1064,7 +1063,7 @@ input{
     box-shadow: inset 0px -1px 43px #f0ded1;
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     padding: 5px;
-    border-left: solid 0.5px #ffac64;
+    border-left: solid 5px #ffac64;
     text-align: center;
 }
 #pageone .heading5{
