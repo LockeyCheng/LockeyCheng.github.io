@@ -1303,20 +1303,19 @@ $('#toughWords-div').on('click','#wordsOl li',function(e){
   var value = $(this).text()
   fillBasicLookup(value)
 })
-$('body').on('click','.wordsVoice',function(){
+$('body').on('click','.wordPro li',function(e){
     var word = $('.wordName:first').text()
     var youdaoWordAudio = 'https://dict.youdao.com/dictvoice?audio='+word+'&type=1'// or type=1
     var x = document.createElement("AUDIO");
     x.setAttribute("src", youdaoWordAudio);
     x.setAttribute("autoplay", "autoplay");
     $('#voiceDiv').html(x)
+    e.stopPropagation();
 })
 $('.showNone').click(function(){
   $('#clickWordsDict').fadeOut(369)
 })
-$(".touchAvoid").on("click", function(e){
-            e.stopPropagation();
-        });
+
 
 $('#articleContent').dblclick(function(){
   if(!$('#clickWordsDict').is(':hidden')){
