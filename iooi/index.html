@@ -276,7 +276,7 @@
         if(!defaultSource){
           defaultSource = 'The_Economist'
         }
-        
+        var triggerWord = null
         var test = true
         var loadedDict = []
         var currentDict = []
@@ -672,11 +672,20 @@
                         document.getElementById("articleContent").innerHTML = html;
                         try{
                           var statistics = content['paperStatistics']
+                          var wordsSpan = ''
                           var keyWords = statistics['keywords']
                           var keyArr = keyWords.split(',')
-                          var wordsSpan = keyArr.join(', ')
-                          //$('#spankeywords').html(wordsSpan)
+                          var keyLen = keyArr.length
                           var touchWords = content['assistent']
+                          for(i=0;i<keyLen;i++){
+                            var preDot = '<li class="keyword-span"> '
+                            if (keyArr[i] in touchWords){
+                                preDot = '<li class="keyword-span">﹡'
+                            }
+                            wordsSpan += preDot+keyArr[i]+'</li>'
+                          }
+                          // var wordsSpan = keyArr.join(', ')
+                          //$('#spankeywords').html(wordsSpan)
                           var wordsLis = ''
                           var touchCount = 0
                           for(let word in touchWords){
@@ -685,7 +694,7 @@
                           }
                           $('#toughWords-div').find('ol').html(wordsLis)
 
-                          var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-slideshare" id="showTough">Advanced Words: </span></span>'+touchCount+'</span><span class="statistics-no"><span class="clickWordsDict_title">Words Set: </span>'+statistics['wordsset']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Total Words: </span>'+statistics['allwords']+'</span><span class="statistics-no"><span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span>'+wordsSpan+'</span>'
+                          var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-slideshare" id="showTough">Advanced Words: </span></span>'+touchCount+'</span><span class="statistics-no"><span class="clickWordsDict_title">Words Set: </span>'+statistics['wordsset']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Total Words: </span>'+statistics['allwords']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span><ul style="padding: 0;margin-top: 5px;margin-bottom: -10px;">'+wordsSpan+'</ul></span>'
 
                           $('#spanstatistics').html(wordsData)
                           $('#foucus_suggest').html('<span class="clickWordsDict_title">Suggested Focus: </span>'+statistics['suggestedfocus']+'</span>')
@@ -1182,78 +1191,6 @@ $('.switchPaper').click(function(){
     getData('type',true,paperName)
   }
 })
-$('#articleContent').on('click','.fa-info-circle',function(e){
-               var toSearch = $(this).text()
-               if(toSearch.match(',')){
-                  var index = toSearch.match(',')['index']
-                  toSearch = toSearch.slice(0,index)
-               }
-               if(toSearch.match('"')){
-                  var index = toSearch.match('"')['index']
-                  toSearch = toSearch.slice(0,index)
-               }
-               if(toSearch.match("'")){
-                  var index = toSearch.match("'")['index']
-                  toSearch = toSearch.slice(0,index)
-               }
-               if(toSearch.match("’")){
-                 var index = toSearch.match("’")['index']
-                  toSearch = toSearch.slice(0,index)
-               }
-               if(toSearch.indexOf("[") == 0 || toSearch.indexOf("(") == 0){
-                  toSearch = toSearch.slice(1)
-               }
-               if(toSearch.indexOf("]") >0){
-                  var index = toSearch.indexOf("]")
-                  toSearch = toSearch.slice(0,index)
-               }
-               if(toSearch.indexOf(")") >0){
-                  var index = toSearch.indexOf(")")
-                  toSearch = toSearch.slice(0,index)
-               }
-               if(toSearch.match("”")){
-                var index = toSearch.match("”")['index']
-                if(!toSearch.match("“")){
-                  toSearch = toSearch.slice(0,index)
-                }else{
-                 toSearch = toSearch.slice(1,index)
-                }
-               }
-               if(toSearch.match("“") || toSearch.match("“")){
-                  toSearch = toSearch.slice(1)
-                }
-                $('.wordName').html(toSearch)
-               if(toSearch){
-                fillBasicLookup(toSearch)
-                //submitSearch(toSearch.toLowerCase(),true)
-                
-                //$('#search-input').val(toSearch)
-                //$('#showSearchForm').trigger('click')
-                //setTimeout(function(){
-                  //submitSearch()
-                //},169)
-               }else{
-                  $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
-                  $('.basic_dict_error').show()
-               }
-               $('#clickWordsDict').slideDown(256)
-               $('.with_motto_footer').fadeOut(234)
-               $(document).one("click", function(){
-                        $("#clickWordsDict").hide();
-                    });
-                    e.stopPropagation();
-        })
-
-fillMotto()
-$('body').on('click','#showTough',function(e){
-  $('#toughWords-div').slideDown(356)
-  $('.with_motto_footer').fadeOut(234)
-  $(document).one("click", function(){
-                        $("#toughWords-div").hide();
-                    });
-              e.stopPropagation();
-})
-
 function fillBasicLookup(value){
   var value = value
   var jsonDataBasic = dictData['default']
@@ -1299,9 +1236,90 @@ function fillBasicLookup(value){
               $('#clickWordsDict').slideDown(256)
         }
 }
+$('#page-content').on('click','.fa-info-circle',function(e){
+              if(triggerWord != null){
+                    var toSearch = triggerWord
+                    triggerWord = null
+              }else{
+                var toSearch = $(this).text()
+               if(toSearch.match(',')){
+                  var index = toSearch.match(',')['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match('"')){
+                  var index = toSearch.match('"')['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("'")){
+                  var index = toSearch.match("'")['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("’")){
+                 var index = toSearch.match("’")['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.indexOf("[") == 0 || toSearch.indexOf("(") == 0){
+                  toSearch = toSearch.slice(1)
+               }
+               if(toSearch.indexOf("]") >0){
+                  var index = toSearch.indexOf("]")
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.indexOf(")") >0){
+                  var index = toSearch.indexOf(")")
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("”")){
+                var index = toSearch.match("”")['index']
+                if(!toSearch.match("“")){
+                  toSearch = toSearch.slice(0,index)
+                }else{
+                 toSearch = toSearch.slice(1,index)
+                }
+               }
+               if(toSearch.match("“") || toSearch.match("“")){
+                  toSearch = toSearch.slice(1)
+                }
+              }
+               $('.wordName').html(toSearch)
+               if(toSearch){
+                fillBasicLookup(toSearch)
+                //submitSearch(toSearch.toLowerCase(),true)
+                //$('#search-input').val(toSearch)
+                //$('#showSearchForm').trigger('click')
+                //setTimeout(function(){
+                  //submitSearch()
+                //},169)
+               }else{
+                  $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
+                  $('.basic_dict_error').show()
+               }
+               $('.with_motto_footer').fadeOut(234)
+               $(document).one("click", function(){
+                        $("#clickWordsDict").hide();
+                    });
+                    e.stopPropagation();
+        })
+
+fillMotto()
+$('body').on('click','#showTough',function(e){
+  $('#toughWords-div').slideDown(356)
+  $('.with_motto_footer').fadeOut(234)
+  $(document).one("click", function(){
+                        $("#toughWords-div").hide();
+                    });
+              e.stopPropagation();
+})
+
+
 $('#toughWords-div').on('click','#wordsOl li',function(e){
   var value = $(this).text()
   fillBasicLookup(value)
+})
+
+$('body').on('click','.keyword-span',function(){
+  triggerWord = ($(this).text()).slice(1)
+  $('.fa-info-circle').eq(1).trigger('click')
 })
 $('body').on('click','.wordPro li',function(e){
     var word = $('.wordName:first').text()

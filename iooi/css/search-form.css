@@ -1117,7 +1117,7 @@ right:0px;
     display: none !important;
 }
 #articleContent p{
-    text-indent: 36px;
+    text-indent: 23px;
     color: #396859;
 }
 #articleContent p span{
@@ -1455,7 +1455,7 @@ span.jPag-snext-img{
     border-bottom: solid 1px #cafdff;
     opacity: 0.96;
 }
-.clickWordsDict_title{
+.clickWordsDict_title,.words-sep-dot{
     color: #914915;
 }
 #clickWordsDict_detail{
@@ -1484,6 +1484,14 @@ padding-bottom: 1px;
     border-bottom: 1px solid #74fac3;
     padding: 5px 3px;
     color: #00887d;
+}
+.statistics-no ul li{
+    display: inline-block;
+    border: solid 1px #a5ccd9;
+    border-radius: 6px;
+    padding: 3px 5px;
+    margin-left: 3px;
+    margin-bottom: 2px;
 }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
