@@ -50,7 +50,7 @@
     display: none;
     position: absolute;
     left: -8px;
-    top: -10.5px;
+    top: 0px;
     background: #fff;">
     <ol id="wordsOl">
     </ol>
@@ -79,18 +79,19 @@
     </div>
     <div id="page-content" class="single-page">
         <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
+        <h5 class="heading5" id="createDate">——By Lockey</h5>
         
         <!-- <p class="pkeywords">[ Key Words ]<span id="spankeywords"></span></p> -->
         <p class="pkeywords"><span id="spanstatistics"></span></p>
         <!-- <p class="pkeywords"><span id="spansfocus"></span></p> -->
         <!-- <p class="pkeywords">[ Article Content ]</p> -->
-        <h5 class="heading5" style="
+        <!-- <h5 class="heading5" style="
    text-align: left;
     margin-top: 1px;
     margin-bottom: -5px;
     color: #914915;
-" id="foucus_suggest">Article Content</h5>
-        <h5 class="heading5" id="createDate">——By Lockey</h5>
+    border-bottom: solid 1px #94adff;
+" id="foucus_suggest">Article Content</h5> -->
 
         <div id="articleContent"></div>
         <img src="./img/zhi.png" style='width: 50%;margin-left: 25%;margin-bottom: 66px;border-radius: 20%'>
@@ -687,17 +688,16 @@
                           // var wordsSpan = keyArr.join(', ')
                           //$('#spankeywords').html(wordsSpan)
                           var wordsLis = ''
-                          var touchCount = 0
+                          var toughCount = 0
                           for(let word in touchWords){
-                              touchCount += 1
+                              toughCount += 1
                               wordsLis += '<li>'+word+'</li>'
                           }
                           $('#toughWords-div').find('ol').html(wordsLis)
 
-                          var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-slideshare" id="showTough">Advanced Words: </span></span>'+touchCount+'</span><span class="statistics-no"><span class="clickWordsDict_title">Words Set: </span>'+statistics['wordsset']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Total Words: </span>'+statistics['allwords']+'</span><span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span><ul style="padding: 0;margin-top: 5px;margin-bottom: -10px;">'+wordsSpan+'</ul></span>'
-
+                          var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-opencart" id="showTough"> Suggested Focus: </span></span><span class="words-number">'+statistics['suggestedfocus']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-slideshare" id="showTough">   Advanced Words: </span></span><span class="words-number">'+toughCount+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Words Set: </span><span class="words-number">'+statistics['wordsset']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Total Words: </span><span class="words-number">'+statistics['allwords']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span><ul style="padding: 0;margin-top: 8px;margin-bottom: 3px;">'+wordsSpan+'</ul></span><span class="statistics-no"><span class="clickWordsDict_title">Article Content:</span></span>'
                           $('#spanstatistics').html(wordsData)
-                          $('#foucus_suggest').html('<span class="clickWordsDict_title">Suggested Focus: </span>'+statistics['suggestedfocus']+'</span>')
+                          //$('#foucus_suggest').html('<span class="clickWordsDict_title">Suggested Focus: </span>'+statistics['suggestedfocus']+'</span>')
                         }catch(err){
                           console.log(err)
                         }
@@ -706,7 +706,7 @@
                         var paperJsonDate = content['date']
                         var timeArr = paperJsonDate.slice(0,10).split('-')
                         var hms = paperJsonDate.slice(10)
-                        var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+', '+timeArr[0] + hms
+                        var dateStr = '--'+noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+' '+timeArr[0] + hms
                         $('#createDate').html(dateStr)
                         $('#lastArt').attr('href',content['last'])
                         $('#nextArt').attr('href',content['next'])

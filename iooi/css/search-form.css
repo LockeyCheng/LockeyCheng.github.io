@@ -1050,14 +1050,14 @@ input{
     display: block;
 }
 #pageone{
-    margin-top: 66px
+    margin-top: 56px
 }
 #pageone .heading3,#pageone .heading5{
     /*word-break: break-all;*/
     font-family: serif;
 }
 #pageone .heading3{
-    font-size: 1.25em;
+    font-size: 1.36em;
     color: #08607b;
     -webkit-box-shadow: inset 0px -1px 43px #f0ded1;
     box-shadow: inset 0px -1px 43px #f0ded1;
@@ -1069,6 +1069,7 @@ input{
 #pageone .heading5{
     font-size:1em;
     color:#33d4e6;
+    padding: 6px;
 }
 .ibold{
     font-weight: bold !important;
@@ -1171,6 +1172,8 @@ right:0px;
     color: #914915;
     /*font-size: 1.1em;
     font-weight: bold;*/
+    padding-bottom: 3px;
+    border-bottom: solid 1px #c18eff;
 }
 #spankeywords{
     color: #40e7d1;/*#089763;font-size: 0.9em;*/
@@ -1459,7 +1462,7 @@ span.jPag-snext-img{
     color: #914915;
 }
 #clickWordsDict_detail{
-padding-left:9%;
+padding-left:6%;
 padding-bottom: 1px;
 }
 
@@ -1471,9 +1474,9 @@ padding-bottom: 1px;
     color:#12e6f5;
 }
 #createDate{
-    margin-top: 14px;
-    margin-bottom: -10px;
-    border-top: solid 1px #a8b3ff;
+    margin-top: -20px;
+    margin-bottom: -12px;
+    border-top: solid 1px #ceebff;
     text-align: right !important;
 }
 
@@ -1485,13 +1488,16 @@ padding-bottom: 1px;
     padding: 5px 3px;
     color: #00887d;
 }
-.statistics-no ul li{
+.statistics-no ul li{/*,.words-number*/
     display: inline-block;
     border: solid 1px #a5ccd9;
     border-radius: 6px;
     padding: 3px 5px;
     margin-left: 3px;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
+}
+.words-number{
+    padding: 5px;
 }
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
