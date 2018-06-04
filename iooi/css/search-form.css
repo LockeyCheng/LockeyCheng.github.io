@@ -1499,6 +1499,9 @@ padding-bottom: 1px;
 .words-number{
     padding: 5px;
 }
+#articleContent img{
+    width:83% !important;
+}
 @media screen and (max-width: 560px) {
     .search-wrapper.active .input-holder {width:200px;}
     .everydayMotto{
