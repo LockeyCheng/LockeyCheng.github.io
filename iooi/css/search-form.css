@@ -133,7 +133,7 @@ a{
     border-width: 0;
     overflow: visible;
     overflow-x: hidden;
-    padding:0 1em 1em 1.2em;
+    padding:0px 10px 0px 10px;
 }
 
 @-webkit-keyframes fadein {
@@ -1476,7 +1476,7 @@ padding-bottom: 1px;
 #createDate{
     margin-top: -21.5px;
     margin-bottom: -12px;
-    border-top: solid 1px #ceebff;
+    border-top: solid 1px #ddf1ff;
     text-align: right !important;
 }
 
