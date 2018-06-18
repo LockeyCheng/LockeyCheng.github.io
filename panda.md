@@ -136,8 +136,13 @@ fail:
 ```
 #### Data center/Job create module
 -----
+Data center flow
 
+![data center flow](https://github.paypal.com/SellerRiskBI/siri/blob/master/document/data-center.PNG?raw=true)
 
+Job create flow
+
+![job data flow](https://github.paypal.com/SellerRiskBI/siri/blob/master/document/job-create.PNG?raw=true)
 ###### Create new job
 	type: "POST"
 	dataType: 'json'
@@ -242,6 +247,10 @@ https://go/sro_tm
 https://go/mrv_tm
 ```
 #### Q/A module
+
+Q/A flow
+![Q/A flow](https://github.paypal.com/SellerRiskBI/siri/blob/master/document/qa.PNG?raw=true)
+
 ###### Get question list
 
 -----
