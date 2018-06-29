@@ -173,6 +173,11 @@ h6.mottoh6auth{
   color: #00d4b6;
   font-size: 1.1em;
 }
+#more-papers{
+  background: #fffbde;
+  padding: 8px;
+  border-radius: 6px;
+}
 </style>
   <!-- /////////////////////////////////////////Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -263,6 +268,7 @@ h6.mottoh6auth{
           </div>
           <div class="col-md-3 col-item4">
           </div>
+          <p align="center"><span id="more-papers"><span class="fa fa-paw"></span> More Papers <span class="fa fa-paw"></span></span></p>
         </div>
       </div>
     </section>
@@ -360,7 +366,7 @@ h6.mottoh6auth{
                         var hms = paperJsonDate.slice(10)
                         var dateStr = '-- '+noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+' '+timeArr[0] + hms
                         var fillDiv = '<div class="box-item"><div class="item-img-div"><img src="'+paperListJson[paperNo]['img']+'" class="img-responsive item-img"/></div><div class="content"><p>'+paperListJson[paperNo]['title']+'</p><p>'+paperListJson[paperNo]['desc']+'</p><a href="'+paperLink+'">Read More...</a><br><br><span>'+dateStr+'</span><br></div></div>'
-                        $(ditem).html(fillDiv)
+                        $(ditem).append(fillDiv)
                         paperNo += 1
                     })
                   }
@@ -388,6 +394,9 @@ h6.mottoh6auth{
             $(ditem).html(mottoFill)
             random = toInt
             })
+      $('#more-papers').click(function(){
+        alert('You should read above eight then click here!')
+      })
     })
   </script>
   
