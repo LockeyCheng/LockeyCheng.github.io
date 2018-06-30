@@ -22,6 +22,7 @@
   <!-- Custom Fonts -->
     <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
     <link rel="icon" type="image/x-icon" class="js-site-favicon" href="../images/favicon.ico">
+    <script type="text/javascript" src="../js/showdown.min.js"></script>
 
   <!---<link href='http://fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>--->
   
@@ -116,10 +117,10 @@ img.item-img-little{
 }
 
 .col-item3 div.box-item:nth-child(even) .item-img-div{
-  background: -webkit-linear-gradient(#e5faff, #7dfee6); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(#e5faff, #7dfee6); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(#e5faff, #7dfee6); /* Firefox 3.6 - 15 */
-  background: linear-gradient(#e5faff, #7dfee6); /* 标准的语法 */
+  background: -webkit-linear-gradient(#e5faff, #adfbed); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#e5faff, #adfbed); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#e5faff, #adfbed); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#e5faff, #adfbed); /* 标准的语法 */
 }
 .col-item4 div.box-item:nth-child(odd) .item-img-div{
   background: -webkit-linear-gradient(#e5faff, #bacdff); /* Safari 5.1 - 6.0 */
@@ -166,7 +167,7 @@ h6.mottoh6cn{
 }
 h1.mottoh1en{
   text-transform:none;
-  color:#25e2b6;
+  color:#abffec;
   margin-top:23px !important;
   font-size: 1.35em;
 }
@@ -191,7 +192,7 @@ img.item-img{
 .paperTitleh6{
   text-align: center;
   color: #9677c1;
-  font-size: 1.25em;
+  font-size: 1.1em;
 }
 .paperDesc{
   color:059182;
@@ -208,11 +209,29 @@ a.readMoreText{
 .index-page .box-content.box-1{
   margin-top: 36px;
 }
+#search-paper{
+  position: absolute;
+    color: #fff;
+    font-size: 1.6em;
+   /* background: #0e9770;*/
+    padding: 5px;
+    border-radius: 50%;
+}
 @media (min-width: 768px){
   .container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse {
       margin-right: 0;
       margin-left: 0;
       margin-top: -10px;
+  }
+  #search-paper{
+    right: 23px;
+    margin-top: 16px;
+  }
+}
+@media (max-width: 568px){
+  #search-paper{
+    right: 69px;
+    top: 8px;
   }
 }
 #paperMoreSwitchp{
@@ -342,7 +361,7 @@ span.nowShow{
     display: : block;
     font-size: 14px;
     float: left;
-    color: #9945a7;
+    color: #9e1cb4;
     padding: 3px 23px;
     line-height: 30px;
     height: 40px;
@@ -358,24 +377,14 @@ span.nowShow{
 }
 
 #swith-nav a.currentNav {
-    color: #006878;
+    color: #fff;
     /*text-shadow: 0px 1px 0px #788e21;*/
-    background: #00dcc6;
+    background: #0dd2be;
     font-weight: 700;
 }
 
 #swith-nav{
   margin-top: 2px;
-}
-#search-paper{
-  position: absolute;
-    right: 6px;
-    margin-top: 4px;
-    color: #49ffcb;
-    font-size: 1.6em;
-    background: #0e9770;
-    padding: 5px;
-    border-radius: 50%;
 }
 input.nooutline{
     background: none;
@@ -398,7 +407,164 @@ font-size:1.6em;
 color:red;
 }
 .fa-google{
-color:olive;
+color:#057e73;
+}
+
+
+#toughWords-div ol {
+    padding-right: 12px;
+}
+#toughWords-div ol li {
+    border-bottom: 1px solid #74fac3;
+    padding: 5px 3px;
+    color: #00887d;
+}
+#wordPro .normalItem,#wordPhrases .wordTitle{
+    color:#0d6b5b;
+}
+.wordPro li,.wordPhrases li{
+    display: block;
+}
+#paper-section .heading3,#paper-section .heading5{
+    /*word-break: break-all;*/
+    font-family: serif;
+}
+#paper-section .heading3{
+    font-size: 1.36em;
+    color: #08607b;
+    -webkit-box-shadow: inset 0px -1px 43px #f0ded1;
+    box-shadow: inset 0px -1px 43px #f0ded1;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    padding: 5px;
+    border-left: solid 5px #ffac64;
+    text-align: center;
+}
+#paper-section .heading5{
+    font-size:1em;
+    color:#33d4e6;
+    padding: 6px;
+}
+.fixleft,.fixright{
+position: fixed;
+bottom: 15px;
+z-index: 1111;
+}
+.fixleft{
+  left: -1px;
+}
+.fixright{
+  right:-1px;
+}
+.arrow a{
+    color: #70f0f1;
+    font-size:25px;
+    padding: 4px 3px;
+    border-radius: 25px;
+}
+.arrow a:hover{
+     color:#00dbdc;
+     font-size: 28px；
+}
+.fa-arrow-right,.fa-arrow-left{
+    color: #32dfe0 !important;
+    padding:11px 5.3px;
+}
+#articleContent p{
+    text-indent: 23px;
+    color: #7d571f;
+    font-size: 1.15em;
+}
+#articleContent p span{
+    text-indent: 3px;
+    font-size: 0.9em;
+    color: #906b33;
+}
+.title a.anormal{
+    font-size: 26px !important;
+    font-weight: initial;
+}
+#articleContent{
+    width: 86%;
+    margin-left: 7%;
+}
+#articleContent img{
+  max-width: 86%;
+}
+.pkeywords{
+  padding-left: 23px;
+  color: #914915;
+  padding-bottom: 3px;
+}
+#spanstatistics {
+    color: #089763;
+}
+.statistics-no ul li {
+    display: inline-block;
+    border: solid 1px #a5ccd9;
+    border-radius: 6px;
+    padding: 3px 5px;
+    margin-left: 3px;
+    margin-bottom: 5px;
+}
+.statistics-no, #spankeywords, #spansfocus {
+    display: block;
+    padding-top: 5px;
+}
+.statistics-no, #spansfocus {
+    color: #40e7d1;
+}
+.words-number {
+    padding: 5px;
+    font-weight: 600;
+}
+.clickWordsDict_title, .words-sep-dot {
+    color: #914915;
+    font-weight: 700;
+}
+#clickWordsDict {
+    padding: 6px;
+    display: none;
+    position: fixed;
+    top: 51px;
+    left: 0px;
+    right: 0px;
+    background: #fff;
+   /* min-height: 256px;*/
+    border-radius: 0px 0px 6px 6px;
+    color: #7310af;
+    border-top: solid 1px #cafdff;
+    border-bottom: solid 1px #cafdff;
+    opacity: 0.96;
+}
+#createDate {
+    margin-top: -10px;
+    border-top: solid 1px #ddf1ff;
+    text-align: right !important;
+}
+.wordName {
+    font-size: 1.8em !important;
+    color: #08da83 !important;
+}
+.wordTitle {
+    color: #00e2bb;
+}
+.fa-volume-up {
+    margin-left: 5px;
+    color: #7fd4da;
+}
+ul li {
+    list-style: none;
+}
+.wordExplanationCN li, .wordPro li, .wordPhrases li {
+    margin-left: -21px;
+    font-family: monospace;
+}
+#clickWordsDict h3{
+  font-size:1.2em;
+  color:#7310af;
+}
+.fa-volume-up:hover {
+    color: #12e6f5;
 }
 </style>
   <!-- /////////////////////////////////////////Navigation -->
@@ -412,7 +578,8 @@ color:olive;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.html"><i class="fa fa-github" style="padding-right:9px;font-size: 1.5em"></i>LOCKEY</a>
+                <a class="navbar-brand page-scroll" href="https://lockeycheng.github.io"><i class="fa fa-github" style="padding-right:9px;font-size: 1.5em"></i>LOCKEY</a>
+                <a href="javascript:void(0)"><span id="search-paper" class="fa fa-search"></span></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -476,8 +643,8 @@ color:olive;
     -->
   </div> <!-- Carousel -->
   <div id="swith-nav">
-    <p class="noshow"><input type="text" id="search-paper-input" placeholder="Type keywords to search" class="nooutline"><span class="fa fa-remove"></span> <span class="fa fa-google"></span></p>
-    <p style="margin-left: 6px;"><a href="javascript:void(0)" class="swith-nav-a currentNav">Latest</a><a href="javascript:void(0)" class="swith-nav-a">Paper</a><a href="javascript:void(0)" class="swith-nav-a">Dictionary</a><span id="search-paper" class="fa fa-search"></span></p>
+    <p class="noshow" id="search-input-div"><input type="text" id="search-paper-input" placeholder="Type keywords to search" class="nooutline"><span class="fa fa-remove"></span> <span class="fa fa-google"></span></p>
+    <p style="margin-left: 6px;"><a href="javascript:void(0)" class="swith-nav-a currentNav">Latest</a><a href="javascript:void(0)" class="swith-nav-a">Paper</a><a href="javascript:void(0)" class="swith-nav-a">Dictionary</a></p>
     
   </div>
   <div id="page-content2">
@@ -490,7 +657,58 @@ color:olive;
       <p align="center"><span id="more-papers"><span class="fa fa-paw"></span> More Papers <span class="fa fa-paw"></span></span></p>
     </section>
     <section class="box-content box-1 paper-content section-content noshow" id="paper-section">
-      <p align="center">On the way</p>
+      <div id="toughWords-div" class="touchAvoid" style="
+    display: none;
+    position: absolute;
+    left: -8px;
+    margin-top: 72px;
+    background: #fff;">
+    <ol id="wordsOl">
+    </ol>
+</div>
+    <div id="clickWordsDict" class="touchAvoid">
+      <p><a class="fa fa-remove showNone" style="
+    margin-top: 0px;
+    position: absolute;
+    right: 3px;
+    font-size: 1.6em;
+    padding: 5px 6.5px;
+    border-radius: 34px;
+    color: #e65757;
+    border-left: solid 2px #14f7ff;
+    border-right: solid 2px #14f7ff;
+"></a></p>
+      <h3 class="wordName" style="text-align:center;">Forumn<h3>
+          <div id="clickWordsDict_detail">
+            <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
+            <p class="wordPro_p"><ul class="wordPro"></ul></p>
+
+            <p class="wordExplanationCN_p"><span class="wordTitle">释义：</span></p>
+            <p class="wordExplanationCN_p"><ul class="wordExplanationCN"></ul></p>
+            <p class="basic_dict_error error"></p>
+          </div>
+    </div>
+    <div id="page-content" class="single-page">
+        <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
+        <h5 class="heading5" id="createDate">——By Lockey</h5>
+        
+        <!-- <p class="pkeywords">[ Key Words ]<span id="spankeywords"></span></p> -->
+        <p class="pkeywords"><span id="spanstatistics"></span></p>
+        <!-- <p class="pkeywords"><span id="spansfocus"></span></p> -->
+        <!-- <p class="pkeywords">[ Article Content ]</p> -->
+        <!-- <h5 class="heading5" style="
+   text-align: left;
+    margin-top: 1px;
+    margin-bottom: -5px;
+    color: #914915;
+    border-bottom: solid 1px #94adff;
+" id="foucus_suggest">Article Content</h5> -->
+
+        <div id="articleContent"></div>
+        <img src="./img/zhi.jpg" style='width: 50%;margin-left: 25%;border-radius: 9%'>
+    </div>
+    <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"></span></a></span>
+    <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper"><span  class="fa fa-arrow-right"></span></a></span>
     </section>
     <section class="box-content box-1 dictionary section-content noshow" id="dictionary-section">
      <p align="center">On the way</p>
@@ -570,6 +788,20 @@ color:olive;
     var noTomonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     var morePaperLink = 'latestPapers'
     var moreTimes = 0
+    var hideFloat = 0
+    var triggerWord = null
+    var dictData={}
+    var youdaoSentenceAudio = 'https://dict.youdao.com/dictvoice?audio='//+sentence+&le=eng
+    var Request = new Object();
+      Request = GetRequest();
+      try{
+        var defaultSource = Request['source']
+      }catch(err) {
+        console.log(err,'source not found')
+      }
+      if(!defaultSource){
+        defaultSource = 'The_Economist'
+      }
     function dealWithFloatDiv(words,img,warningIcon,ifhide,successIcon,freecode){
               $('#loadWords').html(words);
               if(img){
@@ -583,7 +815,7 @@ color:olive;
                 $('#wariningIcon').hide()
               }
                if($('#floatDiv').is(':hidden')){
-                $('#floatDiv').slideDown(356)
+                $('#floatDiv').slideDown(123)
                }
                if(freecode){
                 $('#normalTips_free-code-camp').show()
@@ -595,6 +827,7 @@ color:olive;
                }
               if(ifhide){
                 setTimeout(function(){
+                  $('#floatDiv').slideUp(356)
                   if(hideFloat <= 0){
                     if(successIcon){
                         $('#successIcon').hide()
@@ -666,18 +899,54 @@ color:olive;
            }
            return theRequest;
         }
+    function fillBasicLookup(value){
+  var value = value
+  var jsonDataBasic = dictData['default']
+  if(jsonDataBasic[value]){
+                      $('.wordName').text(value)
+                      try{
+                      var proEn = jsonDataBasic[value]['pron']['peg']
+                      var proAm = jsonDataBasic[value]['pron']['pam']
+                    } catch(err) { 
+                        var proEn = jsonDataBasic[value]['pro_en']
+                      var proAm = jsonDataBasic[value]['pro_am']
+                    }
+                      var proLi = ''
+                      if(proEn){
+                        $('.wordPro_p').show()
+                        if(proEn.match("英")){
+                          proLi += '<li>'+proEn+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }else{
+                          proLi += '<li><span class="wordTitle">英 </span>'+proEn+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }
+                      }else{
+                        $('.wordPro_p').hide()
+                      }
+                      if(proAm){
+                        if(proAm.match("美")){
+                          proLi += '<li>'+proAm+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }else{
+                          proLi += '<li><span class="wordTitle">美 </span>'+proAm+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }
+                      }
+                      $('.wordPro').html(proLi)
+                      var exLi = ''
+                      var exArr = jsonDataBasic[value]['ex']
+                      for(var i in exArr){
+                          exLi += '<li>'+exArr[i]+'</li>'
+                      }
+                      if(exLi){
+                        $('.wordExplanationCN_p').show()
+                        $('.wordExplanationCN').html(exLi)
+                      }else{
+                        $('.wordExplanationCN_p').hide()
+                      }
+              $('#clickWordsDict').slideDown(256)
+        }
+}
     function getPaperList(){
       $('#floatDiv').slideDown(356)
-      var Request = new Object();
-      Request = GetRequest();
-      try{
-        var defaultSource = Request['source']
-      }catch(err) {
-        console.log(err,'source not found')
-      }
-      if(!defaultSource){
-        defaultSource = 'The_Economist'
-      }
+      
       $.ajax({
                 type:"GET",
                 url: './'+defaultSource+'/amore/'+morePaperLink+'.json',
@@ -726,7 +995,8 @@ color:olive;
                     var timeArr = paperJsonDate.slice(0,10).split('-')
                     var hms = paperJsonDate.slice(10)
                     var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+' '+timeArr[0] + hms
-                    var fillDiv = '<div class="box-item"><div class="item-img-div"><img src="'+paperListJson[i]['img']+'" class="img-responsive item-img"/><span class="timeSpan">  '+dateStr+hot+'</span><h6 class="paperTitleh6"><a href="'+paperLink+'">'+paperListJson[i]['title']+'</a></h6><p class="paperDesc">'+paperListJson[i]['desc']+' ...</p><a class="readMoreText" href="'+paperLink+'">Read More <span class="fa fa-hand-o-right"></span></a></div></div>'
+                    //var fillDiv = '<div class="box-item"><div class="item-img-div"><img src="'+paperListJson[i]['img']+'" class="img-responsive item-img"/><span class="timeSpan">  '+dateStr+hot+'</span><h6 class="paperTitleh6"><a href="'+paperLink+'">'+paperListJson[i]['title']+'</a></h6><p class="paperDesc">'+paperListJson[i]['desc']+' ...</p><a class="readMoreText switchPaper" href="'+paperLink+'">Read More <span class="fa fa-hand-o-right"></span></a></div></div>'
+                    var fillDiv = '<div class="box-item"><div class="item-img-div"><img src="'+paperListJson[i]['img']+'" class="img-responsive item-img"/><span class="timeSpan">  '+dateStr+hot+'</span><h6 class="paperTitleh6"><a class="loadPage" href="javascript:void(0)" data-link="'+paperListJson[i]['link']+'">'+paperListJson[i]['title']+'</a></h6><p class="paperDesc">'+paperListJson[i]['desc']+' ...</p><a class="readMoreText loadPage" href="javascript:void(0)" data-link="'+paperListJson[i]['link']+'">Read More <span class="fa fa-hand-o-right"></span></a></div></div>'
                     if(i%4 ==0){
                       item1 += fillDiv
                     }else if(i%4 ==1){
@@ -757,8 +1027,128 @@ color:olive;
                 }
       })
     }
+    var pquery = false
+        function getData(type,ifmd,filename){
+          hideFloat +=1
+          if(ifmd){
+            var queryPaper = Request['paper']
+
+            if(queryPaper && pquery == false){
+              pquery = true
+              var year = queryPaper.slice(0,4)
+              var month = queryPaper.slice(4,6)*1
+              var day = queryPaper.slice(6,8)*1
+              var no = queryPaper.slice(8)
+              var filename = year+'_'+month+'_'+day+'_'+no*1+'.json'
+              console.log(year,month,day,no,filename)
+            }else{
+              var today = new Date()
+              var year = today.getFullYear()
+              var month = today.getMonth()+1
+              var day = today.getDate()
+              if(!filename){
+                var filename = year+'_'+month+'_'+day+'_1.json'
+                var tips = ''
+              }else{
+                var dataArr = filename.split('_')
+                var year = dataArr[0]
+                var month = dataArr[1]
+                var filename = filename
+                var tips = 'Just a moment, please.'
+              }
+            }
+
+            var getUrl = './'+defaultSource+'/a'+year+'/a'+month+'/'+filename
+            var dataType = 'json'
+            dealWithFloatDiv('',true,false,false)
+          }else{
+            var toDict = type2Dict[type]
+            //var tips = '<span class="normalItem">'+toDict+' ...</span>'
+            dealWithFloatDiv('',true,false,false)
+            var baseUrl = './dictionary/'
+            //var baseUrl = './explanations/'
+            var getUrl = baseUrl+type+'.json'
+             var dataType = 'json'
+             }
+          $.ajax({
+                type:"GET",
+                url: getUrl,
+                data: null,
+                dataType:dataType,
+                cache:false,
+                success: function(data) {
+                  hideFloat -= 1
+                  if(ifmd){
+                        var content = data
+                        var converter = new showdown.Converter();
+                        var html = converter.makeHtml(content['content']);
+                        document.getElementById("articleContent").innerHTML = html;
+                        try{
+                          var statistics = content['paperStatistics']
+                          var wordsSpan = ''
+                          var keyWords = statistics['keywords']
+                          var keyArr = keyWords.split(',')
+                          var keyLen = keyArr.length
+                          var touchWords = content['assistent']
+                          for(i=0;i<keyLen;i++){
+                            var preDot = '<li class="keyword-span"> '
+                            if (keyArr[i] in touchWords){
+                                preDot = '<li class="keyword-span">﹡'
+                            }
+                            wordsSpan += preDot+keyArr[i]+'</li>'
+                          }
+                          // var wordsSpan = keyArr.join(', ')
+                          //$('#spankeywords').html(wordsSpan)
+                          var wordsLis = ''
+                          var toughCount = 0
+                          for(let word in touchWords){
+                              toughCount += 1
+                              wordsLis += '<li>'+word+'</li>'
+                          }
+                          $('#toughWords-div').find('ol').html(wordsLis)
+
+                          var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-opencart" id="showTough"> Suggested Focus: </span></span><span class="words-number">'+statistics['suggestedfocus']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-slideshare" id="showTough">   Advanced Words: </span></span><span class="words-number">'+toughCount+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Words Set: </span><span class="words-number">'+statistics['wordsset']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Total Words: </span><span class="words-number">'+statistics['allwords']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span><ul style="padding: 0;margin-top: 8px;margin-bottom: 3px;">'+wordsSpan+'</ul></span>'
+                          //<span class="statistics-no"><span class="clickWordsDict_title">Article Content:</span></span>
+                          $('#spanstatistics').html(wordsData)
+                          //$('#foucus_suggest').html('<span class="clickWordsDict_title">Suggested Focus: </span>'+statistics['suggestedfocus']+'</span>')
+                        }catch(err){
+                          console.log(err)
+                        }
+                        
+                        $('#mainTitle').html(content['title'])
+                        var paperJsonDate = content['date']
+                        var timeArr = paperJsonDate.slice(0,10).split('-')
+                        var hms = paperJsonDate.slice(10)
+                        var dateStr = '-- '+noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+' '+timeArr[0] + hms
+                        $('#createDate').html(dateStr)
+                        $('#lastArt').attr('data-link',content['last'])
+                        $('#nextArt').attr('data-link',content['next'])
+                        dictData['default'] = content['assistent']
+                        dealWithFloatDiv('',true,false,true,false)
+                  }else{
+                     dictData[type] = data
+                    $('#successIcon').show()
+                     loadedDict.push(type)
+                    //dealWithFloatDiv('',false,false,true,true)
+                    var tips='<span class="success">'+toDict+' loaded!</span>'
+                    dealWithFloatDiv(tips,false,false,true,true)
+                  }
+                },
+                error: function(data) {
+                  hideFloat -=1
+                  if(ifmd){
+                    toDict = 'Sorry, but no more paper!'
+                  }else{
+                    toDict = '<span class="error">'+toDict+'</span> failed!'
+                  }
+                    dealWithFloatDiv(toDict,false,true,false,false)
+                  
+                }
+            });
+        }
     $(document).ready(function(){
       getPaperList()
+      //getData('type',true,false)
       var random = null
       $('#carousel-example-generic').find('.text-center').each(function (dindex, ditem) {
             var mottoLen = mottoArr.length
@@ -824,12 +1214,13 @@ color:olive;
         $(this).addClass('currentNav')
       })
       $('#search-paper').click(function(){
-        $(this).parent().prev().slideDown(500)
+        $('#search-input-div').slideDown(500)
       })
       $('#swith-nav .fa-remove').click(function(){
         $(this).parent().slideUp(345)
       })
       $('.swith-nav-a').click(function(){
+        dealWithFloatDiv('',true,false,true,false)
         var text = $(this).text()
         var toShow = null
         if(text == 'Latest'){
@@ -837,6 +1228,9 @@ color:olive;
         }
         if(text == 'Paper'){
           toShow = '#paper-section'
+          if($('#articleContent p').length ==0){
+            getData('type',true,false)
+          }
         }
         if(text == 'Dictionary'){
           toShow = '#dictionary-section'
@@ -847,6 +1241,113 @@ color:olive;
           $(toShow).slideDown(456)
         }
       })
+  $('#page-content').on('click','.fa-info-circle',function(e){
+              if(triggerWord != null){
+                    var toSearch = triggerWord
+                    triggerWord = null
+              }else{
+                var toSearch = $(this).text()
+               if(toSearch.match(',')){
+                  var index = toSearch.match(',')['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match('"')){
+                  var index = toSearch.match('"')['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("'")){
+                  var index = toSearch.match("'")['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("’")){
+                 var index = toSearch.match("’")['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.indexOf("[") == 0 || toSearch.indexOf("(") == 0){
+                  toSearch = toSearch.slice(1)
+               }
+               if(toSearch.indexOf("]") >0){
+                  var index = toSearch.indexOf("]")
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.indexOf(")") >0){
+                  var index = toSearch.indexOf(")")
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("”")){
+                var index = toSearch.match("”")['index']
+                if(!toSearch.match("“")){
+                  toSearch = toSearch.slice(0,index)
+                }else{
+                 toSearch = toSearch.slice(1,index)
+                }
+               }
+               if(toSearch.match("“") || toSearch.match("“")){
+                  toSearch = toSearch.slice(1)
+                }
+              }
+               $('.wordName').html(toSearch)
+               if(toSearch){
+                fillBasicLookup(toSearch)
+                //submitSearch(toSearch.toLowerCase(),true)
+                //$('#search-input').val(toSearch)
+                //$('#showSearchForm').trigger('click')
+                //setTimeout(function(){
+                  //submitSearch()
+                //},169)
+               }else{
+                  $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
+                  $('.basic_dict_error').show()
+               }
+               $('.with_motto_footer').fadeOut(234)
+               $(document).one("click", function(){
+                        $("#clickWordsDict").hide();
+                    });
+                    e.stopPropagation();
+        })
+  $('body').on('click','#showTough',function(e){
+  $('#toughWords-div').slideDown(356)
+  $('.with_motto_footer').fadeOut(234)
+  $(document).one("click", function(){
+                        $("#toughWords-div").hide();
+                    });
+              e.stopPropagation();
+})
+
+
+$('#toughWords-div').on('click','#wordsOl li',function(e){
+  var value = $(this).text()
+  fillBasicLookup(value)
+})
+$('.showNone').click(function(){
+  $('#clickWordsDict').slideUp(369)
+})
+$('body').on('click','.wordPro li',function(e){
+    var word = $('.wordName:first').text()
+    var youdaoWordAudio = 'https://dict.youdao.com/dictvoice?audio='+word+'&type=1'// or type=1
+    var x = document.createElement("AUDIO");
+    x.setAttribute("src", youdaoWordAudio);
+    x.setAttribute("autoplay", "autoplay");
+    $('#voiceDiv').html(x)
+    e.stopPropagation();
+})
+$('.switchPaper').click(function(){
+  var paperName = $(this).attr('data-link')
+  if(paperName == 'abcdeflockey'){
+    getData('type',true,false)
+  }else{
+    getData('type',true,paperName)
+  }
+})
+$('body').on('click','.loadPage',function(){
+  var paperName = $(this).attr('data-link')
+  if(paperName == 'abcdeflockey'){
+    getData('type',true,false)
+  }else{
+    getData('type',true,paperName)
+  }
+  $('.swith-nav-a').eq(1).trigger('click')
+})
     })
   </script>
   
