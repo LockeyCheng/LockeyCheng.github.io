@@ -174,7 +174,9 @@ h6.mottoh6auth{
 #more-papers{
   background: #fffbde;
   padding: 8px;
+  border: solid 1px;
   border-radius: 6px;
+  cursor: hand;
 }
 img.item-img{
   width: 30%!important;
@@ -598,11 +600,11 @@ span.nowShow{
         console.log(err,'source not found')
       }
       if(!defaultSource){
-        defaultSource = 'The_Economist/'
+        defaultSource = 'The_Economist'
       }
       $.ajax({
                 type:"GET",
-                url: './'+defaultSource+morePaperLink+'.json',
+                url: './'+defaultSource+'/amore/'+morePaperLink+'.json',
                 data: null,
                 dataType:'json',
                 cache:false,
@@ -611,7 +613,12 @@ span.nowShow{
                   paperListJson = data['papers']
                   var listLen = paperListJson.length
                   var paperNo = 0
-                  var hot = '<span class="fa fa-fire" tile="latest paper"></span>'
+                  if(moreTimes == 0){
+                    var hot = '<span class="fa fa-fire" tile="latest paper"></span>'
+                  }else{
+                    var hot = ''
+                  }
+                  
                   var windowHW = getPageSize()
                   if(windowHW[0] >500 || morePaperLink=="latestPapers"){
                     console.log('cellphone')
@@ -625,12 +632,25 @@ span.nowShow{
                   var item4='</div><div class="col-md-3 col-item4">'
                   for(var i=0;i<listLen;i++){
                     var link = paperListJson[i]['nos']
+                    if(!link){
+                      link = paperListJson[i]['link']
+                      let arr = link.split('_')
+                      if(arr[1].length == 1){
+                          arr[1] = '0'+arr[1]
+                      }
+                      if(arr[2].length == 1){
+                        arr[2] = '0'+arr[2]
+                      }
+                      link = arr.join('').slice(0,-5)
+                      
+                    }
+                    
                     var paperLink = './paper.html?paper='+link
                     var paperJsonDate = paperListJson[i]['date']
                     var timeArr = paperJsonDate.slice(0,10).split('-')
                     var hms = paperJsonDate.slice(10)
                     var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+' '+timeArr[0] + hms
-                    var fillDiv = '<div class="box-item"><div class="item-img-div"><img src="'+paperListJson[i]['img']+'" class="img-responsive item-img"/><span class="timeSpan">  '+dateStr+hot+'</span><h6 class="paperTitleh6">'+paperListJson[i]['title']+'</h6><p class="paperDesc">'+paperListJson[i]['desc']+' ...</p><a class="readMoreText" href="'+paperLink+'">Read More <span class="fa fa-hand-o-right"></span></a></div></div>'
+                    var fillDiv = '<div class="box-item"><div class="item-img-div"><img src="'+paperListJson[i]['img']+'" class="img-responsive item-img"/><span class="timeSpan">  '+dateStr+hot+'</span><h6 class="paperTitleh6"><a href="'+paperLink+'">'+paperListJson[i]['title']+'</a></h6><p class="paperDesc">'+paperListJson[i]['desc']+' ...</p><a class="readMoreText" href="'+paperLink+'">Read More <span class="fa fa-hand-o-right"></span></a></div></div>'
                     if(i%4 ==0){
                       item1 += fillDiv
                     }else if(i%4 ==1){
