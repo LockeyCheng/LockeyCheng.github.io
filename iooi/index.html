@@ -1126,6 +1126,9 @@ ul li {
                         $('#nextArt').attr('data-link',content['next'])
                         dictData['default'] = content['assistent']
                         dealWithFloatDiv('',true,false,true,false)
+                        if($('#paper-section').is(':hidden')){
+                          $('.swith-nav-a').eq(1).trigger('click')
+                        }
                   }else{
                      dictData[type] = data
                     $('#successIcon').show()
@@ -1347,7 +1350,7 @@ $('body').on('click','.loadPage',function(){
   }else{
     getData('type',true,paperName)
   }
-  $('.swith-nav-a').eq(1).trigger('click')
+  //$('.swith-nav-a').eq(1).trigger('click')
 })
     })
   </script>
