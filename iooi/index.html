@@ -55,7 +55,7 @@ body{
 footer .bottom-footer{
   padding: 0;
 }
-.noshow{
+.noshow,.fa-arrow-circle-up{
   display: none
 }
 /*
@@ -186,7 +186,7 @@ img.item-img{
   width: 30%!important;
   display: inline
 }
-.timeSpan{
+.timeSpan,.searchPaperTime{
   color:#cb8308;
 }
 .paperTitleh6{
@@ -208,6 +208,7 @@ a.readMoreText{
 }
 .index-page .box-content.box-1{
   margin-top: 36px;
+  min-height: 310px;
 }
 #search-paper{
   position: absolute;
@@ -216,6 +217,22 @@ a.readMoreText{
    /* background: #0e9770;*/
     padding: 5px;
     border-radius: 50%;
+}
+input.nooutline,#select-category{
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom:solid 1px #9ffff5;
+}
+input.nooutline:focus,#select-category:focus{
+    border-bottom: solid 1.5px #00e2db;
+}
+#search-paper-input{
+  display:inline-block;
+}
+#select-category{
+ display:inline-block;
+  width: 20%;
 }
 @media (min-width: 768px){
   .container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse {
@@ -227,11 +244,17 @@ a.readMoreText{
     right: 23px;
     margin-top: 16px;
   }
+  #search-paper-input{
+    width: 71%
+  }
 }
 @media (max-width: 568px){
   #search-paper{
     right: 69px;
     top: 8px;
+  }
+  #search-paper-input{
+    width: 53%
   }
 }
 #paperMoreSwitchp{
@@ -372,7 +395,7 @@ span.nowShow{
     font-weight: 700;
 }
 
-#swith-nav a:nth-child(2), #swith-nav a:nth-child(3) { /*:nth-child(1)*/
+#swith-nav a:nth-child(2), #swith-nav a:nth-child(3) ,#swith-nav a:nth-child(4){ /*:nth-child(1)*/
     margin-left: -31px;
 }
 
@@ -386,19 +409,7 @@ span.nowShow{
 #swith-nav{
   margin-top: 2px;
 }
-input.nooutline{
-    background: none;
-    outline: none;
-    border: none;
-    border-bottom:solid 1px #9ffff5;
-}
-input.nooutline:focus{
-    border-bottom: solid 1.5px #00e2db;
-}
-#search-paper-input{
-  display:inline-block;
-  width: 80%;
-}
+
 #swith-nav .fa-remove, #swith-nav .fa-google{
 padding: 3px;
 font-size:1.6em;
@@ -446,7 +457,7 @@ color:#057e73;
 }
 .fixleft,.fixright{
 position: fixed;
-bottom: 15px;
+bottom: 21px;
 z-index: 1111;
 }
 .fixleft{
@@ -567,6 +578,23 @@ ul li {
 .fa-volume-up:hover {
     color: #12e6f5;
 }
+#paperListUl a,#paperListUl span.timespan{
+  display: block;
+  color: #6d47af;
+}
+#paperListUl li{
+    padding: 2px 5px;
+    border-bottom: solid 1px #5fddd9;
+   /* border-left: solid 1px #07c7b5;*/
+    margin-top: 5px;
+}
+.fa-arrow-circle-up{
+     color: #1b8955;
+    font-size: 26px;
+    position: fixed;
+    right: 6px;
+    bottom: -1px;
+}
 </style>
   <!-- /////////////////////////////////////////Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -644,8 +672,17 @@ ul li {
     -->
   </div> <!-- Carousel -->
   <div id="swith-nav">
-    <p class="noshow" id="search-input-div"><input type="text" id="search-paper-input" placeholder="Type keywords to search" class="nooutline"><span class="fa fa-remove"></span> <span class="fa fa-google"></span></p>
-    <p style="margin-left: 6px;"><a href="javascript:void(0)" class="swith-nav-a currentNav">Latest</a><a href="javascript:void(0)" class="swith-nav-a">Paper</a><a href="javascript:void(0)" class="swith-nav-a">Dictionary</a></p>
+    <p class="noshow" id="search-input-div">
+      <input type="text" id="search-paper-input" placeholder="Type keywords to search" class="nooutline">
+      <select name="select-category" id="select-category">
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="all">All</option>
+        </select>
+      <span class="fa fa-remove"></span> <span class="fa fa-google" id="search-paper-go">o</span>
+      </p>
+    <p style="margin-left: 3px;"><a href="javascript:void(0)" class="swith-nav-a currentNav">Latest</a><a href="javascript:void(0)" class="swith-nav-a">Paper</a><a href="javascript:void(0)" class="swith-nav-a">Utils</a><a href="javascript:void(0)" class="swith-nav-a">Dictionary</a></p>
     
   </div>
   <div id="page-content2">
@@ -714,6 +751,15 @@ ul li {
     <section class="box-content box-1 dictionary section-content noshow" id="dictionary-section">
      <p align="center">On the way</p>
     </section>
+     <section class="box-content box-1 utils section-content noshow" id="utils-section">
+        <div id="paperSearchResult">
+          <ol id="paperListUl">
+            
+          </ol>
+          <p align="center"></p>
+          <p id="searchMoreSwitchp" align="center">Nothing to SHOW!</p>
+        </div>
+    </section>
   </div>
   
   <!-- FOOTER -->
@@ -766,6 +812,7 @@ ul li {
     <h5 align="center" id="wariningIcon" class="warning" style="margin-top: -10%;display: none;font-size:4em;color:#ffa500"><i class="fa fa-warning"></i></h5>
     <h3 align="center" id="loadWords"></h3></div>
 </div>
+<a href="#carousel-example-generic" class="fa fa-arrow-circle-up"></a>
   <!-- jQuery -->
   <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
   <script type="text/javascript" src="../js/bootstrap.min.js"></script>
@@ -777,6 +824,11 @@ ul li {
   <script src="../js/jquery.easing.min.js"></script>
   <script src="../js/classie.js"></script>
   <script type="text/javascript">
+    var today = new Date()
+    var year = today.getFullYear()
+    var month = today.getMonth()+1
+    var day = today.getDate()
+    var totalPaper = 0
     var mottoArr = [
           {'en':"I am not afraid of tomorrow for I have seen yesterday and I love today.",'auth':"—— William Allen White",'cn':'我并不害怕明天，因为我已见过昨天并且热爱今天。'},
           {'en':"Other men live to eat, while I eat to live. ",'auth':"—— Socrates",'cn':"别人为食而生存，我为生存而食。"},
@@ -793,6 +845,9 @@ ul li {
     var triggerWord = null
     var dictData={}
     var paperOload = null
+    var paperListJson = null
+    var paperRecords = null
+    var searchOuts = []
     var youdaoSentenceAudio = 'https://dict.youdao.com/dictvoice?audio='//+sentence+&le=eng
     var Request = new Object();
       Request = GetRequest();
@@ -1000,7 +1055,6 @@ ul li {
                     var timeArr = paperJsonDate.slice(0,10).split('-')
                     var hms = paperJsonDate.slice(10)
                     var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+' '+timeArr[0] + hms
-                    //var fillDiv = '<div class="box-item"><div class="item-img-div"><img src="'+paperListJson[i]['img']+'" class="img-responsive item-img"/><span class="timeSpan">  '+dateStr+hot+'</span><h6 class="paperTitleh6"><a href="'+paperLink+'">'+paperListJson[i]['title']+'</a></h6><p class="paperDesc">'+paperListJson[i]['desc']+' ...</p><a class="readMoreText switchPaper" href="'+paperLink+'">Read More <span class="fa fa-hand-o-right"></span></a></div></div>'
                     var fillDiv = '<div class="box-item"><div class="item-img-div"><img src="'+paperListJson[i]['img']+'" class="img-responsive item-img"/><span class="timeSpan">  '+dateStr+hot+'</span><h6 class="paperTitleh6"><a class="loadPage" href="javascript:void(0)" data-link="'+paperListJson[i]['link']+'">'+paperListJson[i]['title']+'</a></h6><p class="paperDesc">'+paperListJson[i]['desc']+' ...</p><a class="readMoreText loadPage" href="javascript:void(0)" data-link="'+paperListJson[i]['link']+'">Read More <span class="fa fa-hand-o-right"></span></a></div></div>'
                     if(i%4 ==0){
                       item1 += fillDiv
@@ -1039,6 +1093,7 @@ ul li {
     }
         function getData(type,ifmd,filename){
           hideFloat +=1
+          var filename = filename
           if(ifmd){
             var queryPaper = Request['paper']
             if(queryPaper && pquery == false){
@@ -1047,23 +1102,13 @@ ul li {
               var month = queryPaper.slice(4,6)*1
               var day = queryPaper.slice(6,8)*1
               var no = queryPaper.slice(8)
-              var filename = year+'_'+month+'_'+day+'_'+no*1+'.json'
+              filename = year+'_'+month+'_'+day+'_'+no*1+'.json'
             }else{
-              var filename = paperOload
-              var today = new Date()
-              var year = today.getFullYear()
-              var month = today.getMonth()+1
-              var day = today.getDate()
-              // if(!filename){
-              //   var filename = year+'_'+month+'_'+day+'_1.json'
-              //   var tips = ''
-              // }else{
-              //   var dataArr = filename.split('_')
-              //   var year = dataArr[0]
-              //   var month = dataArr[1]
-              //   var filename = filename
-              //   var tips = 'Just a moment, please.'
-              // }
+              filename = paperOload
+              var dateArr = filename.split('_')
+              var year = dateArr[0]
+              var month = dateArr[1]
+              var day = dateArr[2]
             }
 
             var getUrl = './'+defaultSource+'/a'+year+'/a'+month+'/'+filename
@@ -1181,11 +1226,31 @@ ul li {
         getPaperList()
       })
       $('body').on('click','.paperMoreSwitchspan',function(){
-        $('.resultDivClass').slideUp(234)
-        $('span.nowShow').removeClass('nowShow')
-        $(this).addClass('nowShow')
-        var toShow = '#'+$(this).attr('data')
-        $(toShow).slideDown(456)
+        if(!$('#latest-section').is(":hidden")){
+          $('#latest-section .resultDivClass').slideUp(234)
+          $('#latest-section span.nowShow').removeClass('nowShow')
+          $(this).addClass('nowShow')
+          var toShow = '#'+$(this).attr('data')
+          $(toShow).slideDown(456)
+          return false
+        }
+        if(!$('#utils-section').is(":hidden")){
+          $('#utils-section span.nowShow').removeClass('nowShow')
+          $(this).addClass('nowShow')
+          var searchShowNo = $(this).text()*8
+          if(searchShowNo > searchOuts.length){
+            searchShowNo = searchOuts.length
+          }
+          var startNo = ($(this).text()-1)*8
+          var appendLi = ''
+          for(var i=startNo; i<searchShowNo; i++){
+             appendLi += '<li><a class="cd-nowrap loadPage" href="javascript:void(0)" data-link="'+searchOuts[i]['link']+'">'+searchOuts[i]['title']+'.</a><span class="searchPaperTime">'+searchOuts[i]['date']+'</span></li>'
+          }
+
+          $('#paperListUl').html(appendLi)
+          return false
+        }
+        
       })
       $('body').bind('touchstart',function(e){
         startX = e.originalEvent.changedTouches[0].pageX;
@@ -1201,21 +1266,75 @@ ul li {
         //判断滑动方向
         if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>60){
           console.log('向右边滑动')
+          if(distanceX>120){
+            $('.swith-nav-a').each(function (dindex, ditem) {
+              if($(this).hasClass('currentNav')){            
+                if($(this).next('a').length >0){
+                  $(this).next().trigger('click');
+                  return false
+                }else{
+                  $('.swith-nav-a').eq(0).trigger('click')
+                  return false
+                }
+              }
+            })
+          }
             
         }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-60){
          
             console.log('往左滑动');
+            if(distanceX<-120){
+              $('.swith-nav-a').each(function (dindex, ditem) {
+              if($(this).hasClass('currentNav')){
+                if($(this).prev('a').length >0){
+                  $(this).prev().trigger('click');
+                  return false
+                }else{
+                  $('.swith-nav-a').eq(3).trigger('click')
+                  return false
+                }
+              }
+            })
+            }
             
         }else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<50){
           console.log('往up滑动');
-          $('.navbar-fixed-top').hide(234)
+          //$('.fa-arrow-circle-up').show()
               
         }else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY>0){
             console.log('往down滑动');
-            $('.navbar-fixed-top').fadeIn(567)
+            //$('.fa-arrow-circle-up').show()
+            
         }
       })
-
+var scrollDirect=function () {
+        var dalta = document.body.scrollTop;
+        window.addEventListener("scroll", function (event) {
+        event = event || window.event;
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        var totalScroll = scrollHeight - windowHeight
+        var change = totalScroll- scrollTop
+        if((dalta - change) >0 ){
+          if(scrollTop > 20)
+          {
+            $('.fa-arrow-circle-up').show()
+            $('.navbar-fixed-top').hide()
+          }
+          
+        }else{
+          $('.fa-arrow-circle-up').hide()
+          $('.navbar-fixed-top').show()
+        }
+        dalta = change
+       if(totalScroll - scrollTop > totalScroll-5){
+        //$('footer').show()
+       }
+    }, false);
+}
+scrollDirect(function (direction) {
+ })
       $('#closeFloat').click(function(){
             $('#floatDiv').fadeOut(556)
         })
@@ -1224,7 +1343,39 @@ ul li {
         $(this).addClass('currentNav')
       })
       $('#search-paper').click(function(){
-        $('#search-input-div').slideDown(500)
+          $('#search-input-div').slideDown(500)
+          if(paperRecords != null){
+            return false
+          }
+          var getURL = './'+defaultSource+'/paperRecords.json'
+          $.ajax({
+                type:"GET",
+                url: getURL,
+                data: null,
+                dataType:'json',
+                cache:false,
+                success: function(data) {
+                  paperRecords = data
+                  var year = today.getFullYear()
+                 for(var year in paperRecords){
+                  if(year.length >5){
+                    continue
+                  }
+                  for(var month in paperRecords[year]){
+                          for(var day in paperRecords[year][month]){
+                            var dayPaper = paperRecords[year][month][day].length
+                            totalPaper += dayPaper
+                          }
+                        }
+                      }
+                  //$('#paperTotal').html(totalPaper)
+                },
+                error: function(data) {
+                    var listInfo = '<span class="error">Paper list</span> failed to load!'
+                    dealWithFloatDiv(listInfo,false,true,false,false)
+                  
+                }
+              })
       })
       $('#swith-nav .fa-remove').click(function(){
         $(this).parent().slideUp(345)
@@ -1244,6 +1395,9 @@ ul li {
         }
         if(text == 'Dictionary'){
           toShow = '#dictionary-section'
+        }
+        if(text == "Utils"){
+           toShow = '#utils-section'
         }
         console.log(text,toShow)
         if($(toShow).is(':hidden')){
@@ -1352,13 +1506,122 @@ $('.switchPaper').click(function(){
 $('body').on('click','.loadPage',function(){
   paperOload = $(this).attr('data-link')
   getData('type',true,false)
-  // if(paperName == 'abcdeflockey'){
-  //   getData('type',true,false)
-  // }else{
-  //   getData('type',true,paperName)
-  // }
-  // //$('.swith-nav-a').eq(1).trigger('click')
 })
+
+$('#search-paper-go').click(function(){
+            var showPages = 0
+            var nospan = ''
+            var windowHW = getPageSize()
+            var appendLi = ''
+            var searchPaperKey = $('#search-paper-input').val()
+            var choose = $('#select-category').val()
+            var yearArr = ['a'+choose]
+            var monthArr = []
+            var dayArr = []
+            var wordsArr = []
+            var searchPaperNo = 0
+            if(searchPaperKey){
+                var keywordsArr = searchPaperKey.split(' ')
+                for(var i in keywordsArr){
+                  if(!isNaN(keywordsArr[i]) && keywordsArr[i].length == 4){
+                    var keyYear = 'a'+keywordsArr[i]
+                    if(!(keyYear in yearArr)){
+                      yearArr.push(keyYear)
+                    }
+                  }
+                  else if((keywordsArr[i].slice(0,1) == 'm') && (!isNaN(keywordsArr[i].slice(1)))){
+                    var keyMonth = 'a'+keywordsArr[i].slice(1)*1
+                    if(!(keyMonth in monthArr)){
+                      monthArr.push(keyMonth)
+                    }
+                  }
+                  else if((keywordsArr[i].slice(0,1) == 'd')  && (!isNaN(keywordsArr[i].slice(1)))){
+                    var keyDay = 'a'+keywordsArr[i].slice(1)*1
+                    if(!(keyDay in dayArr)){
+                      dayArr.push(keyDay)
+                    }
+                  }else{
+                    wordsArr.push(keywordsArr[i])
+                  }
+                }
+          }
+          for(var year in yearArr){
+            var yearStr = yearArr[year]
+            var thisYearJson = paperRecords[yearStr]
+            for(var month in thisYearJson){
+                      if(monthArr.length >0 && monthArr.indexOf(month) <0){
+                        if(!firstFill){
+                          continue
+                        }
+                      }
+                      //console.log('pass month',month)
+                      for(var day in thisYearJson[month]){
+                          if(dayArr.length >0 && dayArr.indexOf(day)<0 ){
+                            if(!firstFill){
+                              continue
+                            }
+                          }
+                          //console.log('pass day')
+                          for(var item in thisYearJson[month][day]){
+                            var title = thisYearJson[month][day][item][1]
+                            var filename = thisYearJson[month][day][item][0]
+                            var timeStr = filename.slice(0,-5)
+                            var timeArr = timeStr.slice(0,9).split('_')
+                            var preSearch = searchPaperNo
+                            if(searchPaperKey && wordsArr.length >0){
+                              try{
+                                var keyWords = thisYearJson[month][day][item][2].toLowerCase()
+                                var titleToLower = title.toLowerCase()
+                                for(var i in wordsArr){
+                                  word = wordsArr[i].toLowerCase()
+                                  if(keyWords.match(word) || titleToLower.match(word)){
+                                    searchPaperNo += 1
+                                    break
+                                  }
+                                }
+                              }catch(err){console.log(err)}
+                              
+                              
+                            }else{
+                              searchPaperNo += 1
+                            }
+                            if(preSearch!=searchPaperNo){
+                              let dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+', '+timeArr[0]
+                              let result = {'date':dateStr,'link':filename,"title":title}
+                              searchOuts.push(result)
+                              if(searchPaperNo <=8 ){
+                                appendLi += '<li><a class="cd-nowrap loadPage" href="javascript:void(0)" data-link="'+filename+'">'+title+'.</a><span class="searchPaperTime">'+dateStr+'</span></li>'
+                              }
+                              if(searchPaperNo%8 == 1){
+                                var countPage = Math.ceil(searchPaperNo/8)
+                                nospan += '<span class="paperMoreSwitchspan">'+countPage+'</span>'
+                              }
+                              
+                            }
+                          }
+                      }
+                    }
+            }
+          if(searchPaperNo ==0){
+            $('#paperListUl').html('<li>No matched paper to show!</li>')
+            $('#searchMoreSwitchp').html('')
+            return false
+          }
+          $('#paperListUl').html(appendLi)
+          let outin =  searchPaperNo+' out of '+totalPaper
+          $('#searchMoreSwitchp').prev().html(outin)
+          $('#searchMoreSwitchp').html(nospan)
+          $('.swith-nav-a').eq(2).trigger('click')
+        })
+document.onkeydown=function(event){
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            
+            if(e && e.keyCode == 13){
+              if(!$('#search-paper-input').is(':hidden')){
+                $('#search-paper-go').trigger('click')
+              }
+            }
+        }; 
     })
   </script>
   
