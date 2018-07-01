@@ -208,7 +208,7 @@ a.readMoreText{
 }
 .index-page .box-content.box-1{
   margin-top: 36px;
-  min-height: 310px;
+  min-height: 296px;
 }
 #search-paper{
   position: absolute;
@@ -595,6 +595,21 @@ ul li {
     right: 6px;
     bottom: -1px;
 }
+#dict-input-warpp{
+  width: 66%;
+    position: absolute;
+    left: 13%;
+    font-size: 1.5em;
+}
+#search-word-go{
+  position: absolute;
+    right: -16px;
+    margin-top: -35px;
+}
+.searchResult{
+    margin-top: 76px;
+    padding: 3px 23px;
+}
 </style>
   <!-- /////////////////////////////////////////Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -749,7 +764,32 @@ ul li {
     <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper"><span  class="fa fa-arrow-right"></span></a></span>
     </section>
     <section class="box-content box-1 dictionary section-content noshow" id="dictionary-section">
-     <p align="center">On the way</p>
+     
+      <p id="dict-input-warpp">
+        
+        <input type="text" id="lookup-dict-input" placeholder="Type word to look up" class="nooutline">
+        <span class="fa fa-google" id="search-word-go" for="lookup-dict-input">o</span>
+      </p>
+      <div class="searchResult">
+        <div>
+            <p class="wordName" align="center">word</p>
+            <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
+            <p class="wordPro_p"><ul class="wordPro"></ul></p>
+
+            <p class="wordExplanationCN_p"><span class="wordTitle">释义：</span></p>
+            <p class="wordExplanationCN_p"><ul class="wordExplanationCN"></ul></p>
+
+            <p class="wordPhrases_p"><span class="wordTitle">短语：</span></p>
+            <p class="wordPhrases_p"><ul class="wordPhrases"></ul></p>
+            <!-- <p><span class="wordTitle">释义（英）：</span><span class="wordExplanationEG"></span></p> -->
+            <!-- <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
+            <p><span class="wordTitle">近义：</span><span class="similar"></span></p>
+            <p><span class="wordTitle">反义：</span><span class="reverse"></span></p> -->
+            <div id="centences">
+              
+            </div>
+        </div>
+    </div>
     </section>
      <section class="box-content box-1 utils section-content noshow" id="utils-section">
         <div id="paperSearchResult">
@@ -829,6 +869,7 @@ ul li {
     var month = today.getMonth()+1
     var day = today.getDate()
     var totalPaper = 0
+    var testAlpha = /^[a-zA-Z]+$/i
     var mottoArr = [
           {'en':"I am not afraid of tomorrow for I have seen yesterday and I love today.",'auth':"—— William Allen White",'cn':'我并不害怕明天，因为我已见过昨天并且热爱今天。'},
           {'en':"Other men live to eat, while I eat to live. ",'auth':"—— Socrates",'cn':"别人为食而生存，我为生存而食。"},
@@ -838,6 +879,16 @@ ul li {
           {'en':"Truth is beautiful. Withoutdoubt; and so are lies.",'auth':"——Emerson.",'cn':"真理是美的；毫无疑问，谎言也是如此。"},
           {'en':"One can not see what itself in until leave it.",'auth':"——Lockey.",'cn':"不识庐山真面目，只缘身在此山中。"}
         ]
+    var type2Dict={
+          'default':'Paper Assistent',
+          'economist_basic':'The Economist ',
+          'economist_model':'The Economist ',
+          'cet46_basic':'CET-4&&6 ',
+          'cet46_model':'CET-4&&-6 ',
+          'pupil_basic':'The Pupil ',
+          'pupil_model':'The Pupil '
+        }
+    var loadedDict = []
     var noTomonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     var morePaperLink = 'latestPapers'
     var moreTimes = 0
@@ -884,7 +935,7 @@ ul li {
                }
               if(ifhide){
                 setTimeout(function(){
-                  $('#floatDiv').slideUp(356)
+                  $('#floatDiv').slideUp(256)
                   if(hideFloat <= 0){
                     if(successIcon){
                         $('#successIcon').hide()
@@ -892,7 +943,7 @@ ul li {
                       $('.overlap').fadeOut(456)
                   }
                       
-                },1300)
+                },600)
               }
               
         }
@@ -955,6 +1006,212 @@ ul li {
               }
            }
            return theRequest;
+        }
+    function wordSearch(value,basicLookup){
+              if(!value){
+                var value = $('#lookup-dict-input').val().trim();
+                if(!value.length){
+                     $('.search-input').focus()
+                    return false
+                }
+                if(!testAlpha.test(value)){
+                    var tips = '<span class="error">[' + value + ']</span> Illegal input, must be English word!'
+                    dealWithFloatDiv(tips,false,true,true)
+                    return false
+                }
+              
+                if (value.length == 1){
+                  dealWithFloatDiv('Please Remember THE 26 : A~B~C~D~E~F~G~H~I~J~K~L~M~N~O~P~Q~R~S~T~U~V~W~X~Y~Z~~~!',false,false,false,false,true)
+                  return false
+                }
+              }
+                var valueO = value.toLocaleLowerCase()
+                var valueArr = [valueO]
+                value = valueO.slice(-4)
+                if(value.match("ies") || value.match("ied")){
+                    valuetmp = valueO.slice(0,-3)+'y'
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("ing")){
+                    valuetmp = valueO.slice(0,-3)
+                    valueArr.push(valuetmp)
+                    valuetmp += 'e'
+                    valueArr.push(valuetmp)
+                }
+                var lastStr = valueO.slice(-1)
+                if(lastStr == 's'){
+                    valuetmp = valueO.slice(0,-1)
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("tion")){
+                    valuetmp = valueO.slice(0,-4)
+                    valueArr.push(valuetmp)
+                    value += 'te'
+                    valueArr.push(valuetmp)
+                }
+                lastStr = valueO.slice(-2)
+                if(lastStr == 'ed'){
+                    valuetmp = valueO.slice(0,-2)
+                    valueArr.push(valuetmp)
+                    valuetmp += 'e'
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("est")){
+                    valuetmp = valueO.slice(0,-3)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-4)
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("ers")){
+                    valuetmp = valueO.slice(0,-3)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-2)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-1)
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("ly")){
+                    valuetmp = valueO.slice(0,-1)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-2)
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("ily")){
+                    valuetmp = valueO.slice(0,-3) + 'y'
+                    valueArr.push(valuetmp)
+                }
+                try{
+                    var jsonDataBasic = dictData['default']
+                    for(var item in valueArr){
+                      value = valueArr[item]
+                      if(jsonDataBasic[value]){
+                        break
+                      }
+                      if(!jsonDataBasic[value] && dictData['economist_basic']){
+                        jsonDataBasic = dictData['economist_basic']
+                      }
+                      if(jsonDataBasic[value]){
+                        break
+                      }
+                      if(!jsonDataBasic[value] && dictData['cet46_basic']){
+                          jsonDataBasic = dictData['cet46_basic']
+                      }
+                      if(jsonDataBasic[value]){
+                        break
+                      }
+                      
+                    }
+                    if(jsonDataBasic[value]){
+                      $('.wordName').text(value)
+                      try{
+                      var proEn = jsonDataBasic[value]['pron']['peg']
+                      var proAm = jsonDataBasic[value]['pron']['pam']
+                    } catch(err) { 
+                        var proEn = jsonDataBasic[value]['pro_en']
+                      var proAm = jsonDataBasic[value]['pro_am']
+                    }
+                      var proLi = ''
+                      if(proEn){
+                        $('.wordPro_p').show()
+                        if(proEn.match("英")){
+                          proLi += '<li>'+proEn+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }else{
+                          proLi += '<li><span class="wordTitle">英 </span>'+proEn+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }
+                      }else{
+                        $('.wordPro_p').hide()
+                      }
+                      if(proAm){
+                        if(proAm.match("美")){
+                          proLi += '<li>'+proAm+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }else{
+                          proLi += '<li><span class="wordTitle">美 </span>'+proAm+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }
+                      }
+                      $('.wordPro').html(proLi)
+                      var exLi = ''
+                      var exArr = jsonDataBasic[value]['ex']
+                      for(var i in exArr){
+                          exLi += '<li>'+exArr[i]+'</li>'
+                      }
+                      $('#searchForm').hide()
+                      if(exLi){
+                        $('.wordExplanationCN_p').show()
+                        $('.wordExplanationCN').html(exLi)
+                      }else{
+                        $('.wordExplanationCN_p').hide()
+                      }
+                      if(basicLookup){
+                        return false
+                      }
+                      $('.searchResult').show()
+                      try{
+                            var jsonDataModel = dictData['default']
+                            if(!jsonDataModel[value]){
+                              if(dictData['economist_model']){
+                                jsonDataModel = dictData['economist_model']
+                              }
+                              if(!jsonDataModel[value] && dictData['cet46_model']){
+                                jsonDataModel = dictData['cet46_model']
+                              }
+                            }
+                             try{
+                              var example = jsonDataModel[value]['eg2']
+                             }catch(err) { 
+                              console.log(err)
+                               var example = jsonDataModel[value]['eg']
+                            }
+                            
+                            if(example){
+                              $('#centences').show()
+                                var toFillSentence = ''
+                                 for(var i in example){
+                                  var nu = i*1+1
+                                  toFillSentence += '<p><span class="wordTitle">例句'+nu+'：</span><span class="wordSentenceEn">'+example[i][0]+'</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">'+example[i][1]+'</span></p>'
+                                 }
+                                 $('#centences').html(toFillSentence)
+                            }else{
+                               $('#centences').hide()
+                            }
+                            if(jsonDataModel[value]['wp'] != []){
+                              $('.wordPhrases_p').show()
+                              var phrases = jsonDataModel[value]['wp']
+                              var phraseLi = ''
+                              var no = 0
+                              for(var item in phrases){
+                                no += 1
+                                phraseLi += '<li><span class="wordTitle">'+no+'：</span><span class="wordSentenceEn">'+item+'</span></li><li class="phraseCn"><span class="wordSentenceCn">'+phrases[item]+'</span></li>'
+                              }
+                              $('#wordPhrases').html(phraseLi)
+                            }else{
+                              $('.wordPhrases_p').hide()
+                            }
+                          } catch(err) { 
+                              console.log('No model sentence and phrase!')
+                              return false
+                          }
+                          
+                      }else{
+                        if(basicLookup){
+                          $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
+                          $('.basic_dict_error').show()
+                          return false
+                        }
+                          var tips = '<span class="error">' + value + '</span> meets 404!'
+                          $('#search-input').val('')
+                          dealWithFloatDiv(tips,false,true,true)
+                          
+                      }
+                  
+                }catch(err) { 
+                  if(basicLookup){
+                    $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
+                    $('.basic_dict_error').show()
+                    return false
+                  }
+                  dealWithFloatDiv(tips,false,true,true)
+                  return false
+                }
         }
     function fillBasicLookup(value){
   var value = value
@@ -1183,7 +1440,6 @@ ul li {
                         }
                   }else{
                      dictData[type] = data
-                    $('#successIcon').show()
                      loadedDict.push(type)
                     //dealWithFloatDiv('',false,false,true,true)
                     var tips='<span class="success">'+toDict+' loaded!</span>'
@@ -1338,10 +1594,6 @@ scrollDirect(function (direction) {
       $('#closeFloat').click(function(){
             $('#floatDiv').fadeOut(556)
         })
-      $('#swith-nav a').click(function(){
-        $(this).siblings().removeClass('currentNav')
-        $(this).addClass('currentNav')
-      })
       $('#search-paper').click(function(){
           $('#search-input-div').slideDown(500)
           if(paperRecords != null){
@@ -1381,6 +1633,11 @@ scrollDirect(function (direction) {
         $(this).parent().slideUp(345)
       })
       $('.swith-nav-a').click(function(){
+        if($(this).hasClass('currentNav')){
+          return false
+        }
+        $(this).siblings().removeClass('currentNav')
+        $(this).addClass('currentNav')
         dealWithFloatDiv('',true,false,true,false)
         var text = $(this).text()
         var toShow = null
@@ -1395,6 +1652,15 @@ scrollDirect(function (direction) {
         }
         if(text == 'Dictionary'){
           toShow = '#dictionary-section'
+          var dictTypeBasic = 'economist_basic'
+          var dictTypeModel = 'economist_model'
+          if(loadedDict.indexOf(dictTypeBasic) <0){
+            getData(dictTypeBasic,false)
+          }
+          if(loadedDict.indexOf(dictTypeModel) <0){
+             getData(dictTypeModel,false)
+          }
+         
         }
         if(text == "Utils"){
            toShow = '#utils-section'
@@ -1453,12 +1719,6 @@ scrollDirect(function (direction) {
                $('.wordName').html(toSearch)
                if(toSearch){
                 fillBasicLookup(toSearch)
-                //submitSearch(toSearch.toLowerCase(),true)
-                //$('#search-input').val(toSearch)
-                //$('#showSearchForm').trigger('click')
-                //setTimeout(function(){
-                  //submitSearch()
-                //},169)
                }else{
                   $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
                   $('.basic_dict_error').show()
@@ -1613,12 +1873,18 @@ $('#search-paper-go').click(function(){
           $('#searchMoreSwitchp').html(nospan)
           $('.swith-nav-a').eq(2).trigger('click')
         })
+$('#search-word-go').click(function(){
+                wordSearch()
+        })
 document.onkeydown=function(event){
             var e = event || window.event || arguments.callee.caller.arguments[0];
             
             if(e && e.keyCode == 13){
               if(!$('#search-paper-input').is(':hidden')){
                 $('#search-paper-go').trigger('click')
+              }
+              if(!$('#lookup-dict-input').is(':hidden')){
+                 $('#search-word-go').trigger('click')
               }
             }
         }; 
