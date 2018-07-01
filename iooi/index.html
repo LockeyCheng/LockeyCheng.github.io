@@ -208,7 +208,7 @@ a.readMoreText{
 }
 .index-page .box-content.box-1{
   margin-top: 36px;
-  min-height: 296px;
+  min-height: 266px;
 }
 #search-paper{
   position: absolute;
@@ -894,7 +894,7 @@ ul li {
     var moreTimes = 0
     var hideFloat = 0
     var triggerWord = null
-    var dictData={}
+    var dictData={'default':null}
     var paperOload = null
     var paperListJson = null
     var paperRecords = null
@@ -1008,6 +1008,7 @@ ul li {
            return theRequest;
         }
     function wordSearch(value,basicLookup){
+      dealWithFloatDiv('',true,false,true,false)
               if(!value){
                 var value = $('#lookup-dict-input').val().trim();
                 if(!value.length){
@@ -1084,10 +1085,10 @@ ul li {
                     var jsonDataBasic = dictData['default']
                     for(var item in valueArr){
                       value = valueArr[item]
-                      if(jsonDataBasic[value]){
+                      if(jsonDataBasic && jsonDataBasic[value]){
                         break
                       }
-                      if(!jsonDataBasic[value] && dictData['economist_basic']){
+                      if(dictData['economist_basic']){
                         jsonDataBasic = dictData['economist_basic']
                       }
                       if(jsonDataBasic[value]){
@@ -1651,6 +1652,9 @@ scrollDirect(function (direction) {
           }
         }
         if(text == 'Dictionary'){
+          if(!$('#search-input-div').is(":hidden")){
+            $('#search-input-div').hide()
+          }
           toShow = '#dictionary-section'
           var dictTypeBasic = 'economist_basic'
           var dictTypeModel = 'economist_model'
