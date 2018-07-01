@@ -644,6 +644,9 @@ ul li {
                     <li>
                         <a class="page-scroll" href="../photograph/index.html">Photograph</a>
                     </li>
+                    <li>
+                        <a class="page-scroll" href="./paper.html">Last Version</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -1372,7 +1375,7 @@ ul li {
                     var hms = paperJsonDate.slice(10)
                     var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+' '+timeArr[0] + hms
                     var imgSrc = '<img src="'+paperListJson[i]['img']+'" class="img-responsive item-img"/>'
-                    if(localStorage.username == 'lockey23'){
+                    if(localStorage.username == 'Lockey23'){
                         imgSrc = ''
                     }
                     var fillDiv = '<div class="box-item"><div class="item-img-div"><span class="timeSpan">'+imgSrc+dateStr+hot+'</span><h6 class="paperTitleh6"><a class="loadPage" href="javascript:void(0)" data-link="'+paperListJson[i]['link']+'">'+paperListJson[i]['title']+'</a></h6><p class="paperDesc">'+paperListJson[i]['desc']+' ...</p><a class="readMoreText loadPage" href="javascript:void(0)" data-link="'+paperListJson[i]['link']+'">Read More <span class="fa fa-hand-o-right"></span></a></div></div>'
