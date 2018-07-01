@@ -195,10 +195,10 @@ img.item-img{
   font-size: 1.1em;
 }
 .paperDesc{
-  color:059182;
+  color:#bf9249;
 }
 a.readMoreText{
-  color:#efa58e !important;
+  color:#f39f85 !important;
 }
 
 .fa-fire{
@@ -361,7 +361,7 @@ span.nowShow{
     display: : block;
     font-size: 14px;
     float: left;
-    color: #9e1cb4;
+    color: #b175bb;
     padding: 3px 23px;
     line-height: 30px;
     height: 40px;
@@ -544,10 +544,10 @@ z-index: 1111;
 }
 .wordName {
     font-size: 1.8em !important;
-    color: #08da83 !important;
+    color: #c1570a !important;
 }
 .wordTitle {
-    color: #00e2bb;
+    color: #b77b4f;
 }
 .fa-volume-up {
     margin-left: 5px;
@@ -792,6 +792,7 @@ ul li {
     var hideFloat = 0
     var triggerWord = null
     var dictData={}
+    var paperOload = null
     var youdaoSentenceAudio = 'https://dict.youdao.com/dictvoice?audio='//+sentence+&le=eng
     var Request = new Object();
       Request = GetRequest();
@@ -977,6 +978,9 @@ ul li {
                   var item3='</div><div class="col-md-3 col-item3">'
                   var item4='</div><div class="col-md-3 col-item4">'
                   for(var i=0;i<listLen;i++){
+                    if(i==0){
+                      paperOload = paperListJson[i]['link']
+                    }
                     var link = paperListJson[i]['nos']
                     if(!link){
                       link = paperListJson[i]['link']
@@ -1029,11 +1033,14 @@ ul li {
       })
     }
     var pquery = false
+    var queryPaper = Request['paper']
+    if(queryPaper){
+      getData('type',true,false)
+    }
         function getData(type,ifmd,filename){
           hideFloat +=1
           if(ifmd){
             var queryPaper = Request['paper']
-
             if(queryPaper && pquery == false){
               pquery = true
               var year = queryPaper.slice(0,4)
@@ -1041,22 +1048,22 @@ ul li {
               var day = queryPaper.slice(6,8)*1
               var no = queryPaper.slice(8)
               var filename = year+'_'+month+'_'+day+'_'+no*1+'.json'
-              console.log(year,month,day,no,filename)
             }else{
+              var filename = paperOload
               var today = new Date()
               var year = today.getFullYear()
               var month = today.getMonth()+1
               var day = today.getDate()
-              if(!filename){
-                var filename = year+'_'+month+'_'+day+'_1.json'
-                var tips = ''
-              }else{
-                var dataArr = filename.split('_')
-                var year = dataArr[0]
-                var month = dataArr[1]
-                var filename = filename
-                var tips = 'Just a moment, please.'
-              }
+              // if(!filename){
+              //   var filename = year+'_'+month+'_'+day+'_1.json'
+              //   var tips = ''
+              // }else{
+              //   var dataArr = filename.split('_')
+              //   var year = dataArr[0]
+              //   var month = dataArr[1]
+              //   var filename = filename
+              //   var tips = 'Just a moment, please.'
+              // }
             }
 
             var getUrl = './'+defaultSource+'/a'+year+'/a'+month+'/'+filename
@@ -1152,7 +1159,6 @@ ul li {
         }
     $(document).ready(function(){
       getPaperList()
-      //getData('type',true,false)
       var random = null
       $('#carousel-example-generic').find('.text-center').each(function (dindex, ditem) {
             var mottoLen = mottoArr.length
@@ -1344,13 +1350,14 @@ $('.switchPaper').click(function(){
   }
 })
 $('body').on('click','.loadPage',function(){
-  var paperName = $(this).attr('data-link')
-  if(paperName == 'abcdeflockey'){
-    getData('type',true,false)
-  }else{
-    getData('type',true,paperName)
-  }
-  //$('.swith-nav-a').eq(1).trigger('click')
+  paperOload = $(this).attr('data-link')
+  getData('type',true,false)
+  // if(paperName == 'abcdeflockey'){
+  //   getData('type',true,false)
+  // }else{
+  //   getData('type',true,paperName)
+  // }
+  // //$('.swith-nav-a').eq(1).trigger('click')
 })
     })
   </script>
