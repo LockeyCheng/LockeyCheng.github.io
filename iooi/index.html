@@ -218,13 +218,13 @@ a.readMoreText{
     padding: 5px;
     border-radius: 50%;
 }
-input.nooutline,#select-category{
+input.nooutline,#select-category,#userName{
     background: none;
     outline: none;
     border: none;
     border-bottom:solid 1px #9ffff5;
 }
-input.nooutline:focus,#select-category:focus{
+input.nooutline:focus,#select-category:focus,#userName:focus{
     border-bottom: solid 1.5px #00e2db;
 }
 #search-paper-input{
@@ -610,6 +610,9 @@ ul li {
     margin-top: 76px;
     padding: 3px 23px;
 }
+#myModal button{
+  color:olive;
+}
 </style>
   <!-- /////////////////////////////////////////Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -622,7 +625,7 @@ ul li {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="https://lockeycheng.github.io"><i class="fa fa-github" style="padding-right:9px;font-size: 1.5em"></i>LOCKEY</a>
+                <a class="navbar-brand page-scroll" href="https://lockeycheng.github.io"><i class="fa fa-github" style="padding-right:9px;font-size: 1.5em"></i><span class="usernameHold">LOCKEY</span></a>
                 <a href="javascript:void(0)"><span id="search-paper" class="fa fa-search"></span></a>
             </div>
 
@@ -853,6 +856,27 @@ ul li {
     <h3 align="center" id="loadWords"></h3></div>
 </div>
 <a href="#carousel-example-generic" class="fa fa-arrow-circle-up"></a>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="margin-top: 36%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+        <p id="viewsGreeting"></p>
+      </div>
+      <div class="modal-body">
+       <input type="text" id="userName" placeholder="Add your name" class="usernameHoldInput">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+        OK
+        </button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal -->
+</div>
   <!-- jQuery -->
   <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
   <script type="text/javascript" src="../js/bootstrap.min.js"></script>
@@ -868,6 +892,21 @@ ul li {
     var year = today.getFullYear()
     var month = today.getMonth()+1
     var day = today.getDate()
+    var timeSplit = Date().split(" ")
+    var hms = timeSplit[4]
+    var hourNow = hms.slice(0,2)
+    if(hms>=6 && hms<=11){
+        var greeting = 'Good Morning!'
+    }else if(hms>11 && hms<=15){
+        var greeting = 'Good Midday!'
+    }else if(hms>15 && hms<=19){
+        var greeting = 'Good Afternoon!'
+    }else if(hms>19 && hms<=23){
+        var greeting = 'Good Night!'
+    }else{
+        var greeting = 'Nice Dream!'
+    }
+    $('#myModalLabel').html(greeting)
     var totalPaper = 0
     var testAlpha = /^[a-zA-Z]+$/i
     var mottoArr = [
@@ -899,6 +938,15 @@ ul li {
     var paperListJson = null
     var paperRecords = null
     var searchOuts = []
+    if(!localStorage.views){
+      localStorage.views = 0
+    }
+    if(localStorage.username){
+      $('.usernameHold').html(localStorage.username)
+      $('.usernameHoldInput').val(localStorage.username)
+      var aaaa = 'It is the ' +localStorage.views+'th paper you read here, keep on!'
+      $('#viewsGreeting').html(aaaa)
+    }
     var youdaoSentenceAudio = 'https://dict.youdao.com/dictvoice?audio='//+sentence+&le=eng
     var Request = new Object();
       Request = GetRequest();
@@ -1390,6 +1438,7 @@ ul li {
                 success: function(data) {
                   hideFloat -= 1
                   if(ifmd){
+                        localStorage.views = localStorage.views*1 + 1
                         var content = data
                         var converter = new showdown.Converter();
                         var html = converter.makeHtml(content['content']);
@@ -1892,6 +1941,17 @@ document.onkeydown=function(event){
               }
             }
         }; 
+        $('#myModal').modal('show')
+        $(function() {
+    $('#myModal').on('hide.bs.modal',
+    function() {
+        var tmp = $('#userName').val()
+        if(tmp){
+          localStorage.username = tmp
+          $('.usernameHold').html(tmp)
+        }
+    })
+});
     })
   </script>
   
