@@ -555,7 +555,7 @@ z-index: 1111;
 }
 .wordName {
     font-size: 1.8em !important;
-    color: #c1570a !important;
+    color: #3a6357 !important;
 }
 .wordTitle {
     color: #b77b4f;
@@ -573,7 +573,7 @@ ul li {
 }
 #clickWordsDict h3{
   font-size:1.2em;
-  color:#7310af;
+  color:#794e92;
 }
 .fa-volume-up:hover {
     color: #12e6f5;
@@ -1474,7 +1474,7 @@ ul li {
               }
             }
             var chooseMotto = mottoArr[toInt]
-            var mottoFill = '<h1 class="mottoh1en">'+chooseMotto['en']+'</h1><h6 class="mottoh6auth">--'+chooseMotto['auth']+'</h6><h6 class="mottoh6cn">'+chooseMotto['cn']+'</h6>'
+            var mottoFill = '<h1 class="mottoh1en">'+chooseMotto['en']+'</h1><h6 class="mottoh6auth">'+chooseMotto['auth']+'</h6><h6 class="mottoh6cn">'+chooseMotto['cn']+'</h6>'
             $(ditem).html(mottoFill)
             random = toInt
             })
@@ -1662,7 +1662,7 @@ scrollDirect(function (direction) {
             getData(dictTypeBasic,false)
           }
           if(loadedDict.indexOf(dictTypeModel) <0){
-             getData(dictTypeModel,false)
+             //getData(dictTypeModel,false)
           }
          
         }
