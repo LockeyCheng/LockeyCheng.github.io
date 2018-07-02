@@ -90,10 +90,10 @@ img.item-img-little{
  
 }
 .col-item1 div.box-item:nth-child(even) .item-img-div{
-  background: -webkit-linear-gradient(#e5faff, #d2bef4); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(#e5faff, #d2bef4); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(#e5faff, #d2bef4); /* Firefox 3.6 - 15 */
-  background: linear-gradient(#e5faff, #d2bef4); /* 标准的语法 */
+  background: -webkit-linear-gradient(#e5faff, #e0cffc); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#e5faff, #e0cffc); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#e5faff, #e0cffc); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#e5faff, #e0cffc); /* 标准的语法 */
 }
 
 
@@ -123,10 +123,10 @@ img.item-img-little{
   background: linear-gradient(#e5faff, #adfbed); /* 标准的语法 */
 }
 .col-item4 div.box-item:nth-child(odd) .item-img-div{
-  background: -webkit-linear-gradient(#e5faff, #bacdff); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(#e5faff, #bacdff); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(#e5faff, #bacdff); /* Firefox 3.6 - 15 */
-  background: linear-gradient(#e5faff, #bacdff); /* 标准的语法 */
+  background: -webkit-linear-gradient(#e5faff, #dde6ff); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#e5faff, #dde6ff); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#e5faff, #dde6ff); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#e5faff, #dde6ff); /* 标准的语法 */
 }
 .col-item4 div.box-item:nth-child(even) .item-img-div{
    background: -webkit-linear-gradient(#e5faff, #d6fee0); /* Safari 5.1 - 6.0 */
@@ -245,7 +245,7 @@ input.nooutline:focus,#select-category:focus,#userName:focus{
     margin-top: 16px;
   }
   #search-paper-input{
-    width: 71%
+    width: 68%
   }
 }
 @media (max-width: 568px){
@@ -613,6 +613,16 @@ ul li {
 #myModal button{
   color:olive;
 }
+#viewsGreeting{
+  margin-top: 12px;
+  text-indent: 16px;
+}
+#myModalLabel{
+  color:#6e6e1b;
+}
+.find_key{
+      color: #29e6cb;
+}
 </style>
   <!-- /////////////////////////////////////////Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -866,7 +876,7 @@ ul li {
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
           &times;
         </button>
-        <h4 class="modal-title" id="myModalLabel"></h4>
+        <h6 class="modal-title" id="myModalLabel"></h6>
         <p id="viewsGreeting"></p>
       </div>
       <div class="modal-body">
@@ -909,6 +919,9 @@ ul li {
     }else{
         var greeting = 'Nice Dream!'
     }
+    if(localStorage.username){
+        greeting = greeting.slice(0,-1)+', '+localStorage.username+'!'
+    }
     $('#myModalLabel').html(greeting)
     var totalPaper = 0
     var testAlpha = /^[a-zA-Z]+$/i
@@ -949,8 +962,10 @@ ul li {
     if(localStorage.username){
       $('.usernameHold').html(localStorage.username)
       $('.usernameHoldInput').val(localStorage.username)
+      }
       if(localStorage.views == 0){
           var aaaa = 'Welcome here, wish you a jolly journey! May you share this App with your buddies.'
+          localStorage.views = 1
       }else if(localStorage.views>0 && localStorage.views<=9){
           var aaaa = 'It is the ' +localStorage.views+'th paper you read here, keep on! May you share this App with your buddies.'
       }else if(localStorage.views>9 && localStorage.views<=30){
@@ -961,7 +976,7 @@ ul li {
           var aaaa = 'Splendiferous! You has come to the ' +localStorage.views+'th paper, merely nobody ahead of you! May you share this App with your buddies.'
       }
       $('#viewsGreeting').html(aaaa)
-    }
+    
     var youdaoSentenceAudio = 'https://dict.youdao.com/dictvoice?audio='//+sentence+&le=eng
     var Request = new Object();
       Request = GetRequest();
@@ -1914,6 +1929,9 @@ $('#search-paper-go').click(function(){
                                   word = wordsArr[i].toLowerCase()
                                   if(keyWords.match(word) || titleToLower.match(word)){
                                     searchPaperNo += 1
+                                      title = title.replace(word,'<span class="find_key">'+word+'</span>')
+                                      var aaaWord = word.substring(0,1).toUpperCase()+word.substring(1)
+                                      title = title.replace(aaaWord,'<span class="find_key">'+aaaWord+'</span>')
                                     break
                                   }
                                 }
