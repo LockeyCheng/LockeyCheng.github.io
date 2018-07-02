@@ -380,7 +380,7 @@ span.nowShow{
   color: #ff6b3c;
 }
 #swith-nav a {
-    min-width: 110px;
+    min-width: 108px;
     display: : block;
     font-size: 14px;
     float: left;
@@ -898,13 +898,13 @@ ul li {
     var timeSplit = Date().split(" ")
     var hms = timeSplit[4]
     var hourNow = hms.slice(0,2)
-    if(hms>=6 && hms<=11){
+    if(hourNow>=6 && hourNow<=11){
         var greeting = 'Good Morning!'
-    }else if(hms>11 && hms<=15){
+    }else if(hourNow>11 && hourNow<=15){
         var greeting = 'Good Midday!'
-    }else if(hms>15 && hms<=19){
+    }else if(hourNow>15 && hourNow<=19){
         var greeting = 'Good Afternoon!'
-    }else if(hms>19 && hms<=23){
+    }else if(hourNow>19 && hourNow<=23){
         var greeting = 'Good Night!'
     }else{
         var greeting = 'Nice Dream!'
@@ -931,6 +931,7 @@ ul li {
           'pupil_model':'The Pupil '
         }
     var loadedDict = []
+    var toughCount = 0
     var noTomonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     var morePaperLink = 'latestPapers'
     var moreTimes = 0
@@ -941,6 +942,7 @@ ul li {
     var paperListJson = null
     var paperRecords = null
     var searchOuts = []
+    var clickWords = []
     if(!localStorage.views){
       localStorage.views = 0
     }
@@ -1455,11 +1457,11 @@ ul li {
                 success: function(data) {
                   hideFloat -= 1
                   if(ifmd){
-                        localStorage.views = localStorage.views*1 + 1
                         var content = data
                         var converter = new showdown.Converter();
                         var html = converter.makeHtml(content['content']);
                         document.getElementById("articleContent").innerHTML = html;
+                        clickWords = []
                         try{
                           var statistics = content['paperStatistics']
                           var wordsSpan = ''
@@ -1477,7 +1479,7 @@ ul li {
                           // var wordsSpan = keyArr.join(', ')
                           //$('#spankeywords').html(wordsSpan)
                           var wordsLis = ''
-                          var toughCount = 0
+                          toughCount = 0
                           for(let word in touchWords){
                               toughCount += 1
                               wordsLis += '<li>'+word+'</li>'
@@ -1788,6 +1790,12 @@ scrollDirect(function (direction) {
               }
                $('.wordName').html(toSearch)
                if(toSearch){
+                if(clickWords.indexOf(toSearch) <0){
+                  clickWords.push(toSearch)
+                  if(clickWords.length > toughCount*0.8){
+                      localStorage.views = localStorage.views*1 + 1
+                  }
+                }
                 fillBasicLookup(toSearch)
                }else{
                   $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
