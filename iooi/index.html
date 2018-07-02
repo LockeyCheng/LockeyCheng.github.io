@@ -1004,7 +1004,7 @@ ul li {
                 $('#wariningIcon').hide()
               }
                if($('#floatDiv').is(':hidden')){
-                $('#floatDiv').slideDown(123)
+                $('#floatDiv').fadeIn(123)
                }
                if(freecode){
                 $('#normalTips_free-code-camp').show()
@@ -1016,7 +1016,7 @@ ul li {
                }
               if(ifhide){
                 setTimeout(function(){
-                  $('#floatDiv').slideUp(256)
+                  $('#floatDiv').fadeOut(256)
                   if(hideFloat <= 0){
                     if(successIcon){
                         $('#successIcon').hide()
@@ -1856,6 +1856,7 @@ $('.switchPaper').click(function(){
   if(paperName == 'abcdeflockey'){
     getData('type',true,false)
   }else{
+    paperOload = paperName
     getData('type',true,paperName)
   }
 })
