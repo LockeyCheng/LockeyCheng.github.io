@@ -542,7 +542,7 @@ z-index: 1111;
     background: #fff;
    /* min-height: 256px;*/
     border-radius: 0px 0px 6px 6px;
-    color: #7310af;
+    /*color: #7310af;*/
     z-index: 11111;
     border-top: solid 1px #cafdff;
     border-bottom: solid 1px #cafdff;
@@ -622,6 +622,9 @@ ul li {
 }
 .find_key{
       color: #29e6cb;
+}
+.box-content.box-1 .box-item {
+    border: 1px solid #ddd5f6;
 }
 </style>
   <!-- /////////////////////////////////////////Navigation -->
@@ -743,11 +746,11 @@ ul li {
     font-size: 1.6em;
     padding: 5px 6.5px;
     border-radius: 34px;
-    color: #e65757;
-    border-left: solid 2px #14f7ff;
-    border-right: solid 2px #14f7ff;
+    color: #ff8a6a;
+    border-left: solid 1px #14f7ff;
+    border-right: solid 1px #14f7ff;
 "></a></p>
-      <h3 class="wordName" style="text-align:center;">Forumn<h3>
+      <p class="wordName" align="center">altogether</p>
           <div id="clickWordsDict_detail">
             <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
             <p class="wordPro_p"><ul class="wordPro"></ul></p>
@@ -1392,7 +1395,7 @@ ul li {
                     var hms = paperJsonDate.slice(10)
                     var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+' '+timeArr[0] + hms
                     var imgSrc = '<img src="'+paperListJson[i]['img']+'" class="img-responsive item-img"/>'
-                    if(localStorage.username == 'Lockey23'){
+                    if(localStorage.username == 'Lockey23' || !paperListJson[i]['img']){
                         imgSrc = ''
                     }
                     var fillDiv = '<div class="box-item"><div class="item-img-div"><span class="timeSpan">'+imgSrc+dateStr+hot+'</span><h6 class="paperTitleh6"><a class="loadPage" href="javascript:void(0)" data-link="'+paperListJson[i]['link']+'">'+paperListJson[i]['title']+'</a></h6><p class="paperDesc">'+paperListJson[i]['desc']+' ...</p><a class="readMoreText loadPage" href="javascript:void(0)" data-link="'+paperListJson[i]['link']+'">Read More <span class="fa fa-hand-o-right"></span></a></div></div>'
@@ -1759,6 +1762,9 @@ scrollDirect(function (direction) {
         }
       })
   $('#page-content').on('click','.fa-info-circle',function(e){
+              if(clickWords.length == Math.ceil(toughCount*0.6)){
+                    localStorage.views = localStorage.views*1 + 1
+              }
               if(triggerWord != null){
                     var toSearch = triggerWord
                     triggerWord = null
@@ -1807,9 +1813,6 @@ scrollDirect(function (direction) {
                if(toSearch){
                 if(clickWords.indexOf(toSearch) <0){
                   clickWords.push(toSearch)
-                  if(clickWords.length > toughCount*0.8){
-                      localStorage.views = localStorage.views*1 + 1
-                  }
                 }
                 fillBasicLookup(toSearch)
                }else{
