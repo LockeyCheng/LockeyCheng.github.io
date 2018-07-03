@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-  <title>乐读-The Economist</title>
+  <title>I 乐读</title>
   
   <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css"  type="text/css">
@@ -628,7 +628,7 @@ ul li {
       color: #29e6cb;
 }
 .box-content.box-1 .box-item {
-    border: 1px solid #ddd5f6;
+    border: 1px solid #cceeec;
 }
 </style>
   <!-- /////////////////////////////////////////Navigation -->
@@ -1729,18 +1729,21 @@ scrollDirect(function (direction) {
         }
         $(this).siblings().removeClass('currentNav')
         $(this).addClass('currentNav')
-        dealWithFloatDiv('',true,false,true,false)
         var text = $(this).text()
         var toShow = null
-        if(text == 'Latest'){
-          toShow = '#latest-section'
-        }
+        
         if(text == 'Paper'){
           toShow = '#paper-section'
           if($('#articleContent p').length ==0){
             getData('type',true,false)
           }
+        }else{
+          dealWithFloatDiv('',true,false,true,false)
         }
+        if(text == 'Latest'){
+          toShow = '#latest-section'
+        }
+        
         if(text == 'Dictionary'){
           if(!$('#search-input-div').is(":hidden")){
             $('#search-input-div').hide()
