@@ -910,12 +910,6 @@ ul li {
   <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
   <script type="text/javascript" src="../js/bootstrap.min.js"></script>
   
-  <!-- Custom Theme JavaScript -->
-  <script src="../js/agency.js"></script>
-
-  <!-- Plugin JavaScript -->
-  <script src="../js/jquery.easing.min.js"></script>
-  <script src="../js/classie.js"></script>
   <script type="text/javascript">
     var today = new Date()
     var year = today.getFullYear()
@@ -1581,6 +1575,10 @@ ul li {
             $(ditem).html(mottoFill)
             random = toInt
             })
+      var xx = window.location.href
+      if( !(xx.indexOf('iooi') >0 && xx.indexOf('lockeycheng') >0) && false){
+          $('body').empty()
+      }
       $('#more-papers').click(function(){
         $('#paperMoreSwitchp').show()
         getPaperList()
