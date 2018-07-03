@@ -392,8 +392,8 @@ a.swith-nav-a{
     line-height: 23px;
     background: #aeffed;
     text-decoration: none;
-    border: solid 1px #65ffe8;
-    border-bottom: solid 1px #07ffb9;
+    border: solid 1px #87ffed;
+    border-bottom: solid 1px #44ffca;
     border-radius: 50%;
     font-weight: 700;
 }
@@ -408,8 +408,8 @@ a.swith-nav-a{
     text-shadow: 1px 4px 3px #475055;
     background: #3ef0c8;
     font-weight: 700;
-    border: solid 1px #e5bdff;
-    border-bottom: solid 1px #c266ff;
+    border: solid 1px #e6bfff;
+    border-bottom: solid 1px #cc7fff;
 }
 
 #swith-nav{
@@ -721,7 +721,7 @@ ul li {
    
     <p><a href="javascript:void(0)" class="swith-nav-a currentNav fa fa-podcast" style="margin-left: 25%;" data-switch="latest"></a><a href="javascript:void(0)" class="swith-nav-a fa fa-wpforms"data-switch="paper"></a><a href="javascript:void(0)" class="swith-nav-a fa fa-list-alt" data-switch="list"></a><a href="javascript:void(0)" class="swith-nav-a fa fa-search-plus" data-switch="dictionary"></a></p>
      <p class="noshow" id="search-input-div">
-      <input type="text" id="search-paper-input" placeholder="Type keywords to search" class="nooutline">
+      <input type="text" id="search-paper-input" placeholder="Type keywords to search" class="nooutline" value="economy">
       <select name="select-category" id="select-category">
           <option value="2018">2018</option>
           <option value="2019">2019</option>
@@ -1721,6 +1721,7 @@ scrollDirect(function (direction) {
                         }
                       }
                   //$('#paperTotal').html(totalPaper)
+                  $('#search-paper-go').trigger('click')
                 },
                 error: function(data) {
                     var listInfo = '<span class="error">Paper list</span> failed to load!'
@@ -1770,6 +1771,9 @@ scrollDirect(function (direction) {
         }
         if(text == "list"){
            toShow = '#utils-section'
+           if($('#paperListUl li').length == 0){
+              $('#search-paper').trigger('click')
+           }
         }
         console.log(text,toShow)
         if($(toShow).is(':hidden')){
@@ -1887,7 +1891,13 @@ $('#search-paper-go').click(function(){
             var windowHW = getPageSize()
             var appendLi = ''
             var searchPaperKey = $('#search-paper-input').val()
+            if(!searchPaperKey){
+              searchPaperKey = 'economy'
+            }
             var choose = $('#select-category').val()
+            if(!choose){
+                choose = year
+            }
             var yearArr = ['a'+choose]
             var monthArr = []
             var dayArr = []
