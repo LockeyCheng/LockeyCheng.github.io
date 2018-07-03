@@ -943,10 +943,10 @@ ul li {
           {'en':"Cowards die many times before their deaths. ",'auth':"— Julius Caesar",'cn':"懦夫在未死之前，已身历多次死亡的恐怖了。"},
           {'en':"Truth is beautiful. Withoutdoubt; and so are lies.",'auth':"—Emerson.",'cn':"真理是美的；毫无疑问，谎言也是如此。"},
           {'en':"One can not see what itself in until leave it.",'auth':"—Lockey.",'cn':"不识庐山真面目，只缘身在此山中。"},
-          {'en':'Courage isn’t having the strength to go on – it’s going on when you don’t have strength.','auth':"– Napoleon Bonaparte.",'cn':"勇气不是有力气坚持下去，而是没力气还坚持下去。"},
+          {'en':'Courage isn’t having the strength to go on, it’s going on when you exhausted.','auth':"– Napoleon Bonaparte.",'cn':"勇气就是坚持到精疲力竭。"},
           {'en':'The crisis of today is the joke of tomorrow.','auth':'– H. G. Wells','cn':'今天的危机会是明天的趣事。'},
           {'en':'Talent without working hard is nothing.','auth':'– Cristiano Ronaldo','cn':'没有努力，再好的天分也无济于事。'},
-          {'en':'You can avoid reality, but you cannot avoid the consequences of avoiding reality.','auth':'– Ayn Rand, Novelist','cn':'你可以逃避现实，但你不能逃避因逃避现实所产生的后果。'}
+          {'en':'You can avoid reality, but you cannot avoid the consequences of avoiding reality.','auth':'– Ayn Rand, Novelist','cn':''}//你可以逃避现实，但你不能逃避因逃避现实所产生的后果。
         ]
     var type2Dict={
           'default':'Paper Assistent',
@@ -1576,8 +1576,12 @@ ul li {
             random = toInt
             })
       var xx = window.location.href
-      if( !(xx.indexOf('iooi') >0 && xx.indexOf('lockeycheng') >0) && false){
-          $('body').empty()
+      var yy = xx.slice(7,xx.indexOf('iooi')-1)
+      var reg = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/;
+      if( (xx.indexOf('iooi') >0 && xx.indexOf('lockeycheng') >0) || reg.test(yy)){
+          console.log('pass')
+      }else{
+        $('body').empty()
       }
       $('#more-papers').click(function(){
         $('#paperMoreSwitchp').show()
