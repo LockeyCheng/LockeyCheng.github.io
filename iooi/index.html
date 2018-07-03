@@ -942,13 +942,17 @@ ul li {
     var totalPaper = 0
     var testAlpha = /^[a-zA-Z]+$/i
     var mottoArr = [
-          {'en':"I am not afraid of tomorrow for I have seen yesterday and I love today.",'auth':"—— William Allen White",'cn':'不畏惧明天只因我已见过昨天并且热爱今天。'},
-          {'en':"Other men live to eat, while I eat to live. ",'auth':"—— Socrates",'cn':"别人为食而生存，我为生存而食。"},
-          {'en':"Easy come, easy go. ",'auth':"—— Hazlitt",'cn':"易得者亦易失。"},
-          {'en':"The darkest hour is that before the dawn. ",'auth':"—— Fuller",'cn':"黎明前的时分是最黑暗的。"},
-          {'en':"Cowards die many times before their deaths. ",'auth':"—— Julius Caesar",'cn':"懦夫在未死之前，已身历多次死亡的恐怖了。"},
-          {'en':"Truth is beautiful. Withoutdoubt; and so are lies.",'auth':"——Emerson.",'cn':"真理是美的；毫无疑问，谎言也是如此。"},
-          {'en':"One can not see what itself in until leave it.",'auth':"——Lockey.",'cn':"不识庐山真面目，只缘身在此山中。"}
+          {'en':"I am not afraid of tomorrow for I have seen yesterday and I love today.",'auth':"— William Allen White",'cn':'不畏惧明天只因我已见过昨天并且热爱今天。'},
+          {'en':"Other men live to eat, while I eat to live. ",'auth':"— Socrates",'cn':"别人为食而生存，我为生存而食。"},
+          {'en':"Easy come, easy go. ",'auth':"— Hazlitt",'cn':"易得者亦易失。"},
+          {'en':"The darkest hour is that before the dawn. ",'auth':"— Fuller",'cn':"黎明前的时分是最黑暗的。"},
+          {'en':"Cowards die many times before their deaths. ",'auth':"— Julius Caesar",'cn':"懦夫在未死之前，已身历多次死亡的恐怖了。"},
+          {'en':"Truth is beautiful. Withoutdoubt; and so are lies.",'auth':"—Emerson.",'cn':"真理是美的；毫无疑问，谎言也是如此。"},
+          {'en':"One can not see what itself in until leave it.",'auth':"—Lockey.",'cn':"不识庐山真面目，只缘身在此山中。"},
+          {'en':'Courage isn’t having the strength to go on – it’s going on when you don’t have strength.','auth':"– Napoleon Bonaparte.",'cn':"勇气不是有力气坚持下去，而是没力气还坚持下去。"},
+          {'en':'The crisis of today is the joke of tomorrow.','auth':'– H. G. Wells','cn':'今天的危机会是明天的趣事。'},
+          {'en':'Talent without working hard is nothing.','auth':'– Cristiano Ronaldo','cn':'没有努力，再好的天分也无济于事。'},
+          {'en':'You can avoid reality, but you cannot avoid the consequences of avoiding reality.','auth':'– Ayn Rand, Novelist','cn':'你可以逃避现实，但你不能逃避因逃避现实所产生的后果。'}
         ]
     var type2Dict={
           'default':'Paper Assistent',
@@ -1764,7 +1768,7 @@ scrollDirect(function (direction) {
           if(loadedDict.indexOf(dictTypeBasic) <0){
              getData(dictTypeBasic,false)
              var tmp = $('.fa-info-circle').eq(0).text() || 'entire'
-            $('#lookup-dict-input').val()
+            $('#lookup-dict-input').val(tmp)
             $('#search-word-go').trigger('click')
            
           }
