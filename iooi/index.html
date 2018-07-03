@@ -408,8 +408,8 @@ a.swith-nav-a{
     text-shadow: 1px 4px 3px #475055;
     background: #3ef0c8;
     font-weight: 700;
-    border: solid 1px #e6bfff;
-    border-bottom: solid 1px #cc7fff;
+    border: solid 1px #eac9ff;
+    border-bottom: solid 1px #d391ff;
 }
 
 #swith-nav{
@@ -1762,7 +1762,11 @@ scrollDirect(function (direction) {
           var dictTypeBasic = 'economist_basic'
           var dictTypeModel = 'economist_model'
           if(loadedDict.indexOf(dictTypeBasic) <0){
-            getData(dictTypeBasic,false)
+             getData(dictTypeBasic,false)
+             var tmp = $('.fa-info-circle').eq(0).text() || 'entire'
+            $('#lookup-dict-input').val()
+            $('#search-word-go').trigger('click')
+           
           }
           if(loadedDict.indexOf(dictTypeModel) <0){
              //getData(dictTypeModel,false)
