@@ -43,7 +43,7 @@ body{
     width: 100%;
     height: 100%;
     margin: 0;
-    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #deebff),linear-gradient(70deg, #fff0e5 32%, #e8fffa);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #deebff),linear-gradient(70deg, #fff6ef 32%, #f0fffc);
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -382,35 +382,35 @@ span.nowShow{
 .warning{
   color: #ff6b3c;
 }
-#swith-nav a {
-    min-width: 108px;
-    display: : block;
-    font-size: 14px;
+a.swith-nav-a{
+   display: block;
+    font-size: 18px;
     float: left;
-    color: #b175bb;
-    padding: 3px 21px;
-    line-height: 26px;
-    height: 36px;
-    background: #a6f7fb;
+    color: #cfd5cc;
+    padding: 10px 13px;
+    line-height: 23px;
+    background: #aeffed;
     text-decoration: none;
     border: solid 1px #fff;
-    border-radius: 3px 45px;
+    border-radius: 50%;
     font-weight: 700;
 }
 
-#swith-nav a:nth-child(2), #swith-nav a:nth-child(3) ,#swith-nav a:nth-child(4){ /*:nth-child(1)*/
+/*#swith-nav a:nth-child(2), #swith-nav a:nth-child(3) ,#swith-nav a:nth-child(4){ :nth-child(1)
     margin-left: -39px;
 }
+*/
 
-#swith-nav a.currentNav {
-    color: #fff;
-    /*text-shadow: 0px 1px 0px #788e21;*/
-    background: #0dd2be;
+ a.currentNav{
+    color: #ffa285;
+    text-shadow: 1px 4px 3px #475055
+    background: #3ef0c8;
     font-weight: 700;
 }
 
 #swith-nav{
-  margin-top: 2px;
+ /*min-height: 53px;
+    border-bottom: solid 1px #baebf6;*/
 }
 
 #swith-nav .fa-remove, #swith-nav .fa-google{
@@ -592,8 +592,8 @@ ul li {
     margin-top: 5px;
 }
 .fa-arrow-circle-up{
-     color: #1b8955;
-    font-size: 26px;
+    color: #1caa67;
+    font-size: 24px;
     position: fixed;
     right: 6px;
     bottom: -1px;
@@ -629,6 +629,9 @@ ul li {
 }
 .box-content.box-1 .box-item {
     border: 1px solid #cceeec;
+}
+#clickWordsDict_detail{
+  margin-left: 5%;
 }
 </style>
   <!-- /////////////////////////////////////////Navigation -->
@@ -710,7 +713,9 @@ ul li {
     -->
   </div> <!-- Carousel -->
   <div id="swith-nav">
-    <p class="noshow" id="search-input-div">
+   
+    <p style="margin-left: 3px;"><a href="javascript:void(0)" class="swith-nav-a currentNav fa fa-podcast" style="margin-left: 25%;" data-switch="latest"></a><a href="javascript:void(0)" class="swith-nav-a fa fa-wpforms"data-switch="paper"></a><a href="javascript:void(0)" class="swith-nav-a fa fa-list-alt" data-switch="list"></a><a href="javascript:void(0)" class="swith-nav-a fa fa-search-plus" data-switch="dictionary"></a></p>
+     <p class="noshow" id="search-input-div">
       <input type="text" id="search-paper-input" placeholder="Type keywords to search" class="nooutline">
       <select name="select-category" id="select-category">
           <option value="2018">2018</option>
@@ -720,7 +725,6 @@ ul li {
         </select>
       <span class="fa fa-remove"></span> <span class="fa fa-google" id="search-paper-go">o</span>
       </p>
-    <p style="margin-left: 3px;"><a href="javascript:void(0)" class="swith-nav-a currentNav">Latest</a><a href="javascript:void(0)" class="swith-nav-a">Paper</a><a href="javascript:void(0)" class="swith-nav-a">Utils</a><a href="javascript:void(0)" class="swith-nav-a">Dictionary</a></p>
     
   </div>
   <div id="page-content2">
@@ -1729,10 +1733,10 @@ scrollDirect(function (direction) {
         }
         $(this).siblings().removeClass('currentNav')
         $(this).addClass('currentNav')
-        var text = $(this).text()
+        var text = $(this).attr('data-switch')
         var toShow = null
         
-        if(text == 'Paper'){
+        if(text == 'paper'){
           toShow = '#paper-section'
           if($('#articleContent p').length ==0){
             getData('type',true,false)
@@ -1740,11 +1744,11 @@ scrollDirect(function (direction) {
         }else{
           dealWithFloatDiv('',true,false,true,false)
         }
-        if(text == 'Latest'){
+        if(text == 'latest'){
           toShow = '#latest-section'
         }
         
-        if(text == 'Dictionary'){
+        if(text == 'dictionary'){
           if(!$('#search-input-div').is(":hidden")){
             $('#search-input-div').hide()
           }
@@ -1759,7 +1763,7 @@ scrollDirect(function (direction) {
           }
          
         }
-        if(text == "Utils"){
+        if(text == "list"){
            toShow = '#utils-section'
         }
         console.log(text,toShow)
