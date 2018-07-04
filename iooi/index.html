@@ -163,17 +163,17 @@ footer .bottom-footer a{
 }*/
 h6.mottoh6cn{
   color:#91e3ea;
-  font-size: 1em;
+  font-size: 0.9em;
 }
 h1.mottoh1en{
   text-transform:none;
   color:#abffec;
   margin-top:23px !important;
-  font-size: 1.35em;
+  font-size: 1.2em;
 }
 h6.mottoh6auth{
   color: #00d4b6;
-  font-size: 1em;
+  font-size: 0.85em;
 }
 #more-papers{
   background: #fffbde;
@@ -628,6 +628,7 @@ ul li {
 }
 #myModalLabel{
   color:#6e6e1b;
+  font-size: 1.3em;
 }
 .find_key{
       color: #29e6cb;
@@ -912,6 +913,7 @@ ul li {
   
   <script type="text/javascript">
     var today = new Date()
+    var currentPaperFile = null
     var year = today.getFullYear()
     var month = today.getMonth()+1
     var day = today.getDate()
@@ -929,8 +931,17 @@ ul li {
     }else{
         var greeting = 'Nice Dream!'
     }
+    if(!localStorage.reads){
+        localStorage.reads = ''
+    }
     if(localStorage.username){
-        greeting = greeting.slice(0,-1)+', '+localStorage.username+'!'
+        var nameis = localStorage.username
+        var extrainfo = '!'
+        if(localStorage.username=='王宁'){
+            nameis = nameis.slice(1,2)
+            extrainfo = '. Please post the screen shot to me for check!'
+        }
+        greeting = greeting.slice(0,-1)+', '+nameis+extrainfo
     }
     $('#myModalLabel').html(greeting)
     var totalPaper = 0
@@ -1486,6 +1497,7 @@ ul li {
                 success: function(data) {
                   hideFloat -= 1
                   if(ifmd){
+                        currentPaperFile = filename
                         var content = data
                         var converter = new showdown.Converter();
                         var html = converter.makeHtml(content['content']);
@@ -1794,6 +1806,10 @@ scrollDirect(function (direction) {
   $('#page-content').on('click','.fa-info-circle',function(e){
               if(clickWords.length == Math.ceil(toughCount*0.56)){
                     localStorage.views = localStorage.views*1 + 1
+                    var tmp = currentPaperFile.slice(0,-5)
+                    if(localStorage.reads.indexOf(tmp)<0){
+                      localStorage.reads += tmp+','
+                    }
               }
               if(triggerWord != null){
                     var toSearch = triggerWord
