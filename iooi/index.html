@@ -184,7 +184,8 @@ h6.mottoh6auth{
 }
 img.item-img{
   width: 30%!important;
-  display: inline
+  display: inline;
+  padding: 5px;
 }
 .timeSpan,.searchPaperTime{
   color:#cb8308;
@@ -390,7 +391,7 @@ a.swith-nav-a{
     color: #cfd5cc;
     padding: 7px 11px;
     line-height: 23px;
-    background: #aeffed;
+    background: #cefff4;
     text-decoration: none;
     border: solid 1px #87ffed;
     border-bottom: solid 1px #44ffca;
@@ -1804,7 +1805,7 @@ scrollDirect(function (direction) {
         }
       })
   $('#page-content').on('click','.fa-info-circle',function(e){
-              if(clickWords.length == Math.ceil(toughCount*0.56)){
+              if(clickWords.length == Math.ceil(toughCount*0.5)){
                     localStorage.views = localStorage.views*1 + 1
                     var tmp = currentPaperFile.slice(0,-5)
                     if(localStorage.reads.indexOf(tmp)<0){
