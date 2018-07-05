@@ -689,7 +689,7 @@ ul li {
       <div class="item active">
         <img src="https://www.bing.com/az/hprichbg/rb/Pygmy3Toed_ZH-CN10141370191_1920x1080.jpg" alt="...">
         <!-- Static Header https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jpg -->
-        <div class="container">
+        
         <div class="header-text hidden-xs">
           <div class="col-md-12 text-center">
            <!--  <h1 class="mottoh1en">So Short One's Life, Why Not Python</h1>
@@ -697,7 +697,7 @@ ul li {
             <h6 class="mottoh6cn">我发给日光灯管</h6> -->
           </div>
         </div><!-- /header-text -->
-        </div>
+       
       </div>
       <div class="item">
          <!--<img src="https://cn.bing.com/az/hprichbg/rb/MODIS_ZH-CN14242381223_1920x1080.jpg" alt="...">
@@ -2054,6 +2054,13 @@ document.onkeydown=function(event){
         }
     })
 });
+        $('#carousel-example-generic').click(function(){
+          if(!$(this).find('.active .header-text').is(':hidden')){
+              $(this).find('.active .header-text').hide()
+          }else{
+            $(this).find('.active .header-text').show()
+          }
+        })
     })
   </script>
   
