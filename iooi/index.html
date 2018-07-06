@@ -2055,10 +2055,10 @@ document.onkeydown=function(event){
     })
 });
         $('#carousel-example-generic').click(function(){
-          if(!$(this).find('.active .header-text').is(':hidden')){
-              $(this).find('.active .header-text').hide()
+          if($(this).find('.text-center').is(':hidden')){
+              $(this).find('.text-center').show()
           }else{
-            $(this).find('.active .header-text').show()
+            $(this).find('.text-center').hide()
           }
         })
     })
