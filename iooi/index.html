@@ -264,7 +264,13 @@ input.nooutline:focus,#select-category:focus,#userName:focus{
     width: 51.5%
   }
   #timerDiv{
-    top: 63%;
+    top: 66%;
+  }
+  #carousel-example-generic{
+    margin-top: 39px;
+  }
+  .header-text{
+    top: 36%;
   }
 }
 #paperMoreSwitchp{
@@ -720,6 +726,13 @@ ul li {
           </div>
         </div><!-- /header-text -->
       </div>
+      <div class="item">
+       <img src="https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jpg " alt="...">
+        <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+          </div>
+        </div><!-- /header-text -->
+      </div>
       
     </div>
     <!-- Controls -->
@@ -810,6 +823,7 @@ ul li {
       #timerDiv{
         position: fixed;
         right:0;
+        opacity: 0.88;
       }
       #timerDiv span{
         display: block;
@@ -954,6 +968,7 @@ ul li {
     imgArr = [
 'https://www.bing.com/az/hprichbg/rb/GeorgeMeade_EN-US9381168835_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/MNFireworks_EN-US9611301754_1920x1080.jpg',''
     ]
+    var readTimer = null
     var supposeTime = null
     var today = new Date()
     var currentPaperFile = null
@@ -1572,11 +1587,16 @@ ul li {
                           $('#toughWords-div').find('ol').html(wordsLis)
 
                           var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-opencart" id="showTough"> Suggested Focus: </span></span><span class="words-number">'+statistics['suggestedfocus']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-slideshare" id="showTough">   Advanced Words: </span></span><span class="words-number">'+toughCount+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Words Set: </span><span class="words-number">'+statistics['wordsset']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Total Words: </span><span class="words-number">'+statistics['allwords']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span><ul style="padding: 0;margin-top: 8px;margin-bottom: 3px;">'+wordsSpan+'</ul></span>'
-                          supposeTime = statistics['suggestedfocus'].slice(0,3)*0.8
+                          supposeTime = statistics['suggestedfocus'].slice(0,2)*0.69
                           //<span class="statistics-no"><span class="clickWordsDict_title">Article Content:</span></span>
                           $('#spanstatistics').html(wordsData)
-                           readTimer = setInterval(function(){
-                            if(!$('#paper-section').is(':hidden')){
+
+                          if(readTimer != null){
+                            window.clearInterval(readTimer)
+                          }
+                            $('#runningTimer').text('00:00')
+                            readTimer = setInterval(function(){
+                             if(!$('#paper-section').is(':hidden')){
                               let tm = $('#runningTimer').text()
                               let arr = tm.split(':')
                               var mm = arr[0]
@@ -1596,7 +1616,9 @@ ul li {
                               $('#runningTimer').text(mm+':'+ss)
                             }
                           },1000)
-
+                          
+                           
+                           
                           //$('#foucus_suggest').html('<span class="clickWordsDict_title">Suggested Focus: </span>'+statistics['suggestedfocus']+'</span>')
                         }catch(err){
                           console.log(err)
@@ -1758,7 +1780,7 @@ var scrollDirect=function () {
         var totalScroll = scrollHeight - windowHeight
         var change = totalScroll- scrollTop
         if((dalta - change) >0 ){
-          if(scrollTop > 20)
+          if(scrollTop > 30)
           {
             $('.fa-arrow-circle-up').show()
             $('.navbar-fixed-top').hide()
@@ -1874,7 +1896,7 @@ scrollDirect(function (direction) {
                     
                     var tmp = currentPaperFile.slice(0,-5)
                     var passedTime = $('#runningTimer').text().split(':')[0]*1
-                    console.log(passedTime)
+                    console.log(tmp,passedTime)
                     if(localStorage.reads.indexOf(tmp)<0 && passedTime>supposeTime){
                       localStorage.views = localStorage.views*1 + 1
                       $('.paperNos').text(localStorage.views)
@@ -1982,6 +2004,10 @@ $('body').on('click','.loadPage',function(){
 })
 
 $('#search-paper-go').click(function(){
+            if(paperRecords == null){
+              $('#search-paper').trigger('click')
+              return false
+            }
             var showPages = 0
             var nospan = ''
             var windowHW = getPageSize()
@@ -2136,7 +2162,7 @@ document.onkeydown=function(event){
         })
       $('.paperNos').click(function(){
         $('#search-paper-input').val('')
-        $('#search-paper').trigger('click')
+        $('#search-paper-go').trigger('click')
       })
     })
   </script>
