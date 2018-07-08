@@ -162,17 +162,17 @@ footer .bottom-footer a{
   border-bottom: solid 1px #006858;
 }*/
 h6.mottoh6cn{
-  color:#91e3ea;
+  color:#fff;
   font-size: 0.9em;
 }
 h1.mottoh1en{
   text-transform:none;
-  color:#abffec;
+  color:#033127;
   margin-top:23px !important;
   font-size: 1.2em;
 }
 h6.mottoh6auth{
-  color: #00d4b6;
+  color: #ebfffc;
   font-size: 0.85em;
 }
 #more-papers{
@@ -252,6 +252,9 @@ input.nooutline:focus,#select-category:focus,#userName:focus{
     width: 68%
   }
 }
+#timerDiv{
+    top: 36%;
+  }
 @media (max-width: 568px){
   #search-paper{
     right: 69px;
@@ -259,6 +262,9 @@ input.nooutline:focus,#select-category:focus,#userName:focus{
   }
   #search-paper-input{
     width: 51.5%
+  }
+  #timerDiv{
+    top: 63%;
   }
 }
 #paperMoreSwitchp{
@@ -687,8 +693,10 @@ ul li {
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <img src="https://www.bing.com/az/hprichbg/rb/Pygmy3Toed_ZH-CN10141370191_1920x1080.jpg" alt="...">
-        <!-- Static Header https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jpg -->
+        <img src="./img/tuoniao-bing.jpg" alt="...">
+        <!-- Static Header https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jpg 
+    https://www.bing.com/az/hprichbg/rb/Pygmy3Toed_ZH-CN10141370191_1920x1080.jpg
+        -->
         
         <div class="header-text hidden-xs">
           <div class="col-md-12 text-center">
@@ -702,8 +710,10 @@ ul li {
       <div class="item">
          <!--<img src="https://cn.bing.com/az/hprichbg/rb/MODIS_ZH-CN14242381223_1920x1080.jpg" alt="...">
           https://cn.bing.com/az/hprichbg/rb/AuroraPhotographer_ZH-CN11480495787_1920x1080.jpg
+          https://www.bing.com/az/hprichbg/rb/TurtleIndianOcean_ZH-CN9256087399_1920x1080.jpg
          -->
-       <img src="https://www.bing.com/az/hprichbg/rb/TurtleIndianOcean_ZH-CN9256087399_1920x1080.jpg" alt="...">
+       <img src="./img/marshroom-insect-bing.jpg" alt="...">
+
         <!-- Static Header -->
         <div class="header-text hidden-xs">
           <div class="col-md-12 text-center">
@@ -725,7 +735,7 @@ ul li {
    
     <p><a href="javascript:void(0)" class="swith-nav-a currentNav fa fa-podcast" style="margin-left: 25%;" data-switch="latest"></a><a href="javascript:void(0)" class="swith-nav-a fa fa-wpforms"data-switch="paper"></a><a href="javascript:void(0)" class="swith-nav-a fa fa-list-alt" data-switch="list"></a><a href="javascript:void(0)" class="swith-nav-a fa fa-search-plus" data-switch="dictionary"></a></p>
      <p class="noshow" id="search-input-div">
-      <input type="text" id="search-paper-input" placeholder="Type keywords to search" class="nooutline" value="economy">
+      <input type="text" id="search-paper-input" placeholder="Type keywords to search" class="nooutline">
       <select name="select-category" id="select-category">
           <option value="2018">2018</option>
           <option value="2019">2019</option>
@@ -795,6 +805,32 @@ ul li {
 
         <div id="articleContent"></div>
         <img src="./img/zhi.jpg" style='width: 50%;margin-left: 25%;border-radius: 9%'>
+    </div>
+    <style type="text/css">
+      #timerDiv{
+        position: fixed;
+        right:0;
+      }
+      #timerDiv span{
+        display: block;
+        text-align: center;
+        padding: 2px 6px;
+        font-size: 1.2em;
+      }
+      #timerDiv .paperNos{
+        color: #ffffff;
+        background: #c96508;
+        border-radius: 36px 0px;
+      }
+      #runningTimer{
+    color: #fff;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #000000),linear-gradient(70deg, #964100 32%, #03846a);
+        border-radius: 2px;
+      }
+    </style>
+    <div id="timerDiv">
+      <span class="paperNos">1</span>
+      <span id="runningTimer">00:00</span>
     </div>
     <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"></span></a></span>
     <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper"><span  class="fa fa-arrow-right"></span></a></span>
@@ -915,6 +951,10 @@ ul li {
   <script type="text/javascript" src="../js/bootstrap.min.js"></script>
   
   <script type="text/javascript">
+    imgArr = [
+'https://www.bing.com/az/hprichbg/rb/GeorgeMeade_EN-US9381168835_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/MNFireworks_EN-US9611301754_1920x1080.jpg',''
+    ]
+    var supposeTime = null
     var today = new Date()
     var currentPaperFile = null
     var year = today.getFullYear()
@@ -987,13 +1027,13 @@ ul li {
     if(!localStorage.views){
       localStorage.views = 0
     }
+    
     if(localStorage.username){
       $('.usernameHold').html(localStorage.username)
       $('.usernameHoldInput').val(localStorage.username)
       }
       if(localStorage.views == 0){
           var aaaa = 'Welcome here, wish you a jolly journey! May you share this App with your buddies.'
-          localStorage.views = 1
       }else if(localStorage.views>0 && localStorage.views<=9){
           var aaaa = 'It is the ' +localStorage.views+'th paper you read here, keep on! May you share this App with your buddies.'
       }else if(localStorage.views>9 && localStorage.views<=30){
@@ -1004,6 +1044,7 @@ ul li {
           var aaaa = 'Splendiferous! You has come to the ' +localStorage.views+'th paper, merely nobody ahead of you! May you share this App with your buddies.'
       }
       $('#viewsGreeting').html(aaaa)
+      $('.paperNos').html(localStorage.views)
     
     var youdaoSentenceAudio = 'https://dict.youdao.com/dictvoice?audio='//+sentence+&le=eng
     var Request = new Object();
@@ -1531,8 +1572,31 @@ ul li {
                           $('#toughWords-div').find('ol').html(wordsLis)
 
                           var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-opencart" id="showTough"> Suggested Focus: </span></span><span class="words-number">'+statistics['suggestedfocus']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-slideshare" id="showTough">   Advanced Words: </span></span><span class="words-number">'+toughCount+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Words Set: </span><span class="words-number">'+statistics['wordsset']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Total Words: </span><span class="words-number">'+statistics['allwords']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span><ul style="padding: 0;margin-top: 8px;margin-bottom: 3px;">'+wordsSpan+'</ul></span>'
+                          supposeTime = statistics['suggestedfocus'].slice(0,3)*0.8
                           //<span class="statistics-no"><span class="clickWordsDict_title">Article Content:</span></span>
                           $('#spanstatistics').html(wordsData)
+                           readTimer = setInterval(function(){
+                            if(!$('#paper-section').is(':hidden')){
+                              let tm = $('#runningTimer').text()
+                              let arr = tm.split(':')
+                              var mm = arr[0]
+                              var ss = arr[1]
+                              if(ss== 60){
+                                  ss = '00'
+                                  mm = mm *1 +1
+                                  if(mm <10){
+                                    mm = '0'+mm.toString()
+                                  }
+                              }else{
+                                ss = ss*1 +1
+                                if(ss<10){
+                                  ss = '0'+ss.toString()
+                                }
+                              }
+                              $('#runningTimer').text(mm+':'+ss)
+                            }
+                          },1000)
+
                           //$('#foucus_suggest').html('<span class="clickWordsDict_title">Suggested Focus: </span>'+statistics['suggestedfocus']+'</span>')
                         }catch(err){
                           console.log(err)
@@ -1741,7 +1805,6 @@ scrollDirect(function (direction) {
                           }
                         }
                       }
-                  //$('#paperTotal').html(totalPaper)
                   $('#search-paper-go').trigger('click')
                 },
                 error: function(data) {
@@ -1755,14 +1818,14 @@ scrollDirect(function (direction) {
         $(this).parent().slideUp(345)
       })
       $('.swith-nav-a').click(function(){
+        
         if($(this).hasClass('currentNav')){
           return false
         }
         $(this).siblings().removeClass('currentNav')
         $(this).addClass('currentNav')
         var text = $(this).attr('data-switch')
-        var toShow = null
-        
+        var toShow = null 
         if(text == 'paper'){
           toShow = '#paper-section'
           if($('#articleContent p').length ==0){
@@ -1808,9 +1871,13 @@ scrollDirect(function (direction) {
       })
   $('#page-content').on('click','.fa-info-circle',function(e){
               if(clickWords.length == Math.ceil(toughCount*0.5)){
-                    localStorage.views = localStorage.views*1 + 1
+                    
                     var tmp = currentPaperFile.slice(0,-5)
-                    if(localStorage.reads.indexOf(tmp)<0){
+                    var passedTime = $('#runningTimer').text().split(':')[0]*1
+                    console.log(passedTime)
+                    if(localStorage.reads.indexOf(tmp)<0 && passedTime>supposeTime){
+                      localStorage.views = localStorage.views*1 + 1
+                      $('.paperNos').text(localStorage.views)
                       localStorage.reads += tmp+','
                     }
               }
@@ -1920,9 +1987,6 @@ $('#search-paper-go').click(function(){
             var windowHW = getPageSize()
             var appendLi = ''
             var searchPaperKey = $('#search-paper-input').val()
-            if(!searchPaperKey){
-              searchPaperKey = 'economy'
-            }
             var choose = $('#select-category').val()
             if(!choose){
                 choose = year
@@ -1932,8 +1996,16 @@ $('#search-paper-go').click(function(){
             var dayArr = []
             var wordsArr = []
             var searchPaperNo = 0
-            if(searchPaperKey){
+            // if(searchPaperKey){
+              if(searchPaperKey){
                 var keywordsArr = searchPaperKey.split(' ')
+              }else{
+                var keywordsArr = (localStorage.reads).slice(0,-1).split(',')
+              }
+              if(keywordsArr[0] =='' || keywordsArr.length <=0){
+                    keywordsArr = ['economy']
+              }
+                
                 for(var i in keywordsArr){
                   if(!isNaN(keywordsArr[i]) && keywordsArr[i].length == 4){
                     var keyYear = 'a'+keywordsArr[i]
@@ -1956,7 +2028,7 @@ $('#search-paper-go').click(function(){
                     wordsArr.push(keywordsArr[i])
                   }
                 }
-          }
+          // }
           for(var year in yearArr){
             var yearStr = yearArr[year]
             var thisYearJson = paperRecords[yearStr]
@@ -1980,13 +2052,14 @@ $('#search-paper-go').click(function(){
                             var timeStr = filename.slice(0,-5)
                             var timeArr = timeStr.slice(0,9).split('_')
                             var preSearch = searchPaperNo
-                            if(searchPaperKey && wordsArr.length >0){
+                            if(searchPaperKey || wordsArr.length >0){
                               try{
                                 var keyWords = thisYearJson[month][day][item][2].toLowerCase()
+                                var keyLink = thisYearJson[month][day][item][0].toLowerCase()
                                 var titleToLower = title.toLowerCase()
                                 for(var i in wordsArr){
                                   word = wordsArr[i].toLowerCase()
-                                  if(keyWords.match(word) || titleToLower.match(word)){
+                                  if(keyWords.match(word) || titleToLower.match(word) || keyLink.match(word)){
                                     searchPaperNo += 1
                                       title = title.replace(word,'<span class="find_key">'+word+'</span>')
                                       var aaaWord = word.substring(0,1).toUpperCase()+word.substring(1)
@@ -2043,7 +2116,7 @@ document.onkeydown=function(event){
               }
             }
         }; 
-        $('#myModal').modal('show')
+        //$('#myModal').modal('show')
         $(function() {
     $('#myModal').on('hide.bs.modal',
     function() {
@@ -2061,6 +2134,10 @@ document.onkeydown=function(event){
             $(this).find('.text-center').hide()
           }
         })
+      $('.paperNos').click(function(){
+        $('#search-paper-input').val('')
+        $('#search-paper').trigger('click')
+      })
     })
   </script>
   
