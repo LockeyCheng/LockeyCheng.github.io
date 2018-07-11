@@ -167,7 +167,7 @@ h6.mottoh6cn{
 }
 h1.mottoh1en{
   text-transform:none;
-  color:#40efc9;
+  color:#6be9ce;
   margin-top:23px !important;
   font-size: 1.2em;
 }
@@ -1892,11 +1892,9 @@ scrollDirect(function (direction) {
         }
       })
   $('#page-content').on('click','.fa-info-circle',function(e){
-              if(clickWords.length == Math.ceil(toughCount*0.5)){
-                    
+              if(clickWords.length >= Math.ceil(toughCount*0.6)){
                     var tmp = currentPaperFile.slice(0,-5)
                     var passedTime = $('#runningTimer').text().split(':')[0]*1
-                    console.log(tmp,passedTime)
                     if(localStorage.reads.indexOf(tmp)<0 && passedTime>supposeTime){
                       localStorage.views = localStorage.views*1 + 1
                       $('.paperNos').text(localStorage.views)
