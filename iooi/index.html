@@ -989,6 +989,9 @@ ul li {
     }else{
         var greeting = 'Nice Dream!'
     }
+    if(!localStorage.lastReadTime){
+      localStorage.lastReadTime = '2018/07/12 09:09:09'
+    }
     if(!localStorage.reads){
         localStorage.reads = ''
     }
@@ -1047,16 +1050,17 @@ ul li {
       $('.usernameHold').html(localStorage.username)
       $('.usernameHoldInput').val(localStorage.username)
       }
+      var paperWithTime = localStorage.views+'th('+localStorage.lastReadTime+')'
       if(localStorage.views == 0){
           var aaaa = 'Welcome here, wish you a jolly journey! May you share this App with your buddies.'
       }else if(localStorage.views>0 && localStorage.views<=9){
-          var aaaa = 'It is the ' +localStorage.views+'th paper you read here, keep on! May you share this App with your buddies.'
+          var aaaa = 'It is the ' +paperWithTime+' paper you read here, keep on! May you share this App with your buddies.'
       }else if(localStorage.views>9 && localStorage.views<=30){
-          var aaaa = 'Wonderfull! You have completed ' +localStorage.views+' papers here, just carry on! May you share this App with your buddies.'
+          var aaaa = 'Wonderfull! You have completed ' +paperWithTime+' papers here, just carry on! May you share this App with your buddies.'
       }else if(localStorage.views>30 && localStorage.views<=99){
-          var aaaa = 'AMAZING! You has come to the ' +localStorage.views+'th paper! May you share this App with your buddies.'
+          var aaaa = 'AMAZING! You has come to the ' +paperWithTime+' paper! May you share this App with your buddies.'
       }else{
-          var aaaa = 'Splendiferous! You has come to the ' +localStorage.views+'th paper, merely nobody ahead of you! May you share this App with your buddies.'
+          var aaaa = 'Splendiferous! You has come to the ' +paperWithTime+' paper, merely nobody ahead of you! May you share this App with your buddies.'
       }
       $('#viewsGreeting').html(aaaa)
       $('.paperNos').html(localStorage.views)
@@ -1897,6 +1901,10 @@ scrollDirect(function (direction) {
                     var passedTime = $('#runningTimer').text().split(':')[0]*1
                     if(localStorage.reads.indexOf(tmp)<0 && passedTime>supposeTime){
                       localStorage.views = localStorage.views*1 + 1
+                      var x = new Date()
+                      var y = x.toString().split(' ')
+                      var z = y.slice(0,5)
+                      localStorage.lastReadTime = z.join(' ')
                       $('.paperNos').text(localStorage.views)
                       localStorage.reads += tmp+','
                     }
