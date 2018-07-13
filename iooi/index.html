@@ -1666,22 +1666,20 @@ https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jp
         }
     $(document).ready(function(){
       getPaperList()
-      var random = null
+      var randomArr = []
+      var mottoLen = mottoArr.length
+      while(randomArr.length <3){
+        var randomNum = parseInt(Math.random()*(mottoLen-1),10)
+        if(randomArr.indexOf(randomNum)<0){
+          randomArr.push(randomNum)
+        }
+      }
+      var fillNo = 0
       $('#carousel-example-generic').find('.text-center').each(function (dindex, ditem) {
-            var mottoLen = mottoArr.length
-            var randomNum = Math.random()*(mottoLen-1)
-            var toInt = parseInt(randomNum,10)
-            if(toInt == random){
-              if( random >mottoLen/2 ){
-                toInt = random -1
-              }else{
-                toInt = random +1
-              }
-            }
-            var chooseMotto = mottoArr[toInt]
+            var chooseMotto = mottoArr[fillNo]
             var mottoFill = '<h1 class="mottoh1en">'+chooseMotto['en']+'</h1><h6 class="mottoh6auth">'+chooseMotto['auth']+'</h6><h6 class="mottoh6cn">'+chooseMotto['cn']+'</h6>'
             $(ditem).html(mottoFill)
-            random = toInt
+            fillNo += 1
             })
       var xx = window.location.href
       var yy = xx.slice(7,xx.indexOf('iooi')-1)
