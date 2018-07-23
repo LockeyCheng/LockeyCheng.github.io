@@ -7,22 +7,27 @@
 	<title>I 乐读</title>
 	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 <body>
+  <style>
+    .nav>li>a {
+      padding: 10px 6px;
+    }
+  </style>
 	<div class="page-wrapper">
             <nav id="sidebar" class="sidebar-wrapper">
               <div class="sidebar-content">
-                <a href="#" id="toggle-sidebar"><i class="fa fa-github"></i></a>
+                <a href="javascript:void(0)" id="toggle-sidebar"><i class="fa fa-github"></i></a>
                 <div class="sidebar-brand">
-                    <a href="#">pro sidebar</a>
+                    <a href="#">Lockey Young</a>
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
                         <img class="img-responsive img-rounded" src="assets/img/user.jpg" alt="">
                     </div>
                     <div class="user-info">
-                        <span class="user-name">Lockey <strong>Young</strong></span>
+                        <!--<span class="user-name">Lockey <strong>Young</strong></span>-->
                         <span class="user-role">Administrator</span>
                         <div class="user-status">                       
                             <a href="#"><span class="label label-success">Online</span></a>                           
@@ -101,41 +106,40 @@
                 </div>
             </nav><!-- sidebar-wrapper  -->
             <main class="page-content">
-               <div class="container-fluid">
-  <h1>Hello World!</h1>
-  <p>重置浏览器大小查效果。</p>
-  <p>在移动设备上，即屏幕宽度小于 576px 时，四个列将会上下堆叠排版。</p>
-  <div class="row">
-    <div class="col-sm-2" style="background-color:lavender;">.col-sm-4</div>
-    <div class="col-sm-10" style="background-color:lavenderblush;">.col-sm-8</div>
-  </div>
-   <h1>Hello World!</h1>
-  <p>重置浏览器大小查效果。</p>
-  <p>在移动设备上，即屏幕宽度小于 576px 时，四个列将会上下堆叠排版。</p>
-  <div class="row">
-    <div class="col-sm-2" style="background-color:lavender;">.col-sm-4</div>
-    <div class="col-sm-10" style="background-color:lavenderblush;">.col-sm-8</div>
-  </div>
-   <h1>Hello World!</h1>
-  <p>重置浏览器大小查效果。</p>
-  <p>在移动设备上，即屏幕宽度小于 576px 时，四个列将会上下堆叠排版。</p>
-  <div class="row">
-    <div class="col-sm-2" style="background-color:lavender;">.col-sm-4</div>
-    <div class="col-sm-10" style="background-color:lavenderblush;">.col-sm-8</div>
-  </div>
-   <h1>Hello World!</h1>
-  <p>重置浏览器大小查效果。</p>
-  <p>在移动设备上，即屏幕宽度小于 576px 时，四个列将会上下堆叠排版。</p>
-  <div class="row">
-    <div class="col-sm-2" style="background-color:lavender;">.col-sm-4</div>
-    <div class="col-sm-10" style="background-color:lavenderblush;">.col-sm-8</div>
-  </div>
-   <h1>Hello World!</h1>
-  <p>重置浏览器大小查效果。</p>
-  <p>在移动设备上，即屏幕宽度小于 576px 时，四个列将会上下堆叠排版。</p>
-  <div class="row">
-    <div class="col-sm-2" style="background-color:lavender;">.col-sm-4</div>
-    <div class="col-sm-10" style="background-color:lavenderblush;">.col-sm-8</div>
+               <div class="container">
+  <ul class="nav nav-tabs" role="tablist" style="margin-left: 16px;margin-top: -12px;">
+    <li class="nav-item">
+      <a class="nav-link active fa fa-podcast" data-toggle="tab" href="#home">Zone</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link fa fa-wpforms" data-toggle="tab" href="#menu1">Article</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link fa fa-search-plus" data-toggle="tab" href="#menu2">Dictionary</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu3">more</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+      <h3>HOME</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div id="menu1" class="container tab-pane fade"><br>
+      <h3>Menu 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="menu2" class="container tab-pane fade"><br>
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="menu3" class="container tab-pane fade"><br>
+      <h3>Menu 3</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
   </div>
 </div>
             </main><!-- page-content" -->
@@ -188,14 +192,14 @@
         //判断滑动方向
         if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>60){
           console.log('向右边滑动')
-          if(distanceX>120){
+          if(distanceX>60){
             $("#toggle-sidebar").trigger('click')
           }
             
         }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-60){
          
             console.log('往左滑动');
-            if(distanceX<-120){
+            if(distanceX<-60){
                 $("#toggle-sidebar").trigger('click')
             }
             

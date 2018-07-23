@@ -291,11 +291,11 @@
 /*---------------------toggle-sidebar button-------------------------*/
 #toggle-sidebar{
     position: fixed;
-    top: 13px;
-    left: 25px;
+    top: 3px;
+    left: 6px;
     /* color: #0f151f; */
     color: #D5D6E2;
-    font-size: 18px;
+    font-size: 2.6em;
 }
 
 /*----------------  Scroll bar style   --------------- */
