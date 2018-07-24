@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>I 乐读</title>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+  <style>
+    .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+      color: #555;
+      cursor: default;
+      background-color: #96fff7;
+      border:1px solid #31fff9; 
+      border-bottom-color: transparent;
+      border-radius: 5px;
+      color:#ffa262;
+      font-size: 1.26em;
+    }
+    .nav>li>a {
+      padding: 6px 10px;
+    }
+    #myCarousel{
+        padding: 1px 1px;
+    }
+    .fa-angle-right,.fa-angle-left{
+      position: absolute;
+      top: 50%;
+      z-index: 5;
+      display: inline-block;
+      margin-top: -10px;
+      font-size: 1.3em;
+    }
+    .carousel-caption{
+      bottom: 23%;
+    }
+    .nav-tabs {
+        border-bottom: 1px solid #b8fff4;
+    }
+    .nav-tabs>li.active>a{
+      border: 1px solid #31fff9;
+      border-bottom: none;
+    }
+    /*.nav-item a.active{
+      background: #00d9b9;
+      color:#fff;
+      font-size: 1.36em;
+    }
+    /*.nav-tabs>li.active{
+      background: #00d9b9;
+      color:#fff;
+      font-size: 1.36em;
+    }*/
+    .nav-tabs>li>a{
+      color:#bca1a1;
+      border: solid 1px #fcf2f2;
+    }
+    ul.nav-tabs{
+      padding: 0px 15px;
+    }
+  </style>
+	<div class="page-wrapper">
+            <nav id="sidebar" class="sidebar-wrapper">
+              <div class="sidebar-content">
+                <a href="javascript:void(0)" id="toggle-sidebar"><i class="fa fa-github"></i></a>
+                <div class="sidebar-brand">
+                    <a href="#">Lockey Young</a>
+                </div>
+                <div class="sidebar-header">
+                    <div class="user-pic">
+                        <img class="img-responsive img-rounded" src="assets/img/user.jpg" alt="">
+                    </div>
+                    <div class="user-info">
+                        <!--<span class="user-name">Lockey <strong>Young</strong></span>-->
+                        <span class="user-role">Administrator</span>
+                        <div class="user-status">                       
+                            <a href="#"><span class="label label-success">Online</span></a>                           
+                        </div>
+                    </div>
+                </div><!-- sidebar-header  -->
+                <div class="sidebar-search">
+                    <div>                   
+                        <div class="input-group">                          
+                            <input type="text" class="form-control search-menu" placeholder="Search for...">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>                    
+                </div><!-- sidebar-search  -->
+                <div class="sidebar-menu">
+                    <ul>
+                        <li class="header-menu"><span>Dropdown  menu</span></li>
+                        <li class="sidebar-dropdown">
+                            <a  href="#" ><i class="fa fa-tv"></i><span>Menu 1</span><span class="label label-danger">New</span></a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li><a href="#">submenu 1 <span class="label label-success">10</span></a> </li>
+                                    <li><a href="#">submenu 2</a></li>
+                                    <li><a href="#">submenu 3</a></li>
+                                    <li><a href="#">submenu 4</a></li>
+                                </ul>
+                            </div>
+                        </li>                  
+                        <li class="sidebar-dropdown">
+                            <a href="#"><i class="fa fa-photo"></i><span>Menu 2</span><span class="badge">3</span></a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li><a href="#">submenu 1 <span class="badge">2</span></a></li>
+                                    <li><a href="#">submenu 2</a></li>
+                                    <li><a href="#">submenu 3</a></li>
+                                    <li><a href="#">submenu 4</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#"><i class="fa fa-bar-chart-o"></i><span>Menu 3</span></a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li><a href="#">submenu 1</a></li>
+                                    <li><a href="#">submenu 2</a></li>
+                                    <li><a href="#">submenu 3</a></li>
+                                    <li><a href="#">submenu 4</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#"><i class="fa fa-diamond"></i><span>Menu 4</span></a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li><a href="#">submenu 1</a></li>
+                                    <li><a href="#">submenu 2</a></li>
+                                    <li><a href="#">submenu 3</a></li>
+                                    <li><a href="#">submenu 4</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="header-menu"><span>Simple menu</span></li>
+                        <li><a href="#"><i class="fa fa-tv"></i><span>Menu 1</span></a></li>                   
+                        <li><a href="#"><i class="fa fa-photo"></i><span>Menu 2</span></a></li>
+                        <li><a href="#"><i class="fa fa-bar-chart-o"></i><span>Menu 3</span></a></li>
+                        <li><a href="#"><i class="fa fa-diamond"></i><span>Menu 4</span></a></li>
+                    </ul>
+                   </div><!-- sidebar-menu  -->            
+                </div><!-- sidebar-content  -->
+        
+                <div class="sidebar-footer">
+                    <a href="#"><i class="fa fa-bell"></i><span class="label label-warning notification">3</span></a>
+                    <a href="#"><i class="fa fa-envelope"></i><span class="label label-success notification">7</span></a>
+                    <a href="#"><i class="fa fa-gear"></i></a>
+                    <a href="#"><i class="fa fa-power-off"></i></a>
+                </div>
+            </nav><!-- sidebar-wrapper  -->
+            <main class="page-content">
+              <div id="myCarousel" class="carousel slide">
+  <!-- 轮播（Carousel）指标 -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>   
+  <!-- 轮播（Carousel）项目 -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jpg" alt="First slide">
+      <div class="carousel-caption">
+        <h3>aaaaaaaaaaaaaaaa</h3>
+        <p>bbbbbbbbbbbbbbbbb</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://cn.bing.com/az/hprichbg/rb/UrbanLight_ZH-CN6248743710_1920x1080.jpg" alt="Second slide">
+      <div class="carousel-caption">
+        <h3>aaaaaaaaaaaaaaaaaaa</h3>
+        <p>bbbbbbbbbbbbbbbbb</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://www.bing.com/az/hprichbg/rb/MoriBuilding_ZH-CN5143587469_1920x1080.jpg" alt="Third slide">
+      <div class="carousel-caption">
+        <h3>aaaaaaaaaaaaaaaaaa</h3>
+        <p>bbbbbbbbbbbbbbbbb</p>
+      </div>
+    </div>
+  </div>
+  <!-- 轮播（Carousel）导航 -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="fa fa-angle-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="fa fa-angle-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+  </a>
+</div> 
+               <div class="container">
+  <ul class="nav nav-tabs" role="tablist"><!--style="margin-left: 16px;margin-top: -12px;"-->
+    <li class="nav-item active">
+      <a class="nav-link active fa fa-podcast" data-toggle="tab" href="#home"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link fa fa-wpforms" data-toggle="tab" href="#menu1"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link fa fa-video-camera" data-toggle="tab" href="#menu2"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link fa fa-music" data-toggle="tab" href="#menu3"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link fa fa-search-plus" data-toggle="tab" href="#menu4"></a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+      <h3>HOME</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div id="menu1" class="container tab-pane fade"><br>
+      <h3>Menu 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="menu2" class="container tab-pane fade"><br>
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="menu3" class="container tab-pane fade"><br>
+      <h3>Menu 3</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="menu4" class="container tab-pane fade"><br>
+      <h3>Menu 4</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+  </div>
+</div>
+            </main><!-- page-content" -->
+        </div><!-- page-wrapper -->
+	
+	
+	<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src='assets/js/jquery.mCustomScrollbar.concat.min.js'></script>
+  <script>
+    $(document).ready(function(){
+        
+        $(".sidebar-dropdown > a").click(function(){
+          $(".sidebar-submenu").slideUp(250);
+          if ($(this).parent().hasClass("active")){
+             $(".sidebar-dropdown").removeClass("active");
+             $(this).parent().removeClass("active");
+          }else{
+            $(".sidebar-dropdown").removeClass("active");
+            $(this).next(".sidebar-submenu").slideDown(250);
+            $(this).parent().addClass("active");
+          }
+
+        });
+
+         $("#toggle-sidebar").click(function(){
+           $(".page-wrapper").toggleClass("toggled");     
+         });
+
+           if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                   $(".sidebar-content").mCustomScrollbar({
+                            axis:"y",
+                            autoHideScrollbar: true,
+                            scrollInertia: 300
+                    });
+                    $(".sidebar-content").addClass("desktop");
+
+            }
+        $('body').bind('touchstart',function(e){
+          startX = e.originalEvent.changedTouches[0].pageX;
+          startY = e.originalEvent.changedTouches[0].pageY;
+        });
+        $("body").bind("touchmove",function(e){
+        
+        endX = e.originalEvent.changedTouches[0].pageX;
+        endY = e.originalEvent.changedTouches[0].pageY;
+        //获取滑动距离
+        distanceX = endX-startX;
+        distanceY = endY-startY;
+        //判断滑动方向
+        if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>60){
+          console.log('向右边滑动')
+          if(distanceX>60){
+            $("#toggle-sidebar").trigger('click')
+          }
+            
+        }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-60){
+         
+            console.log('往左滑动');
+            if(distanceX<-60){
+                $("#toggle-sidebar").trigger('click')
+            }
+            
+        }else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<50){
+          console.log('往up滑动');
+          //$('.fa-arrow-circle-up').show()
+              
+        }else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY>0){
+            console.log('往down滑动');
+            //$('.fa-arrow-circle-up').show()
+            
+        }
+      })
+    })
+  </script>
+</body>
+</html>
