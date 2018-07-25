@@ -57,11 +57,29 @@
     }*/
     .nav-tabs>li>a{
       color:#bca1a1;
-      border: solid 1px #fcf2f2;
+      border: solid 1px #fef6f6;
     }
     ul.nav-tabs{
       padding: 0px 15px;
     }
+    @media (min-width: 768px){
+      .container {
+        width: auto; 
+      }
+    }
+    #home img.item-img{
+    width: 100%;
+    display: inline-block;
+    border-radius: 9px;
+    }
+    .tab-content
+    {
+      padding-top: 6px;
+    }
+      #home .box-item{
+        padding: 3px;
+    border: solid 1px #ffeeee;
+      }
   </style>
 	<div class="page-wrapper">
             <nav id="sidebar" class="sidebar-wrapper">
@@ -76,10 +94,11 @@
                     </div>
                     <div class="user-info">
                         <!--<span class="user-name">Lockey <strong>Young</strong></span>-->
-                        <span class="user-role">Administrator</span>
+                        
                         <div class="user-status">                       
                             <a href="#"><span class="label label-success">Online</span></a>                           
                         </div>
+                        <span class="user-role">Administrator</span>
                     </div>
                 </div><!-- sidebar-header  -->
                 <div class="sidebar-search">
@@ -216,9 +235,81 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div id="home" class="container tab-pane active"><br>
-      <h3>HOME</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <div id="home" class="container tab-pane active">
+      
+      <div class="col-sm-3">
+        <div class="box-item">
+          <div class="item-img-div">
+              <img src="https://cdn.static-economist.com/sites/default/files/images/2018/07/articles/main/20180728_blp901.jpg&#10;" class="img-responsive item-img">
+              <a href="javascript:void(0)" class="overlay">                                  
+           <div class="folio-item-table">
+            <div class="folio-item-cell">
+              <h5 class="folio-title">The Economist</h5>                   
+                  <span class="folio-types">
+                    For the profession, For the Lost episode
+                  </span>           
+                 </div>                           
+           </div>                    
+          </a>
+              For the profession, see Economist. For the Lost episode, see The Economist (Lost).
+            <!-- <p><a class="readMoreText loadPage" href="javascript:void(0)" data-link="2018_7_24_1.json">Read More <span class="fa fa-hand-o-right"></span></a></p> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="box-item">
+          <div class="item-img-div">
+              <img src="https://cdn.static-economist.com/sites/default/files/images/2018/07/articles/main/20180728_blp901.jpg&#10;" class="img-responsive item-img">
+              <a href="javascript:void(0)" class="overlay">                                  
+           <div class="folio-item-table">
+            <div class="folio-item-cell">
+              <h5 class="folio-title">The Economist</h5>                   
+                  <span class="folio-types">
+                    For the profession, For the Lost episode
+                  </span>           
+                 </div>                           
+           </div>                    
+          </a>
+              For the profession, see Economist. For the Lost episode, see The Economist (Lost).
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+         <div class="box-item">
+          <div class="item-img-div">
+              <img src="https://cdn.static-economist.com/sites/default/files/images/2018/07/articles/main/20180728_blp901.jpg&#10;" class="img-responsive item-img">
+              <a href="javascript:void(0)" class="overlay">                                  
+           <div class="folio-item-table">
+            <div class="folio-item-cell">
+              <h5 class="folio-title">The Economist</h5>                   
+                  <span class="folio-types">
+                    For the profession, For the Lost episode
+                  </span>           
+                 </div>                           
+           </div>                    
+          </a>
+              For the profession, see Economist. For the Lost episode, see The Economist (Lost).
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+         <div class="box-item">
+          <div class="item-img-div">
+              <img src="https://cdn.static-economist.com/sites/default/files/images/2018/07/articles/main/20180728_blp901.jpg&#10;" class="img-responsive item-img">
+              <a href="javascript:void(0)" class="overlay">                                  
+           <div class="folio-item-table">
+            <div class="folio-item-cell">
+              <h5 class="folio-title">The Economist</h5>                   
+                  <span class="folio-types">
+                    For the profession, For the Lost episode
+                  </span>           
+                 </div>                           
+           </div>                    
+          </a>
+              For the profession, see Economist. For the Lost episode, see The Economist (Lost).
+          </div>
+        </div>
+      </div>
     </div>
     <div id="menu1" class="container tab-pane fade"><br>
       <h3>Menu 1</h3>
@@ -309,6 +400,13 @@
             
         }
       })
+        $('#home .box-item').mouseover(function(){
+          $(this).find('.overlay').slideDown(345)
+          $(this).find('.item-img').css({'opacity':'0.6'})
+        }).mouseleave(function(){
+          $(this).find('.overlay').fadeOut(345)
+          $(this).find('.item-img').css({'opacity':'1'})
+        })
     })
   </script>
 </body>

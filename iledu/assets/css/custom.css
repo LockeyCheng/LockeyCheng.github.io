@@ -77,13 +77,12 @@
 
 .sidebar-wrapper .sidebar-brand > a{
     color: #fff;
-    text-transform: uppercase;
     font-weight: bold;
 }
-
+    /*text-transform: uppercase;*/
 /*--------------------sidebar-header----------------------*/
 .sidebar-wrapper .sidebar-header{
-    padding: 20px;
+    padding: 9px 20px;
     overflow: hidden;
     border-top: 1px solid #202a3c;
     border-bottom: 1px solid #10151d;
@@ -98,6 +97,7 @@
 }
 .sidebar-wrapper .sidebar-header .user-info{
         float: left;
+        margin-top: 0.9em;
         color: #ccc;
 }
 .sidebar-wrapper .sidebar-header .user-info span{
@@ -283,7 +283,7 @@
     padding-left: 0px;
 }
 .page-wrapper .page-content > div {
-    padding: 20px 40px;
+    padding: 13px 10px;
 }
 .page-wrapper .page-content {
     overflow-x: hidden;
@@ -295,7 +295,7 @@
     left: 13px;
     /* color: #0f151f; */
     color: #D5D6E2;
-    font-size: 2.6em;
+    font-size: 2.2em;
 }
 
 /*----------------  Scroll bar style   --------------- */
@@ -311,4 +311,54 @@
 .mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar
 {
     background: #657692;
+}
+#home .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffecdf96;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    display: none;
+}
+#home .folio-item-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+#home .folio-item-cell {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    left: 0%;
+}
+#home .folio-title {
+    color: #a52700;
+    font-size: 3rem;
+    padding: 0 3rem;
+    margin-bottom: 0;
+}
+#home .folio-types {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-family: "poppins-regular", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: .1rem;
+    color: rgba(3, 66, 39, 0.6);
+}
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+    padding: 0px;
 }
