@@ -402,8 +402,10 @@
       })
         $('#home .box-item').mouseover(function(){
           $(this).find('.overlay').slideDown(345)
+          $(this).find('.item-img').css({'opacity':'0.6'})
         }).mouseleave(function(){
           $(this).find('.overlay').fadeOut(345)
+          $(this).find('.item-img').css({'opacity':'1'})
         })
     })
   </script>
