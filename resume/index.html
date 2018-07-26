@@ -50,7 +50,7 @@
 	<figure id="img"><img src="images/gitoo.png" alt="" style="width: 98%;border-top: solid 2px #CD5353;border-left: solid 1px #CD5353;"/>
 		<hgroup>
 				<h1>杨成</h1>
-				<h2>人生苦短，我用Python</h2>
+				<h2>Life is short，why not Python!</h2>
 			</hgroup>
 	</figure>
 
@@ -201,7 +201,7 @@ margin-top:8px;
 <li>运维监控：熟悉负载均衡、高可用，有RHCS部署经验；有SaltStack自动部署Keepalived+HAProxy经验。熟悉zabbix监控搭建与使用；熟悉prometheus监控告警系统的配置使用，并有相关运维开发经历，搭建过Prometheus+Grafana监控MySQL服务器系统；</li>
 <li>Docker：使用docker compose搭建过负载均衡web集群，有单应用搭建、网络管理、镜像封装实践；有docker原生集群部署经验；</li>
 <li>OpenStack：实现过OpenStack云平台实验搭建配置（包括控制、认证、网络、计算节点），并有saltstack自动部署开发经验【github】。</li>
-<li>Hadoop:了解HDFS存储以及MapReduce并行处理，有Hbase分布式部署/Yarn/HDFS+NFS+ZOOKEEPER高可用集群实践经验。目前正在学习Spark相关技能，并打算后期向大数据以及数据处理分析方向靠拢。</li>
+<li>Hadoop:了解过HDFS存储以及MapReduce并行处理，有Hbase分布式部署/Yarn/HDFS+NFS+ZOOKEEPER高可用集群实践经验。接触过Spark，并打算后期向大数据以及数据处理分析方向靠拢。</li>
 </ol>
 
 						</section>
@@ -246,10 +246,22 @@ Django框架）界面改版，后端系统内文件回收站、用户统计与�
 								<h4>职位：Risk Engineer [PayPal AWF]（CLPS 2018/3——至今）</h4>
 								<h6>工作内容概述：</h6>
 							</hgroup>
-							<blockquote class="style2">工作内容主要是一个内部web数据系统的开发，项目架构涉及组件有TeraData、MySQL、NGINX，后端使用Python的Django框架支撑。进入项目组至今为系统改进以及功能拓展提供了很多支持，如后端接口的restful规范化、模块化，权限控制，前端复杂的数据filter逻辑实现和对应的后端alert邮件系统整合，用户问答留言系统以及用户模块上线，并时不时处理一些legacy问题。因项目已经上线并且运行稳定，目前已着手参与另外一个Loss以及TPV分析工具(heatmap)的开发。</blockquote>
+							<blockquote class="style2">前期工作内容主要是一个内部web数据系统的前后端开发，项目架构涉及组件有TeraData、MySQL、NGINX，后端使用Python的Django框架支撑，因项目已经上线并且运行稳定，目前已着手参与另外一个Loss以及TPV分析工具(heatmap)的开发，其中将涉及部分算法以及数据处理技能。</blockquote>
 <h1>/ 项目经验</h1>
 <hgroup>
-										<h4>1、I2Share，基于Django的在线网盘系统的前后端开发
+										<h4>0、Panda，基于Django+MySQL的多维度数据访问获取、邮件告警系统
+										<h6>项目简介：</h6>
+										<blockquote class="style2">
+											Panda的开发宗旨是让数据获取更简洁、展示更直观、更新数据接收更及时。项目细分为TM portal、数据过滤与job创建模块、job库管理、用户与权限管理、问答系统等，进入项目组后我首先将job创建的前端逻辑进行了重构上线、然后负责了后三个模块的设计实现，在新模块开发过程中引入了restful接口开发规范、细化了用户access、在开发问答系统的时候将邮件系统整合进去实现了用户与系统与管理员的即时交互；到目前为止在整体把握项目的基础上为项目改进提出了很多可用性意见。在开发panda的同时也负责了TM内其他两个系统的填坑工作，在自己发现问题并且解决问题的过程中对于系统开发的规范也有了自己的认知，这都将为以后的项目开发提供宝贵参考。
+										</blockquote>
+									</hgroup>
+									<br/>
+									<hgroup>
+										<h4>1、阅时即查英语阅读APP（开源自玩项目）
+											<h6>项目简介：</h6>
+											<blockquote class="style2">
+												项目产生的原因是个人在阅读经济学人等杂志的时候经常遇到生词需要不断在字典与文章间来回切换，为了避免切换困扰，便开始了从文章的爬取到生词清洗、生词解析爬取、解析与文章整合、前端页面设计、ajax文件调取解析实现阅时即查这一条开发线。其中后端使用Python爬虫实现网页解析获取文章与文章清洗，前端使用bootstrap以及jQuery实现页面美化自适应和逻辑上的操作，目前上线功能已经可以实现顺畅阅读以及阅读监督、全字典查词等功能，扫描简历最后二维码可体验此应用。
+											</blockquote>
 									</hgroup>
 									<br/>
 								<hgroup>
@@ -283,7 +295,11 @@ CodeIgniter完成用户模块、节点添加分组、文件上传以及下发同
 										<h4>5、Promgen，基于Flask-Restful+MongoDB的在线运维监控系统告警模块开发
 									</hgroup>
 									<hgroup>
-										<h4>6、Panda，基于Django+MySQL的数据filter和alert系统
+										<h4>6、I2Share，基于Django的在线网盘系统的前后端开发
+									</hgroup>
+									<hr>
+									<hgroup>
+									<img src="../iooi/img/economist_index.png" style="margin-left: 23%">
 									</hgroup>
 </div>
 <!-- End tabs Container-->
