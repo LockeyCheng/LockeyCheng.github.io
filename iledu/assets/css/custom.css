@@ -348,6 +348,7 @@
     color: #a52700;
     font-size: 3rem;
     padding: 0 3rem;
+    text-transform: uppercase;
     /*margin-bottom: 0;*/
 }
 #home .folio-types {

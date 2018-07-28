@@ -1,14 +1,124 @@
 {"zones":
 	{
-		"the_economist":{
-			"title":"aaa Can Ontario’s new leader wreck Canada’s climate-change plan?",
-			"desc":"If Alberta supports him, he might do",
-			"img":"https://cdn.static-economist.com/sites/default/files/20180630_AMP501.jpg",
-			"link":"2018_7_1_1.json",
-			"nos":"201807011",
-			"date":"2018-06-30 00:23:36"
+		"economist":{
+			"title":"The Economist",
+			"logo":"",
+			"desc":"For the profession, see Economist. For the Lost episode, see The Economist (Lost).",
+			"img":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/GDP_Real_Growth.svg/300px-GDP_Real_Growth.svg.png",
+			"link":"https://economist.com",
+			"papers":723,
+			"focus":611,
+			"logow":"86%",
+			"titleStyle":"",
+			"update":"2018-06-30 00:23:36"
 		},
+		"washington_post":{
+			"title":"The Washington Post",
+			"titleStyle":"",
+			"logo":"./imgs/washington-post-log.svg",
+			"desc":"The Washington Post is a major American daily newspaper. It is the largest newspaper published in Washington, D.C., and has a particular emphasis on national politics. Its slogan 'Democracy Dies in Darkness' appears on its masthead.",
+			"img":"https://cn.bing.com/az/hprichbg/rb/HomerWatercolor_ZH-CN11392693224_1920x1080.jpg",
+			"link":"https://www.washingtonpost.com",
+			"papers":93,
+			"focus":61,
+			"logow":"86%",
+			"update":"2018-06-30 00:23:36"
+		},
+		"nydailynews":{
+			"title":"The New York Daily News",
+			"titleStyle":"",
+			"logo":"./imgs/logo-nyd-nydredblack.svg",
+			"desc":"The New York Daily News, officially titled Daily News, is an American newspaper based in New York City. As of May 2016, it was the ninth-most widely circulated daily newspaper in the United States.",
+			"img":"https://cn.bing.com/az/hprichbg/rb/PuffinWales_ZH-CN12110916089_1920x1080.jpg",
+			"link":"http://www.nydailynews.com",
+			"papers":126,
+			"focus":26,
+			"logow":"86%",
+			"update":"2018-06-30 00:23:36"
+		},
+		"joc":{
+			"title":"The Journal of Commerce",
+			"titleStyle":"",
+			"logo":"./imgs/JOC_DotCom_2013_logo.png",
+			"desc":"The Journal of Commerce is a biweekly magazine published in the United States that focuses on global trade topics. It provides editorial content to manage day-to-day international logistics and shipping need, covering the areas of cargo and freight transportation, export and import, global transport logistics and trade, international supply chain management and U.S. custom regulations.",
+			"img":"https://www.bing.com/az/hprichbg/rb/Pygmy3Toed_ZH-CN10141370191_1920x1080.jpg",
+			"link":"https://www.joc.com/",
+			"papers":99,
+			"focus":56,
+			"logow":"23.5%",
+			"update":"2018-06-30 00:23:36"
+		},
+		"latimes":{
+			"title":"The Los Angeles Times",
+			"titleStyle":"",
+			"logo":"./imgs/latimes-logo-full-black.svg",
+			"desc":"The Los Angeles Times is a daily newspaper which has been published in Los Angeles, California since 1881. It has the fourth-largest circulation among United States newspapers.",
+			"img":"https://cn.bing.com/az/hprichbg/rb/SuperBlueBloodMoon_ZH-CN11881086623_1920x1080.jpg",
+			"link":"https://www.latimes.com",
+			"papers":321,
+			"focus":123,
+			"logow":"86%",
+			"update":"2018-06-30 00:23:36"
+		},
+		"fortune":{
+			"title":"The Fortune",
+			"titleStyle":"color:#222",
+			"logo":"",
+			"desc":"Fortune is an American multinational business magazine headquartered in New York City, United States. The magazine competes with Forbes and Bloomberg Businessweek in the national business magazine category and distinguishes itself with long, in-depth feature articles. The magazine regularly publishes ranked lists, perhaps best known is the Fortune 500, a ranking of companies by revenue that it has published annually since 1955.",
+			"img":"https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jpg ",
+			"link":"http://www.fortune.com/",
+			"papers":564,
+			"focus":345,
+			"logow":"86%",
+			"update":"2018-06-30 00:23:36"
+		},
+		"spectator":{
+			"title":"The Spectator",
+			"titleStyle":"color:#D30D1D",
+			"logo":"",
+			"desc":"The Spectator is a weekly British magazine on politics, culture, and current affairs. Its principal subject areas are politics and culture. Its editorial outlook is generally supportive of the Conservative Party, although regular contributors include some outside that fold, such as Frank Field, Rod Liddle and Martin Bright.",
+			"img":"https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jpg",
+			"link":"https://www.spectator.co.uk/",
+			"papers":243,
+			"focus":223,
+			"logow":"86%",
+			"update":"2018-06-30 00:23:36"
+		},
+		"people":{
+			"title":"The People",
+			"titleStyle":"color:rgb(0, 163, 230);",
+			"logo":"",
+			"desc":"People is an American weekly magazine of celebrity and human-interest stories, published by Meredith Corporation. With a readership of 46.6 million adults, People has the largest audience of any American magazine.",
+			"img":"https://cn.bing.com/az/hprichbg/rb/FlamingoCousins_ZH-CN12160048336_1920x1080.jpg",
+			"link":"https://people.com",
+			"papers":87,
+			"focus":54,
+			"logow":"86%",
+			"update":"2018-06-30 00:23:36"
+		},
+		"reader":{
+			"title":"Reader’s Digest",
+			"titleStyle":"",
+			"logo":"./imgs/rd-header-logo.png",
+			"desc":"Reader's Digest is an American general-interest family magazine, published ten times a year. Formerly based in Chappaqua, New York, it is now headquartered in Midtown Manhattan.For many years, Reader's Digest was the best-selling consumer magazine in the United States; it lost the distinction in 2009 to Better Homes and Gardens.",
+			"img":"https://cn.bing.com/az/hprichbg/rb/UrbanLight_ZH-CN6248743710_1920x1080.jpg",
+			"link":"https://www.rd.com",
+			"papers":323,
+			"focus":213,
+			"logow":"60%",
+			"update":"2018-06-30 00:23:36"
+		}
 		
 	},
+"zoneNo":9,
+"block_dirs":[
+	 "The_Washington_Post",
+	 "The_New_York_Daily_News",
+	 "The_Journal_of_Commerce",
+	 "The_Los_Angeles_Times",
+	 "The_Fortune",
+	 "The_Spectator",
+	 "The_People",
+	 "Reader’s_Digest"],
 "extra":{}
 }

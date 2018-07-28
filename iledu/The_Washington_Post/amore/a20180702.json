@@ -1,0 +1,68 @@
+{"papers":[
+	{
+		"title":"Can Ontario’s new leader wreck Canada’s climate-change plan?",
+		"desc":"If Alberta supports him, he might do",
+		"img":"https://cdn.static-economist.com/sites/default/files/20180630_AMP501.jpg",
+		"link":"2018_7_1_1.json",
+		"nos":"201807011",
+		"date":"2018-06-30 00:23:36"
+	},
+	{
+		"title":"How smog affects spending in China",
+		"desc":"A new study suggests the costs of battling the country's toxic air may be larger than previously thought",
+		"img":"https://cdn.static-economist.com/sites/default/files/20180630_WOC943.png",
+		"link":"2018_7_1_3.json",
+		"nos":"201807013",
+		"date":"2018-06-30 00:23:36"
+	},
+	{
+		"title":"The Trump administration wants to expand immigrant family detention",
+		"desc":"A new study suggests that would be a bad idea",
+		"img":"https://cdn.static-economist.com/sites/default/files/20180630_USP506.jpg",
+		"link":"2018_7_1_2.json",
+		"nos":"201807012",
+		"date":"2018-06-30 00:23:36"
+	},
+	{
+		"title":"A Muslim monarch and religious diplomat wins some overdue recognition",
+		"desc":"Jordanian religious diplomacy is more discreet than the Saudi kind, but may be more effective",
+		"img":"https://cdn.static-economist.com/sites/default/files/20180630_BLP511.jpg",
+		"link":"2018_6_30_9.json",
+		"nos":"201806309",
+		"date":"2018-06-29 00:23:36"
+	},
+	{
+		"title":"Why Americans are warming to mobile payments",
+		"desc":"They are finally being weaned off their cheque books",
+		"img":"https://cdn.static-economist.com/sites/default/files/20180630_BLP508.jpg",
+		"link":"2018_6_30_2.json",
+		"nos":"201806302",
+		"date":"2018-06-29 00:23:36"
+	},
+	{
+		"title":"How is college radio faring in the streaming era?",
+		"desc":"For those who like their indie music recommendations with a personal touch, college radio is still worth tuning into",
+		"img":"https://cdn.static-economist.com/sites/default/files/20180630_BKP507.jpg",
+		"link":"2018_6_30_4.json",
+		"nos":"201806304",
+		"date":"2018-06-29 00:23:36"
+	},
+	{
+		"title":"John Flannery gets down to business restructuring General Electric",
+		"desc":"Booted from the Dow this week, GE is becoming humbler but fitter",
+		"img":"https://cdn.static-economist.com/sites/default/files/images/2018/06/articles/main/20180630_wbp004.jpg",
+		"link":"2018_6_30_6.json",
+		"nos":"201806306",
+		"date":"2018-06-29 00:23:36"
+	},
+	{
+		"title":"What is the future of free trade?",
+		"desc":"In a three-part series, our correspondents report on a thorny political problem",
+		"img":"https://cdn.static-economist.com/sites/default/files/20180623_BLP527.jpg",
+		"link":"2018_6_30_5.json",
+		"nos":"201806305",
+		"date":"2018-06-29 00:23:36"
+	}
+],
+"more":"a20180630.json"
+}
