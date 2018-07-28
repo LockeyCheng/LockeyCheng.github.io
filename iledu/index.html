@@ -40,7 +40,7 @@
               <div class="sidebar-content">
                 <a href="javascript:void(0)" id="toggle-sidebar"><i class="fa fa-github"></i></a>
                 <div class="sidebar-brand">
-                    <a href="#">Lockey Young</a>
+                    <a href="#" class="usernameHold">Lockey Young</a>
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
@@ -417,6 +417,12 @@
     <h3 align="center" id="loadWords"></h3></div>
 </div>
 <a href="#myCarousel" class="fa fa-arrow-circle-up"></a>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="margin-top: 31%;">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
 	<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src='assets/js/jquery.mCustomScrollbar.concat.min.js'></script>
@@ -434,8 +440,77 @@
           {'en':'Talent without working hard is nothing.','auth':'– Cristiano Ronaldo','cn':'没有努力，再好的天分也无济于事。'},
           {'en':'You can avoid reality, but you cannot avoid the consequences of avoiding reality.','auth':'– Ayn Rand, Novelist','cn':''}//你可以逃避现实，但你不能逃避因逃避现实所产生的后果。
         ]
+    var readTimer = null
+    var supposeTime = null
+    var today = new Date()
+    var currentPaperFile = null
+    var year = today.getFullYear()
+    var month = today.getMonth()+1
+    var day = today.getDate()
+    var timeSplit = Date().split(" ")
+    var hms = timeSplit[4]
+    var hourNow = hms.slice(0,2)
+    if(hourNow>=6 && hourNow<=11){
+        var greeting = 'Good Morning!'
+    }else if(hourNow>11 && hourNow<=15){
+        var greeting = 'Good Midday!'
+    }else if(hourNow>15 && hourNow<=19){
+        var greeting = 'Good Afternoon!'
+    }else if(hourNow>19 && hourNow<=23){
+        var greeting = 'Good Night!'
+    }else{
+        var greeting = 'Nice Dream!'
+    }
+    if(!localStorage.lastReadTime){
+      localStorage.lastReadTime = today
+    }
+    if(!localStorage.reads){
+        localStorage.reads = ''
+    }
+    if(localStorage.username){
+        var nameis = localStorage.username
+        var extrainfo = '.'
+        if(localStorage.username=='王宁'){
+            nameis = nameis.slice(1,2)
+            extrainfo = '. Please post the screen shot to me for check!'
+        }
+        greeting = greeting.slice(0,-1)+', <input type="text" id="userName" placeholder="Add your name" class="usernameHoldInput short-center" value="'+nameis+'">'+extrainfo
+    }
+    if(!localStorage.views){
+      localStorage.views = 0
+    }
+    
+    if(localStorage.username){
+      $('.usernameHold').html(localStorage.username)
+      }
+      var paperWithTime = localStorage.views+'th('+localStorage.lastReadTime+')'
+      if(localStorage.views == 0){
+          var aaaa = 'Welcome here, wish you a jolly journey!'
+      }else if(localStorage.views>0 && localStorage.views<=9){
+          var aaaa = 'It is the ' +paperWithTime+' paper you read here, keep on!'
+      }else if(localStorage.views>9 && localStorage.views<=30){
+          var aaaa = 'Wonderfull! You have completed ' +paperWithTime+' papers here, just carry on!'
+      }else if(localStorage.views>30 && localStorage.views<=99){
+          var aaaa = 'AMAZING! You has come to the ' +paperWithTime+' paper!'
+      }else{
+          var aaaa = 'Splendiferous! You has come to the ' +paperWithTime+' paper, merely nobody ahead of you!'
+      }
 
+      aaaa += '</p><p class="viewsGreeting">May you save the QR code then share it to your buddies for reading in pairs.'
+      var fillWelcome = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button><h6 class="modal-title" id="myModalLabel">'+greeting+'</h6><p class="viewsGreeting">'+aaaa+'</p></div><div class="modal-body"><img id="appimg" src="./imgs/economist_index.png"></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Got it</button></div>'
+      $('#myModal .modal-content').html(fillWelcome)
     $(document).ready(function(){
+       $('#myModal').modal('show')
+        $(function() {
+          $('#myModal').on('hide.bs.modal',
+          function() {
+              var tmp = $('#userName').val()
+              if(tmp){
+                localStorage.username = tmp
+                $('.usernameHold').html(tmp)
+              }
+          })
+      });
       var randomArr = []
       var mottoLen = mottoArr.length
       while(randomArr.length <3){
@@ -572,6 +647,10 @@
           console.log('向右边滑动')
           if(distanceX>60){
             $("#toggle-sidebar").trigger('click')
+            $('#toggle-sidebar').animate({
+                  'opacity':'1',
+                  'font-size':'2.6em'
+                },800)
           }
             
         }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-60){

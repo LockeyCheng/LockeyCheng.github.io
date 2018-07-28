@@ -55,7 +55,7 @@
     }*/
     .nav-tabs>li>a{
       color:#bca1a1;
-      border: solid 1px #fef6f6;
+      border: solid 1px #ffeeee;
     }
     ul.nav-tabs{
       padding: 0px 15px;
@@ -130,7 +130,7 @@ footer ul.social-buttons li a i{margin-top: 7px;}
 .footer-tags a{color: #b74c00; border:1px solid #004c6f; padding: 4px 10px;line-height: 2.4;font-size: 13px;text-transform: capitalize;}
 .footer-tags a:hover{color: #fff;text-decoration: none;background: #0aac8e;border: 1px solid #0aac8e;}
 footer .bottom-footer{
-  padding: 0;
+  padding: 3px 3px;
 }
 footer ul.social-buttons li a i {
     margin-top: 8.5px;
@@ -145,6 +145,7 @@ footer .bottom-footer {
 }
 footer .bottom-footer p{
   color:#f49500 !important;
+  font-size: 1.15em;
 }
 footer .bottom-footer a{
   color:#02483e;
@@ -296,4 +297,46 @@ h1.mottoh1en {
     font-size:1em;
     color:#33d4e6;
     padding: 6px;
+}
+
+/*******************888
+
+Modal
+
+**********/
+#myModalLabel {
+    color: #6e6e1b;
+    font-size: 1.3em;
+}
+
+#myModal .viewsGreeting {
+    margin-top: 18px;
+    text-indent: 16px;
+    color: #3595a1;
+}
+input.short-center{
+	width: 56%;
+    text-align: center;
+}
+
+
+/*******************888
+
+Modal over
+
+**********/
+input.nooutline, #select-category, #userName {
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom: solid 1px #9ffff5;
+}
+input.nooutline:focus, #select-category:focus, #userName:focus {
+    border-bottom: solid 1.5px #00e2db;
+}
+@media (max-width: 568px){
+	#appimg{
+		width: 56%;
+    	margin-left: 23%;
+	}
 }
