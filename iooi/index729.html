@@ -1,0 +1,2181 @@
+<html>
+<head>
+  <!-- META DATA -->
+  <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+  <title>I 乐读</title>
+  
+  <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css"  type="text/css">
+  
+  <!-- Owl Carousel Assets -->
+    <link href="../owl-carousel/owl.carousel.css" rel="stylesheet">
+    <!-- <link href="owl-carousel/owl.theme.css" rel="stylesheet"> -->
+  
+  <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+  
+  <!-- Custom Fonts -->
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
+    <link rel="icon" type="image/x-icon" class="js-site-favicon" href="../images/favicon.ico">
+    <script type="text/javascript" src="../js/showdown.min.js"></script>
+
+  <!---<link href='http://fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>--->
+  
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+  
+</head>
+
+ <body class="index-page">
+<style>
+
+body{
+  padding: 0px;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #e8f1ff),linear-gradient(70deg, #fff7f0 32%, #f4fffd);/*linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #deebff),linear-gradient(70deg, #fff6ef 32%, #f0fffc)*/
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.navbar-default{
+  background-color: #073a38;
+}
+footer .bottom-footer{
+  padding: 0;
+}
+.noshow,.fa-arrow-circle-up{
+  display: none
+}
+/*
+img.item-img-little{
+  height: 80px;
+    margin-left: 20%;
+    width: 70%!important;
+}
+*/
+.box-item h3{
+  text-align:center;
+}
+.item-img-div{
+  padding:9px;
+}
+.item-img-div-h2 h2{
+  text-align: center;
+  font-weight: bold;
+  color:#fff;
+}
+.item-img-div-h2
+{
+      padding:9px;
+/*background-image: linear-gradient(45deg,#D04D6F 0%,#413b54 100%);*/
+      background-image: radial-gradient(circle at 47% 9%, #45e694, #0057c5);
+}
+.col-item1 div.box-item:nth-child(odd) .item-img-div{
+   background: -webkit-linear-gradient(#f0fcff, #ffece1); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#f0fcff, #ffece1); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#f0fcff, #ffece1); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#f0fcff, #ffece1); /* 标准的语法 */
+ 
+}
+.col-item1 div.box-item:nth-child(even) .item-img-div{
+  background: -webkit-linear-gradient(#f0fcff, #ede2ff); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#f0fcff, #ede2ff); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#f0fcff, #ede2ff); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#f0fcff, #ede2ff); /* 标准的语法 */
+}
+.col-item2 div.box-item:nth-child(odd) .item-img-div{
+  background: -webkit-linear-gradient(#eefcff, #ddfff9); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#eefcff, #ddfff9); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#eefcff, #ddfff9); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#eefcff, #ddfff9); /* 标准的语法 */
+}
+.col-item2 div.box-item:nth-child(even) .item-img-div{
+  background: -webkit-linear-gradient(#eafbff, #e9fff0); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#eafbff, #e9fff0); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#eafbff, #e9fff0); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#eafbff, #e9fff0); /* 标准的语法 */
+}
+.col-item3 div.box-item:nth-child(odd) .item-img-div{
+  background: -webkit-linear-gradient(#effcff, #def6ff); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#effcff, #def6ff); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#effcff, #def6ff); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#effcff, #def6ff); /* 标准的语法 */
+}
+
+.col-item3 div.box-item:nth-child(even) .item-img-div{
+  background: -webkit-linear-gradient(#edfbff, #d6fff6); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#edfbff, #d6fff6); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#edfbff, #d6fff6); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#edfbff, #d6fff6); /* 标准的语法 */
+}
+.col-item4 div.box-item:nth-child(odd) .item-img-div{
+  background: -webkit-linear-gradient(#e8fbff, #e4ebff); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#e8fbff, #e4ebff); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#e8fbff, #e4ebff); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#e8fbff, #e4ebff); /* 标准的语法 */
+}
+.col-item4 div.box-item:nth-child(even) .item-img-div{
+   background: -webkit-linear-gradient(#eafbff, #e8ffee); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#eafbff, #e8ffee); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#eafbff, #e8ffee); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#eafbff, #e8ffee); /* 标准的语法 */
+}
+.box-item .content p{
+  margin-top:6px;
+  text-indent: 23px;
+}
+footer ul.social-buttons li a i {
+    margin-top: 8.5px;
+}
+footer ul.social-buttons li a {
+ color: #6a3581;
+background-color: #8efff2;
+}
+footer .bottom-footer {
+  background: linear-gradient(#fff4e8, #97f0ff);
+  color:#f49500 !important;
+}
+footer .bottom-footer p{
+  color:#f49500 !important;
+}
+footer .bottom-footer a{
+  color:#02483e;
+}
+.carousel-inner::before{
+  background: none;
+}
+/*#carousel-example-generic{
+  border-bottom: solid 1px #006858;
+}*/
+h6.mottoh6cn{
+  color:#fff;
+  font-size: 0.9em;
+}
+h1.mottoh1en{
+  text-transform:none;
+  color:#6be9ce;
+  margin-top:23px !important;
+  font-size: 1.2em;
+}
+h6.mottoh6auth{
+  color: #ebfffc;
+  font-size: 0.85em;
+}
+#more-papers{
+  background: #fffbde;
+  padding: 8px;
+  border: solid 1px;
+  border-radius: 6px;
+  cursor: hand;
+}
+img.item-img{
+  width: 30%!important;
+  display: inline;
+  padding: 5px;
+}
+.timeSpan,.searchPaperTime{
+  color:#cb8308;
+}
+.paperTitleh6{
+  text-align: center;
+  color: #9677c1;
+  font-size: 1.1em;
+}
+.paperDesc{
+  color:#bf9249;
+}
+a.readMoreText{
+  color:#f39f85 !important;
+}
+
+.fa-fire{
+  font-size: 1.25em;
+  padding: 6px;
+  color: #ff7e00;
+}
+.index-page .box-content.box-1{
+  margin-top: 36px;
+  min-height: 266px;
+}
+#search-paper{
+  position: absolute;
+    color: #fff;
+    font-size: 1.6em;
+   /* background: #0e9770;*/
+    padding: 5px;
+    border-radius: 50%;
+}
+input.nooutline,#select-category,#userName{
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom:solid 1px #9ffff5;
+}
+input.nooutline:focus,#select-category:focus,#userName:focus{
+    border-bottom: solid 1.5px #00e2db;
+}
+#search-paper-input{
+  display:inline-block;
+}
+#select-category{
+ display:inline-block;
+  width: 21.5%;
+}
+@media (min-width: 768px){
+  .container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse {
+      margin-right: 0;
+      margin-left: 0;
+      margin-top: -10px;
+  }
+  .modal-dialog{
+    margin-top:16% !important;
+  }
+  #search-paper{
+    right: 23px;
+    margin-top: 16px;
+  }
+  #search-paper-input{
+    width: 68%
+  }
+}
+#timerDiv{
+    top: 36%;
+  }
+@media (max-width: 568px){
+  #search-paper{
+    right: 69px;
+    top: 8px;
+  }
+  #search-paper-input{
+    width: 51.5%
+  }
+  #timerDiv{
+    top: 66%;
+  }
+  #carousel-example-generic{
+    margin-top: 39px;
+  }
+  .header-text{
+    top: 36%;
+  }
+}
+#paperMoreSwitchp{
+  padding: 2px 9px;
+  display: none;
+  text-align: center;
+}
+.paperMoreSwitchspan{
+  display: inline-block;
+  padding: 3px 9px;
+  margin-right: 6px;
+  background: #78e8d3;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 600;
+}
+span.nowShow{
+  background: #00d0a8;
+}
+#floatDiv{
+  z-index:111111;
+  top: 0;
+  height: 100%;
+  width:100%;
+  position:fixed;
+  background-size: 100% 100%;
+  background: #5f6f6b;
+  opacity: 0.9;
+}
+#loadtips{
+  margin-top: 40%
+}
+#loadingImg{
+    position: fixed;
+    top: 44.5%;
+    left: 46%;
+    z-index: 11111;
+    font-size: 3.95em;
+    color:#5cffc8;
+}
+.fa-loading-fa{
+    position: absolute;
+    font-size: 0.6em;
+}
+#fa-x{
+    border-radius: 36px;
+    animation-name:myfirst;
+    animation-duration:1s;
+    animation-timing-function:linear;
+    animation-delay:1s;
+    animation-iteration-count:infinite;
+    
+    animation-play-state:running;
+    /* Safari and Chrome: */
+    -webkit-animation-name:myfirst;
+    -webkit-animation-duration:1s;
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-delay:1s;
+    -webkit-animation-iteration-count:infinite;
+    
+    -webkit-animation-play-state:running;
+}
+@keyframes myfirst
+{
+    0%   {color:#ff1313;opacity: 1;transform:rotate(0deg)}/*top: 0%;*/
+    18%  {color:#ff7524;opacity: 0.8;transform:rotate(45deg)}
+    36%  {color:#ffa94f;opacity: 0.6;transform:rotate(99deg)}
+    58%  {color:#91fccf;opacity: 0.4;transform:rotate(150deg)}
+    76%  {color:#8cffd4;opacity: 0.65;transform:rotate(210deg)}
+    89%  {color:#2fffb3;opacity: 0.85;transform:rotate(295deg)}
+    100% {color:#11cc53;opacity: 1;;transform:rotate(360deg)}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+    0%   {color:#ff1313;opacity: 1;transform:rotate(0deg)}/*top: 0%;*/
+    18%  {color:#ff7524;opacity: 0.8;transform:rotate(45deg)}
+    36%  {color:#ffa94f;opacity: 0.6;transform:rotate(99deg)}
+    58%  {color:#91fccf;opacity: 0.4;transform:rotate(150deg)}
+    76%  {color:#8cffd4;opacity: 0.65;transform:rotate(210deg)}
+    89%  {color:#2fffb3;opacity: 0.85;transform:rotate(295deg)}
+    100% {color:#11cc53;opacity: 1;;transform:rotate(360deg)}
+}
+
+#fa-1{
+    top: 75px;
+    left: 0px;
+    font-size: 0.69em;
+}
+#fa-2{
+    top: -90px;
+    left: -8px;
+}
+#fa-3{
+    top: -46px;
+    left: -88px;
+    font-size:0.76em
+}
+#fa-4{
+    top: 39px;
+    left: -73px;
+    transform: rotate(41deg);
+    font-size: 0.67em;
+}
+#fa-5{
+    top: 26px;
+    left: 80px;
+    font-size: 0.68em;
+    transform: rotate(115deg);
+}
+#fa-6{
+    top: -50px;
+    left: 74px;
+    font-size: 0.66em;
+}
+.pwithno{
+  text-align: center;
+    margin-bottom: -16px;
+    font-size: 24px;
+    margin-top: -16px;
+}
+.warning{
+  color: #ff6b3c;
+}
+a.swith-nav-a{
+    margin-right: 6px;
+   display: block;
+    font-size: 16.5px;
+    float: left;
+    color: #cfd5cc;
+    padding: 7px 11px;
+    line-height: 23px;
+    background: #cefff4;
+    text-decoration: none;
+    border: solid 1px #87ffed;
+    border-bottom: solid 1px #44ffca;
+    border-radius: 50%;
+    font-weight: 700;
+}
+
+/*#swith-nav a:nth-child(2), #swith-nav a:nth-child(3) ,#swith-nav a:nth-child(4){ :nth-child(1)
+    margin-left: -39px;
+}
+*/
+
+ a.currentNav{
+    color: #ffa285;
+    text-shadow: 1px 4px 3px #475055;
+    background: #67f4d4;
+    font-weight: 700;
+    border: solid 1px #eac9ff;
+    border-bottom: solid 1px #d391ff;
+}
+
+#swith-nav{
+  /*margin-top: -33px;*/
+ /*min-height: 53px;
+    border-bottom: solid 1px #baebf6;*/
+}
+
+#swith-nav .fa-remove, #swith-nav .fa-google{
+padding: 3px;
+font-size:1.6em;
+}
+.fa-remove{
+color:red;
+}
+.fa-google{
+color:#057e73;
+}
+
+
+#toughWords-div ol {
+    padding-right: 12px;
+}
+#toughWords-div ol li {
+    border-bottom: 1px solid #74fac3;
+    padding: 5px 3px;
+    color: #00887d;
+}
+#wordPro .normalItem,#wordPhrases .wordTitle{
+    color:#0d6b5b;
+}
+.wordPro li,.wordPhrases li{
+    display: block;
+}
+#paper-section .heading3,#paper-section .heading5{
+    /*word-break: break-all;*/
+    font-family: serif;
+}
+#paper-section .heading3{
+    font-size: 1.36em;
+    color: #08607b;
+    -webkit-box-shadow: inset 0px -1px 43px #f0ded1;
+    box-shadow: inset 0px -1px 43px #f0ded1;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    padding: 5px;
+    border-left: solid 5px #ffac64;
+    text-align: center;
+}
+#paper-section .heading5{
+    font-size:1em;
+    color:#33d4e6;
+    padding: 6px;
+}
+.fixleft,.fixright{
+position: fixed;
+bottom: 21px;
+z-index: 1111;
+}
+.fixleft{
+  left: -1px;
+}
+.fixright{
+  right:-1px;
+}
+.arrow a{
+    color: #70f0f1;
+    font-size:25px;
+    padding: 4px 3px;
+    border-radius: 25px;
+}
+.arrow a:hover{
+     color:#00dbdc;
+     font-size: 28px；
+}
+.fa-arrow-right,.fa-arrow-left{
+    color: #32dfe0 !important;
+    padding:11px 5.3px;
+}
+#articleContent p{
+    text-indent: 23px;
+    color: #4a2d03;
+    font-size: 1.15em;
+}
+#articleContent p span{
+    text-indent: 3px;
+    font-size: 0.9em;
+    color: #906b33;
+}
+.title a.anormal{
+    font-size: 26px !important;
+    font-weight: initial;
+}
+#articleContent{
+    width: 86%;
+    margin-left: 7%;
+}
+#articleContent img{
+  max-width: 86%;
+}
+.pkeywords{
+  padding-left: 16px;
+  color: #914915;
+  padding-bottom: 3px;
+}
+#spanstatistics {
+    color: #089763;
+}
+.statistics-no ul li {
+    display: inline-block;
+    border: solid 1px #a5ccd9;
+    border-radius: 6px;
+    padding: 3px 5px;
+    margin-left: 3px;
+    margin-bottom: 5px;
+}
+.statistics-no, #spankeywords, #spansfocus {
+    display: block;
+    padding-top: 5px;
+}
+.statistics-no, #spansfocus {
+    color: #40e7d1;
+}
+.words-number {
+    padding: 5px;
+    font-weight: 600;
+}
+.clickWordsDict_title, .words-sep-dot {
+    color: #914915;
+    font-weight: 700;
+}
+#clickWordsDict {
+    padding: 6px;
+    display: none;
+    position: fixed;
+    top: -1px;
+    left: 0px;
+    right: 0px;
+    background: #fff;
+   /* min-height: 256px;*/
+    border-radius: 0px 0px 6px 6px;
+    /*color: #7310af;*/
+    z-index: 11111;
+    border-top: solid 1px #cafdff;
+    border-bottom: solid 1px #cafdff;
+    opacity: 0.96;
+}
+#createDate {
+    margin-top: -10px;
+    border-top: solid 1px #ddf1ff;
+    text-align: right !important;
+}
+.wordName {
+    font-size: 1.8em !important;
+    color: #3a6357 !important;
+}
+.wordTitle {
+    color: #b77b4f;
+}
+.fa-volume-up {
+    margin-left: 5px;
+    color: #7fd4da;
+}
+ul li {
+    list-style: none;
+}
+.wordExplanationCN li, .wordPro li, .wordPhrases li {
+    margin-left: -21px;
+    font-family: monospace;
+}
+#clickWordsDict h3{
+  font-size:1.2em;
+  color:#794e92;
+}
+.fa-volume-up:hover {
+    color: #12e6f5;
+}
+#paperListUl a,#paperListUl span.timespan{
+  display: block;
+  color: #6d47af;
+}
+#paperListUl li{
+    padding: 2px 5px;
+    border-bottom: solid 1px #5fddd9;
+   /* border-left: solid 1px #07c7b5;*/
+    margin-top: 5px;
+}
+.fa-arrow-circle-up{
+    color: #1caa67;
+    font-size: 24px;
+    position: fixed;
+    right: 6px;
+    bottom: -1px;
+}
+#dict-input-warpp{
+  width: 66%;
+    position: absolute;
+    left: 13%;
+    font-size: 1.5em;
+}
+#search-word-go{
+  position: absolute;
+    right: -16px;
+    margin-top: -35px;
+}
+.searchResult{
+    margin-top: 76px;
+    padding: 3px 23px;
+}
+#myModal button{
+  color:olive;
+}
+#viewsGreeting{
+  margin-top: 12px;
+  text-indent: 16px;
+  color:#3595a1;
+}
+#myModalLabel{
+  color:#6e6e1b;
+  font-size: 1.3em;
+}
+.find_key{
+      color: #29e6cb;
+}
+.box-content.box-1 .box-item {
+    border: 1px solid #cceeec;
+}
+#clickWordsDict_detail{
+  margin-left: 5%;
+}
+</style>
+  <!-- /////////////////////////////////////////Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" id="menu-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="https://lockeycheng.github.io"><i class="fa fa-github" style="padding-right:9px;font-size: 1.5em"></i><span class="usernameHold">LOCKEY</span></a>
+                <a href="javascript:void(0)"><span id="search-paper" class="fa fa-search"></span></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+          <li>
+                      <a class="page-scroll" href="../index.html">Home page</a>
+                    </li>
+          <li>
+                      <a class="page-scroll" href="../blog.html">Blog</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="../video/videojs-app/index.html">Video</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="../photograph/index.html">Photograph</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="./paper.html">Last Version</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+  <!-- Navigation -->
+
+  <!-- CAROUSEL -->
+  <div id="carousel-example-generic" class="carousel slide hidden-xs" data-ride="carousel" data-interval="4000">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="https://www.bing.com/az/hprichbg/rb/MoriBuilding_ZH-CN5143587469_1920x1080.jpg" alt="...">
+        <!-- Static Header https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jpg 
+    https://www.bing.com/az/hprichbg/rb/Pygmy3Toed_ZH-CN10141370191_1920x1080.jpg
+    https://cn.bing.com/az/hprichbg/rb/PuffinWales_ZH-CN12110916089_1920x1080.jpg
+
+        -->
+        
+        <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+           <!--  <h1 class="mottoh1en">So Short One's Life, Why Not Python</h1>
+            <h6 class="mottoh6auth">sdfsdfsdf</h6>
+            <h6 class="mottoh6cn">我发给日光灯管</h6> -->
+          </div>
+        </div><!-- /header-text -->
+       
+      </div>
+      <div class="item">
+         <!--<img src="https://cn.bing.com/az/hprichbg/rb/MODIS_ZH-CN14242381223_1920x1080.jpg" alt="...">
+          https://cn.bing.com/az/hprichbg/rb/AuroraPhotographer_ZH-CN11480495787_1920x1080.jpg
+          https://www.bing.com/az/hprichbg/rb/TurtleIndianOcean_ZH-CN9256087399_1920x1080.jpg
+          ./img/tuoniao-bing.jpg
+          https://cn.bing.com/az/hprichbg/rb/BlueShark_ZH-CN12265881842_1920x1080.jpg
+         -->
+       <img src="https://cn.bing.com/az/hprichbg/rb/MandelaMonument_ZH-CN8903823453_1920x1080.jpg" alt="...">
+
+        <!-- Static Header -->
+        <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+          </div>
+        </div><!-- /header-text 
+https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jpg 
+https://cn.bing.com/az/hprichbg/rb/UrbanLight_ZH-CN6248743710_1920x1080.jpg
+      -->
+      </div>
+      <div class="item">
+       <img src="https://cn.bing.com/az/hprichbg/rb/CometMoth_ZH-CN8038549923_1920x1080.jpg" alt="...">
+        <div class="header-text hidden-xs">
+          <div class="col-md-12 text-center">
+          </div>
+        </div><!-- /header-text -->
+      </div>
+    </div>
+    <!-- Controls 
+./img/marshroom-insect-bing.jpg
+    -->
+    <!--<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+    -->
+  </div> <!-- Carousel -->
+  <div id="swith-nav">
+   
+    <p><a href="javascript:void(0)" class="swith-nav-a currentNav fa fa-podcast" style="margin-left: 25%;" data-switch="latest"></a><a href="javascript:void(0)" class="swith-nav-a fa fa-wpforms"data-switch="paper"></a><a href="javascript:void(0)" class="swith-nav-a fa fa-list-alt" data-switch="list"></a><a href="javascript:void(0)" class="swith-nav-a fa fa-search-plus" data-switch="dictionary"></a></p>
+     <p class="noshow" id="search-input-div">
+      <input type="text" id="search-paper-input" placeholder="Type keywords to search" class="nooutline">
+      <select name="select-category" id="select-category">
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="all">All</option>
+        </select>
+      <span class="fa fa-remove"></span> <span class="fa fa-google" id="search-paper-go">o</span>
+      </p>
+    
+  </div>
+  <div id="page-content2">
+  
+    <!-- ////////////Content Box 01 -->
+    <section class="box-content box-1 section-content" id="latest-section">
+      <div class="container" id="paperContainer">
+      </div>
+      <p id="paperMoreSwitchp"><span class="paperMoreSwitchspan" data="latestPapers">1</span></p>
+      <p align="center"><span id="more-papers"><span class="fa fa-paw"></span> More Papers <span class="fa fa-paw"></span></span></p>
+    </section>
+    <section class="box-content box-1 paper-content section-content noshow" id="paper-section">
+      <div id="toughWords-div" class="touchAvoid" style="
+    display: none;
+    position: absolute;
+    left: -8px;
+    margin-top: 72px;
+    background: #fff;">
+    <ol id="wordsOl">
+    </ol>
+</div>
+    <div id="clickWordsDict" class="touchAvoid">
+      <p><a class="fa fa-remove showNone" style="
+    margin-top: 0px;
+    position: absolute;
+    right: 3px;
+    font-size: 1.6em;
+    padding: 5px 6.5px;
+    border-radius: 34px;
+    color: #ff8a6a;
+    border-left: solid 1px #14f7ff;
+    border-right: solid 1px #14f7ff;
+"></a></p>
+      <p class="wordName" align="center">altogether</p>
+          <div id="clickWordsDict_detail">
+            <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
+            <p class="wordPro_p"><ul class="wordPro"></ul></p>
+
+            <p class="wordExplanationCN_p"><span class="wordTitle">释义：</span></p>
+            <p class="wordExplanationCN_p"><ul class="wordExplanationCN"></ul></p>
+            <p class="basic_dict_error error"></p>
+          </div>
+    </div>
+    <div id="page-content" class="single-page">
+        <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
+        <h5 class="heading5" id="createDate">——By Lockey</h5>
+        
+        <!-- <p class="pkeywords">[ Key Words ]<span id="spankeywords"></span></p> -->
+        <p class="pkeywords"><span id="spanstatistics"></span></p>
+        <!-- <p class="pkeywords"><span id="spansfocus"></span></p> -->
+        <!-- <p class="pkeywords">[ Article Content ]</p> -->
+        <!-- <h5 class="heading5" style="
+   text-align: left;
+    margin-top: 1px;
+    margin-bottom: -5px;
+    color: #914915;
+    border-bottom: solid 1px #94adff;
+" id="foucus_suggest">Article Content</h5> -->
+
+        <div id="articleContent"></div>
+        <img src="./img/zhi.jpg" style='width: 50%;margin-left: 25%;border-radius: 9%'>
+    </div>
+    <style type="text/css">
+      #timerDiv{
+        position: fixed;
+        right:0;
+        opacity: 0.88;
+      }
+      #timerDiv span{
+        display: block;
+        text-align: center;
+        padding: 2px 6px;
+        font-size: 1.2em;
+      }
+      #timerDiv .paperNos{
+        color: #ffffff;
+        background: #c96508;
+        border-radius: 36px 0px;
+      }
+      #runningTimer{
+    color: #fff;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #000000),linear-gradient(70deg, #964100 32%, #03846a);
+        border-radius: 2px;
+      }
+    </style>
+    <div id="timerDiv">
+      <span class="paperNos">1</span>
+      <span id="runningTimer">00:00</span>
+    </div>
+    <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"></span></a></span>
+    <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper"><span  class="fa fa-arrow-right"></span></a></span>
+    </section>
+    <section class="box-content box-1 dictionary section-content noshow" id="dictionary-section">
+     
+      <p id="dict-input-warpp">
+        
+        <input type="text" id="lookup-dict-input" placeholder="Type word to look up" class="nooutline">
+        <span class="fa fa-google" id="search-word-go" for="lookup-dict-input">o</span>
+      </p>
+      <div class="searchResult">
+        <div>
+            <p class="wordName" align="center">word</p>
+            <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
+            <p class="wordPro_p"><ul class="wordPro"></ul></p>
+
+            <p class="wordExplanationCN_p"><span class="wordTitle">释义：</span></p>
+            <p class="wordExplanationCN_p"><ul class="wordExplanationCN"></ul></p>
+
+            <p class="wordPhrases_p"><span class="wordTitle">短语：</span></p>
+            <p class="wordPhrases_p"><ul class="wordPhrases"></ul></p>
+            <!-- <p><span class="wordTitle">释义（英）：</span><span class="wordExplanationEG"></span></p> -->
+            <!-- <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
+            <p><span class="wordTitle">近义：</span><span class="similar"></span></p>
+            <p><span class="wordTitle">反义：</span><span class="reverse"></span></p> -->
+            <div id="centences">
+              
+            </div>
+        </div>
+    </div>
+    </section>
+     <section class="box-content box-1 utils section-content noshow" id="utils-section">
+        <div id="paperSearchResult">
+          <ol id="paperListUl">
+            
+          </ol>
+          <p align="center"></p>
+          <p id="searchMoreSwitchp" align="center">Nothing to SHOW!</p>
+        </div>
+    </section>
+  </div>
+  
+  <!-- FOOTER -->
+  <footer>
+    <div class="bottom-footer">
+      <div class="container">
+        <div class="row">
+           <div class="col-md-4">
+            <ul class="list-inline social-buttons">
+
+              <li><a href="https://blog.csdn.net/lockey23" target="_blank"><i class="fa fa-edit ibold"></i></a></li>
+             <li><a href="#"><i class="fa fa-twitter"></i></a></li> 
+             <li><a href="https://www.facebook.com/chen.yang.98031506"><i class="fa fa-facebook"></i></a></li>
+             <li><a href="https://github.com/LockeyCheng" target="_blank"><i class="fa fa-github"></i></a></li>
+             <li><a href="https://lockeycheng.github.io" target="_blank"><i class="fa fa-github-alt"></i></a></li>     
+             <li><a href="mailto:lockey23i@gmail.com"><i class="fa fa-google-plus"></i></a></li>
+
+
+
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <p><span>Copyright <i class="fa fa-copyright"></i> for ever and ever. All rights reserved by<a target="_blank" href="https://lockeycheng.github.io"> Lockey23</a></p>
+          </div>
+          <!-- <div class="col-md-4">
+            <p>All supported by <a href="mailto:iooiooi23@163.com;lockey23i@gmail.com">@Lockey23</p>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div id="floatDiv" class="overlap">
+  <div>
+    <h5 align="right"  id="closeFloat"><i class="fa fa-quora" alt="close" style="font-size:1.6em;margin-right: 13px;margin-top:-5px;color:#08d6c5">t</i>
+    </h5>
+  </div>
+  <div id="loadtips">
+    <div id="loadingImg">
+      <div id="fa-5" class="fa-loading-fa"><i class="fa fa-github"></i></div>
+      <div id="fa-4" class="fa-loading-fa"><i class="fa fa-firefox"></i></div>
+      <div id="fa-2" class="fa-loading-fa"><i class="fa fa-free-code-camp"></i></div>
+      <div id="fa-x" class="fa-loading-fa"><i class="fa fa-chrome"></i></div>
+      <div id="fa-1" class="fa-loading-fa"><i class="fa fa-github-alt"></i></div>
+      <div id="fa-3" class="fa-loading-fa"><i class="fa fa-twitter"></i></div>
+      <div id="fa-6" class="fa-loading-fa"><i class="fa fa-google-plus"></i></div>
+    </div>
+      <!-- <img src="http://dribbble.s3.amazonaws.com/users/121337/screenshots/1024835/loading2.gif"> -->
+    <h5 align="center" id="successIcon" style="margin-top: -10%;display: none;font-size:4em;color:#5cdc61"><i class="fa fa-check-circle"></i></h5>
+    <h5 align="center" id="normalTips_free-code-camp" style="margin-top: -10%;display: none;font-size:4em;color:#13da13"><i class="fa fa-free-code-camp"></i></h5>
+    <h5 align="center" id="wariningIcon" class="warning" style="margin-top: -10%;display: none;font-size:4em;color:#ffa500"><i class="fa fa-warning"></i></h5>
+    <h3 align="center" id="loadWords"></h3></div>
+</div>
+<a href="#carousel-example-generic" class="fa fa-arrow-circle-up"></a>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="margin-top: 36%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <h6 class="modal-title" id="myModalLabel"></h6>
+        <p id="viewsGreeting"></p>
+      </div>
+      <div class="modal-body">
+       <input type="text" id="userName" placeholder="Add your name" class="usernameHoldInput">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+        OK
+        </button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal -->
+</div>
+  <!-- jQuery -->
+  <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">
+    imgArr = [
+'https://www.bing.com/az/hprichbg/rb/GeorgeMeade_EN-US9381168835_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/MNFireworks_EN-US9611301754_1920x1080.jpg',''
+    ]
+    var readTimer = null
+    var supposeTime = null
+    var today = new Date()
+    var currentPaperFile = null
+    var year = today.getFullYear()
+    var month = today.getMonth()+1
+    var day = today.getDate()
+    var timeSplit = Date().split(" ")
+    var hms = timeSplit[4]
+    var hourNow = hms.slice(0,2)
+    if(hourNow>=6 && hourNow<=11){
+        var greeting = 'Good Morning!'
+    }else if(hourNow>11 && hourNow<=15){
+        var greeting = 'Good Midday!'
+    }else if(hourNow>15 && hourNow<=19){
+        var greeting = 'Good Afternoon!'
+    }else if(hourNow>19 && hourNow<=23){
+        var greeting = 'Good Night!'
+    }else{
+        var greeting = 'Nice Dream!'
+    }
+    if(!localStorage.lastReadTime){
+      localStorage.lastReadTime = today
+    }
+    if(!localStorage.reads){
+        localStorage.reads = ''
+    }
+    if(localStorage.username){
+        var nameis = localStorage.username
+        var extrainfo = '!'
+        if(localStorage.username=='王宁'){
+            nameis = nameis.slice(1,2)
+            extrainfo = '. Please post the screen shot to me for check!'
+        }
+        greeting = greeting.slice(0,-1)+', '+nameis+extrainfo
+    }
+    $('#myModalLabel').html(greeting)
+    var totalPaper = 0
+    var testAlpha = /^[a-zA-Z]+$/i
+    var mottoArr = [
+          {'en':"I am not afraid of tomorrow for I have seen yesterday and I love today.",'auth':"— William Allen White",'cn':'不畏惧明天只因我已见过昨天并且热爱今天。'},
+          {'en':"Other men live to eat, while I eat to live. ",'auth':"— Socrates",'cn':"别人为食而生存，我为生存而食。"},
+          {'en':"Easy come, easy go. ",'auth':"— Hazlitt",'cn':"易得者亦易失。"},
+          {'en':"The darkest hour is that before the dawn. ",'auth':"— Fuller",'cn':"黎明前的时分是最黑暗的。"},
+          {'en':"Cowards die many times before their deaths. ",'auth':"— Julius Caesar",'cn':"懦夫在未死之前，已身历多次死亡的恐怖了。"},
+          {'en':"Truth is beautiful. Withoutdoubt; and so are lies.",'auth':"—Emerson.",'cn':"真理是美的；毫无疑问，谎言也是如此。"},
+          {'en':"One can not see what itself in until leave it.",'auth':"—Lockey.",'cn':"不识庐山真面目，只缘身在此山中。"},
+          {'en':'Courage isn’t having the strength to go on, it’s going on when you exhausted.','auth':"– Napoleon Bonaparte.",'cn':"勇气就是坚持到精疲力竭。"},
+          {'en':'The crisis of today is the joke of tomorrow.','auth':'– H. G. Wells','cn':'今天的危机会是明天的趣事。'},
+          {'en':'Talent without working hard is nothing.','auth':'– Cristiano Ronaldo','cn':'没有努力，再好的天分也无济于事。'},
+          {'en':'You can avoid reality, but you cannot avoid the consequences of avoiding reality.','auth':'– Ayn Rand, Novelist','cn':''}//你可以逃避现实，但你不能逃避因逃避现实所产生的后果。
+        ]
+    var type2Dict={
+          'default':'Paper Assistent',
+          'economist_basic':'The Economist ',
+          'economist_model':'The Economist ',
+          'cet46_basic':'CET-4&&6 ',
+          'cet46_model':'CET-4&&-6 ',
+          'pupil_basic':'The Pupil ',
+          'pupil_model':'The Pupil '
+        }
+    var loadedDict = []
+    var toughCount = 0
+    var noTomonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    var morePaperLink = 'latestPapers'
+    var moreTimes = 0
+    var hideFloat = 0
+    var triggerWord = null
+    var dictData={'default':null}
+    var paperOload = null
+    var paperListJson = null
+    var paperRecords = null
+    var searchOuts = []
+    var clickWords = []
+    if(!localStorage.views){
+      localStorage.views = 0
+    }
+    
+    if(localStorage.username){
+      $('.usernameHold').html(localStorage.username)
+      $('.usernameHoldInput').val(localStorage.username)
+      }
+      var paperWithTime = localStorage.views+'th('+localStorage.lastReadTime+')'
+      if(localStorage.views == 0){
+          var aaaa = 'Welcome here, wish you a jolly journey! May you share this App with your buddies.'
+      }else if(localStorage.views>0 && localStorage.views<=9){
+          var aaaa = 'It is the ' +paperWithTime+' paper you read here, keep on! May you share this App with your buddies.'
+      }else if(localStorage.views>9 && localStorage.views<=30){
+          var aaaa = 'Wonderfull! You have completed ' +paperWithTime+' papers here, just carry on! May you share this App with your buddies.'
+      }else if(localStorage.views>30 && localStorage.views<=99){
+          var aaaa = 'AMAZING! You has come to the ' +paperWithTime+' paper! May you share this App with your buddies.'
+      }else{
+          var aaaa = 'Splendiferous! You has come to the ' +paperWithTime+' paper, merely nobody ahead of you! May you share this App with your buddies.'
+      }
+      $('#viewsGreeting').html(aaaa)
+      $('.paperNos').html(localStorage.views)
+    
+    var youdaoSentenceAudio = 'https://dict.youdao.com/dictvoice?audio='//+sentence+&le=eng
+    var Request = new Object();
+      Request = GetRequest();
+      try{
+        var defaultSource = Request['source']
+      }catch(err) {
+        console.log(err,'source not found')
+      }
+      if(!defaultSource){
+        defaultSource = 'The_Economist'
+      }
+    function dealWithFloatDiv(words,img,warningIcon,ifhide,successIcon,freecode){
+              $('#loadWords').html(words);
+              if(img){
+                $('#loadingImg').show()
+              }else{
+                $('#loadingImg').hide()
+              }
+              if(warningIcon){
+                $('#wariningIcon').show()
+              }else{
+                $('#wariningIcon').hide()
+              }
+               if($('#floatDiv').is(':hidden')){
+                $('#floatDiv').fadeIn(123)
+               }
+               if(freecode){
+                $('#normalTips_free-code-camp').show()
+               }else{
+                $('#normalTips_free-code-camp').hide()
+               }
+               if(successIcon){
+                $('#successIcon').show()
+               }
+              if(ifhide){
+                setTimeout(function(){
+                  $('#floatDiv').fadeOut(256)
+                  if(hideFloat <= 0){
+                    if(successIcon){
+                        $('#successIcon').hide()
+                      }
+                      $('.overlap').fadeOut(456)
+                  }
+                      
+                },600)
+              }
+              
+        }
+    function getPageSize() {
+            var xScroll, yScroll;
+            if (window.innerHeight && window.scrollMaxY) {
+                xScroll = window.innerWidth + window.scrollMaxX;
+                yScroll = window.innerHeight + window.scrollMaxY;
+            } else {
+                if (document.body.scrollHeight > document.body.offsetHeight) { // all but Explorer Mac    
+                    xScroll = document.body.scrollWidth;
+                    yScroll = document.body.scrollHeight;
+                } else { // Explorer Mac...would also work in Explorer 6 Strict, Mozilla and Safari    
+                    xScroll = document.body.offsetWidth;
+                    yScroll = document.body.offsetHeight;
+                }
+            }
+            var windowWidth, windowHeight;
+            if (self.innerHeight) { // all except Explorer    
+                if (document.documentElement.clientWidth) {
+                    windowWidth = document.documentElement.clientWidth;
+                } else {
+                    windowWidth = self.innerWidth;
+                }
+                windowHeight = self.innerHeight;
+            } else {
+                if (document.documentElement && document.documentElement.clientHeight) { // Explorer 6 Strict Mode    
+                    windowWidth = document.documentElement.clientWidth;
+                    windowHeight = document.documentElement.clientHeight;
+                } else {
+                    if (document.body) { // other Explorers    
+                        windowWidth = document.body.clientWidth;
+                        windowHeight = document.body.clientHeight;
+                    }
+                }
+            }       
+            // for small pages with total height less then height of the viewport    
+            if (yScroll < windowHeight) {
+                pageHeight = windowHeight;
+            } else {
+                pageHeight = yScroll;
+            }    
+            // for small pages with total width less then width of the viewport    
+            if (xScroll < windowWidth) {
+                pageWidth = xScroll;
+            } else {
+                pageWidth = windowWidth;
+            }
+            arrayPageSize = new Array(pageWidth, pageHeight, windowWidth, windowHeight);
+            return arrayPageSize;
+        }
+    function GetRequest() {
+          var url = location.search; //获取url中"?"符后的字串
+           var theRequest = new Object();
+           if (url.indexOf("?") != -1) {
+              var str = url.substr(1);
+              strs = str.split("&");
+              for(var i = 0; i < strs.length; i ++) {
+                 theRequest[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+              }
+           }
+           return theRequest;
+        }
+    function wordSearch(value,basicLookup){
+      dealWithFloatDiv('',true,false,true,false)
+              if(!value){
+                var value = $('#lookup-dict-input').val().trim();
+                if(!value.length){
+                     $('.search-input').focus()
+                    return false
+                }
+                if(!testAlpha.test(value)){
+                    var tips = '<span class="error">[' + value + ']</span> Illegal input, must be English word!'
+                    dealWithFloatDiv(tips,false,true,true)
+                    return false
+                }
+              
+                if (value.length == 1){
+                  dealWithFloatDiv('Please Remember THE 26 : A~B~C~D~E~F~G~H~I~J~K~L~M~N~O~P~Q~R~S~T~U~V~W~X~Y~Z~~~!',false,false,false,false,true)
+                  return false
+                }
+              }
+                var valueO = value.toLocaleLowerCase()
+                var valueArr = [valueO]
+                value = valueO.slice(-4)
+                if(value.match("ies") || value.match("ied")){
+                    valuetmp = valueO.slice(0,-3)+'y'
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("ing")){
+                    valuetmp = valueO.slice(0,-3)
+                    valueArr.push(valuetmp)
+                    valuetmp += 'e'
+                    valueArr.push(valuetmp)
+                }
+                var lastStr = valueO.slice(-1)
+                if(lastStr == 's'){
+                    valuetmp = valueO.slice(0,-1)
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("tion")){
+                    valuetmp = valueO.slice(0,-4)
+                    valueArr.push(valuetmp)
+                    value += 'te'
+                    valueArr.push(valuetmp)
+                }
+                lastStr = valueO.slice(-2)
+                if(lastStr == 'ed'){
+                    valuetmp = valueO.slice(0,-2)
+                    valueArr.push(valuetmp)
+                    valuetmp += 'e'
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("est")){
+                    valuetmp = valueO.slice(0,-3)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-4)
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("ers")){
+                    valuetmp = valueO.slice(0,-3)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-2)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-1)
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("ly")){
+                    valuetmp = valueO.slice(0,-1)
+                    valueArr.push(valuetmp)
+                    valuetmp = valueO.slice(0,-2)
+                    valueArr.push(valuetmp)
+                }
+                if(value.match("ily")){
+                    valuetmp = valueO.slice(0,-3) + 'y'
+                    valueArr.push(valuetmp)
+                }
+                try{
+                    var jsonDataBasic = dictData['default']
+                    for(var item in valueArr){
+                      value = valueArr[item]
+                      if(jsonDataBasic && jsonDataBasic[value]){
+                        break
+                      }
+                      if(dictData['economist_basic']){
+                        jsonDataBasic = dictData['economist_basic']
+                      }
+                      if(jsonDataBasic[value]){
+                        break
+                      }
+                      if(!jsonDataBasic[value] && dictData['cet46_basic']){
+                          jsonDataBasic = dictData['cet46_basic']
+                      }
+                      if(jsonDataBasic[value]){
+                        break
+                      }
+                      
+                    }
+                    if(jsonDataBasic[value]){
+                      $('.wordName').text(value)
+                      try{
+                      var proEn = jsonDataBasic[value]['pron']['peg']
+                      var proAm = jsonDataBasic[value]['pron']['pam']
+                    } catch(err) { 
+                        var proEn = jsonDataBasic[value]['pro_en']
+                      var proAm = jsonDataBasic[value]['pro_am']
+                    }
+                      var proLi = ''
+                      if(proEn){
+                        $('.wordPro_p').show()
+                        if(proEn.match("英")){
+                          proLi += '<li>'+proEn+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }else{
+                          proLi += '<li><span class="wordTitle">英 </span>'+proEn+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }
+                      }else{
+                        $('.wordPro_p').hide()
+                      }
+                      if(proAm){
+                        if(proAm.match("美")){
+                          proLi += '<li>'+proAm+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }else{
+                          proLi += '<li><span class="wordTitle">美 </span>'+proAm+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }
+                      }
+                      $('.wordPro').html(proLi)
+                      var exLi = ''
+                      var exArr = jsonDataBasic[value]['ex']
+                      for(var i in exArr){
+                          exLi += '<li>'+exArr[i]+'</li>'
+                      }
+                      $('#searchForm').hide()
+                      if(exLi){
+                        $('.wordExplanationCN_p').show()
+                        $('.wordExplanationCN').html(exLi)
+                      }else{
+                        $('.wordExplanationCN_p').hide()
+                      }
+                      if(basicLookup){
+                        return false
+                      }
+                      $('.searchResult').show()
+                      try{
+                            var jsonDataModel = dictData['default']
+                            if(!jsonDataModel[value]){
+                              if(dictData['economist_model']){
+                                jsonDataModel = dictData['economist_model']
+                              }
+                              if(!jsonDataModel[value] && dictData['cet46_model']){
+                                jsonDataModel = dictData['cet46_model']
+                              }
+                            }
+                             try{
+                              var example = jsonDataModel[value]['eg2']
+                             }catch(err) { 
+                              console.log(err)
+                               var example = jsonDataModel[value]['eg']
+                            }
+                            
+                            if(example){
+                              $('#centences').show()
+                                var toFillSentence = ''
+                                 for(var i in example){
+                                  var nu = i*1+1
+                                  toFillSentence += '<p><span class="wordTitle">例句'+nu+'：</span><span class="wordSentenceEn">'+example[i][0]+'</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">'+example[i][1]+'</span></p>'
+                                 }
+                                 $('#centences').html(toFillSentence)
+                            }else{
+                               $('#centences').hide()
+                            }
+                            if(jsonDataModel[value]['wp'] != []){
+                              $('.wordPhrases_p').show()
+                              var phrases = jsonDataModel[value]['wp']
+                              var phraseLi = ''
+                              var no = 0
+                              for(var item in phrases){
+                                no += 1
+                                phraseLi += '<li><span class="wordTitle">'+no+'：</span><span class="wordSentenceEn">'+item+'</span></li><li class="phraseCn"><span class="wordSentenceCn">'+phrases[item]+'</span></li>'
+                              }
+                              $('#wordPhrases').html(phraseLi)
+                            }else{
+                              $('.wordPhrases_p').hide()
+                            }
+                          } catch(err) { 
+                              console.log('No model sentence and phrase!')
+                              return false
+                          }
+                          
+                      }else{
+                        if(basicLookup){
+                          $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
+                          $('.basic_dict_error').show()
+                          return false
+                        }
+                          var tips = '<span class="error">' + value + '</span> meets 404!'
+                          $('#search-input').val('')
+                          dealWithFloatDiv(tips,false,true,true)
+                          
+                      }
+                  
+                }catch(err) { 
+                  if(basicLookup){
+                    $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
+                    $('.basic_dict_error').show()
+                    return false
+                  }
+                  dealWithFloatDiv(tips,false,true,true)
+                  return false
+                }
+        }
+    function fillBasicLookup(value){
+  var value = value
+  var jsonDataBasic = dictData['default']
+  if(jsonDataBasic[value]){
+                      $('.wordName').text(value)
+                      try{
+                      var proEn = jsonDataBasic[value]['pron']['peg']
+                      var proAm = jsonDataBasic[value]['pron']['pam']
+                    } catch(err) { 
+                        var proEn = jsonDataBasic[value]['pro_en']
+                      var proAm = jsonDataBasic[value]['pro_am']
+                    }
+                      var proLi = ''
+                      if(proEn){
+                        $('.wordPro_p').show()
+                        if(proEn.match("英")){
+                          proLi += '<li>'+proEn+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }else{
+                          proLi += '<li><span class="wordTitle">英 </span>'+proEn+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }
+                      }else{
+                        $('.wordPro_p').hide()
+                      }
+                      if(proAm){
+                        if(proAm.match("美")){
+                          proLi += '<li>'+proAm+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }else{
+                          proLi += '<li><span class="wordTitle">美 </span>'+proAm+'<span class="fa fa-volume-up wordsVoice"></span></li>'
+                        }
+                      }
+                      $('.wordPro').html(proLi)
+                      var exLi = ''
+                      var exArr = jsonDataBasic[value]['ex']
+                      for(var i in exArr){
+                          exLi += '<li>'+exArr[i]+'</li>'
+                      }
+                      if(exLi){
+                        $('.wordExplanationCN_p').show()
+                        $('.wordExplanationCN').html(exLi)
+                      }else{
+                        $('.wordExplanationCN_p').hide()
+                      }
+              $('#clickWordsDict').slideDown(256)
+        }
+}
+    function getPaperList(){
+      $('#floatDiv').slideDown(356)
+      
+      $.ajax({
+                type:"GET",
+                url: './'+defaultSource+'/amore/'+morePaperLink+'.json',
+                data: null,
+                dataType:'json',
+                cache:false,
+                success: function(data) {
+                  $('.resultDivClass').slideUp(1000)
+                  paperListJson = data['papers']
+                  var listLen = paperListJson.length
+                  var paperNo = 0
+                  if(moreTimes == 0){
+                    var hot = '<span class="fa fa-fire" tile="latest paper"></span>'
+                  }else{
+                    var hot = ''
+                  }
+                  
+                  var windowHW = getPageSize()
+                  if(windowHW[0] >500 || morePaperLink=="latestPapers"){
+                    console.log('cellphone')
+                  }else{
+                    console.log('computer')
+                  }
+                  var resultDiv = '<div class="row resultDivClass" id="'+morePaperLink+'">'
+                  var item1='<div class="col-md-3 col-item1">'
+                  var item2='</div><div class="col-md-3 col-item2">'
+                  var item3='</div><div class="col-md-3 col-item3">'
+                  var item4='</div><div class="col-md-3 col-item4">'
+                  for(var i=0;i<listLen;i++){
+                    if(i==0){
+                      paperOload = paperListJson[i]['link']
+                    }
+                    var link = paperListJson[i]['nos']
+                    if(!link){
+                      link = paperListJson[i]['link']
+                      let arr = link.split('_')
+                      if(arr[1].length == 1){
+                          arr[1] = '0'+arr[1]
+                      }
+                      if(arr[2].length == 1){
+                        arr[2] = '0'+arr[2]
+                      }
+                      link = arr.join('').slice(0,-5)
+                      
+                    }
+                    
+                    var paperLink = './paper.html?paper='+link
+                    var paperJsonDate = paperListJson[i]['date']
+                    var timeArr = paperJsonDate.slice(0,10).split('-')
+                    var hms = paperJsonDate.slice(10)
+                    var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+' '+timeArr[0] + hms
+                    var imgSrc = '<img src="'+paperListJson[i]['img']+'" class="img-responsive item-img"/>'
+                    if(localStorage.username == 'Lockey23' || !paperListJson[i]['img']){
+                        imgSrc = ''
+                    }
+                    var fillDiv = '<div class="box-item"><div class="item-img-div"><span class="timeSpan">'+imgSrc+dateStr+hot+'</span><h6 class="paperTitleh6"><a class="loadPage" href="javascript:void(0)" data-link="'+paperListJson[i]['link']+'">'+paperListJson[i]['title']+'</a></h6><p class="paperDesc">'+paperListJson[i]['desc']+' ...</p><a class="readMoreText loadPage" href="javascript:void(0)" data-link="'+paperListJson[i]['link']+'">Read More <span class="fa fa-hand-o-right"></span></a></div></div>'
+                    if(i%4 ==0){
+                      item1 += fillDiv
+                    }else if(i%4 ==1){
+                      item2 += fillDiv
+                    }else if(i%4 ==2){
+                      item3 += fillDiv
+                    }else if(i%4 ==3){
+                      item4 += fillDiv
+                    }else{
+                      console.log(i+' error')
+                    }
+                  }
+                  moreTimes ++
+                  var finalResult = resultDiv+item1+item2+item3+item4+'</div><p class="pwithno">'+moreTimes+'</p><hr/></div>'
+                  $('#paperContainer').append(finalResult)         
+                  if(moreTimes > 1){
+                    $('span.nowShow').removeClass('nowShow')
+                    var tmp =  '<span class="paperMoreSwitchspan nowShow" data="'+morePaperLink+'">'+moreTimes+'</span>'
+                    $('#paperMoreSwitchp').append(tmp)
+                  }
+                   morePaperLink = data['more'].slice(0,-5)
+                   $('#floatDiv').fadeOut(556)
+                },
+                error: function(data) {
+                    var listInfo = '<span class="warning">Sorry, but no more papers!</span'
+                    dealWithFloatDiv(listInfo,false,true,false,false)
+                  
+                }
+      })
+    }
+    var pquery = false
+    var queryPaper = Request['paper']
+    if(queryPaper){
+      getData('type',true,false)
+    }
+        function getData(type,ifmd,filename){
+          hideFloat +=1
+          var filename = filename
+          if(ifmd){
+            var queryPaper = Request['paper']
+            if(queryPaper && pquery == false){
+              pquery = true
+              var year = queryPaper.slice(0,4)
+              var month = queryPaper.slice(4,6)*1
+              var day = queryPaper.slice(6,8)*1
+              var no = queryPaper.slice(8)
+              filename = year+'_'+month+'_'+day+'_'+no*1+'.json'
+            }else{
+              filename = paperOload
+              var dateArr = filename.split('_')
+              var year = dateArr[0]
+              var month = dateArr[1]
+              var day = dateArr[2]
+            }
+
+            var getUrl = './'+defaultSource+'/a'+year+'/a'+month+'/'+filename
+            var dataType = 'json'
+            dealWithFloatDiv('',true,false,false)
+          }else{
+            var toDict = type2Dict[type]
+            //var tips = '<span class="normalItem">'+toDict+' ...</span>'
+            dealWithFloatDiv('',true,false,false)
+            var baseUrl = './dictionary/'
+            //var baseUrl = './explanations/'
+            var getUrl = baseUrl+type+'.json'
+             var dataType = 'json'
+             }
+          $.ajax({
+                type:"GET",
+                url: getUrl,
+                data: null,
+                dataType:dataType,
+                cache:false,
+                success: function(data) {
+                  hideFloat -= 1
+                  if(ifmd){
+                        currentPaperFile = filename
+                        var content = data
+                        var converter = new showdown.Converter();
+                        var html = converter.makeHtml(content['content']);
+                        document.getElementById("articleContent").innerHTML = html;
+                        clickWords = []
+                        try{
+                          var statistics = content['paperStatistics']
+                          var wordsSpan = ''
+                          var keyWords = statistics['keywords']
+                          var keyArr = keyWords.split(',')
+                          var keyLen = keyArr.length
+                          var touchWords = content['assistent']
+                          for(i=0;i<keyLen;i++){
+                            var preDot = '<li class="keyword-span"> '
+                            if (keyArr[i] in touchWords){
+                                preDot = '<li class="keyword-span">﹡'
+                            }
+                            wordsSpan += preDot+keyArr[i]+'</li>'
+                          }
+                          // var wordsSpan = keyArr.join(', ')
+                          //$('#spankeywords').html(wordsSpan)
+                          var wordsLis = ''
+                          toughCount = 0
+                          for(let word in touchWords){
+                              toughCount += 1
+                              wordsLis += '<li>'+word+'</li>'
+                          }
+                          $('#toughWords-div').find('ol').html(wordsLis)
+
+                          var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-opencart" id="showTough"> Suggested Focus: </span></span><span class="words-number">'+statistics['suggestedfocus']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-slideshare" id="showTough">   Advanced Words: </span></span><span class="words-number">'+toughCount+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Words Set: </span><span class="words-number">'+statistics['wordsset']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Total Words: </span><span class="words-number">'+statistics['allwords']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span><ul style="padding: 0;margin-top: 8px;margin-bottom: 3px;">'+wordsSpan+'</ul></span>'
+                          supposeTime = statistics['suggestedfocus'].slice(0,2)*0.69
+                          //<span class="statistics-no"><span class="clickWordsDict_title">Article Content:</span></span>
+                          $('#spanstatistics').html(wordsData)
+
+                          if(readTimer != null){
+                            window.clearInterval(readTimer)
+                          }
+                            $('#runningTimer').text('00:00')
+                            readTimer = setInterval(function(){
+                             if(!$('#paper-section').is(':hidden')){
+                              let tm = $('#runningTimer').text()
+                              let arr = tm.split(':')
+                              var mm = arr[0]
+                              var ss = arr[1]
+                              if(ss== 60){
+                                  ss = '00'
+                                  mm = mm *1 +1
+                                  if(mm <10){
+                                    mm = '0'+mm.toString()
+                                  }
+                              }else{
+                                ss = ss*1 +1
+                                if(ss<10){
+                                  ss = '0'+ss.toString()
+                                }
+                              }
+                              $('#runningTimer').text(mm+':'+ss)
+                            }
+                          },1000)
+                          
+                           
+                           
+                          //$('#foucus_suggest').html('<span class="clickWordsDict_title">Suggested Focus: </span>'+statistics['suggestedfocus']+'</span>')
+                        }catch(err){
+                          console.log(err)
+                        }
+                        
+                        $('#mainTitle').html(content['title'])
+                        var paperJsonDate = content['date']
+                        var timeArr = paperJsonDate.slice(0,10).split('-')
+                        var hms = paperJsonDate.slice(10)
+                        var dateStr = '-- '+noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+' '+timeArr[0] + hms
+                        $('#createDate').html(dateStr)
+                        $('#lastArt').attr('data-link',content['last'])
+                        $('#nextArt').attr('data-link',content['next'])
+                        dictData['default'] = content['assistent']
+                        dealWithFloatDiv('',true,false,true,false)
+                        if($('#paper-section').is(':hidden')){
+                          $('.swith-nav-a').eq(1).trigger('click')
+                        }
+                  }else{
+                     dictData[type] = data
+                     loadedDict.push(type)
+                    //dealWithFloatDiv('',false,false,true,true)
+                    var tips='<span class="success">'+toDict+' loaded!</span>'
+                    dealWithFloatDiv(tips,false,false,true,true)
+                  }
+                },
+                error: function(data) {
+                  hideFloat -=1
+                  if(ifmd){
+                    toDict = 'Sorry, but no more paper!'
+                  }else{
+                    toDict = '<span class="error">'+toDict+'</span> failed!'
+                  }
+                    dealWithFloatDiv(toDict,false,true,false,false)
+                  
+                }
+            });
+        }
+    $(document).ready(function(){
+      getPaperList()
+      var randomArr = []
+      var mottoLen = mottoArr.length
+      while(randomArr.length <3){
+        var randomNum = parseInt(Math.random()*(mottoLen-1),10)
+        if(randomArr.indexOf(randomNum)<0){
+          randomArr.push(randomNum)
+        }
+      }
+      var fillNo = 0
+      $('#carousel-example-generic').find('.text-center').each(function (dindex, ditem) {
+            var chooseMotto = mottoArr[fillNo]
+            var mottoFill = '<h1 class="mottoh1en">'+chooseMotto['en']+'</h1><h6 class="mottoh6auth">'+chooseMotto['auth']+'</h6><h6 class="mottoh6cn">'+chooseMotto['cn']+'</h6>'
+            $(ditem).html(mottoFill)
+            fillNo += 1
+            })
+      var xx = window.location.href
+      var yy = xx.slice(7,xx.indexOf('iooi')-1)
+      var reg = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/;
+      if( (xx.indexOf('iooi') >0 && xx.indexOf('lockeycheng') >0) || reg.test(yy)){
+          console.log('pass')
+      }else{
+        $('body').empty()
+      }
+      $('#more-papers').click(function(){
+        $('#paperMoreSwitchp').show()
+        getPaperList()
+      })
+      $('body').on('click','.paperMoreSwitchspan',function(){
+        if(!$('#latest-section').is(":hidden")){
+          $('#latest-section .resultDivClass').slideUp(234)
+          $('#latest-section span.nowShow').removeClass('nowShow')
+          $(this).addClass('nowShow')
+          var toShow = '#'+$(this).attr('data')
+          $(toShow).slideDown(456)
+          return false
+        }
+        if(!$('#utils-section').is(":hidden")){
+          $('#utils-section span.nowShow').removeClass('nowShow')
+          $(this).addClass('nowShow')
+          var searchShowNo = $(this).text()*8
+          if(searchShowNo > searchOuts.length){
+            searchShowNo = searchOuts.length
+          }
+          var startNo = ($(this).text()-1)*8
+          var appendLi = ''
+          for(var i=startNo; i<searchShowNo; i++){
+             appendLi += '<li><a class="cd-nowrap loadPage" href="javascript:void(0)" data-link="'+searchOuts[i]['link']+'">'+searchOuts[i]['title']+'.</a><span class="searchPaperTime">'+searchOuts[i]['date']+'</span></li>'
+          }
+
+          $('#paperListUl').html(appendLi)
+          return false
+        }
+        
+      })
+      $('body').bind('touchstart',function(e){
+        startX = e.originalEvent.changedTouches[0].pageX;
+        startY = e.originalEvent.changedTouches[0].pageY;
+    });
+      $("body").bind("touchmove",function(e){
+        
+        endX = e.originalEvent.changedTouches[0].pageX;
+        endY = e.originalEvent.changedTouches[0].pageY;
+        //获取滑动距离
+        distanceX = endX-startX;
+        distanceY = endY-startY;
+        //判断滑动方向
+        if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>60){
+          console.log('向右边滑动')
+          if(distanceX>120){
+            $('.swith-nav-a').each(function (dindex, ditem) {
+              if($(this).hasClass('currentNav')){            
+                if($(this).next('a').length >0){
+                  $(this).next().trigger('click');
+                  return false
+                }else{
+                  $('.swith-nav-a').eq(0).trigger('click')
+                  return false
+                }
+              }
+            })
+          }
+            
+        }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-60){
+         
+            console.log('往左滑动');
+            if(distanceX<-120){
+              $('.swith-nav-a').each(function (dindex, ditem) {
+              if($(this).hasClass('currentNav')){
+                if($(this).prev('a').length >0){
+                  $(this).prev().trigger('click');
+                  return false
+                }else{
+                  $('.swith-nav-a').eq(3).trigger('click')
+                  return false
+                }
+              }
+            })
+            }
+            
+        }else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<50){
+          console.log('往up滑动');
+          //$('.fa-arrow-circle-up').show()
+              
+        }else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY>0){
+            console.log('往down滑动');
+            //$('.fa-arrow-circle-up').show()
+            
+        }
+      })
+var scrollDirect=function () {
+        var dalta = document.body.scrollTop;
+        window.addEventListener("scroll", function (event) {
+        event = event || window.event;
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        var totalScroll = scrollHeight - windowHeight
+        var change = totalScroll- scrollTop
+        if((dalta - change) >0 ){
+          if(scrollTop > 30)
+          {
+            $('.fa-arrow-circle-up').show()
+            $('.navbar-fixed-top').hide()
+          }
+          
+        }else{
+          $('.fa-arrow-circle-up').hide()
+          $('.navbar-fixed-top').show()
+        }
+        dalta = change
+       if(totalScroll - scrollTop > totalScroll-5){
+        //$('footer').show()
+       }
+    }, false);
+}
+scrollDirect(function (direction) {
+ })
+      $('#closeFloat').click(function(){
+            $('#floatDiv').fadeOut(556)
+        })
+      $('#search-paper').click(function(){
+          $('#search-input-div').slideDown(500)
+          if(paperRecords != null){
+            return false
+          }
+          var getURL = './'+defaultSource+'/paperRecords.json'
+          $.ajax({
+                type:"GET",
+                url: getURL,
+                data: null,
+                dataType:'json',
+                cache:false,
+                success: function(data) {
+                  paperRecords = data
+                  var year = today.getFullYear()
+                 for(var year in paperRecords){
+                  if(year.length >5){
+                    continue
+                  }
+                  for(var month in paperRecords[year]){
+                          for(var day in paperRecords[year][month]){
+                            var dayPaper = paperRecords[year][month][day].length
+                            totalPaper += dayPaper
+                          }
+                        }
+                      }
+                  $('#search-paper-go').trigger('click')
+                },
+                error: function(data) {
+                    var listInfo = '<span class="error">Paper list</span> failed to load!'
+                    dealWithFloatDiv(listInfo,false,true,false,false)
+                  
+                }
+              })
+      })
+      $('#swith-nav .fa-remove').click(function(){
+        $(this).parent().slideUp(345)
+      })
+      $('.swith-nav-a').click(function(){
+        
+        if($(this).hasClass('currentNav')){
+          return false
+        }
+        $(this).siblings().removeClass('currentNav')
+        $(this).addClass('currentNav')
+        var text = $(this).attr('data-switch')
+        var toShow = null 
+        if(text == 'paper'){
+          toShow = '#paper-section'
+          if($('#articleContent p').length ==0){
+            getData('type',true,false)
+          }
+        }else{
+          dealWithFloatDiv('',true,false,true,false)
+        }
+        if(text == 'latest'){
+          toShow = '#latest-section'
+        }
+        
+        if(text == 'dictionary'){
+          if(!$('#search-input-div').is(":hidden")){
+            $('#search-input-div').hide()
+          }
+          toShow = '#dictionary-section'
+          var dictTypeBasic = 'economist_basic'
+          var dictTypeModel = 'economist_model'
+          if(loadedDict.indexOf(dictTypeBasic) <0){
+             getData(dictTypeBasic,false)
+             var tmp = $('.fa-info-circle').eq(0).text() || 'entire'
+            $('#lookup-dict-input').val(tmp)
+            $('#search-word-go').trigger('click')
+           
+          }
+          if(loadedDict.indexOf(dictTypeModel) <0){
+             //getData(dictTypeModel,false)
+          }
+         
+        }
+        if(text == "list"){
+           toShow = '#utils-section'
+           if($('#paperListUl li').length == 0){
+              $('#search-paper').trigger('click')
+           }
+        }
+        console.log(text,toShow)
+        if($(toShow).is(':hidden')){
+          $('.section-content').fadeOut(30)
+          $(toShow).slideDown(456)
+        }
+      })
+  $('#page-content').on('click','.fa-info-circle',function(e){
+              if(clickWords.length >= Math.ceil(toughCount*0.6)){
+                    var tmp = currentPaperFile.slice(0,-5)
+                    var passedTime = $('#runningTimer').text().split(':')[0]*1
+                    if(localStorage.reads.indexOf(tmp)<0 && passedTime>supposeTime){
+                      localStorage.views = localStorage.views*1 + 1
+                      var x = new Date()
+                      var y = x.toString().split(' ')
+                      var z = y.slice(0,5)
+                      localStorage.lastReadTime = z.join(' ')
+                      $('.paperNos').text(localStorage.views)
+                      localStorage.reads += tmp+','
+                    }
+              }
+              if(triggerWord != null){
+                    var toSearch = triggerWord
+                    triggerWord = null
+              }else{
+                var toSearch = $(this).text()
+               if(toSearch.match(',')){
+                  var index = toSearch.match(',')['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match('"')){
+                  var index = toSearch.match('"')['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("'")){
+                  var index = toSearch.match("'")['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("’")){
+                 var index = toSearch.match("’")['index']
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.indexOf("[") == 0 || toSearch.indexOf("(") == 0){
+                  toSearch = toSearch.slice(1)
+               }
+               if(toSearch.indexOf("]") >0){
+                  var index = toSearch.indexOf("]")
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.indexOf(")") >0){
+                  var index = toSearch.indexOf(")")
+                  toSearch = toSearch.slice(0,index)
+               }
+               if(toSearch.match("”")){
+                var index = toSearch.match("”")['index']
+                if(!toSearch.match("“")){
+                  toSearch = toSearch.slice(0,index)
+                }else{
+                 toSearch = toSearch.slice(1,index)
+                }
+               }
+               if(toSearch.match("“") || toSearch.match("“")){
+                  toSearch = toSearch.slice(1)
+                }
+              }
+               $('.wordName').html(toSearch)
+               if(toSearch){
+                if(clickWords.indexOf(toSearch) <0){
+                  clickWords.push(toSearch)
+                }
+                fillBasicLookup(toSearch)
+               }else{
+                  $('.basic_dict_error').html('It seems info not match this word, please click search icon to do a further lookup.')
+                  $('.basic_dict_error').show()
+               }
+               $('.with_motto_footer').fadeOut(234)
+               $(document).one("click", function(){
+                        $("#clickWordsDict").hide();
+                    });
+                    e.stopPropagation();
+        })
+  $('body').on('click','#showTough',function(e){
+  $('#toughWords-div').slideDown(356)
+  $('.with_motto_footer').fadeOut(234)
+  $(document).one("click", function(){
+                        $("#toughWords-div").hide();
+                    });
+              e.stopPropagation();
+})
+
+
+$('#toughWords-div').on('click','#wordsOl li',function(e){
+  var value = $(this).text()
+  fillBasicLookup(value)
+})
+$('.showNone').click(function(){
+  $('#clickWordsDict').slideUp(369)
+})
+$('body').on('click','.wordPro li',function(e){
+    var word = $('.wordName:first').text()
+    var youdaoWordAudio = 'https://dict.youdao.com/dictvoice?audio='+word+'&type=1'// or type=1
+    var x = document.createElement("AUDIO");
+    x.setAttribute("src", youdaoWordAudio);
+    x.setAttribute("autoplay", "autoplay");
+    $('#voiceDiv').html(x)
+    e.stopPropagation();
+})
+$('.switchPaper').click(function(){
+  var paperName = $(this).attr('data-link')
+  if(paperName == 'abcdeflockey'){
+    getData('type',true,false)
+  }else{
+    paperOload = paperName
+    getData('type',true,paperName)
+  }
+})
+$('body').on('click','.loadPage',function(){
+  paperOload = $(this).attr('data-link')
+  getData('type',true,false)
+})
+
+$('#search-paper-go').click(function(){
+            if(paperRecords == null){
+              $('#search-paper').trigger('click')
+              return false
+            }
+            var showPages = 0
+            var nospan = ''
+            var windowHW = getPageSize()
+            var appendLi = ''
+            var searchPaperKey = $('#search-paper-input').val()
+            var choose = $('#select-category').val()
+            if(!choose){
+                choose = year
+            }
+            var yearArr = ['a'+choose]
+            var monthArr = []
+            var dayArr = []
+            var wordsArr = []
+            var searchPaperNo = 0
+            // if(searchPaperKey){
+              if(searchPaperKey){
+                var keywordsArr = searchPaperKey.split(' ')
+              }else{
+                var keywordsArr = (localStorage.reads).slice(0,-1).split(',')
+              }
+              if(keywordsArr[0] =='' || keywordsArr.length <=0){
+                    keywordsArr = ['economy']
+              }
+                
+                for(var i in keywordsArr){
+                  if(!isNaN(keywordsArr[i]) && keywordsArr[i].length == 4){
+                    var keyYear = 'a'+keywordsArr[i]
+                    if(!(keyYear in yearArr)){
+                      yearArr.push(keyYear)
+                    }
+                  }
+                  else if((keywordsArr[i].slice(0,1) == 'm') && (!isNaN(keywordsArr[i].slice(1)))){
+                    var keyMonth = 'a'+keywordsArr[i].slice(1)*1
+                    if(!(keyMonth in monthArr)){
+                      monthArr.push(keyMonth)
+                    }
+                  }
+                  else if((keywordsArr[i].slice(0,1) == 'd')  && (!isNaN(keywordsArr[i].slice(1)))){
+                    var keyDay = 'a'+keywordsArr[i].slice(1)*1
+                    if(!(keyDay in dayArr)){
+                      dayArr.push(keyDay)
+                    }
+                  }else{
+                    wordsArr.push(keywordsArr[i])
+                  }
+                }
+          // }
+          for(var year in yearArr){
+            var yearStr = yearArr[year]
+            var thisYearJson = paperRecords[yearStr]
+            for(var month in thisYearJson){
+                      if(monthArr.length >0 && monthArr.indexOf(month) <0){
+                        if(!firstFill){
+                          continue
+                        }
+                      }
+                      //console.log('pass month',month)
+                      for(var day in thisYearJson[month]){
+                          if(dayArr.length >0 && dayArr.indexOf(day)<0 ){
+                            if(!firstFill){
+                              continue
+                            }
+                          }
+                          //console.log('pass day')
+                          for(var item in thisYearJson[month][day]){
+                            var title = thisYearJson[month][day][item][1]
+                            var filename = thisYearJson[month][day][item][0]
+                            var timeStr = filename.slice(0,-5)
+                            var timeArr = timeStr.slice(0,9).split('_')
+                            var preSearch = searchPaperNo
+                            if(searchPaperKey || wordsArr.length >0){
+                              try{
+                                var keyWords = thisYearJson[month][day][item][2].toLowerCase()
+                                var keyLink = thisYearJson[month][day][item][0].toLowerCase()
+                                var titleToLower = title.toLowerCase()
+                                for(var i in wordsArr){
+                                  word = wordsArr[i].toLowerCase()
+                                  if(keyWords.match(word) || titleToLower.match(word) || keyLink.match(word)){
+                                    searchPaperNo += 1
+                                      title = title.replace(word,'<span class="find_key">'+word+'</span>')
+                                      var aaaWord = word.substring(0,1).toUpperCase()+word.substring(1)
+                                      title = title.replace(aaaWord,'<span class="find_key">'+aaaWord+'</span>')
+                                    break
+                                  }
+                                }
+                              }catch(err){console.log(err)}
+                              
+                              
+                            }else{
+                              searchPaperNo += 1
+                            }
+                            if(preSearch!=searchPaperNo){
+                              let dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+', '+timeArr[0]
+                              let result = {'date':dateStr,'link':filename,"title":title}
+                              searchOuts.push(result)
+                              if(searchPaperNo <=8 ){
+                                appendLi += '<li><a class="cd-nowrap loadPage" href="javascript:void(0)" data-link="'+filename+'">'+title+'.</a><span class="searchPaperTime">'+dateStr+'</span></li>'
+                              }
+                              if(searchPaperNo%8 == 1){
+                                var countPage = Math.ceil(searchPaperNo/8)
+                                nospan += '<span class="paperMoreSwitchspan">'+countPage+'</span>'
+                              }
+                              
+                            }
+                          }
+                      }
+                    }
+            }
+          if(searchPaperNo ==0){
+            $('#paperListUl').html('<li>No matched paper to show!</li>')
+            $('#searchMoreSwitchp').html('')
+            return false
+          }
+          $('#paperListUl').html(appendLi)
+          let outin =  searchPaperNo+' out of '+totalPaper
+          $('#searchMoreSwitchp').prev().html(outin)
+          $('#searchMoreSwitchp').html(nospan)
+          $('.swith-nav-a').eq(2).trigger('click')
+        })
+$('#search-word-go').click(function(){
+                wordSearch()
+        })
+document.onkeydown=function(event){
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            
+            if(e && e.keyCode == 13){
+              if(!$('#search-paper-input').is(':hidden')){
+                $('#search-paper-go').trigger('click')
+              }
+              if(!$('#lookup-dict-input').is(':hidden')){
+                 $('#search-word-go').trigger('click')
+              }
+            }
+        }; 
+        $('#myModal').modal('show')
+        $(function() {
+    $('#myModal').on('hide.bs.modal',
+    function() {
+        var tmp = $('#userName').val()
+        if(tmp){
+          localStorage.username = tmp
+          $('.usernameHold').html(tmp)
+        }
+    })
+});
+        $('#carousel-example-generic').click(function(){
+          if($(this).find('.text-center').is(':hidden')){
+              $(this).find('.text-center').show()
+          }else{
+            $(this).find('.text-center').hide()
+          }
+        })
+      $('.paperNos').click(function(){
+        $('#search-paper-input').val('')
+        $('#search-paper-go').trigger('click')
+      })
+    })
+  </script>
+  
+</body>
+</html>
