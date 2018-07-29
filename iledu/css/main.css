@@ -94,7 +94,7 @@ custom.css merge here
 }
 .sidebar-wrapper .sidebar-header .user-pic{
         float: left;
-        width: 60px;
+        width: 40%;
         padding: 2px;
         border: 1px solid #585858;
         border-radius: 8px;
@@ -384,6 +384,9 @@ custom.css merge here over
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
+}
+ul li {
+    list-style: none;
 }
     .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
       color: #555;
@@ -774,4 +777,193 @@ a.readMoreText {
 .totalLoads{
 	color: #00dbc7;
     padding: 3px;
+}
+
+/****
+
+Article content part
+
+******/
+#articleContent p {
+    text-indent: 23px;
+    color: #4a2d03;
+    font-size: 1.15em;
+}
+#articleContent p span {
+    text-indent: 3px;
+    font-size: 0.9em;
+    color: #906b33;
+}
+.fixleft,.fixright{
+position: fixed;
+bottom: 21px;
+z-index: 1109;
+}
+.fixleft{
+  left: -1px;
+}
+.fixright{
+  right:-1px;
+}
+.arrow a{
+    color: #70f0f1;
+    font-size:25px;
+    padding: 4px 3px;
+    border-radius: 25px;
+}
+.arrow a:hover{
+     color:#00dbdc;
+     font-size: 28px；
+}
+.fa-arrow-right,.fa-arrow-left{
+    color: #32dfe0 !important;
+    padding:11px 5.3px;
+}
+.pkeywords {
+    padding-left: 16px;
+    color: #914915;
+    padding-bottom: 3px;
+}
+#createDate {
+    margin-top: -10px;
+    border-top: solid 1px #ddf1ff;
+    text-align: right !important;
+}
+.statistics-no ul li {
+    display: inline-block;
+    border: solid 1px #a5ccd9;
+    border-radius: 6px;
+    padding: 3px 5px;
+    margin-left: 3px;
+    margin-bottom: 5px;
+}
+.clickWordsDict_title, .words-sep-dot {
+    color: #914915;
+    font-weight: 700;
+}
+.statistics-no, #spansfocus {
+    color: #40e7d1;
+}
+.statistics-no, #spankeywords, #spansfocus {
+    display: block;
+    padding-top: 5px;
+}
+#spanstatistics {
+    color: #089763;
+}
+#articleContent img {
+    max-width: 81%;
+}
+#timerDiv{
+        position: fixed;
+        top: 60%;
+        right:6px;
+        opacity: 0.88;
+      }
+      #timerDiv span{
+        display: block;
+        text-align: center;
+        padding: 2px 6px;
+        font-size: 1.2em;
+      }
+      #timerDiv .paperNos{
+        color: #ffffff;
+        background: #c96508;
+        border-radius: 36px 0px;
+      }
+      #runningTimer{
+    color: #fff;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #000000),linear-gradient(70deg, #964100 32%, #03846a);
+        border-radius: 2px;
+      }
+
+
+#clickWordsDict {
+    padding: 6px;
+    display: none;
+    position: fixed;
+    top: -1px;
+    left: 0px;
+    right: 0px;
+    background: #fff;
+    border-radius: 0px 0px 6px 6px;
+    z-index: 11111;
+    border-top: solid 1px #cafdff;
+    border-bottom: solid 1px #cafdff;
+    opacity: 0.96;
+}
+#toughWords-div ol {
+    padding-right: 12px;
+}
+#toughWords-div ol li {
+    border-bottom: 1px solid #74fac3;
+    padding: 5px 3px;
+    color: #00887d;
+}
+.wordName {
+    font-size: 1.8em !important;
+    color: #3a6357 !important;
+}
+.wordTitle {
+    color: #b77b4f;
+}
+.wordExplanationCN li, .wordPro li, .wordPhrases li {
+    margin-left: -21px;
+    font-family: monospace;
+}
+.wordPro li, .wordPhrases li {
+    display: block;
+}
+.fa-volume-up {
+    margin-left: 5px;
+    color: #7fd4da;
+}
+#clickWordsDict_detail {
+    margin-left: 5%;
+}
+
+/**********8
+
+User info module
+************/
+
+#mymotto{
+	width: 80%;
+    margin-left: 19%;
+    border-bottom: solid 1px #006358;
+    color:#97d4d3;
+}
+.usernameHold{
+	font-size: 1.3em;
+}
+
+.video-pre{
+	width: 100%;
+	margin-top: 23px;
+}
+.video-desc{
+	marker-top:-16px; 
+}
+
+/*******
+
+Dictionary
+************/
+#dict-input-warpp {
+    width: 66%;
+    position: absolute;
+    left: 13%;
+    font-size: 1.5em;
+}
+#search-word-go {
+    position: absolute;
+    right: -16px;
+    margin-top: 1px;
+}
+.fa-google {
+    color: #057e73;
+}
+#menu4 .searchResult {
+    margin-top: 76px;
+    padding: 3px 23px;
 }
