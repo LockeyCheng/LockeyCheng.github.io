@@ -215,7 +215,7 @@
           <div id="clickWordsDict_detail">
             <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
             <p class="wordPro_p"><ul class="wordPro"></ul></p>
-            <p class="wordExplanationCN_p"><span class="wordTitle">请先选择最可能的解释（点击选项名展开）：</span></p>
+            <p class="wordExplanationCN_p"><span class="wordTitle">请根据理解选择释义（点击选项名展开）：</span></p>
             <div id="wordGuessM">
             </div>
 <!-- 
@@ -841,7 +841,7 @@
                         var aaa = []
                         opsArr = opsArr.slice(0,4)
                         var ids=['collapseA','collapseB','collapseC','collapseD']
-                        var ops = ['  Option A','  Option B','  Option C','  Option D']
+                        var ops = ['  Option A  ','  Option B  ','  Option C  ','  Option D  ']
                         var rightO = 0
                         while(true){
                           var aLen = aaa.length
@@ -858,7 +858,7 @@
                               if(aLen == 0){
                                 cls = 'panel-collapse collapse in'
                               }
-                              var sppp = '<input type="radio" name="guessWordInput" class="guessWordInput" value="'+wordss[bbb]+'">'
+                              var sppp = '<input type="radio" name="guessWordInput" class="guessWordInput" data-value="'+value+'" value="'+wordss[bbb]+'">'
                               guessOptions += '<div><p><span>'+sppp+'</span><a data-toggle="collapse" href="#'+ids[aLen]+'">'+ops[aLen]+'</a></p><div id="'+ids[aLen]+'" class="'+cls+'"><div class="panel-body"><ul class="wordExplanationCN">'+opsArr[bbb]+'</ul></div></div></div>'
                             }
                           }
@@ -869,8 +869,15 @@
                   $('#clickWordsDict').slideDown(256)
                 }
         }
-        $('#wordGuessM').on('change','.guessWordInput',function(){
-          $('#wordGuessM').find('.hidea').show()
+        $('#wordGuessM').on('click','.guessWordInput',function(){
+          var current = $(this).val()
+          var rightV = $(this).attr('data-value')
+          if(current != rightV){
+            $(this).parent().parent().append('<i class="fa fa-frown-o"></i>')
+          }else{
+            $(this).parent().parent().append('<i class="fa fa-smile-o"></i>')
+          }
+          // $('#wordGuessM').find('.hidea').show()
         })
         $('#articleContent').on('click','.fa-info-circle',function(e){
               if(clickWords.length >= Math.ceil(toughCount*0.6)){
