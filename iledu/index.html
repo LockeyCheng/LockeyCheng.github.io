@@ -53,7 +53,7 @@
                         <!--<span class="user-name">Lockey <strong>Young</strong></span>-->
                         
                         <div class="user-status">                       
-                            <a href="#"><span class="label label-success">LV 1</span></a>                           
+                            <a href="#"><span class="label label-success" id="level">LV X</span></a>                           
                         </div>
                         <span class="user-role">Member</span>
                     </div>
@@ -474,21 +474,28 @@
     if(!localStorage.mymotto){
       localStorage.mymotto = 'No Pains, No Gains!'
     }
+    var myLevel = 'LV  '
     if(localStorage.username){
       $('.usernameHold').html(localStorage.username)
       }
       var paperWithTime = localStorage.views+'th('+localStorage.lastReadTime+')'
       if(localStorage.views == 0){
           var aaaa = 'Welcome here, wish you a jolly journey!'
-      }else if(localStorage.views>0 && localStorage.views<=9){
+          myLevel += '0'
+      }else if(localStorage.views>0 && localStorage.views<=6){
           var aaaa = 'It is the ' +paperWithTime+' paper you read here, keep on!'
-      }else if(localStorage.views>9 && localStorage.views<=30){
+          myLevel += '1'
+      }else if(localStorage.views>6 && localStorage.views<=23){
           var aaaa = 'Wonderfull! You have completed ' +paperWithTime+' papers here, just carry on!'
-      }else if(localStorage.views>30 && localStorage.views<=99){
+          myLevel += '2'
+      }else if(localStorage.views>23 && localStorage.views<=55){
           var aaaa = 'AMAZING! You has come to the ' +paperWithTime+' paper!'
+          myLevel += '3'
       }else{
           var aaaa = 'Splendiferous! You has come to the ' +paperWithTime+' paper, merely nobody ahead of you!'
+          myLevel += Math.round(localStorage.views/15)
       }
+      $('#level').html(myLevel)
       $('.paperNos').html(localStorage.views)
       aaaa += '</p><p class="viewsGreeting">May you save the QR code then share it to your buddies for reading in pairs.'
       var fillWelcome = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h6 class="modal-title" id="myModalLabel">'+greeting+'</h6><div class="margintop23"><p class="viewsGreeting">'+aaaa+'</p></div></div><div class="modal-body"><img id="appimg" src="./imgs/economist_index.png"></div><div class="modal-footer"><button type="button" class="btn btn-success" data-dismiss="modal">Got it</button></div>'
