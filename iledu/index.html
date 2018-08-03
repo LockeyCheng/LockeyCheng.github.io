@@ -215,11 +215,16 @@
           <div id="clickWordsDict_detail">
             <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
             <p class="wordPro_p"><ul class="wordPro"></ul></p>
-
-            <p class="wordExplanationCN_p"><span class="wordTitle">释义：</span></p>
+            <p class="wordExplanationCN_p"><span class="wordTitle">请先选择最可能的解释（点击选项名展开）：</span></p>
+            <div id="wordGuessM">
+            </div>
+<!-- 
+            
             <p class="wordExplanationCN_p"><ul class="wordExplanationCN"></ul></p>
-            <p class="basic_dict_error error"></p>
+             -->
+             <p class="basic_dict_error error"></p>
           </div>
+          
     </div>
       <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
         <h5 class="heading5" id="createDate">——By Lockey</h5>
@@ -511,6 +516,8 @@
       var dictData={'default':null}
       var pquery = false
       var testAlpha = /^[a-zA-Z]+$/i
+      var toughCount = 0
+      var toughArr = []
       function wordSearch(value,basicLookup){
       dealWithFloatDiv('',true,false,true,false)
               if(!value){
@@ -639,12 +646,12 @@
                       for(var i in exArr){
                           exLi += '<li>'+exArr[i]+'</li>'
                       }
-                      $('#searchForm').hide()
                       if(exLi){
-                        $('.wordExplanationCN_p').show()
-                        $('.wordExplanationCN').html(exLi)
+                        $('#menu4 .wordExplanationCN_p').show()
+                        
+                        $('#menu4 .wordExplanationCN').html(exLi)
                       }else{
-                        $('.wordExplanationCN_p').hide()
+                        $('#menu4 .wordExplanationCN_p').hide()
                       }
                       if(basicLookup){
                         return false
@@ -809,14 +816,62 @@
                           exLi += '<li>'+exArr[i]+'</li>'
                       }
                       if(exLi){
-                        $('.wordExplanationCN_p').show()
-                        $('.wordExplanationCN').html(exLi)
-                      }else{
-                        $('.wordExplanationCN_p').hide()
+                        var wordss = [value]
+                        var opsArr = [exLi]
+                        var guessOptions = ''
+                        var step = Math.floor(toughCount/3)
+                        for(var i=0;i<3;i++){
+                            var mins = step*i
+                            var maxs = step*(i+1)
+                            var randd = mins + Math.floor(Math.random() * (maxs - mins + 1))
+                            var opWord = toughArr[randd]
+                            exArr =jsonDataBasic[opWord]['ex']
+                            if (exArr.length == 0){
+                              opWord = toughArr[randd+1]
+                              exArr =jsonDataBasic[opWord]['ex']
+                            }
+                            wordss.push(opWord)
+                            exLi = ''
+                            for(var j in exArr){
+                              exLi += '<li>'+exArr[j]+'</li>'
+                            }
+                            opsArr.push(exLi)
+
+                        }
+                        var aaa = []
+                        opsArr = opsArr.slice(0,4)
+                        var ids=['collapseA','collapseB','collapseC','collapseD']
+                        var ops = ['  Option A','  Option B','  Option C','  Option D']
+                        var rightO = 0
+                        while(true){
+                          var aLen = aaa.length
+                          if(aLen == 4){
+                              break
+                          }else{
+                            var bbb = parseInt(Math.random()*(4),10)
+                            if(aaa.indexOf(bbb) <0){
+                              if(wordss[bbb] == value){
+                                rightO = aLen
+                              }
+                              aaa.push(bbb)
+                              var cls = 'panel-collapse collapse'
+                              if(aLen == 0){
+                                cls = 'panel-collapse collapse in'
+                              }
+                              var sppp = '<input type="radio" name="guessWordInput" class="guessWordInput" value="'+wordss[bbb]+'">'
+                              guessOptions += '<div><p><span>'+sppp+'</span><a data-toggle="collapse" href="#'+ids[aLen]+'">'+ops[aLen]+'</a></p><div id="'+ids[aLen]+'" class="'+cls+'"><div class="panel-body"><ul class="wordExplanationCN">'+opsArr[bbb]+'</ul></div></div></div>'
+                            }
+                          }
+                        }
+                        guessOptions += '<p class="hidea rightO">正确的释义选项为：<b>'+ops[rightO]+'</b></p>'
+                        $('#wordGuessM').html(guessOptions)
                       }
                   $('#clickWordsDict').slideDown(256)
                 }
         }
+        $('#wordGuessM').on('change','.guessWordInput',function(){
+          $('#wordGuessM').find('.hidea').show()
+        })
         $('#articleContent').on('click','.fa-info-circle',function(e){
               if(clickWords.length >= Math.ceil(toughCount*0.6)){
                     var tmp = currentPaperFile.slice(0,-5)
@@ -886,10 +941,10 @@
                   $('.basic_dict_error').show()
                }
                $('.with_motto_footer').fadeOut(234)
-               $(document).one("click", function(){
-                        $("#clickWordsDict").hide();
-                    });
-                    e.stopPropagation();
+               // $(document).one("click", function(){
+               //          $("#clickWordsDict").hide();
+               //      });
+               //      e.stopPropagation();
         })
   $('body').on('click','#showTough',function(e){
   $('#toughWords-div').slideDown(356)
@@ -915,8 +970,11 @@ $('body').on('click','.wordPro li',function(e){
     x.setAttribute("src", youdaoWordAudio);
     x.setAttribute("autoplay", "autoplay");
     $('#voiceDiv').html(x)
-    e.stopPropagation();
+    //e.stopPropagation();
 })
+// $('#wordGuessM').click(function(e){
+//   e.stopPropagation();
+// })
 $('.switchPaper').click(function(){
   var paperName = $(this).attr('data-link')
   if(paperName == 'abcdeflockey'){
@@ -995,6 +1053,7 @@ $('.switchPaper').click(function(){
                           for(let word in touchWords){
                               toughCount += 1
                               wordsLis += '<li>'+word+'</li>'
+                              toughArr.push(word)
                           }
                           $('#toughWords-div').find('ol').html(wordsLis)
 

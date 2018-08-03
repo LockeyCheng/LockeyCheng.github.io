@@ -239,7 +239,7 @@ custom.css merge here
 .sidebar-wrapper .sidebar-menu .badge{
     background: #384558;
 }
-.sidebar-wrapper .sidebar-menu .sidebar-submenu{
+.sidebar-wrapper .sidebar-menu .sidebar-submenu, .hidea{
     display: none;
 }
 .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active > a:after{
@@ -969,4 +969,21 @@ Dictionary
 }
 #menu4 p{
 	    color: #ffa619;
+}
+
+/******
+
+choose words
+
+***********/
+
+#clickWordsDict .collapse.in{
+	margin-top: -13px;
+	margin-bottom: -13px;
+	color: #2e5060;
+}
+
+.rightO{
+	text-align: center;
+	color: #2cdf76;
 }
