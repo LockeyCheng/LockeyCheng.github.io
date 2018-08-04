@@ -856,14 +856,14 @@ z-index: 1109;
 }
 #timerDiv{
         position: fixed;
-        top: 60%;
+        top: 66%;
         right:6px;
         opacity: 0.88;
       }
       #timerDiv span{
         display: block;
         text-align: center;
-        padding: 2px 6px;
+        padding: 0px 8px;
         font-size: 1.2em;
       }
       #timerDiv .paperNos{
@@ -993,4 +993,16 @@ choose words
 }
 .fa-frown-o{
 	color: #ff3d00;
+}
+
+#ballball{
+	position: absolute;
+    right: 0;
+    width: 93%;
+    top: -53.5px;
+    font-weight: 600;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #d6fff7),linear-gradient(70deg, #d59058 32%, #14c19e);
+    /*background: rgb(15, 51, 16);*/
+    border: solid 1px #68ffdf;
+    border-radius: 50%;
 }
