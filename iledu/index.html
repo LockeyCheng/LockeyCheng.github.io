@@ -584,7 +584,7 @@
         //写百分比文本函数
         var drawText = function(){
         ctx.save();
-        var size = 0.5*cR;
+        var size = 0.6*cR;
         ctx.font = size + 'px Microsoft Yahei';
         ctx.textAlign = 'center';
         ctx.fillStyle = "rgba(06, 85, 128, 0.8)";
@@ -939,7 +939,7 @@
                             var randd = mins + Math.floor(Math.random() * (maxs - mins + 1))
                             var opWord = toughArr[randd]
                             try{
-                              exArr = jsonDataBasic[value]['ex']
+                              exArr = jsonDataBasic[opWord]['ex']
                             }catch(err) { 
                               console.log(err)
                               exArr = []

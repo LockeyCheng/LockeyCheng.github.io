@@ -856,7 +856,7 @@ z-index: 1109;
 }
 #timerDiv{
         position: fixed;
-        top: 66%;
+        bottom: 16%;
         right:6px;
         opacity: 0.88;
       }
