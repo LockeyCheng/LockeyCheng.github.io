@@ -246,7 +246,7 @@
     </style>
     <div id="timerDiv">
       <div><canvas id="ballball"></canvas></div>
-      <!-- <span class="paperNos hidea">1</span> -->
+      <span class="paperNos hidea">1</span>
       <span id="runningTimer">00:00</span>
     </div>
         <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"></span></a></span>
@@ -1238,7 +1238,13 @@ $('.switchPaper').click(function(){
                         $('#createDate').html(dateStr)
                         $('#lastArt').attr('data-link',content['last'])
                         $('#nextArt').attr('data-link',content['next'])
-                        myReq = requestAnimationFrame(ballball);
+                        if(localStorage.username != 'Lockey23'){
+                          myReq = requestAnimationFrame(ballball);
+
+                        }else{
+                          $('#ballball').hide()
+                          $('.paperNos').show()
+                        }
                         dictData['default'] = content['assistent']
                         $('#myModal').modal('hide')
                         
