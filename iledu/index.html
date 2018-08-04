@@ -242,7 +242,10 @@
 " id="foucus_suggest">Article Content</h5> -->
 
         <div id="articleContent"></div>
+
         <img src="./imgs/zhi.jpg" style='width: 50%;margin-left: 25%;border-radius: 9%'>
+<hr/>
+        <button class="btn btn-info btn-lg btn-block" id="start-words-test">Start Test</button>
     </style>
     <div id="timerDiv">
       <div><canvas id="ballball"></canvas></div>
@@ -616,6 +619,8 @@
         drawText();
         xOffset += speed;
         if(paperGoon>=100){
+          $('#start-words-test').show()
+          window.clearInterval(readTimer)
           window.cancelAnimationFrame(myReq);
         }
         myReq = requestAnimationFrame(ballball);
@@ -633,7 +638,6 @@
                     dealWithFloatDiv(tips,false,true,true)
                     return false
                 }
-              
                 if (value.length == 1){
                   dealWithFloatDiv('Please Remember THE 26 : A~B~C~D~E~F~G~H~I~J~K~L~M~N~O~P~Q~R~S~T~U~V~W~X~Y~Z~~~!',false,false,false,false,true)
                   return false
@@ -1191,7 +1195,7 @@ $('.switchPaper').click(function(){
                           supposeTime = statistics['suggestedfocus'].slice(0,2)*0.69
                           //<span class="statistics-no"><span class="clickWordsDict_title">Article Content:</span></span>
                           $('#spanstatistics').html(wordsData)
-
+                          $('#start-words-test').hide()
                           if(readTimer != null){
                             window.clearInterval(readTimer)
                           }
