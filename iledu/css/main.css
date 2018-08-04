@@ -797,7 +797,7 @@ Article content part
 .fixleft,.fixright{
 position: fixed;
 bottom: 21px;
-z-index: 1109;
+z-index: 1050;
 }
 .fixleft{
   left: -1px;
@@ -990,10 +990,16 @@ choose words
 }
 
 .fa-smile-o{
-	color: #00f23e;
+	color: #25ffad;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-right: 5px;
 }
 .fa-frown-o{
 	color: #ff3d00;
+	font-size: 1.2em;
+    font-weight: 600;
+    margin-right: 5px;
 }
 
 #ballball{
@@ -1006,4 +1012,29 @@ choose words
     /*background: rgb(15, 51, 16);*/
     border: solid 1px #68ffdf;
     border-radius: 50%;
+}
+
+#myModal .modal-body .fa-hand-o-right,#myModal .modal-body .fa-hand-o-left{
+	position: absolute;
+	bottom: 9px;
+    color: #288852;
+    padding: 3px;
+    border: solid 1px #afffee;
+    border-radius: 3px;
+    background: #e1fff7;
+}
+#myModal .modal-body .fa-hand-o-left{
+	left:13px;
+}
+#myModal .modal-body .fa-hand-o-right{
+	right: 13px;
+}
+.textcenter{
+	text-align: center;
+}
+.successGreen{
+	color: #22db29;
+}
+.failedRed{
+	color:#ff3d00
 }

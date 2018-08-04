@@ -507,7 +507,7 @@
       $('#level').html(myLevel)
       $('.paperNos').html(localStorage.views)
       aaaa += '</p><p class="viewsGreeting">May you save the QR code then share it to your buddies for reading in pairs.'
-      var fillWelcome = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h6 class="modal-title" id="myModalLabel">'+greeting+'</h6><div class="margintop23"><p class="viewsGreeting">'+aaaa+'</p></div></div><div class="modal-body"><img id="appimg" src="./imgs/economist_index.png"></div><div class="modal-footer"><button type="button" class="btn btn-success" data-dismiss="modal">Got it</button></div>'
+      var fillWelcome = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h6 class="modal-title rightO" id="myModalLabel">'+greeting+'</h6><div class="margintop23"><p class="viewsGreeting">'+aaaa+'</p></div></div><div class="modal-body"><img id="appimg" src="./imgs/economist_index.png"></div><div class="modal-footer"><button type="button" class="btn btn-success" data-dismiss="modal">Got it</button></div>'
       $('#myModal .modal-content').html(fillWelcome)
       $('#mymotto').val(localStorage.mymotto)
     $(document).ready(function(){
@@ -523,6 +523,8 @@
       var toughCount = 0
       var toughArr = []
       var paperGoon = 0
+      var testWrong = 0
+      var testRight = 0
 
       /*ballball start*/
         var canvas = document.getElementById('ballball');
@@ -591,6 +593,18 @@
         ctx.font = size + 'px Microsoft Yahei';
         ctx.textAlign = 'center';
         ctx.fillStyle = "rgba(06, 85, 128, 0.8)";
+        if(paperGoon >=100){
+            var tmp = currentPaperFile.slice(0,-5)
+            if(localStorage.reads.indexOf(tmp)<0){
+              localStorage.views = localStorage.views*1 + 1
+              var x = new Date()
+              var y = x.toString().split(' ')
+              var z = y.slice(0,5)
+              localStorage.lastReadTime = z.join(' ')
+              $('.paperNos').text(localStorage.views)
+              localStorage.reads += tmp+','
+            }
+        }
         if(nowRange <100){
           var fillss = ~~nowRange+'%'
         }else{
@@ -600,7 +614,7 @@
         //ctx.strokeText(~~nowRange, r, r + size / 2);
         ctx.restore();
         };
-        var myReq
+        var myReq = null
         function ballball(){
         ctx.clearRect(0, 0, mW, mH);
         rangeValue = paperGoon
@@ -620,11 +634,120 @@
         xOffset += speed;
         if(paperGoon>=100){
           $('#start-words-test').show()
-          window.clearInterval(readTimer)
           window.cancelAnimationFrame(myReq);
         }
         myReq = requestAnimationFrame(ballball);
         }
+      function multiplyArrayElement(num) {
+          return num * document.getElementById("multiplyWith").value;
+      }
+
+      function fillWordTest(wordno){
+        var wordno = wordno*1
+        var jsonDataBasic = dictData['default']
+        var toughLen = toughArr.length
+        var value = toughArr[wordno]
+          try{
+            var exArr = jsonDataBasic[value]['ex']
+          }catch(err) { 
+            var exArr = []
+          }
+          var exLi = ''
+          for(var i in exArr){
+              exLi += '<li>'+exArr[i]+'</li>'
+          }
+          var wordss = [value]
+          var opsArr = [exLi]
+          var guessOptions = ''
+          var step = Math.floor(toughLen/3)
+          for(var i=0;i<3;i++){
+              var mins = step*i
+              var maxs = step*(i+1)
+              var randd = mins + Math.floor(Math.random() * (maxs - mins + 1))
+              var opWord = toughArr[randd]
+              try{
+                exArr = jsonDataBasic[opWord]['ex']
+              }catch(err) { 
+                exArr = []
+              }
+              if (exArr.length == 0){
+                opWord = toughArr[randd+1]
+                try{
+                  exArr = jsonDataBasic[opWord]['ex']
+                }catch(err) { 
+                  exArr = []
+                }
+              }
+              wordss.push(opWord)
+              exLi = ''
+              for(var j in exArr){
+                exLi += '<li>'+exArr[j]+'</li>'
+              }
+              opsArr.push(exLi)
+
+          }
+          var aaa = []
+          opsArr = opsArr.slice(0,4)
+          var ids=['collapseA','collapseB','collapseC','collapseD']
+          ids = ids.map(function(currentValue,index,arr){return currentValue+value})
+          var ops = ['  Option A  ','  Option B  ','  Option C  ','  Option D  ']
+          var rightO = 0
+          while(true){
+            var aLen = aaa.length
+            if(aLen == 4){
+                break
+            }else{
+              var bbb = parseInt(Math.random()*(4),10)
+              if(aaa.indexOf(bbb) <0){
+                if(wordss[bbb] == value){
+                  rightO = aLen
+                }
+                aaa.push(bbb)
+                var cls = 'panel-collapse collapse in'
+                if(aLen == 0){
+                  cls = 'panel-collapse collapse in'
+                }
+                var sppp = '<input type="radio" name="guessWordInput" class="guessWordInput" data-value="'+value+'" value="'+wordss[bbb]+'">'
+                guessOptions += '<div class="textcenter"><p><span>'+sppp+'</span><a data-toggle="collapse" href="#'+ids[aLen]+'">'+ops[aLen]+'</a></p><div id="'+ids[aLen]+'" class="'+cls+'"><div class="panel-body"><ul class="wordExplanationCN">'+opsArr[bbb]+'</ul></div></div></div>'
+              }
+            }
+          }
+          if(wordno!=0){
+            guessOptions+='<i class="fa fa-hand-o-left words-next-pre" data-word="'+(wordno-1)+'">'+toughArr[wordno-1]+'</i>'
+          }
+          if(wordno<=toughLen-2){
+            guessOptions+='<i class="fa fa-hand-o-right  words-next-pre" data-word="'+(wordno+1)+'">'+toughArr[wordno+1]+'</i>'
+          }else{
+            $('#myModal .modal-footer').html('<button type="button" class="btn btn-success" id="view-words-result">View Result</button>')
+          }
+        $('#myModalLabel').html(value)
+        $('#myModal .modal-body').html(guessOptions)
+      }
+      $('#myModal').on('click','.words-next-pre',function(){
+        var wordno = $(this).attr('data-word')
+        fillWordTest(wordno)
+      })
+      $('#myModal').on('click','#view-words-result',function(){
+        $('#myModalLabel').html('Words Test Report')
+        var toughLen = toughArr.length
+        var xxx = '<p class="wordTitle">Total: <b>'+toughLen+'</b></p><p class="successGreen">Correct: <b>'+testRight+'</b></p><p class="failedRed">Failed: <b>'+testWrong+'</b></p>'
+        var tested = testWrong+testRight
+        if(tested != toughLen){
+          xxx += '</p><p class="failedRed">Missed: <b>'+(toughLen-tested)+'</b></p>'
+        }
+        $('#myModal .modal-body').html(xxx)
+        $('#myModal .modal-footer').html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>')
+      })
+      $('#start-words-test').click(function(){
+        if(!$('#clickWordsDict').is(':hidden')){
+          $('#clickWordsDict').fadeOut(234)
+        }
+        testWrong = 0
+        testRight = 0
+        fillWordTest(0)
+        $('#myModal .modal-footer').html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>')
+      $('#myModal').modal('show')
+      })
       function wordSearch(value,basicLookup){
       dealWithFloatDiv('',true,false,true,false)
               if(!value){
@@ -926,7 +1049,6 @@
                       try{
                         var exArr = jsonDataBasic[value]['ex']
                       }catch(err) { 
-                        console.log(err)
                         var exArr = []
                       }
                       for(var i in exArr){
@@ -945,12 +1067,15 @@
                             try{
                               exArr = jsonDataBasic[opWord]['ex']
                             }catch(err) { 
-                              console.log(err)
                               exArr = []
                             }
                             if (exArr.length == 0){
                               opWord = toughArr[randd+1]
-                              exArr =jsonDataBasic[opWord]['ex']
+                              try{
+                                exArr = jsonDataBasic[opWord]['ex']
+                              }catch(err) { 
+                                exArr = []
+                              }
                             }
                             wordss.push(opWord)
                             exLi = ''
@@ -991,14 +1116,20 @@
                   $('#clickWordsDict').slideDown(256)
                 }
         }
-        $('#wordGuessM').on('click','.guessWordInput',function(){
+        $('body').on('click','.guessWordInput',function(){
           var current = $(this).val()
           var rightV = $(this).attr('data-value')
-          if(current != rightV){
-            $(this).parent().parent().append('<i class="fa fa-frown-o"></i>')
-          }else{
-            $(this).parent().parent().append('<i class="fa fa-smile-o"></i>')
+          if(current == 0){
+            return
           }
+          if(current != rightV){
+              $(this).parent().parent().prepend('<i class="fa fa-frown-o"></i>')
+              testWrong += 1
+          }else{
+              testRight += 1
+            $(this).parent().parent().prepend('<i class="fa fa-smile-o"></i>')
+          }
+          $(this).val(0)
           // $('#wordGuessM').find('.hidea').show()
         })
         $('#articleContent').on('click','.fa-info-circle',function(e){
@@ -1008,17 +1139,8 @@
               var timsPct = (mm/supposeTime)*0.58
               var wordPct = cliLen*timsPct*2
               paperGoon = (timsPct+wordPct)*100+1
-              if(paperGoon >=99){
-                    var tmp = currentPaperFile.slice(0,-5)
-                    if(localStorage.reads.indexOf(tmp)<0){
-                      localStorage.views = localStorage.views*1 + 1
-                      var x = new Date()
-                      var y = x.toString().split(' ')
-                      var z = y.slice(0,5)
-                      localStorage.lastReadTime = z.join(' ')
-                      $('.paperNos').text(localStorage.views)
-                      localStorage.reads += tmp+','
-                    }
+              if(paperGoon>=100){
+                $('#start-words-test').show()
               }
               if(triggerWord != null){
                     var toSearch = triggerWord
@@ -1190,6 +1312,12 @@ $('.switchPaper').click(function(){
                               toughArr.push(word)
                           }
                           $('#toughWords-div').find('ol').html(wordsLis)
+                          if(localStorage.username != 'Lockey23'){
+                            myReq = requestAnimationFrame(ballball);
+                          }else{
+                            $('#ballball').hide()
+                            $('.paperNos').show()
+                          }
 
                           var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-opencart" id="showTough"> Suggested Focus: </span></span><span class="words-number">'+statistics['suggestedfocus']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-slideshare" id="showTough">   Advanced Words: </span></span><span class="words-number">'+toughCount+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Words Set: </span><span class="words-number">'+statistics['wordsset']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Total Words: </span><span class="words-number">'+statistics['allwords']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span><ul style="padding: 0;margin-top: 8px;margin-bottom: 3px;">'+wordsSpan+'</ul></span>'
                           supposeTime = statistics['suggestedfocus'].slice(0,2)*0.69
@@ -1242,13 +1370,6 @@ $('.switchPaper').click(function(){
                         $('#createDate').html(dateStr)
                         $('#lastArt').attr('data-link',content['last'])
                         $('#nextArt').attr('data-link',content['next'])
-                        if(localStorage.username != 'Lockey23'){
-                          myReq = requestAnimationFrame(ballball);
-
-                        }else{
-                          $('#ballball').hide()
-                          $('.paperNos').show()
-                        }
                         dictData['default'] = content['assistent']
                         $('#myModal').modal('hide')
                         
