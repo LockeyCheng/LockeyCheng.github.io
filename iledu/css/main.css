@@ -1038,3 +1038,32 @@ choose words
 .failedRed{
 	color:#ff3d00
 }
+
+#swith-nav-a{
+	margin-left: 23%;
+}
+#slideImgAdd{
+	text-align: center;
+	margin-top: -3px;
+}
+#slideImgAdd .fa-modx{
+	background: -webkit-linear-gradient(330deg, #5e00f1 0%, #ff0000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#carouselNo{
+	padding: 8px;
+    background: white;
+    margin: 9px;
+    border-radius: 7px;
+    color: #9d16b4;
+}
+#carouselChoose span{
+	font-size: 1.3em;
+}
+#carouselChoose .fa-minus-circle{
+	color:#ff5722;
+}
+#carouselChoose .fa-plus-circle{
+	color:#5bffbb;
+}
