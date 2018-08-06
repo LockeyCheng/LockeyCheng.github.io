@@ -130,6 +130,7 @@
                 </div>
             </nav><!-- sidebar-wrapper  -->
             <main class="page-content">
+              <h3 id="slideImgAdd"><span class="fa fa-modx"></span></h3>
               <div id="myCarousel" class="carousel slide">
                 <!-- <ol class="carousel-indicators">
                   <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -163,7 +164,6 @@
                 </a> -->
             </div>
             <div id="carouselChoose">
-            <h3 id="slideImgAdd"><span class="fa fa-modx"></span></h3>
             <p class="hidea rightO"><span class="fa fa-minus-circle carousel-add-minus"></span><span id="carouselNo">1</span><span class="fa fa-plus-circle carousel-add-minus"></span></p>
           </div>
 <div class="container">
@@ -184,7 +184,6 @@
       <a class="nav-link fa fa-search-plus" data-toggle="tab" href="#menu4"></a>
     </li>
   </ul>
-
   <!-- Tab panes -->
   <div class="tab-content">
     <div id="home" class="container tab-pane active">
@@ -678,17 +677,18 @@
             slideContent += caps
           }
           var preOrNext = '</div><a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="fa fa-angle-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="fa fa-angle-right" aria-hidden="true"></span><span class="sr-only">Next</span></a>'
-
           var result = slideDotOl+slideContent+preOrNext
           $('#myCarousel').html(result)
+        }else{
+          $('#myCarousel').html('')
         }
       }
       gen_carousel()
       $('#slideImgAdd').click(function(){
-        if($(this).next('.hidea').is(':hidden')){
-          $(this).next('.hidea').fadeIn(234)
+        if($('#carouselChoose').find('.hidea').is(':hidden')){
+          $('#carouselChoose').find('.hidea').fadeIn(234)
         }else{
-          $(this).next('.hidea').slideUp(334)
+          $('#carouselChoose').find('.hidea').slideUp(334)
         }
         
       })

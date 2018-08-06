@@ -1043,8 +1043,11 @@ choose words
 	/*margin-left: 23%;*/
 }
 #slideImgAdd{
-	text-align: center;
-	margin-top: 6px;
+	text-align: right;
+    position: absolute;
+    margin-top: 16px;
+    z-index: 111;
+    right: 3%;
 }
 #slideImgAdd .fa-modx{
 	background: -webkit-linear-gradient(330deg, #5e00f1 0%, #ff0000 100%);
