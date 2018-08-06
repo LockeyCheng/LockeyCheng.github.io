@@ -97,7 +97,7 @@
 			"update":"2018-06-30 00:23:36"
 		},
 		"reader":{
-			"title":"Reader’s Digest",
+			"title":"Reader's Digest",
 			"titleStyle":"",
 			"logo":"./imgs/rd-header-logo.png",
 			"desc":"Reader's Digest is an American general-interest family magazine, published ten times a year. Formerly based in Chappaqua, New York, it is now headquartered in Midtown Manhattan.For many years, Reader's Digest was the best-selling consumer magazine in the United States; it lost the distinction in 2009 to Better Homes and Gardens.",
@@ -120,6 +120,6 @@
 	 "The_Spectator",
 	 "The_People",
 	 "Reader’s_Digest"],
-"defaultPaper":"2018_7_28_1.json",
+"defaultPaper":"2018_8_6_2.json",
 "extra":{}
 }

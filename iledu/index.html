@@ -189,7 +189,11 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div id="home" class="container tab-pane active">
-
+      <div id="block-div"></div>
+      <div id="more-block">
+        <h3 class="rightO"><span class="fa fa-plus-square"> Alter Zone</span></h3>
+        <p class="hidea"><span class="fa fa-remove"> The Economist</span></p>
+      </div>
     </div>
     <div id="paper-section" class="container tab-pane fade"><br>
       <div id="toughWords-div" class="touchAvoid" style="
@@ -347,7 +351,7 @@
 
             <p class="wordExplanationCN_p"><span class="wordTitle">释义：</span></p>
             <p class="wordExplanationCN_p">
-                <ul class="wordExplanationCN"><li>vt. 配置；展开；使疏开</li><li>vi. 部署；展开</li><li>n. 部署</li></ul>
+                <ul class="wordExplanationCN"></ul>
             </p>
 
             <p class="wordPhrases_p"><span class="wordTitle">短语：</span></p>
@@ -356,7 +360,7 @@
             <!-- <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
             <p><span class="wordTitle">近义：</span><span class="similar"></span></p>
             <p><span class="wordTitle">反义：</span><span class="reverse"></span></p> -->
-            <div id="centences"><p><span class="wordTitle">例句1：</span><span class="wordSentenceEn">So far, however, we have said nothing about how to<b> deploy</b> it.</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">到现在，我们还没说任何如何部署的内容。</span></p><p><span class="wordTitle">例句2：</span><span class="wordSentenceEn">Once you compile the code, you need to<b> deploy</b> it in the server to access the service.</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">您一旦编译完了这些代码，就需要在服务器上部署它来访问那些服务。</span></p><p><span class="wordTitle">例句3：</span><span class="wordSentenceEn">You can use either structure, or both, depending on how you expect to build and<b> deploy</b> your applications.</span></p><p><span class="wordTitle">例译：</span><span class="wordSentenceCn">根据您想如何构建和部署应用程序，可以使用任意一种结构，或者两者都用。</span></p></div>
+            <div id="centences"></div>
         </div>
     </div>
     </div>
@@ -466,6 +470,9 @@
     if(!localStorage.carousel){
       localStorage.carousel = 1
     }
+    if(!localStorage.myblock){
+      localStorage.myblock = 'economist'
+    }
     $('#carouselNo').text(localStorage.carousel)
     if(!localStorage.lastReadTime){
       localStorage.lastReadTime = today
@@ -531,6 +538,7 @@
       var paperGoon = 0
       var testWrong = 0
       var testRight = 0
+      var zoneMap = null
 
       /*ballball start*/
         var canvas = document.getElementById('ballball');
@@ -599,18 +607,6 @@
         ctx.font = size + 'px Microsoft Yahei';
         ctx.textAlign = 'center';
         ctx.fillStyle = "rgba(06, 85, 128, 0.8)";
-        if(paperGoon >=100){
-            var tmp = currentPaperFile.slice(0,-5)
-            if(localStorage.reads.indexOf(tmp)<0){
-              localStorage.views = localStorage.views*1 + 1
-              var x = new Date()
-              var y = x.toString().split(' ')
-              var z = y.slice(0,5)
-              localStorage.lastReadTime = z.join(' ')
-              $('.paperNos').text(localStorage.views)
-              localStorage.reads += tmp+','
-            }
-        }
         if(nowRange <100){
           var fillss = ~~nowRange+'%'
         }else{
@@ -1213,6 +1209,16 @@
               var wordPct = cliLen*timsPct*2
               paperGoon = (timsPct+wordPct)*100+1
               if(paperGoon>=100){
+                var tmp = currentPaperFile.slice(0,-5)
+                if(localStorage.reads.indexOf(tmp)<0){
+                  localStorage.views = localStorage.views*1 + 1
+                  var x = new Date()
+                  var y = x.toString().split(' ')
+                  var z = y.slice(0,5)
+                  localStorage.lastReadTime = z.join(' ')
+                  $('.paperNos').text(localStorage.views)
+                  localStorage.reads += tmp+','
+                }
                 $('#start-words-test').show()
               }
               if(triggerWord != null){
@@ -1591,7 +1597,7 @@ $('.switchPaper').click(function(){
             return arrayPageSize;
         }
        function getPaperList(){
-      $.ajax({
+          $.ajax({
                 type:"GET",
                 url: './blocks.json',
                 data: null,
@@ -1599,15 +1605,43 @@ $('.switchPaper').click(function(){
                 cache:false,
                 success: function(data) {
                   var blockData = data['zones']
+                  zoneMap = blockData
                   var listLen = data['zoneNo']
                   paperOload = data['defaultPaper']
                   var paperNo = 0
                   var windowHW = getPageSize()
-                  var item1='<div class="col-sm-3 col-item1">'
-                  var item2='<div class="col-sm-3 col-item2">'
-                  var item3='<div class="col-sm-3 col-item3">'
-                  var item4='<div class="col-sm-3 col-item4">'
+                  var blockArr = []
+                  var blockArr1 = (localStorage.myblock).split(',')
+                  for(var i in blockArr1){
+                    if(blockArr1[i].length >1){
+                      blockArr.push(blockArr1[i])
+                    }
+                  }
+                  var blockNos = blockArr.length
+                  if(blockNos==4){
+                    var colClass = 'col-sm-3'
+                  }else if(blockNos == 3){
+                    var colClass = 'col-sm-4'
+                  }else if(blockNos == 2){
+                    var colClass = 'col-sm-6'
+                  }else{
+                    var colClass = 'col-sm-12'
+                  }
+                  if(blockNos>=4){
+                    colClass = 'col-sm-3'
+                  }
+                   var itemArr = []
+                  if(blockNos >4){
+                    blockNos = 4
+                  }
+                  for(var i=0;i<blockNos;i++){
+                    var colDiv = '<div class="'+colClass+' col-item'+(i+1)+'">'
+                    itemArr.push(colDiv)
+                  } 
                   for(var i in blockData){
+                    if(blockArr.indexOf(i)<0){
+                      continue
+                    }
                     var title=blockData[i]['title']
                   //for(var i=0;i<listLen;i++){
                     if(blockData[i]['logo'] != ''){
@@ -1621,23 +1655,24 @@ $('.switchPaper').click(function(){
                         imgSrc = ''
                     }
                     var desc = blockData[i]['desc']
-                    var fillDiv = '<div class="box-item" data-type="'+title+'"><div class="item-img-div"><a href="javascript:void(0)" class="overlay"><div class="folio-item-table"><div class="folio-item-cell">'+logo+'</h3></div></div></a>'+imgSrc+'<p class="ablock"><a>'+desc+'</a></p></div></div>'
+                    var fillDiv = '<div class="box-item" data-type="'+title+'" id="'+i+'"><div class="item-img-div"><a href="javascript:void(0)" class="overlay"><div class="folio-item-table"><div class="folio-item-cell">'+logo+'</h3></div></div></a>'+imgSrc+'<p class="ablock"><a>'+desc+'</a></p></div></div>'
                     if(paperNo%4 ==0){
-                      item1 += fillDiv
+                      itemArr[0] += fillDiv
                     }else if(paperNo%4 ==1){
-                      item2 += fillDiv
+                      itemArr[1] += fillDiv
                     }else if(paperNo%4 ==2){
-                      item3 += fillDiv
+                      itemArr[2] += fillDiv
                     }else if(paperNo%4 ==3){
-                      item4 += fillDiv
+                      itemArr[3] += fillDiv
                     }else{
                       console.log(i+' error')
                     }
                     paperNo += 1
                   }
-                 
-                  var finalResult = item1+'</div>'+item2+'</div>'+item3+'</div>'+item4+'</div>'
-                  $('#home').append(finalResult)         
+                 itemArr = itemArr.map(function(currentValue,index,arr){return currentValue+'</div>'})
+                 itemArr = itemArr.slice(0,paperNo)
+                  var finalResult = itemArr.join('')//item1+'</div>'+item2+'</div>'+item3+'</div>'+item4+'</div>'
+                  $('#block-div').append(finalResult)         
                    $('#floatDiv').fadeOut(556)
                 },
                 error: function(data) {
@@ -1648,6 +1683,54 @@ $('.switchPaper').click(function(){
       })
     }
     getPaperList()
+    $('#more-block .fa-plus-square').click(function(){
+      if($(this).parent().next('p').is(':hidden')){
+        var blockArr = (localStorage.myblock).split(',')
+        var spans = ''
+        for(var i in zoneMap){
+          if(blockArr.indexOf(i)>=0){
+            spans += '<span class="fa fa-minus-circle add-remove-block" data-block="'+i+'">'+zoneMap[i]['title']+'</span>'
+          }else{
+            spans += '<span class="fa fa-plus-circle add-remove-block" data-block="'+i+'">'+zoneMap[i]['title']+'</span>'
+          }
+        }
+        $(this).parent().next('p').html(spans)
+        $(this).parent().next('p').slideDown(345)
+      }else{
+        $(this).parent().next('p').slideUp(234)
+      }
+    })
+    $('#more-block').on('click','.add-remove-block',function(){
+      var data1 = $(this).attr('data-block')
+      var dataAll = $(this).text()
+      if($(this).hasClass('fa-minus-circle')){
+        localStorage.myblock = (localStorage.myblock).replace(data1,'')
+        var ida = '#'+data1
+        $(ida).remove()
+        var adds = '<span class="fa fa-plus-circle add-remove-block" data-block="'+data1+'">'+dataAll+'</span>'
+      }else{
+        var adds = '<span class="fa fa-minus-circle add-remove-block" data-block="'+data1+'">'+dataAll+'</span>'
+        localStorage.myblock += ','+data1
+
+
+        var title=zoneMap[data1]['title']
+        if(zoneMap[data1]['logo'] != ''){
+          var logo = '<h3 class="folio-title"><img src="'+zoneMap[data1]['logo']+'" style="width: '+zoneMap[data1]['logow']+';">'
+        }else{
+          var logo = '<h3 class="folio-title" style="'+zoneMap[data1]['titleStyle']+'">'+zoneMap[data1]['title']
+        }
+
+        var imgSrc = '<img src="'+zoneMap[data1]['img']+'" class="img-responsive item-img"/>'+'<p class="blocks-paper-user"><span class="fa fa-newspaper-o"> '+zoneMap[data1]['papers']+'</span><span class="fa fa-heart"> '+zoneMap[data1]['focus']+'</span></p>'
+        if(localStorage.username == 'Lockey23' || !zoneMap[data1]['img']){
+            imgSrc = ''
+        }
+        var desc = zoneMap[data1]['desc']
+        var fillDiv = '<div class="box-item" data-type="'+title+'" id="'+data1+'"><div class="item-img-div"><a href="javascript:void(0)" class="overlay"><div class="folio-item-table"><div class="folio-item-cell">'+logo+'</h3></div></div></a>'+imgSrc+'<p class="ablock"><a>'+desc+'</a></p></div></div>'
+        $('#block-div').find('div').first().append(fillDiv)
+      }
+      $(this).parent().prepend(adds)
+      $(this).remove()
+    })
         $(function() {
           $('#myModal').on('hide.bs.modal',
           function() {
