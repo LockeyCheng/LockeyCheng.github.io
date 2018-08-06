@@ -53,7 +53,7 @@
                         <!--<span class="user-name">Lockey <strong>Young</strong></span>-->
                         
                         <div class="user-status">                       
-                            <a href="#"><span class="label label-success">LV 1</span></a>                           
+                            <a href="#"><span class="label label-success" id="level">LV X</span></a>                           
                         </div>
                         <span class="user-role">Member</span>
                     </div>
@@ -215,11 +215,16 @@
           <div id="clickWordsDict_detail">
             <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
             <p class="wordPro_p"><ul class="wordPro"></ul></p>
-
-            <p class="wordExplanationCN_p"><span class="wordTitle">释义：</span></p>
+            <p class="wordExplanationCN_p"><span class="wordTitle">请根据理解选择释义（点击选项名展开）：</span></p>
+            <div id="wordGuessM">
+            </div>
+<!-- 
+            
             <p class="wordExplanationCN_p"><ul class="wordExplanationCN"></ul></p>
-            <p class="basic_dict_error error"></p>
+             -->
+             <p class="basic_dict_error error"></p>
           </div>
+          
     </div>
       <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
         <h5 class="heading5" id="createDate">——By Lockey</h5>
@@ -237,10 +242,14 @@
 " id="foucus_suggest">Article Content</h5> -->
 
         <div id="articleContent"></div>
+
         <img src="./imgs/zhi.jpg" style='width: 50%;margin-left: 25%;border-radius: 9%'>
+<hr/>
+        <button class="btn btn-info btn-lg btn-block" id="start-words-test">Start Test</button>
     </style>
     <div id="timerDiv">
-      <span class="paperNos">1</span>
+      <div><canvas id="ballball"></canvas></div>
+      <span class="paperNos hidea">1</span>
       <span id="runningTimer">00:00</span>
     </div>
         <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"></span></a></span>
@@ -474,24 +483,31 @@
     if(!localStorage.mymotto){
       localStorage.mymotto = 'No Pains, No Gains!'
     }
+    var myLevel = 'LV  '
     if(localStorage.username){
       $('.usernameHold').html(localStorage.username)
       }
       var paperWithTime = localStorage.views+'th('+localStorage.lastReadTime+')'
       if(localStorage.views == 0){
           var aaaa = 'Welcome here, wish you a jolly journey!'
-      }else if(localStorage.views>0 && localStorage.views<=9){
+          myLevel += '0'
+      }else if(localStorage.views>0 && localStorage.views<=6){
           var aaaa = 'It is the ' +paperWithTime+' paper you read here, keep on!'
-      }else if(localStorage.views>9 && localStorage.views<=30){
+          myLevel += '1'
+      }else if(localStorage.views>6 && localStorage.views<=23){
           var aaaa = 'Wonderfull! You have completed ' +paperWithTime+' papers here, just carry on!'
-      }else if(localStorage.views>30 && localStorage.views<=99){
+          myLevel += '2'
+      }else if(localStorage.views>23 && localStorage.views<=55){
           var aaaa = 'AMAZING! You has come to the ' +paperWithTime+' paper!'
+          myLevel += '3'
       }else{
           var aaaa = 'Splendiferous! You has come to the ' +paperWithTime+' paper, merely nobody ahead of you!'
+          myLevel += Math.round(localStorage.views/15)
       }
+      $('#level').html(myLevel)
       $('.paperNos').html(localStorage.views)
       aaaa += '</p><p class="viewsGreeting">May you save the QR code then share it to your buddies for reading in pairs.'
-      var fillWelcome = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h6 class="modal-title" id="myModalLabel">'+greeting+'</h6><div class="margintop23"><p class="viewsGreeting">'+aaaa+'</p></div></div><div class="modal-body"><img id="appimg" src="./imgs/economist_index.png"></div><div class="modal-footer"><button type="button" class="btn btn-success" data-dismiss="modal">Got it</button></div>'
+      var fillWelcome = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h6 class="modal-title rightO" id="myModalLabel">'+greeting+'</h6><div class="margintop23"><p class="viewsGreeting">'+aaaa+'</p></div></div><div class="modal-body"><img id="appimg" src="./imgs/economist_index.png"></div><div class="modal-footer"><button type="button" class="btn btn-success" data-dismiss="modal">Got it</button></div>'
       $('#myModal .modal-content').html(fillWelcome)
       $('#mymotto').val(localStorage.mymotto)
     $(document).ready(function(){
@@ -504,6 +520,234 @@
       var dictData={'default':null}
       var pquery = false
       var testAlpha = /^[a-zA-Z]+$/i
+      var toughCount = 0
+      var toughArr = []
+      var paperGoon = 0
+      var testWrong = 0
+      var testRight = 0
+
+      /*ballball start*/
+        var canvas = document.getElementById('ballball');
+        var ctx = canvas.getContext('2d');
+        // var grd=ctx.createRadialGradient(75,50,5,90,60,100);
+        // grd.addColorStop(0,"black");
+        // grd.addColorStop(1,"white");
+
+        //range控件信息
+        var rangeValue = paperGoon//range.value;
+        var nowRange = 0; //用于做一个临时的range
+        //画布属性
+        var mW = canvas.width = 250;
+        var mH = canvas.height = 250;
+        var lineWidth = 2;
+        //圆属性
+        var r = mH / 2; //圆心
+        var cR = r - 16 * lineWidth; //圆半径
+        //Sin 曲线属性
+        var sX = 0;
+        var sY = mH / 2;
+        var axisLength = mW; //轴长
+        var waveWidth = 0.015 ; //波浪宽度,数越小越宽
+        var waveHeight = 6; //波浪高度,数越大越高
+        var speed = 0.09; //波浪速度，数越大速度越快
+        var xOffset = 0; //波浪x偏移量
+        ctx.lineWidth = lineWidth;
+        //画圈函数
+        var IsdrawCircled = false;
+        var drawCircle = function(){
+        ctx.beginPath();
+        ctx.strokeStyle = '#bfefe4';
+        ctx.arc(r, r, cR+5, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(r, r, cR, 0, 2 * Math.PI);
+        ctx.clip();
+        }
+        //画sin 曲线函数
+        var drawSin = function(xOffset){
+        ctx.save();
+        var points=[]; //用于存放绘制Sin曲线的点
+        ctx.beginPath();
+        //在整个轴长上取点
+        for(var x = sX; x < sX + axisLength; x += 20 / axisLength){
+        //此处坐标(x,y)的取点，依靠公式 “振幅高*sin(x*振幅宽 + 振幅偏移量)”
+        var y = -Math.sin((sX + x) * waveWidth + xOffset);
+        var dY = mH * (1 - nowRange / 100 );
+        points.push([x, dY + y * waveHeight]);
+        ctx.lineTo(x, dY + y * waveHeight);
+        }
+        //封闭路径
+        ctx.lineTo(axisLength, mH);
+        ctx.lineTo(sX, mH);
+        ctx.lineTo(points[0][0],points[0][1]);
+        ctx.fillStyle = '#93ffde';
+        ctx.fill();
+        // ctx.fillStyle=grd;
+        // ctx.fillRect(0,0,300,300);
+        ctx.restore();
+        };
+        //写百分比文本函数
+        var drawText = function(){
+        ctx.save();
+        var size = 0.6*cR;
+        ctx.font = size + 'px Microsoft Yahei';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = "rgba(06, 85, 128, 0.8)";
+        if(paperGoon >=100){
+            var tmp = currentPaperFile.slice(0,-5)
+            if(localStorage.reads.indexOf(tmp)<0){
+              localStorage.views = localStorage.views*1 + 1
+              var x = new Date()
+              var y = x.toString().split(' ')
+              var z = y.slice(0,5)
+              localStorage.lastReadTime = z.join(' ')
+              $('.paperNos').text(localStorage.views)
+              localStorage.reads += tmp+','
+            }
+        }
+        if(nowRange <100){
+          var fillss = ~~nowRange+'%'
+        }else{
+          var fillss = localStorage.views+'th'
+        }
+        ctx.fillText(fillss, r, r + size / 2);
+        //ctx.strokeText(~~nowRange, r, r + size / 2);
+        ctx.restore();
+        };
+        var myReq = null
+        function ballball(){
+        ctx.clearRect(0, 0, mW, mH);
+        rangeValue = paperGoon
+        if(IsdrawCircled == false){
+        drawCircle();
+        }
+        if(nowRange <= rangeValue){
+        var tmp = 1;
+        nowRange += tmp;
+        }
+        if(nowRange > rangeValue){
+        var tmp = 1;
+        nowRange -= tmp;
+        }
+        drawSin(xOffset);
+        drawText();
+        xOffset += speed;
+        if(paperGoon>=100){
+          $('#start-words-test').show()
+          window.cancelAnimationFrame(myReq);
+        }
+        myReq = requestAnimationFrame(ballball);
+        }
+      function multiplyArrayElement(num) {
+          return num * document.getElementById("multiplyWith").value;
+      }
+
+      function fillWordTest(wordno){
+        var wordno = wordno*1
+        var jsonDataBasic = dictData['default']
+        var toughLen = toughArr.length
+        var value = toughArr[wordno]
+          try{
+            var exArr = jsonDataBasic[value]['ex']
+          }catch(err) { 
+            var exArr = []
+          }
+          var exLi = ''
+          for(var i in exArr){
+              exLi += '<li>'+exArr[i]+'</li>'
+          }
+          var wordss = [value]
+          var opsArr = [exLi]
+          var guessOptions = ''
+          var step = Math.floor(toughLen/3)
+          for(var i=0;i<3;i++){
+              var mins = step*i
+              var maxs = step*(i+1)
+              var randd = mins + Math.floor(Math.random() * (maxs - mins + 1))
+              var opWord = toughArr[randd]
+              try{
+                exArr = jsonDataBasic[opWord]['ex']
+              }catch(err) { 
+                exArr = []
+              }
+              if (exArr.length == 0){
+                opWord = toughArr[randd+1]
+                try{
+                  exArr = jsonDataBasic[opWord]['ex']
+                }catch(err) { 
+                  exArr = []
+                }
+              }
+              wordss.push(opWord)
+              exLi = ''
+              for(var j in exArr){
+                exLi += '<li>'+exArr[j]+'</li>'
+              }
+              opsArr.push(exLi)
+
+          }
+          var aaa = []
+          opsArr = opsArr.slice(0,4)
+          var ids=['collapseA','collapseB','collapseC','collapseD']
+          ids = ids.map(function(currentValue,index,arr){return currentValue+value})
+          var ops = ['  Option A  ','  Option B  ','  Option C  ','  Option D  ']
+          var rightO = 0
+          while(true){
+            var aLen = aaa.length
+            if(aLen == 4){
+                break
+            }else{
+              var bbb = parseInt(Math.random()*(4),10)
+              if(aaa.indexOf(bbb) <0){
+                if(wordss[bbb] == value){
+                  rightO = aLen
+                }
+                aaa.push(bbb)
+                var cls = 'panel-collapse collapse in'
+                if(aLen == 0){
+                  cls = 'panel-collapse collapse in'
+                }
+                var sppp = '<input type="radio" name="guessWordInput" class="guessWordInput" data-value="'+value+'" value="'+wordss[bbb]+'">'
+                guessOptions += '<div class="textcenter"><p><span>'+sppp+'</span><a data-toggle="collapse" href="#'+ids[aLen]+'">'+ops[aLen]+'</a></p><div id="'+ids[aLen]+'" class="'+cls+'"><div class="panel-body"><ul class="wordExplanationCN">'+opsArr[bbb]+'</ul></div></div></div>'
+              }
+            }
+          }
+          if(wordno!=0){
+            guessOptions+='<i class="fa fa-hand-o-left words-next-pre" data-word="'+(wordno-1)+'">'+toughArr[wordno-1]+'</i>'
+          }
+          if(wordno<=toughLen-2){
+            guessOptions+='<i class="fa fa-hand-o-right  words-next-pre" data-word="'+(wordno+1)+'">'+toughArr[wordno+1]+'</i>'
+          }else{
+            $('#myModal .modal-footer').html('<button type="button" class="btn btn-success" id="view-words-result">View Result</button>')
+          }
+        $('#myModalLabel').html(value)
+        $('#myModal .modal-body').html(guessOptions)
+      }
+      $('#myModal').on('click','.words-next-pre',function(){
+        var wordno = $(this).attr('data-word')
+        fillWordTest(wordno)
+      })
+      $('#myModal').on('click','#view-words-result',function(){
+        $('#myModalLabel').html('Words Test Report')
+        var toughLen = toughArr.length
+        var xxx = '<p class="wordTitle">Total: <b>'+toughLen+'</b></p><p class="successGreen">Correct: <b>'+testRight+'</b></p><p class="failedRed">Failed: <b>'+testWrong+'</b></p>'
+        var tested = testWrong+testRight
+        if(tested != toughLen){
+          xxx += '</p><p class="failedRed">Missed: <b>'+(toughLen-tested)+'</b></p>'
+        }
+        $('#myModal .modal-body').html(xxx)
+        $('#myModal .modal-footer').html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>')
+      })
+      $('#start-words-test').click(function(){
+        if(!$('#clickWordsDict').is(':hidden')){
+          $('#clickWordsDict').fadeOut(234)
+        }
+        testWrong = 0
+        testRight = 0
+        fillWordTest(0)
+        $('#myModal .modal-footer').html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>')
+      $('#myModal').modal('show')
+      })
       function wordSearch(value,basicLookup){
       dealWithFloatDiv('',true,false,true,false)
               if(!value){
@@ -517,7 +761,6 @@
                     dealWithFloatDiv(tips,false,true,true)
                     return false
                 }
-              
                 if (value.length == 1){
                   dealWithFloatDiv('Please Remember THE 26 : A~B~C~D~E~F~G~H~I~J~K~L~M~N~O~P~Q~R~S~T~U~V~W~X~Y~Z~~~!',false,false,false,false,true)
                   return false
@@ -628,16 +871,22 @@
                       }
                       $('.wordPro').html(proLi)
                       var exLi = ''
+                      try{
                       var exArr = jsonDataBasic[value]['ex']
+                    }catch(err) { 
+                      console.log(err)
+                      var exArr = []
+                    }
+
                       for(var i in exArr){
                           exLi += '<li>'+exArr[i]+'</li>'
                       }
-                      $('#searchForm').hide()
                       if(exLi){
-                        $('.wordExplanationCN_p').show()
-                        $('.wordExplanationCN').html(exLi)
+                        $('#menu4 .wordExplanationCN_p').show()
+                        
+                        $('#menu4 .wordExplanationCN').html(exLi)
                       }else{
-                        $('.wordExplanationCN_p').hide()
+                        $('#menu4 .wordExplanationCN_p').hide()
                       }
                       if(basicLookup){
                         return false
@@ -797,32 +1046,101 @@
                       }
                       $('.wordPro').html(proLi)
                       var exLi = ''
-                      var exArr = jsonDataBasic[value]['ex']
+                      try{
+                        var exArr = jsonDataBasic[value]['ex']
+                      }catch(err) { 
+                        var exArr = []
+                      }
                       for(var i in exArr){
                           exLi += '<li>'+exArr[i]+'</li>'
                       }
                       if(exLi){
-                        $('.wordExplanationCN_p').show()
-                        $('.wordExplanationCN').html(exLi)
-                      }else{
-                        $('.wordExplanationCN_p').hide()
+                        var wordss = [value]
+                        var opsArr = [exLi]
+                        var guessOptions = ''
+                        var step = Math.floor(toughCount/3)
+                        for(var i=0;i<3;i++){
+                            var mins = step*i
+                            var maxs = step*(i+1)
+                            var randd = mins + Math.floor(Math.random() * (maxs - mins + 1))
+                            var opWord = toughArr[randd]
+                            try{
+                              exArr = jsonDataBasic[opWord]['ex']
+                            }catch(err) { 
+                              exArr = []
+                            }
+                            if (exArr.length == 0){
+                              opWord = toughArr[randd+1]
+                              try{
+                                exArr = jsonDataBasic[opWord]['ex']
+                              }catch(err) { 
+                                exArr = []
+                              }
+                            }
+                            wordss.push(opWord)
+                            exLi = ''
+                            for(var j in exArr){
+                              exLi += '<li>'+exArr[j]+'</li>'
+                            }
+                            opsArr.push(exLi)
+
+                        }
+                        var aaa = []
+                        opsArr = opsArr.slice(0,4)
+                        var ids=['collapseA','collapseB','collapseC','collapseD']
+                        var ops = ['  Option A  ','  Option B  ','  Option C  ','  Option D  ']
+                        var rightO = 0
+                        while(true){
+                          var aLen = aaa.length
+                          if(aLen == 4){
+                              break
+                          }else{
+                            var bbb = parseInt(Math.random()*(4),10)
+                            if(aaa.indexOf(bbb) <0){
+                              if(wordss[bbb] == value){
+                                rightO = aLen
+                              }
+                              aaa.push(bbb)
+                              var cls = 'panel-collapse collapse in'
+                              if(aLen == 0){
+                                cls = 'panel-collapse collapse in'
+                              }
+                              var sppp = '<input type="radio" name="guessWordInput" class="guessWordInput" data-value="'+value+'" value="'+wordss[bbb]+'">'
+                              guessOptions += '<div><p><span>'+sppp+'</span><a data-toggle="collapse" href="#'+ids[aLen]+'">'+ops[aLen]+'</a></p><div id="'+ids[aLen]+'" class="'+cls+'"><div class="panel-body"><ul class="wordExplanationCN">'+opsArr[bbb]+'</ul></div></div></div>'
+                            }
+                          }
+                        }
+                        guessOptions += '<p class="hidea rightO">正确的释义选项为：<b>'+ops[rightO]+'</b></p>'
+                        $('#wordGuessM').html(guessOptions)
                       }
                   $('#clickWordsDict').slideDown(256)
                 }
         }
+        $('body').on('click','.guessWordInput',function(){
+          var current = $(this).val()
+          var rightV = $(this).attr('data-value')
+          if(current == 0){
+            return
+          }
+          if(current != rightV){
+              $(this).parent().parent().prepend('<i class="fa fa-frown-o"></i>')
+              testWrong += 1
+          }else{
+              testRight += 1
+            $(this).parent().parent().prepend('<i class="fa fa-smile-o"></i>')
+          }
+          $(this).val(0)
+          // $('#wordGuessM').find('.hidea').show()
+        })
         $('#articleContent').on('click','.fa-info-circle',function(e){
-              if(clickWords.length >= Math.ceil(toughCount*0.6)){
-                    var tmp = currentPaperFile.slice(0,-5)
-                    var passedTime = $('#runningTimer').text().split(':')[0]*1
-                    if(localStorage.reads.indexOf(tmp)<0 && passedTime>supposeTime){
-                      localStorage.views = localStorage.views*1 + 1
-                      var x = new Date()
-                      var y = x.toString().split(' ')
-                      var z = y.slice(0,5)
-                      localStorage.lastReadTime = z.join(' ')
-                      $('.paperNos').text(localStorage.views)
-                      localStorage.reads += tmp+','
-                    }
+              var cliLen = (clickWords.length/toughCount)*0.62
+              var timess = $('#runningTimer').text().split(':')
+              var mm = timess[0]*1+timess[1]*1*0.01
+              var timsPct = (mm/supposeTime)*0.58
+              var wordPct = cliLen*timsPct*2
+              paperGoon = (timsPct+wordPct)*100+1
+              if(paperGoon>=100){
+                $('#start-words-test').show()
               }
               if(triggerWord != null){
                     var toSearch = triggerWord
@@ -879,10 +1197,10 @@
                   $('.basic_dict_error').show()
                }
                $('.with_motto_footer').fadeOut(234)
-               $(document).one("click", function(){
-                        $("#clickWordsDict").hide();
-                    });
-                    e.stopPropagation();
+               // $(document).one("click", function(){
+               //          $("#clickWordsDict").hide();
+               //      });
+               //      e.stopPropagation();
         })
   $('body').on('click','#showTough',function(e){
   $('#toughWords-div').slideDown(356)
@@ -908,8 +1226,11 @@ $('body').on('click','.wordPro li',function(e){
     x.setAttribute("src", youdaoWordAudio);
     x.setAttribute("autoplay", "autoplay");
     $('#voiceDiv').html(x)
-    e.stopPropagation();
+    //e.stopPropagation();
 })
+// $('#wordGuessM').click(function(e){
+//   e.stopPropagation();
+// })
 $('.switchPaper').click(function(){
   var paperName = $(this).attr('data-link')
   if(paperName == 'abcdeflockey'){
@@ -988,14 +1309,21 @@ $('.switchPaper').click(function(){
                           for(let word in touchWords){
                               toughCount += 1
                               wordsLis += '<li>'+word+'</li>'
+                              toughArr.push(word)
                           }
                           $('#toughWords-div').find('ol').html(wordsLis)
+                          if(localStorage.username != 'Lockey23'){
+                            myReq = requestAnimationFrame(ballball);
+                          }else{
+                            $('#ballball').hide()
+                            $('.paperNos').show()
+                          }
 
                           var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-opencart" id="showTough"> Suggested Focus: </span></span><span class="words-number">'+statistics['suggestedfocus']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-slideshare" id="showTough">   Advanced Words: </span></span><span class="words-number">'+toughCount+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Words Set: </span><span class="words-number">'+statistics['wordsset']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Total Words: </span><span class="words-number">'+statistics['allwords']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span><ul style="padding: 0;margin-top: 8px;margin-bottom: 3px;">'+wordsSpan+'</ul></span>'
                           supposeTime = statistics['suggestedfocus'].slice(0,2)*0.69
                           //<span class="statistics-no"><span class="clickWordsDict_title">Article Content:</span></span>
                           $('#spanstatistics').html(wordsData)
-
+                          $('#start-words-test').hide()
                           if(readTimer != null){
                             window.clearInterval(readTimer)
                           }
@@ -1019,6 +1347,11 @@ $('.switchPaper').click(function(){
                                 }
                               }
                               $('#runningTimer').text(mm+':'+ss)
+                              var cliLen = (clickWords.length/toughCount)*0.62
+                              mm = mm*1+ss*0.01
+                              var timsPct = (mm/supposeTime)*0.58
+                              var wordPct = cliLen*timsPct*2
+                              paperGoon = (timsPct+wordPct)*100+1
                             }
                           },1000)
                           

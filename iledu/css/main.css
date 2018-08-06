@@ -239,7 +239,7 @@ custom.css merge here
 .sidebar-wrapper .sidebar-menu .badge{
     background: #384558;
 }
-.sidebar-wrapper .sidebar-menu .sidebar-submenu{
+.sidebar-wrapper .sidebar-menu .sidebar-submenu, .hidea{
     display: none;
 }
 .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active > a:after{
@@ -797,7 +797,7 @@ Article content part
 .fixleft,.fixright{
 position: fixed;
 bottom: 21px;
-z-index: 1109;
+z-index: 1050;
 }
 .fixleft{
   left: -1px;
@@ -855,15 +855,16 @@ z-index: 1109;
     max-width: 81%;
 }
 #timerDiv{
-        position: fixed;
-        top: 60%;
-        right:6px;
-        opacity: 0.88;
+	    z-index: 1;
+	    position: fixed;
+	    bottom: -1px;
+	    right: 43%;
+        opacity: 0.92;
       }
       #timerDiv span{
-        display: block;
+        /*display: block;*/
         text-align: center;
-        padding: 2px 6px;
+        padding: 0px 8px;
         font-size: 1.2em;
       }
       #timerDiv .paperNos{
@@ -969,4 +970,71 @@ Dictionary
 }
 #menu4 p{
 	    color: #ffa619;
+}
+
+/******
+
+choose words
+
+***********/
+
+#clickWordsDict .collapse.in{
+	margin-top: -13px;
+	margin-bottom: -13px;
+	color: #2e5060;
+}
+
+.rightO{
+	text-align: center;
+	color: #2cdf76;
+}
+
+.fa-smile-o{
+	color: #25ffad;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-right: 5px;
+}
+.fa-frown-o{
+	color: #ff3d00;
+	font-size: 1.2em;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+#ballball{
+	position: absolute;
+    right: 3px;
+    width: 93%;
+    top: -52px;
+    font-weight: 600;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #d6fff7),linear-gradient(70deg, #d59058 32%, #14c19e);
+    /*background: rgb(15, 51, 16);*/
+    border: solid 1px #68ffdf;
+    border-radius: 50%;
+}
+
+#myModal .modal-body .fa-hand-o-right,#myModal .modal-body .fa-hand-o-left{
+	position: absolute;
+	bottom: 9px;
+    color: #288852;
+    padding: 3px;
+    border: solid 1px #afffee;
+    border-radius: 3px;
+    background: #e1fff7;
+}
+#myModal .modal-body .fa-hand-o-left{
+	left:13px;
+}
+#myModal .modal-body .fa-hand-o-right{
+	right: 13px;
+}
+.textcenter{
+	text-align: center;
+}
+.successGreen{
+	color: #22db29;
+}
+.failedRed{
+	color:#ff3d00
 }
