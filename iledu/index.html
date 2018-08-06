@@ -163,10 +163,12 @@
                     <span class="sr-only">Next</span>
                 </a> -->
             </div>
-            <div id="carouselChoose">
-            <p class="hidea rightO"><span class="fa fa-minus-circle carousel-add-minus"></span><span id="carouselNo">1</span><span class="fa fa-plus-circle carousel-add-minus"></span></p>
-          </div>
+            
 <div class="container">
+  <h3 class="rightO hidea webTitle">爱乐读</h3>
+  <div id="carouselChoose">
+      <p class="hidea rightO"><span class="fa fa-minus-circle carousel-add-minus"></span><span id="carouselNo">1</span><span class="fa fa-plus-circle carousel-add-minus"></span></p>
+  </div>
   <ul class="nav nav-tabs" id="swith-nav-a" role="tablist"><!--style="margin-left: 16px;margin-top: -12px;"-->
     <li class="nav-item active">
       <a class="nav-link active fa fa-podcast" data-toggle="tab" href="#home"></a>
@@ -678,9 +680,12 @@
           }
           var preOrNext = '</div><a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="fa fa-angle-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="fa fa-angle-right" aria-hidden="true"></span><span class="sr-only">Next</span></a>'
           var result = slideDotOl+slideContent+preOrNext
+          $('.webTitle').slideUp(234)
           $('#myCarousel').html(result)
         }else{
+          $('.webTitle').show()
           $('#myCarousel').html('')
+          $('#carouselChoose').find('.hidea').slideUp(334)
         }
       }
       gen_carousel()

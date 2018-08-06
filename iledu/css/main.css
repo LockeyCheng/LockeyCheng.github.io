@@ -1040,14 +1040,15 @@ choose words
 }
 
 #swith-nav-a{
-	/*margin-left: 23%;*/
+	margin-left: 20%;
+	border-bottom: none;
 }
 #slideImgAdd{
 	text-align: right;
     position: absolute;
-    margin-top: 16px;
+    margin-top: 12px;
     z-index: 111;
-    right: 3%;
+    right: 12px;
 }
 #slideImgAdd .fa-modx{
 	background: -webkit-linear-gradient(330deg, #5e00f1 0%, #ff0000 100%);
@@ -1069,4 +1070,13 @@ choose words
 }
 #carouselChoose .fa-plus-circle{
 	color:#5bffbb;
+}
+/*.container{
+	margin-top: -13px;
+}*/
+.webTitle{
+	background: -webkit-linear-gradient(330deg, #5a00e6 0%, #ff0000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.3em;
 }
