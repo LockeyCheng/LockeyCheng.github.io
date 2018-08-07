@@ -1536,7 +1536,12 @@ $('.switchPaper').click(function(){
                   }
                   moreTimes ++
                   resultLatest += '</div>'
-                  $('#myModal .modal-body').append(resultLatest)         
+                  if(moreTimes == 1){
+                    $('#myModal .modal-body').html(resultLatest)    
+                  }else{
+                    $('#myModal .modal-body').append(resultLatest)    
+                  }
+                       
                    morePaperLink = data['more'].slice(0,-5)
                    $('#myModal').modal('show')
                    $('#floatDiv').fadeOut(556)
@@ -1903,12 +1908,13 @@ $('.switchPaper').click(function(){
           if(defaultBlock != currentBlock){
             moreTimes = 0
             defaultBlock = currentBlock
-          }else{
-            if(moreTimes >=1){
-              $('#myModal').modal('show')
-              return false
-            }
           }
+          // }else{
+          //   if(moreTimes >=1){
+          //     $('#myModal').modal('show')
+          //     return false
+          //   }
+          // }
           getMorePapers(blockType) 
           })
     })

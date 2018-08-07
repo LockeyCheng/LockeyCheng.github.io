@@ -1056,7 +1056,7 @@ choose words
     -webkit-text-fill-color: transparent;
 }
 #carouselNo{
-	padding: 8px;
+	padding: 1px 5px;
     background: white;
     margin: 9px;
     border-radius: 7px;
