@@ -191,7 +191,7 @@
     <div id="home" class="container tab-pane active">
       <div id="block-div"></div>
       <div id="more-block">
-        <h3 class="rightO"><span class="fa fa-plus-square"> Alter Zone</span></h3>
+        <h3 class="rightO"><span class="fa fa-braille"><span class="fa fa-angle-double-down"></span></span></h3>
         <p class="hidea"><span class="fa fa-remove"> The Economist</span></p>
       </div>
     </div>
@@ -1688,8 +1688,9 @@ $('.switchPaper').click(function(){
       })
     }
     getPaperList()
-    $('#more-block .fa-plus-square').click(function(){
+    $('#more-block .fa-braille').click(function(){
       if($(this).parent().next('p').is(':hidden')){
+        $(this).html('<span class="fa fa-angle-double-up"></span>')
         var blockArr = (localStorage.myblock).split(',')
         var spans = ''
         for(var i in zoneMap){
@@ -1702,6 +1703,7 @@ $('.switchPaper').click(function(){
         $(this).parent().next('p').html(spans)
         $(this).parent().next('p').slideDown(345)
       }else{
+        $(this).html('<span class="fa fa-angle-double-down"></span>')
         $(this).parent().next('p').slideUp(234)
       }
     })
