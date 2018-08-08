@@ -648,7 +648,7 @@
         var carNo = localStorage.carousel*1
         if(carNo && carNo >0){
           var randomArr = []
-          var imgArr = ['https://cn.bing.com/az/hprichbg/rb/SchonnbrunnPark_ZH-CN8641092561_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/FringeFireworks_ZH-CN10750567003_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/UrbanLight_ZH-CN6248743710_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/MoriBuilding_ZH-CN5143587469_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/PuffinWales_ZH-CN12110916089_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/AuroraPhotographer_ZH-CN11480495787_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/BlueShark_ZH-CN12265881842_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/GeorgeMeade_EN-US9381168835_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/MNFireworks_EN-US9611301754_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/PortAntonio_ZH-CN10325538004_1920x1080.jpg','']
+          var imgArr = ['https://cn.bing.com/az/hprichbg/rb/SchonnbrunnPark_ZH-CN8641092561_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/PortAntonio_ZH-CN10325538004_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/HighlandTige_ZH-CN11284423315_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/FringeFireworks_ZH-CN10750567003_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/UrbanLight_ZH-CN6248743710_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/MoriBuilding_ZH-CN5143587469_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/PuffinWales_ZH-CN12110916089_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/AuroraPhotographer_ZH-CN11480495787_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/BlueShark_ZH-CN12265881842_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/GeorgeMeade_EN-US9381168835_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/MNFireworks_EN-US9611301754_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/PortAntonio_ZH-CN10325538004_1920x1080.jpg','']
           var mottoLen = mottoArr.length
           
           var slideDotOl='<ol class="carousel-indicators">'
@@ -1201,7 +1201,7 @@
           $(this).val(0)
           // $('#wordGuessM').find('.hidea').show()
         })
-        $('#articleContent').on('click','.fa-info-circle',function(e){
+        $('#articleContent').on('click','.word-wrap-span',function(e){
               var cliLen = (clickWords.length/toughCount)*0.62
               var timess = $('#runningTimer').text().split(':')
               var mm = timess[0]*1+timess[1]*1*0.01
@@ -1221,6 +1221,7 @@
                 }
                 $('#start-words-test').show()
               }
+
               if(triggerWord != null){
                     var toSearch = triggerWord
                     triggerWord = null
@@ -1364,7 +1365,10 @@ $('.switchPaper').click(function(){
                         currentPaperFile = filename
                         var content = data
                         var converter = new showdown.Converter();
-                        var html = converter.makeHtml(content['content']);
+                        var article = content['content']
+                        var regex = /fa fa-info-circle/g
+                        article = article.replace(regex,'word-wrap-span')
+                        var html = converter.makeHtml(article);
                         document.getElementById("articleContent").innerHTML = html;
                         clickWords = []
                         try{

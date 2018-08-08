@@ -1095,6 +1095,7 @@ choose words
     font-size: 1.3em;
     color: #fff;
     margin: 5px;
+    border-radius: 23px;
 }
 
 #more-block .fa-angle-double-down,#more-block .fa-angle-double-up{
