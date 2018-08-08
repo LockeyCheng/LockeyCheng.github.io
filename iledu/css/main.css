@@ -1056,7 +1056,7 @@ choose words
     -webkit-text-fill-color: transparent;
 }
 #carouselNo{
-	padding: 8px;
+	padding: 1px 5px;
     background: white;
     margin: 9px;
     border-radius: 7px;
@@ -1083,12 +1083,12 @@ choose words
 #home,#paper-section,#menu2,#menu3,#menu4{
 	min-height: 336px;
 }
-#more-block .fa-plus-square{
-	padding: 9px;
-    background: #049e73;
+#more-block .fa-braille{
+	padding: 3px 16px;
+    background: #00d89c;
     border-radius: 4px;
-    color: #aaffef;
-    border: solid 0.5px #00fffc;
+    color: #ff9925;
+    border: solid 0.5px #00e9e6;
 }
 #more-block p span.fa{
 	padding: 9px;
@@ -1097,6 +1097,11 @@ choose words
     margin: 5px;
 }
 
+#more-block .fa-angle-double-down,#more-block .fa-angle-double-up{
+	padding: 0px 6px;
+	margin-left: 9px;
+	color: #00ffd6;
+}
 #more-block p span.fa-plus-circle{
 	background: #02ea89;
 }
