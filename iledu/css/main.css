@@ -1104,8 +1104,8 @@ choose words
 	color: #00ffd6;
 }
 #more-block p span.fa-plus-circle{
-	background: #02ea89;
+	background: #3e8e6c/*#02ea89*/;
 }
 #more-block p span.fa-minus-circle{
-	background: #ff8348;
+	background: #b55121;
 }
