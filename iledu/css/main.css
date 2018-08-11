@@ -296,13 +296,17 @@ custom.css merge here
 /*---------------------toggle-sidebar button-------------------------*/
 #toggle-sidebar{
     position: fixed;
-    top: 3px;
-    left: 13px;
-    /* color: #0f151f; */
+    top: 0px;
+    right: 6px;
     color: #D5D6E2;
     font-size: 2.6em;
 }
 
+#toggle-sidebar .fa-github{
+	background: -webkit-linear-gradient(330deg, #5e00f1 0%, #ff0000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 /*----------------  Scroll bar style   --------------- */
 
 .mCSB_scrollTools{
@@ -1059,7 +1063,7 @@ choose words
 	padding: 1px 5px;
     background: white;
     margin: 9px;
-    border-radius: 7px;
+    border-radius: 23px;
     color: #9d16b4;
 }
 #carouselChoose span{
