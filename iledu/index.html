@@ -1203,10 +1203,10 @@
           // $('#wordGuessM').find('.hidea').show()
         })
         $('#articleContent').on('click','.word-wrap-span',function(e){
-              var cliLen = (clickWords.length/toughCount)*0.62
+              var cliLen = (clickWords.length/toughCount)*0.66
               var timess = $('#runningTimer').text().split(':')
               var mm = timess[0]*1+timess[1]*1*0.01
-              var timsPct = (mm/supposeTime)*0.58
+              var timsPct = (mm/supposeTime)*0.66
               var wordPct = cliLen*timsPct//(timsPct/2)
               paperGoon = (timsPct+wordPct)*100+1
               if(paperGoon>=100){
@@ -1435,12 +1435,11 @@ $('.switchPaper').click(function(){
                                     }
                                   }
                                   $('#runningTimer').text(mm+':'+ss)
-                                  var cliLen = (clickWords.length/toughCount)*0.62
+                                  var cliLen = (clickWords.length/toughCount)*0.66
                                   mm = mm*1+ss*0.01
-                                  var timsPct = (mm/supposeTime)*0.58
+                                  var timsPct = (mm/supposeTime)*0.66
                                   var wordPct = cliLen*timsPct//(timsPct/2)
                                   paperGoon = (timsPct+wordPct)*100+1
-                                  console.log(timsPct,wordPct,paperGoon)
                                 }
                               }
                              

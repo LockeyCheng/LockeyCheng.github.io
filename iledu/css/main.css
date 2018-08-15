@@ -862,7 +862,7 @@ z-index: 1050;
 	    z-index: 1;
 	    position: fixed;
 	    bottom: -1px;
-	    right: 43%;
+	    right: 40.5%;
         opacity: 0.92;
       }
       #timerDiv span{
@@ -1008,13 +1008,13 @@ choose words
 
 #ballball{
 	position: absolute;
-    right: 3px;
-    width: 93%;
-    top: -52px;
+    right: 6.5px;
+    width: 76%;
+    top: -42px;
     font-weight: 600;
     background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #d6fff7),linear-gradient(70deg, #d59058 32%, #14c19e);
     /*background: rgb(15, 51, 16);*/
-    border: solid 1px #68ffdf;
+    border: solid 1px #7fe1cc;
     border-radius: 50%;
 }
 
