@@ -296,10 +296,10 @@ custom.css merge here
 /*---------------------toggle-sidebar button-------------------------*/
 #toggle-sidebar{
     position: fixed;
-    top: 0px;
-    right: 6px;
+    top: -3px;
+    left: 10px;
     color: #D5D6E2;
-    font-size: 2.6em;
+    font-size: 3.2em;
 }
 
 #toggle-sidebar .fa-github{
@@ -395,10 +395,10 @@ ul li {
     .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
       color: #555;
       cursor: default;
-      background-color: #96fff7;
+      background-color: #d4fffc;
       border:1px solid #31fff9; 
-      border-bottom-color: transparent;
-      border-radius: 5px;
+      /*border-bottom-color: transparent;*/
+      border-radius: 50%;
       color:#ffa262;
       font-size: 1.26em;
     }
@@ -439,6 +439,7 @@ ul li {
     .nav-tabs>li>a{
       color:#bca1a1;
       border: solid 1px #ffeeee;
+      border-radius: 50%;
     }
     ul.nav-tabs{
       padding: 0px 15px;
@@ -862,7 +863,7 @@ z-index: 1050;
 	    z-index: 1;
 	    position: fixed;
 	    bottom: -1px;
-	    right: 40.5%;
+	    right: 42%;
         opacity: 0.92;
       }
       #timerDiv span{
@@ -1044,8 +1045,13 @@ choose words
 }
 
 #swith-nav-a{
-	margin-left: 20%;
-	border-bottom: none;
+    position: fixed;
+    right: 0px;
+    top: 54%;
+    border-bottom: none;
+    width: 60px;
+	/*margin-left: 20%;
+	border-bottom: none;*/
 }
 #slideImgAdd{
 	text-align: right;

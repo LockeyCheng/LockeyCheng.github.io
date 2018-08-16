@@ -45,19 +45,21 @@
                 <div>    
                   <input type="text" id="mymotto" placeholder="Add your motto here" class="nooutline">
                 </div>
-                <div class="sidebar-header">
+               <!--  <div class="sidebar-header">
                     <div class="user-pic">
                         <img class="img-responsive img-rounded" src="./imgs/avatar.png" alt="">
                     </div>
                     <div class="user-info">
-                        <!--<span class="user-name">Lockey <strong>Young</strong></span>-->
+                        <span class="user-name">Lockey <strong>Young</strong></span>
                         
                         <div class="user-status">                       
                             <a href="#"><span class="label label-success" id="level">LV X</span></a>                           
                         </div>
                         <span class="user-role">Member</span>
                     </div>
-                </div><!-- sidebar-header  -->
+                </div> -->
+
+                <!-- sidebar-header  -->
                 <div class="sidebar-search">
                     <div>                   
                         <div class="input-group">                          
@@ -133,68 +135,60 @@
 <main class="page-content">
               <!-- <h3 id="slideImgAdd"><span class="fa fa-modx"></span></h3> -->
   <div id="myCarousel" class="carousel slide"></div>
+  
             
   <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
+    <ul class="nav nav-tabs" id="swith-nav-a" role="tablist"><!--style="margin-left: 16px;margin-top: -12px;"-->
+      <li class="nav-item active">
+        <a class="nav-link fa fa-wpforms" data-toggle="tab" href="#paper-section"></a>
+      </li>
 
+      <li class="nav-item">
+        <a class="nav-link fa fa-commenting" data-toggle="tab" href="#article-comment"></a>
+      </li>
+  </ul>
+  <div class="tab-content">
+        <div id="paper-section" class="container tab-pane active"><br>
+              <div id="toughWords-div" class="touchAvoid" style="display: none;position: absolute;left: -8px;margin-top: 72px;background: #fff;">
+              <ol id="wordsOl">
 
-
-        <div id="paper-section" class="container tab-pane fade"><br>
-              <div id="toughWords-div" class="touchAvoid" style="
-            display: none;
-            position: absolute;
-            left: -8px;
-            margin-top: 72px;
-            background: #fff;">
-            <ol id="wordsOl">
-            </ol>
-        </div>
-            <div id="clickWordsDict" class="touchAvoid">
-              <p><a class="fa fa-remove showNone" style="
-            margin-top: 0px;
-            position: absolute;
-            right: 3px;
-            font-size: 1.6em;
-            padding: 5px 6.5px;
-            border-radius: 34px;
-            color: #ff8a6a;
-            border-left: solid 1px #14f7ff;
-            border-right: solid 1px #14f7ff;
-        "></a></p>
-              <p class="wordName" align="center">altogether</p>
-                  <div id="clickWordsDict_detail">
-                    <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
-                    <p class="wordPro_p"><ul class="wordPro"></ul></p>
-                    <p class="wordExplanationCN_p"><span class="wordTitle">请根据理解选择释义（点击选项名展开）：</span></p>
-                    <div id="wordGuessM">
+              </ol>
+              </div>
+              <div id="clickWordsDict" class="touchAvoid">
+                <p><a class="fa fa-remove showNone" style="margin-top: 0px;position: absolute;right: 3px;font-size: 1.6em;padding: 5px 6.5px;border-radius: 34px;color: #ff8a6a;
+              border-left: solid 1px #14f7ff;border-right: solid 1px #14f7ff;"></a></p>
+                <p class="wordName" align="center">altogether</p>
+                    <div id="clickWordsDict_detail">
+                      <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
+                      <p class="wordPro_p"><ul class="wordPro"></ul></p>
+                      <p class="wordExplanationCN_p"><span class="wordTitle">请根据理解选择释义（点击选项名展开）：</span></p>
+                      <div id="wordGuessM">
+                      </div>
+                       <p class="basic_dict_error error"></p>
                     </div>
-                     <p class="basic_dict_error error"></p>
-                  </div>
-                  
-            </div>
-              <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
-                <h5 class="heading5" id="createDate">——By Lockey</h5>
-                <p class="pkeywords"><span id="spanstatistics"></span></p>
-                <div id="articleContent"></div>
+                    
+              </div>
+                <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
+                  <h5 class="heading5" id="createDate">——By Lockey</h5>
+                  <p class="pkeywords"><span id="spanstatistics"></span></p>
+                  <div id="articleContent"></div>
 
-                <img src="./imgs/zhi.jpg" style='width: 50%;margin-left: 25%;border-radius: 9%'>
-        <hr/>
-                <button class="btn btn-info btn-lg btn-block" id="start-words-test">Take a Word Test</button>
-            <div id="timerDiv">
-              <div><canvas id="ballball"></canvas></div>
-              <span class="paperNos hidea">1</span>
-              <span id="runningTimer">00:00</span>
-            </div>
-                <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"></span></a></span>
-            <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper"><span  class="fa fa-arrow-right"></span></a></span>
-            </div>
+                  <img src="./imgs/zhi.jpg" style='width: 50%;margin-left: 25%;border-radius: 9%'>
+          <hr/>
+                  <button class="btn btn-info btn-lg btn-block" id="start-words-test">Take a Word Test</button>
+              <div id="timerDiv">
+                <div><canvas id="ballball"></canvas></div>
+                <span class="paperNos hidea">1</span>
+                <span id="runningTimer">00:00</span>
+              </div>
+                  <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"></span></a></span>
+              <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper"><span  class="fa fa-arrow-right"></span></a></span>
+        </div>
+        <div id="article-comment" class="container tab-pane">
 
-
-
+        </div>
       </div>
     </div>
-  </div>
 </main><!-- page-content" -->
 
  <footer>
@@ -258,9 +252,10 @@
 	<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src='assets/js/jquery.mCustomScrollbar.concat.min.js'></script>
-  <script type="text/javascript" src="../js/showdown.min.js"></script>
+  <!-- <script type="text/javascript" src="../js/showdown.min.js"></script> -->
   <script>
     var test = null
+    var icons=['fa-free-code-camp','fa-superpowers','fa-telegram','fa-spinner','fa-gg-circle','fa-apple','fa-github','fa-github-alt','fa-chrome','fa-drupal','fa-firefox','fa-google-plus-circle','fa-rebel','fa-reddit','fa-simplybuilt','fa-slideshare','fa-snapchat','fa-tripadvisor','fa-twitter','fa-yelp']
     var mottoArr = [
           {'en':"I am not afraid of tomorrow for I have seen yesterday and I love today.",'auth':"— William Allen White",'cn':'不畏惧明天只因我已见过昨天并且热爱今天。'},
           {'en':"Other men live to eat, while I eat to live. ",'auth':"— Socrates",'cn':"别人为食而生存，我为生存而食。"},
@@ -349,8 +344,12 @@
       }
       $('#level').html(myLevel)
       $('.paperNos').html(localStorage.views)
+      var qrcode = '<img id="appimg" src="./imgs/economist_index.png">'
+      if(localStorage.username == 'Lockey23'){
+        qrcode = ''
+      }
       aaaa += '</p><p class="viewsGreeting">May you save the QR code then share it to your buddies for reading in pairs.'
-      var fillWelcome = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h6 class="modal-title rightO" id="myModalLabel">'+greeting+'</h6><div class="margintop23"><p class="viewsGreeting">'+aaaa+'</p></div></div><div class="modal-body"><img id="appimg" src="./imgs/economist_index.png"></div><div class="modal-footer"><button type="button" class="btn btn-success" data-dismiss="modal">Got it</button></div>'
+      var fillWelcome = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h6 class="modal-title rightO" id="myModalLabel">'+greeting+'</h6><div class="margintop23"><p class="viewsGreeting">'+aaaa+'</p></div></div><div class="modal-body">'+qrcode+'</div><div class="modal-footer"><button type="button" class="btn btn-success" data-dismiss="modal">Got it</button></div>'
       $('#myModal .modal-content').html(fillWelcome)
       $('#mymotto').val(localStorage.mymotto)
     $(document).ready(function(){
@@ -1232,12 +1231,12 @@ $('.switchPaper').click(function(){
                   if(ifmd){
                         currentPaperFile = filename
                         var content = data
-                        var converter = new showdown.Converter();
+                        // var converter = new showdown.Converter();
                         var article = content['content']
                         var regex = /fa fa-info-circle/g
                         article = article.replace(regex,'word-wrap-span')
-                        var html = converter.makeHtml(article);
-                        document.getElementById("articleContent").innerHTML = html;
+                        //var html = converter.makeHtml(article);
+                        document.getElementById("articleContent").innerHTML = article;
                         clickWords = []
                         try{
                           var statistics = content['paperStatistics']
@@ -1272,7 +1271,7 @@ $('.switchPaper').click(function(){
                           // }
 
                           var wordsData =  '<span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-opencart" id="showTough"> Suggested Focus: </span></span><span class="words-number">'+statistics['suggestedfocus']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title"><span class="fa fa-slideshare" id="showTough">   Advanced Words: </span></span><span class="words-number">'+toughCount+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Words Set: </span><span class="words-number">'+statistics['wordsset']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Total Words: </span><span class="words-number">'+statistics['allwords']+'</span></span><span class="statistics-no"><span class="clickWordsDict_title">Key Words: </span><ul style="padding: 0;margin-top: 8px;margin-bottom: 3px;">'+wordsSpan+'</ul></span>'
-                          supposeTime = statistics['suggestedfocus'].slice(0,2)
+                          supposeTime = statistics['suggestedfocus'].slice(0,2)*0.8
                           //<span class="statistics-no"><span class="clickWordsDict_title">Article Content:</span></span>
                           $('#spanstatistics').html(wordsData)
                           $('#start-words-test').hide()
@@ -1329,7 +1328,7 @@ $('.switchPaper').click(function(){
                         $('#lastArt').attr('data-link',content['last'])
                         $('#nextArt').attr('data-link',content['next'])
                         dictData['default'] = content['assistent']
-                        $('#myModal').modal('hide')
+                        //$('#myModal').modal('hide')
                         
                         if($('#paper-section').is(':hidden')){
                           $('#swith-nav-a').find('a.fa-wpforms').trigger('click')
@@ -1359,79 +1358,6 @@ $('.switchPaper').click(function(){
            paperOload = $(this).attr('data-link')
            getData('type',true,false)
         })
-
-       function getMorePapers(blockType){
-          $('#floatDiv').slideDown(356)
-          $.ajax({
-                type:"GET",
-                url: './'+defaultBlock+'/amore/'+morePaperLink+'.json',
-                data: null,
-                dataType:'json',
-                cache:false,
-                success: function(data) {
-                  paperListJson = data['papers']
-                  test = data['papers']
-                  var listLen = paperListJson.length
-                  var totalLoads = $('#myModalLabel').find('.totalLoads').text()*1+listLen
-                  var paperNo = 0
-                  if(moreTimes == 0){
-                    $('#myModal .modal-body').empty()
-                    totalLoads = listLen
-                    $('.margintop23').remove()
-                    $('#myModalLabel').html('<b>'+blockType+'</b> [<span class="totalLoads">'+totalLoads+'</span>]')
-                    var hot = '<span class="fa fa-fire" tile="latest paper"></span>'
-                    $('.modal-footer').html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button><button type="button" class="btn btn-info morePapers" data-blockType="'+blockType+'">More</button>')
-                  }else{
-                    var hot = ''
-                  }
-                  $('#myModalLabel').find('.totalLoads').html(totalLoads)
-                  var resultLatest='<div class="col-sm-12">'
-                  for(var i=0;i<listLen;i++){
-                    if(i==0){
-                      paperOload = paperListJson[i]['link']
-                    }
-                    var link = paperListJson[i]['nos']
-                    if(!link){
-                      link = paperListJson[i]['link']
-                      let arr = link.split('_')
-                      if(arr[1].length == 1){
-                          arr[1] = '0'+arr[1]
-                      }
-                      if(arr[2].length == 1){
-                        arr[2] = '0'+arr[2]
-                      }
-                      link = arr.join('').slice(0,-5)
-                      
-                    }
-                    var paperJsonDate = paperListJson[i]['date']
-                    var timeArr = paperJsonDate.slice(0,10).split('-')
-                    var hms = paperJsonDate.slice(10)
-                    var dateStr = noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+' '+timeArr[0] + hms
-                    var imgSrc = '<img src="'+paperListJson[i]['img']+'" class="img-responsive item-img"/>'
-                    if(localStorage.username == 'Lockey23' || !paperListJson[i]['img']){
-                        imgSrc = ''
-                    }
-                    resultLatest += '<div class="box-item"><div class="item-img-div"><h6 class="paperTitleh6"><a class="loadPage" href="javascript:void(0)" data-link="'+paperListJson[i]['link']+'">'+paperListJson[i]['title']+'</a></h6><p class="latest-timep">'+dateStr+hot+'</p><span class="timeSpan">'+imgSrc+'</span><p class="paperDesc">'+paperListJson[i]['desc']+' ...</p><p class="latest-timep"><a class="readMoreText loadPage" href="javascript:void(0)" data-link="'+paperListJson[i]['link']+'">Read More <span class="fa fa-hand-o-right"></span></a></p></div></div>'
-                  }
-                  moreTimes ++
-                  resultLatest += '</div>'
-                  if(moreTimes == 1){
-                    $('#myModal .modal-body').html(resultLatest)    
-                  }else{
-                    $('#myModal .modal-body').append(resultLatest)    
-                  }
-                       
-                   morePaperLink = data['more'].slice(0,-5)
-                   $('#myModal').modal('show')
-                   $('#floatDiv').fadeOut(556)
-                },
-                error: function(data) {
-                    var listInfo = '<span class="warning">Sorry, but no more papers!</span'
-                    dealWithFloatDiv(listInfo,false,true,false,false)
-                  
-                }
-      })
-        }
        function getPageSize() {
             var xScroll, yScroll;
             if (window.innerHeight && window.scrollMaxY) {
@@ -1480,143 +1406,6 @@ $('.switchPaper').click(function(){
             arrayPageSize = new Array(pageWidth, pageHeight, windowWidth, windowHeight);
             return arrayPageSize;
         }
-       function getPaperList(){
-          $.ajax({
-                type:"GET",
-                url: './blocks.json',
-                data: null,
-                dataType:'json',
-                cache:false,
-                success: function(data) {
-                  var blockData = data['zones']
-                  zoneMap = blockData
-                  var listLen = data['zoneNo']
-                  paperOload = data['defaultPaper']
-                  var paperNo = 0
-                  var windowHW = getPageSize()
-                  var blockArr = []
-                  var blockArr1 = (localStorage.myblock).split(',')
-                  for(var i in blockArr1){
-                    if(blockArr1[i].length >1){
-                      blockArr.push(blockArr1[i])
-                    }
-                  }
-                  var blockNos = blockArr.length
-                  if(blockNos==4){
-                    var colClass = 'col-sm-3'
-                  }else if(blockNos == 3){
-                    var colClass = 'col-sm-4'
-                  }else if(blockNos == 2){
-                    var colClass = 'col-sm-6'
-                  }else{
-                    var colClass = 'col-sm-12'
-                  }
-                  if(blockNos>=4){
-                    colClass = 'col-sm-3'
-                  }
-                   var itemArr = []
-                  if(blockNos >4){
-                    blockNos = 4
-                  }
-                  for(var i=0;i<blockNos;i++){
-                    var colDiv = '<div class="'+colClass+' col-item'+(i+1)+'">'
-                    itemArr.push(colDiv)
-                  } 
-                  for(var i in blockData){
-                    if(blockArr.indexOf(i)<0){
-                      continue
-                    }
-                    var title=blockData[i]['title']
-                  //for(var i=0;i<listLen;i++){
-                    if(blockData[i]['logo'] != ''){
-                      var logo = '<h3 class="folio-title"><img src="'+blockData[i]['logo']+'" style="width: '+blockData[i]['logow']+';">'
-                    }else{
-                      var logo = '<h3 class="folio-title" style="'+blockData[i]['titleStyle']+'">'+blockData[i]['title']
-                    }
-
-                    var imgSrc = '<img src="'+blockData[i]['img']+'" class="img-responsive item-img"/>'+'<p class="blocks-paper-user"><span class="fa fa-newspaper-o"> '+blockData[i]['papers']+'</span><span class="fa fa-heart"> '+blockData[i]['focus']+'</span></p>'
-                    if(localStorage.username == 'Lockey23' || !blockData[i]['img']){
-                        imgSrc = ''
-                    }
-                    var desc = blockData[i]['desc']
-                    var fillDiv = '<div class="box-item" data-type="'+title+'" id="'+i+'"><div class="item-img-div"><a href="javascript:void(0)" class="overlay"><div class="folio-item-table"><div class="folio-item-cell">'+logo+'</h3></div></div></a>'+imgSrc+'<p class="ablock"><a>'+desc+'</a></p></div></div>'
-                    if(paperNo%4 ==0){
-                      itemArr[0] += fillDiv
-                    }else if(paperNo%4 ==1){
-                      itemArr[1] += fillDiv
-                    }else if(paperNo%4 ==2){
-                      itemArr[2] += fillDiv
-                    }else if(paperNo%4 ==3){
-                      itemArr[3] += fillDiv
-                    }else{
-                      console.log(i+' error')
-                    }
-                    paperNo += 1
-                  }
-                 itemArr = itemArr.map(function(currentValue,index,arr){return currentValue+'</div>'})
-                 itemArr = itemArr.slice(0,paperNo)
-                  var finalResult = itemArr.join('')//item1+'</div>'+item2+'</div>'+item3+'</div>'+item4+'</div>'
-                  $('#block-div').append(finalResult)         
-                   $('#floatDiv').fadeOut(556)
-                },
-                error: function(data) {
-                    var listInfo = '<span class="warning">Sorry, but the network... </span'
-                    dealWithFloatDiv(listInfo,false,true,false,false)
-                  
-                }
-      })
-    }
-    getPaperList()
-    $('#more-block .fa-braille').click(function(){
-      if($(this).parent().next('p').is(':hidden')){
-        $(this).html('<span class="fa fa-angle-double-up"></span>')
-        var blockArr = (localStorage.myblock).split(',')
-        var spans = ''
-        for(var i in zoneMap){
-          if(blockArr.indexOf(i)>=0){
-            spans += '<span class="fa fa-minus-circle add-remove-block" data-block="'+i+'">'+zoneMap[i]['title']+'</span>'
-          }else{
-            spans += '<span class="fa fa-plus-circle add-remove-block" data-block="'+i+'">'+zoneMap[i]['title']+'</span>'
-          }
-        }
-        $(this).parent().next('p').html(spans)
-        $(this).parent().next('p').slideDown(345)
-      }else{
-        $(this).html('<span class="fa fa-angle-double-down"></span>')
-        $(this).parent().next('p').slideUp(234)
-      }
-    })
-    $('#more-block').on('click','.add-remove-block',function(){
-      var data1 = $(this).attr('data-block')
-      var dataAll = $(this).text()
-      if($(this).hasClass('fa-minus-circle')){
-        localStorage.myblock = (localStorage.myblock).replace(data1,'')
-        var ida = '#'+data1
-        $(ida).remove()
-        var adds = '<span class="fa fa-plus-circle add-remove-block" data-block="'+data1+'">'+dataAll+'</span>'
-      }else{
-        var adds = '<span class="fa fa-minus-circle add-remove-block" data-block="'+data1+'">'+dataAll+'</span>'
-        localStorage.myblock += ','+data1
-
-
-        var title=zoneMap[data1]['title']
-        if(zoneMap[data1]['logo'] != ''){
-          var logo = '<h3 class="folio-title"><img src="'+zoneMap[data1]['logo']+'" style="width: '+zoneMap[data1]['logow']+';">'
-        }else{
-          var logo = '<h3 class="folio-title" style="'+zoneMap[data1]['titleStyle']+'">'+zoneMap[data1]['title']
-        }
-
-        var imgSrc = '<img src="'+zoneMap[data1]['img']+'" class="img-responsive item-img"/>'+'<p class="blocks-paper-user"><span class="fa fa-newspaper-o"> '+zoneMap[data1]['papers']+'</span><span class="fa fa-heart"> '+zoneMap[data1]['focus']+'</span></p>'
-        if(localStorage.username == 'Lockey23' || !zoneMap[data1]['img']){
-            imgSrc = ''
-        }
-        var desc = zoneMap[data1]['desc']
-        var fillDiv = '<div class="box-item" data-type="'+title+'" id="'+data1+'"><div class="item-img-div"><a href="javascript:void(0)" class="overlay"><div class="folio-item-table"><div class="folio-item-cell">'+logo+'</h3></div></div></a>'+imgSrc+'<p class="ablock"><a>'+desc+'</a></p></div></div>'
-        $('#block-div').find('div').first().append(fillDiv)
-      }
-      $(this).parent().prepend(adds)
-      $(this).remove()
-    })
         $(function() {
           $('#myModal').on('hide.bs.modal',
           function() {
@@ -1646,7 +1435,7 @@ $('.switchPaper').click(function(){
                 $('.fa-arrow-circle-up').show()
                 $('#toggle-sidebar').animate({
                     'opacity':'0.5',
-                    'font-size':'1.3em'
+                    'font-size':'1.6em'
                   },1269)
                 }
               }
@@ -1656,7 +1445,7 @@ $('.switchPaper').click(function(){
             $('.fa-arrow-circle-up').hide()
             $('#toggle-sidebar').animate({
                   'opacity':'1',
-                  'font-size':'2.6em'
+                  'font-size':'3.2em'
                 },800)
             }
         }
@@ -1771,33 +1560,6 @@ $('.switchPaper').click(function(){
             
         }
       })
-        $('#home').on('mouseover','.box-item',function(){
-          $(this).find('.overlay').slideDown(345)
-          $(this).find('.item-img').css({'opacity':'0.6'})
-        }).on('mouseleave','.box-item',function(){
-          $(this).find('.overlay').fadeOut(345)
-          $(this).find('.item-img').css({'opacity':'1'})
-        })
-        $('#myModal').on('click','.morePapers',function(){
-          var blockType = $(this).attr('data-blockType')
-          getMorePapers(blockType)
-        })
-
-        $('#home').on('click','.box-item',function(){
-          var blockType = $(this).attr('data-type')
-          var currentBlock = blockType.split(' ').join('_')
-          if(defaultBlock != currentBlock){
-            moreTimes = 0
-            defaultBlock = currentBlock
-          }
-          // }else{
-          //   if(moreTimes >=1){
-          //     $('#myModal').modal('show')
-          //     return false
-          //   }
-          // }
-          getMorePapers(blockType) 
-          })
     })
   </script>
 </body>
