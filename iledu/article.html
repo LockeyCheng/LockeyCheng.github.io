@@ -24,12 +24,12 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>I 乐读</title>
+	<title>I 乐读乐 U</title>
   <link rel="icon" type="image/x-icon" class="js-site-favicon" href="../images/favicon.ico">
 	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="assets/css/custom.css"> -->
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/article.css">
 </head>
 <body>
   <style>
@@ -130,242 +130,71 @@
                     <a href="#"><i class="fa fa-power-off"></i></a>
                 </div>
             </nav><!-- sidebar-wrapper  -->
-            <main class="page-content">
+<main class="page-content">
               <!-- <h3 id="slideImgAdd"><span class="fa fa-modx"></span></h3> -->
-              <div id="myCarousel" class="carousel slide">
-                <!-- <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>   
-                <div class="carousel-inner">
-                  <div class="item active">
-                    <img src="https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jpg" alt="First slide">
-                    <div class="carousel-caption">
-                    </div>
-                  </div>
-                  <div class="item">
-                    <img src="https://cn.bing.com/az/hprichbg/rb/UrbanLight_ZH-CN6248743710_1920x1080.jpg" alt="Second slide">
-                    <div class="carousel-caption">
-                    </div>
-                  </div>
-                  <div class="item">
-                    <img src="https://www.bing.com/az/hprichbg/rb/MoriBuilding_ZH-CN5143587469_1920x1080.jpg" alt="Third slide">
-                    <div class="carousel-caption">
-                    </div>
-                  </div>
-                </div>
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                    <span class="fa fa-angle-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                    <span class="fa fa-angle-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a> -->
-            </div>
+  <div id="myCarousel" class="carousel slide"></div>
             
-<div class="container">
-  <h3 class="rightO hidea webTitle">爱乐读</h3>
-  <div id="carouselChoose">
-      <p class="hidea rightO"><span class="fa fa-minus-circle carousel-add-minus"></span><span id="carouselNo">1</span><span class="fa fa-plus-circle carousel-add-minus"></span></p>
-  </div>
-  <ul class="nav nav-tabs" id="swith-nav-a" role="tablist"><!--style="margin-left: 16px;margin-top: -12px;"-->
-    <li class="nav-item active">
-      <a class="nav-link active fa fa-podcast" data-toggle="tab" href="#home"></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link fa fa-wpforms" data-toggle="tab" href="#paper-section"></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link fa fa-video-camera" data-toggle="tab" href="#menu2"></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link fa fa-music" data-toggle="tab" href="#menu3"></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link fa fa-search-plus" data-toggle="tab" href="#menu4"></a>
-    </li>
-  </ul>
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div id="home" class="container tab-pane active">
-      <div id="block-div"></div>
-      <div id="more-block">
-        <h3 class="rightO"><span class="fa fa-braille"><span class="fa fa-angle-double-down"></span></span></h3>
-        <p class="hidea"><span class="fa fa-remove"> The Economist</span></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+
+
+
+        <div id="paper-section" class="container tab-pane fade"><br>
+              <div id="toughWords-div" class="touchAvoid" style="
+            display: none;
+            position: absolute;
+            left: -8px;
+            margin-top: 72px;
+            background: #fff;">
+            <ol id="wordsOl">
+            </ol>
+        </div>
+            <div id="clickWordsDict" class="touchAvoid">
+              <p><a class="fa fa-remove showNone" style="
+            margin-top: 0px;
+            position: absolute;
+            right: 3px;
+            font-size: 1.6em;
+            padding: 5px 6.5px;
+            border-radius: 34px;
+            color: #ff8a6a;
+            border-left: solid 1px #14f7ff;
+            border-right: solid 1px #14f7ff;
+        "></a></p>
+              <p class="wordName" align="center">altogether</p>
+                  <div id="clickWordsDict_detail">
+                    <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
+                    <p class="wordPro_p"><ul class="wordPro"></ul></p>
+                    <p class="wordExplanationCN_p"><span class="wordTitle">请根据理解选择释义（点击选项名展开）：</span></p>
+                    <div id="wordGuessM">
+                    </div>
+                     <p class="basic_dict_error error"></p>
+                  </div>
+                  
+            </div>
+              <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
+                <h5 class="heading5" id="createDate">——By Lockey</h5>
+                <p class="pkeywords"><span id="spanstatistics"></span></p>
+                <div id="articleContent"></div>
+
+                <img src="./imgs/zhi.jpg" style='width: 50%;margin-left: 25%;border-radius: 9%'>
+        <hr/>
+                <button class="btn btn-info btn-lg btn-block" id="start-words-test">Take a Word Test</button>
+            <div id="timerDiv">
+              <div><canvas id="ballball"></canvas></div>
+              <span class="paperNos hidea">1</span>
+              <span id="runningTimer">00:00</span>
+            </div>
+                <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"></span></a></span>
+            <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper"><span  class="fa fa-arrow-right"></span></a></span>
+            </div>
+
+
+
       </div>
     </div>
-    <div id="paper-section" class="container tab-pane fade"><br>
-      <div id="toughWords-div" class="touchAvoid" style="
-    display: none;
-    position: absolute;
-    left: -8px;
-    margin-top: 72px;
-    background: #fff;">
-    <ol id="wordsOl">
-    </ol>
-</div>
-    <div id="clickWordsDict" class="touchAvoid">
-      <p><a class="fa fa-remove showNone" style="
-    margin-top: 0px;
-    position: absolute;
-    right: 3px;
-    font-size: 1.6em;
-    padding: 5px 6.5px;
-    border-radius: 34px;
-    color: #ff8a6a;
-    border-left: solid 1px #14f7ff;
-    border-right: solid 1px #14f7ff;
-"></a></p>
-      <p class="wordName" align="center">altogether</p>
-          <div id="clickWordsDict_detail">
-            <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
-            <p class="wordPro_p"><ul class="wordPro"></ul></p>
-            <p class="wordExplanationCN_p"><span class="wordTitle">请根据理解选择释义（点击选项名展开）：</span></p>
-            <div id="wordGuessM">
-            </div>
-<!-- 
-            
-            <p class="wordExplanationCN_p"><ul class="wordExplanationCN"></ul></p>
-             -->
-             <p class="basic_dict_error error"></p>
-          </div>
-          
-    </div>
-      <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
-        <h5 class="heading5" id="createDate">——By Lockey</h5>
-        
-        <!-- <p class="pkeywords">[ Key Words ]<span id="spankeywords"></span></p> -->
-        <p class="pkeywords"><span id="spanstatistics"></span></p>
-        <!-- <p class="pkeywords"><span id="spansfocus"></span></p> -->
-        <!-- <p class="pkeywords">[ Article Content ]</p> -->
-        <!-- <h5 class="heading5" style="
-   text-align: left;
-    margin-top: 1px;
-    margin-bottom: -5px;
-    color: #914915;
-    border-bottom: solid 1px #94adff;
-" id="foucus_suggest">Article Content</h5> -->
-
-        <div id="articleContent"></div>
-
-        <img src="./imgs/zhi.jpg" style='width: 50%;margin-left: 25%;border-radius: 9%'>
-<hr/>
-        <button class="btn btn-info btn-lg btn-block" id="start-words-test">Take a Word Test</button>
-    <div id="timerDiv">
-      <div><canvas id="ballball"></canvas></div>
-      <span class="paperNos hidea">1</span>
-      <span id="runningTimer">00:00</span>
-    </div>
-        <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"></span></a></span>
-    <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper"><span  class="fa fa-arrow-right"></span></a></span>
-    </div>
-    <div id="menu2" class="container tab-pane fade"><br>
-     <div style="text-align:center"> 
-        <div class="video-div">
-          <h5 class="video-desc">Lockey's personal page</h5>
-          <video id="video1" class="video-pre" controls>
-            <source src="../video/sources/lockey-gitio.mp4" type="video/mp4">
-            <source src="mov_bbb.ogg" type="video/ogg">
-            您的浏览器不支持 HTML5 video 标签。
-          </video>
-        </div>
-
-        <div class="video-div">
-          <h5 class="video-desc">Wa Haaaaaaaaaaaaa</h5>
-          <video id="video1" class="video-pre" controls>
-            <source src="http://www.runoob.com/try/demo_source/mov_bbb.mp4" type="video/mp4">
-            <source src="mov_bbb.ogg" type="video/ogg">
-            您的浏览器不支持 HTML5 video 标签。
-          </video>
-        </div>
-        <div class="video-div">
-          <h5 class="video-desc">Jordan Peterson debate on the gender pay gap, campus protests and postmodernism-Youtube</h5>
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/aMcjxSThD54" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-        <div class="video-div">
-          <h5 class="video-desc">Jordan B. Peterson on 12 Rules for Life-Youtube</h5>
-           <iframe width="100%" height="315" src="https://www.youtube.com/embed/-5RCmu-HuTg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-       
-      </div> 
-    </div>
-    <div id="menu3" class="container tab-pane fade"><br>
-      <div style="text-align:center"> 
-        <div class="video-div">
-            <h5 class="video-desc">HYDRA (《OVERLORDⅡ》TV动画片尾曲) - MYTH & ROID</h5>
-           <audio controls>
-            <source src="../music/HYDRA.mp3" type="audio/ogg">
-            <source src="../music/HYDRA.mp3" type="audio/mpeg">
-          您的浏览器不支持 audio 元素。
-          </audio>
-        </div>
-        <div class="video-div">
-            <h5 class="video-desc">again (アニメ Version) - YUI</h5>
-           <audio controls>
-            <source src="../music/again.mp3" type="audio/ogg">
-            <source src="../music/again.mp3" type="audio/mpeg">
-          您的浏览器不支持 audio 元素。
-          </audio>
-        </div>
-        <div class="video-div">
-            <h5 class="video-desc">The Economist Talk 1</h5>
-           <audio controls>
-            <source src="./The_Economist/etalk/talk1.mp3" type="audio/ogg">
-            <source src="./The_Economist/etalk/talk1.mp3" type="audio/mpeg">
-          您的浏览器不支持 audio 元素。
-          </audio>
-        </div>
-        <div class="video-div">
-            <h5 class="video-desc">The Economist Talk 2</h5>
-           <audio controls>
-            <source src="./The_Economist/etalk/talk2.mp3" type="audio/ogg">
-            <source src="./The_Economist/etalk/talk2.mp3" type="audio/mpeg">
-          您的浏览器不支持 audio 元素。
-          </audio>
-        </div>
-        <div class="video-div">
-            <h5 class="video-desc">The Economist Talk 3</h5>
-           <audio controls>
-            <source src="./The_Economist/etalk/talk3.mp3" type="audio/ogg">
-            <source src="./The_Economist/etalk/talk3.mp3" type="audio/mpeg">
-          您的浏览器不支持 audio 元素。
-          </audio>
-        </div>
-      </div>
-    </div>
-    <div id="menu4" class="container tab-pane fade"><br>
-     <p id="dict-input-warpp">
-        
-        <input type="text" id="lookup-dict-input" placeholder="Type word to look up" class="nooutline">
-        <span class="fa fa-google" id="search-word-go" for="lookup-dict-input">o</span>
-      </p>
-      <div class="searchResult">
-        <div>
-            <p class="wordName" align="center">deploy</p>
-            <p class="wordPro_p"><span class="wordTitle">发音：</span></p>
-            <p class="wordPro_p"><ul class="wordPro">
-              <li><span class="wordTitle">英 </span>[dɪ'plɔɪ]<span class="fa fa-volume-up wordsVoice"></span></li><li><span class="wordTitle">美 </span>[dɪ'plɔɪ]<span class="fa fa-volume-up wordsVoice"></span></li>
-            </ul></p>
-
-            <p class="wordExplanationCN_p"><span class="wordTitle">释义：</span></p>
-            <p class="wordExplanationCN_p">
-                <ul class="wordExplanationCN"></ul>
-            </p>
-
-            <p class="wordPhrases_p"><span class="wordTitle">短语：</span></p>
-            <p class="wordPhrases_p"><ul class="wordPhrases"></ul></p>
-            <!-- <p><span class="wordTitle">释义（英）：</span><span class="wordExplanationEG"></span></p> -->
-            <!-- <p><span class="wordTitle">变形：</span><span class="wordRelations"></span></p>
-            <p><span class="wordTitle">近义：</span><span class="similar"></span></p>
-            <p><span class="wordTitle">反义：</span><span class="reverse"></span></p> -->
-            <div id="centences"></div>
-        </div>
-    </div>
-    </div>
   </div>
-</div>
 </main><!-- page-content" -->
 
  <footer>
