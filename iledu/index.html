@@ -252,7 +252,7 @@
 
         <img src="./imgs/zhi.jpg" style='width: 50%;margin-left: 25%;border-radius: 9%'>
 <hr/>
-        <button class="btn btn-info btn-lg btn-block" id="start-words-test">Start Test</button>
+        <button class="btn btn-info btn-lg btn-block" id="start-words-test">Take a Word Test</button>
     </style>
     <div id="timerDiv">
       <div><canvas id="ballball"></canvas></div>
@@ -446,6 +446,7 @@
           {'en':'Talent without working hard is nothing.','auth':'– Cristiano Ronaldo','cn':'没有努力，再好的天分也无济于事。'},
           {'en':'You can avoid reality, but you cannot avoid the consequences of avoiding reality.','auth':'– Ayn Rand, Novelist','cn':''}//你可以逃避现实，但你不能逃避因逃避现实所产生的后果。
         ]
+    var wordsTest = {'right':[],'wrong':[]}
     var noTomonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     var readTimer = null
     var supposeTime = null
@@ -536,9 +537,8 @@
       var testAlpha = /^[a-zA-Z]+$/i
       var toughCount = 0
       var toughArr = []
+      var toughOO = []
       var paperGoon = 0
-      var testWrong = 0
-      var testRight = 0
       var zoneMap = null
 
       /*ballball start*/
@@ -641,6 +641,16 @@
           }
           //myReq = requestAnimationFrame(ballball);
         }
+      $('#myCarousel').on('click','.carousel-caption',function(){
+        var ops = $(this).attr('data-opacity')
+        if(ops==1){
+          $(this).animate({'opacity':0})
+          $(this).attr('data-opacity','0')
+        }else{
+          $(this).animate({'opacity':1})
+          $(this).attr('data-opacity','1')
+        }
+      })
       function multiplyArrayElement(num) {
           return num * document.getElementById("multiplyWith").value;
       }
@@ -649,7 +659,7 @@
         var carNo = localStorage.carousel*1
         if(carNo && carNo >0){
           var randomArr = []
-          var imgArr = ['https://cn.bing.com/az/hprichbg/rb/BulgariaPerseids_ZH-CN11638911564_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/SchonnbrunnPark_ZH-CN8641092561_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/PortAntonio_ZH-CN10325538004_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/HighlandTige_ZH-CN11284423315_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/FringeFireworks_ZH-CN10750567003_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/UrbanLight_ZH-CN6248743710_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/MoriBuilding_ZH-CN5143587469_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/PuffinWales_ZH-CN12110916089_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/AuroraPhotographer_ZH-CN11480495787_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/BlueShark_ZH-CN12265881842_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/GeorgeMeade_EN-US9381168835_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/MNFireworks_EN-US9611301754_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/PortAntonio_ZH-CN10325538004_1920x1080.jpg','']
+          var imgArr = ['https://www.bing.com/az/hprichbg/rb/OtterChillin_ZH-CN11488013572_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/BulgariaPerseids_ZH-CN11638911564_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/SchonnbrunnPark_ZH-CN8641092561_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/PortAntonio_ZH-CN10325538004_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/HighlandTige_ZH-CN11284423315_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/FringeFireworks_ZH-CN10750567003_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/MorondavaBaobab_ZH-CN11131924506_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/UrbanLight_ZH-CN6248743710_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/MoriBuilding_ZH-CN5143587469_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/PuffinWales_ZH-CN12110916089_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/AuroraPhotographer_ZH-CN11480495787_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/BlueShark_ZH-CN12265881842_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/GeorgeMeade_EN-US9381168835_1920x1080.jpg','https://www.bing.com/az/hprichbg/rb/MNFireworks_EN-US9611301754_1920x1080.jpg','https://cn.bing.com/az/hprichbg/rb/PortAntonio_ZH-CN10325538004_1920x1080.jpg','']
           var mottoLen = mottoArr.length
           
           var slideDotOl='<ol class="carousel-indicators">'
@@ -667,10 +677,10 @@
             var mottoFill = '<h1 class="mottoh1en">'+chooseMotto['en']+'</h1><h6 class="mottoh6auth">'+chooseMotto['auth']+'</h6><h6 class="mottoh6cn">'+chooseMotto['cn']+'</h6>'
             if(arrLen == 0){
               var slideTo = '<li data-target="#myCarousel" data-slide-to="'+arrLen+'" class="active"></li>'
-              var caps = '<div class="item active"><img src="'+imgArr[arrLen]+'" alt="First slide"><div class="carousel-caption">'+mottoFill+'</div></div>'
+              var caps = '<div class="item active"><img src="'+imgArr[arrLen]+'" alt="First slide" class="poster-img" data-opacity="1"><div class="carousel-caption">'+mottoFill+'</div></div>'
             }else{
               var slideTo = '<li data-target="#myCarousel" data-slide-to="'+arrLen+'"></li>'
-              var caps = '<div class="item"><img src="'+imgArr[arrLen]+'" alt="First slide"><div class="carousel-caption">'+mottoFill+'</div></div>'
+              var caps = '<div class="item"><img src="'+imgArr[arrLen]+'" alt="First slide" class="poster-img" data-opacity="1"><div class="carousel-caption">'+mottoFill+'</div></div>'
             }
             slideDotOl += slideTo
             slideContent += caps
@@ -800,22 +810,43 @@
       $('#myModal').on('click','#view-words-result',function(){
         $('#myModalLabel').html('Words Test Report')
         var toughLen = toughArr.length
-        var xxx = '<p class="wordTitle">Total: <b>'+toughLen+'</b></p><p class="successGreen">Correct: <b>'+testRight+'</b></p><p class="failedRed">Failed: <b>'+testWrong+'</b></p>'
-        var tested = testWrong+testRight
-        if(tested != toughLen){
-          xxx += '</p><p class="failedRed">Missed: <b>'+(toughLen-tested)+'</b></p>'
+        var rr = wordsTest['right'].length
+        var ww = wordsTest['wrong'].length
+        var xxx = '<p class="wordTitle">Total: <b>'+toughLen+'</b></p><p class="successGreen">Correct: <b>'+rr+'</b></p><p class="failedRed">Failed: <b>'+ww+'</b></p>'
+        var missa = toughLen-rr-ww
+        if(missa >= 1){
+          xxx += '</p><p class="failedRed">Missed: <b>'+missa+'</b></p>'
         }
+        var btt = '<p><button type="button" class="btn btn-primary retestAll" style="margin: 9px;">Retest All</button>'
+        if(rr != toughLen){
+          btt += '<button type="button" class="btn btn-primary retestError" style="margin: 9px;">Retest Incorrect</button>'
+        }
+        xxx += btt+'</p>'
         $('#myModal .modal-body').html(xxx)
         $('#myModal .modal-footer').html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>')
+      })
+      $('body').on('click','.retestAll',function(){
+        toughArr = toughOO
+        $('#start-words-test').trigger('click')
+      })
+      $('body').on('click','.retestError',function(){
+        var tmp = []
+        for(var a in toughArr){
+          if(wordsTest['right'].indexOf(toughArr[a]) <0){
+            tmp.push(toughArr[a])
+          }
+        }
+        toughArr = tmp
+        $('#start-words-test').trigger('click')
       })
       $('#start-words-test').click(function(){
         if(!$('#clickWordsDict').is(':hidden')){
           $('#clickWordsDict').fadeOut(234)
         }
-        testWrong = 0
-        testRight = 0
+        wordsTest = {'right':[],'wrong':[]}
         fillWordTest(0)
         $('#myModal .modal-footer').html('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button><button type="button" class="btn btn-success" id="view-words-result">View Result</button>')
+      $('.margintop23').remove()
       $('#myModal').modal('show')
       })
       function wordSearch(value,basicLookup){
@@ -1194,9 +1225,17 @@
           }
           if(current != rightV){
               $(this).parent().parent().prepend('<i class="fa fa-frown-o"></i>')
-              testWrong += 1
+              wordsTest['wrong'].push(rightV)
+              var i = wordsTest['right'].indexOf(rightV)
+              if(i >=0){
+                wordsTest['right'] = wordsTest['right'].slice(0,i).concat(wordsTest['right'].slice(i+1))
+              }
           }else{
-              testRight += 1
+              wordsTest['right'].push(rightV)
+              var i = wordsTest['wrong'].indexOf(rightV)
+              if(i >=0){
+                wordsTest['wrong'] = wordsTest['wrong'].slice(0,i).concat(wordsTest['wrong'].slice(i+1))
+              }
             $(this).parent().parent().prepend('<i class="fa fa-smile-o"></i>')
           }
           $(this).val(0)
@@ -1395,6 +1434,7 @@ $('.switchPaper').click(function(){
                               wordsLis += '<li>'+word+'</li>'
                               toughArr.push(word)
                           }
+                          toughOO = toughArr
                           $('#toughWords-div').find('ol').html(wordsLis)
                           // if(localStorage.username != 'Lockey23'){
                           //   myReq = requestAnimationFrame(ballball);
