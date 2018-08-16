@@ -400,7 +400,7 @@ ul li {
       /*border-bottom-color: transparent;*/
       border-radius: 50%;
       color:#ffa262;
-      font-size: 1.26em;
+      font-size: 1em;
     }
     .nav>li>a {
       padding: 6px 10px;
@@ -857,7 +857,7 @@ z-index: 1050;
     color: #089763;
 }
 #articleContent img {
-    max-width: 81%;
+    max-width: 100%;
 }
 #timerDiv{
 	    z-index: 1;

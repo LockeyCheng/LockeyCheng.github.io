@@ -252,7 +252,6 @@
 	<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src='assets/js/jquery.mCustomScrollbar.concat.min.js'></script>
-  <!-- <script type="text/javascript" src="../js/showdown.min.js"></script> -->
   <script>
     var test = null
     var icons=['fa-free-code-camp','fa-superpowers','fa-telegram','fa-spinner','fa-gg-circle','fa-apple','fa-github','fa-github-alt','fa-chrome','fa-drupal','fa-firefox','fa-google-plus-circle','fa-rebel','fa-reddit','fa-simplybuilt','fa-slideshare','fa-snapchat','fa-tripadvisor','fa-twitter','fa-yelp']
@@ -512,7 +511,12 @@
             slideDotOl += slideTo
             slideContent += caps
           }
-          var preOrNext = '</div><a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="fa fa-angle-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="fa fa-angle-right" aria-hidden="true"></span><span class="sr-only">Next</span></a>'
+          
+          if(carNo<=1){
+            var preOrNext = ''
+          }else{
+            var preOrNext = '</div><a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="fa fa-angle-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="fa fa-angle-right" aria-hidden="true"></span><span class="sr-only">Next</span></a>'
+          }
           var result = slideDotOl+slideContent+preOrNext
           $('.webTitle').slideUp(234)
           $('#myCarousel').html(result)
@@ -1236,7 +1240,7 @@ $('.switchPaper').click(function(){
                         var regex = /fa fa-info-circle/g
                         article = article.replace(regex,'word-wrap-span')
                         //var html = converter.makeHtml(article);
-                        document.getElementById("articleContent").innerHTML = article;
+                        $("#articleContent").html(article);
                         clickWords = []
                         try{
                           var statistics = content['paperStatistics']
