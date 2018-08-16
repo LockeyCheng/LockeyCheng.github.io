@@ -1046,7 +1046,7 @@ choose words
 
 #swith-nav-a{
     position: fixed;
-    right: 0px;
+    right: -3px;
     top: 54%;
     border-bottom: none;
     width: 60px;
