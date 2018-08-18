@@ -144,7 +144,19 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link fa fa-commenting" data-toggle="tab" href="#article-comment"></a>
+        <a class="nav-link fa fa-wordpress" data-toggle="tab" href="#article-words"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fa fa-krw" data-toggle="tab" href="#article-pharses"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fa fa-gg" data-toggle="tab" href="#article-sentences"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fa fa-glide-g" data-toggle="tab" href="#article-grammars"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fa fa-link" data-toggle="tab" href="#article-extensions"></a>
       </li>
   </ul>
   <div class="tab-content">
@@ -184,8 +196,20 @@
                   <span class="fixleft arrow"><a href="javascript:void(0)" id="lastArt" class="switchPaper"><span  class="fa fa-arrow-left"></span></a></span>
               <span class="fixright arrow"><a href="javascript:void(0)" id="nextArt" class="switchPaper"><span  class="fa fa-arrow-right"></span></a></span>
         </div>
-        <div id="article-comment" class="container tab-pane">
-
+        <div id="article-words" class="container tab-pane">
+a
+        </div>
+        <div id="article-pharses" class="container tab-pane">
+b
+        </div>
+        <div id="article-sentences" class="container tab-pane">
+f
+        </div>
+        <div id="article-grammars" class="container tab-pane">
+f
+        </div>
+        <div id="article-extensions" class="container tab-pane">
+h
         </div>
       </div>
     </div>
@@ -481,6 +505,97 @@
           return num * document.getElementById("multiplyWith").value;
       }
 
+      function genWordsDiv(flag,wordInfo,wordArr){
+        var assStr = ''
+        for(var ass in wordInfo){
+            if(!flag){
+                if(wordArr.indexOf(ass) <0){
+                    continue
+                }
+            }
+           var word = wordInfo[ass]
+           var wordb = 'word'+ass
+            try{
+              var proEn = '<li class="peg wordsVoice" data="'+ass+'">英：'+word['pron']['peg']+'<span class="fa fa-volume-up "></span></li>'
+              var proAm =  '<li class="pam wordsVoice" data="'+ass+'">美：'+word['pron']['pam']+'<span class="fa fa-volume-up"></span></li>'
+            } catch(err) {
+                var proEn =  '<li class="peg wordsVoice" data="'+ass+'">英：'+word['pro_en']+'<span class="fa fa-volume-up"></span></li>'
+                var proAm = '<li class="pam wordsVoice" data="'+ass+'">美：'+word['pro_am']+'<span class="fa fa-volume-up"></span></li>'
+            }
+
+            if(!proEn){
+                var proEn =  ''
+            }
+            if(!proAm){
+               var proAm = ''
+            }
+            if(!proEn && !proAm){
+              var proStr = ''
+            }else{
+              var proStr = '<div class="panel panel-default Pronounciation"><div class="panel-heading">Pronounciation</div><ul class="table">'+proEn+proAm+'</ul></div>'
+            }
+            
+            var exStr = ''
+            for(var ex in word['ex']){
+               exStr+='<li class="wordEx" contenteditable="true">'+word['ex'][ex]+'</li>'
+            }
+            var eg2 = ''
+            var aaa = 1
+            for(var eg in word['eg2']){
+               //var ecn = word['eg2'][eg][0]+'||'+word['eg2'][eg][1]
+               eg2+= '<li contenteditable="true" class="wordEg2">'+aaa+'. '+word['eg2'][eg][0]+'</li>'
+               eg2+='<li contenteditable="true" class="wordEg2">'+word['eg2'][eg][1]+'</li>'
+               aaa += 1
+            }
+            if(eg2 != ''){
+              eg2 = '<div class="panel panel-default Explanation"><div class="panel-heading">Example</div><ul class="table">'+eg2+'</ul></div>'
+            }
+           var exp = '<div class="panel panel-default Explanation"><div class="panel-heading">Explanation</div><ul class="table">'+exStr+'</ul></div>'
+            var transStr = ''
+            var simStr = ''
+           if(word['st']){
+               if(word['st']['transform']){
+                    var trs = word['st']['transform']
+                   for(var tra in trs){
+                        //var tratmp = trs[tra][0]+'||'+trs[tra][1]
+                        transStr+= '<li>'+trs[tra][0]+':'+trs[tra][1]+'</li>'
+                   }
+               }
+
+               if(word['st']['similar']){
+                    simStr = '<p>'+word['st']['similar']+'</p>'
+               }
+           }
+           if(simStr == ''){
+                simStr = ''
+           }
+           var wps = ''
+            if(word['wp']){
+               for(var key in word['wp']){
+                   wps+= '<li>'+key+' '+word['wp'][key]+'</li>'
+               }
+            }
+            var wordsExt = ''
+        if(word['ext']){
+                wordsExt = word['ext']
+        }
+        if(wordsExt != ''){
+           wordsExt = '<div class="panel panel-default Explanation"><div class="panel-heading">Extension</div><p class="wordExt" contenteditable="true">'+wordsExt+'</p></div>'
+        }
+       
+        wps = '<div class="panel panel-default Explanation"><div class="panel-heading">Word Phrase</div><ul class="table">'+wps+'</ul></div>'
+
+           if(transStr != '' || simStr != ''){
+            var simTrans = '<div class="panel panel-default Explanation"><div class="panel-heading">Transform and Similar</div><ul class="table transform">'+transStr+'</ul>'+simStr+'</div>'
+           }else{
+            var simTrans = ''
+           }
+           
+
+           assStr+='<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-assistantt" href="#'+wordb+'">'+ass+'</a></h4></div><div id="'+wordb+'" class="panel-collapse collapse"><div class="panel-body">'+exp+proStr+eg2+simTrans+wps+wordsExt+'</div></div></div>'
+            }
+            return assStr
+    }
       function gen_carousel(){
         var carNo = localStorage.carousel*1
         if(carNo && carNo >0){
@@ -1179,6 +1294,15 @@ $('body').on('click','.wordPro li',function(e){
     $('#voiceDiv').html(x)
     //e.stopPropagation();
 })
+$('#article-words').on('click','li.wordsVoice',function(e){
+    var word = $(this).attr('data')
+    var youdaoWordAudio = 'https://dict.youdao.com/dictvoice?audio='+word+'&type=1'// or type=1
+    var x = document.createElement("AUDIO");
+    x.setAttribute("src", youdaoWordAudio);
+    x.setAttribute("autoplay", "autoplay");
+    $('#voiceDiv').html(x)
+    //e.stopPropagation();
+})
 // $('#wordGuessM').click(function(e){
 //   e.stopPropagation();
 // })
@@ -1249,6 +1373,71 @@ $('.switchPaper').click(function(){
                           var keyArr = keyWords.split(',')
                           var keyLen = keyArr.length
                           var touchWords = content['assistent']
+                          var words = data['comment']['words']
+                          if(words.length >0){
+                            $('#article-words').html(genWordsDiv(false,touchWords,words))
+                          }
+                          
+                          if(data['comment']['pharses']){
+                            var resultStr1 = ''
+                            for(var key in data['comment']['pharses']){
+                                 var ida = key.split(' ').join('_')
+                                 var aatmp = data['comment']['pharses'][key]
+                                 var ex = '<p>'+aatmp['ex']+'</p>'
+                                 var analy = '<p>'+aatmp['analy']+'</p>'
+                                 var aaa = 1
+                                 var samples = ''
+                                for(var i in aatmp['eg2']){
+                                   samples += '<p>'+aaa+'. '+aatmp['eg2'][i][0]+'</p>'
+                                   samples += '<p>'+aatmp['eg2'][i][1]+'</p>'
+                                   aaa += 1
+                                }
+                             var wps = '<div class="panel panel-default Explanation"><div class="panel-heading">Sample sentences</div>'+samples+'</div>'
+                             resultStr1 += '<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" class="pharseTitle" data-parent="#accordion-assistantt" href="#'+ida+'">'+key+'</a></h4></div><div id="'+ida+'" class="panel-collapse collapse in"><div class="panel-body">'+ex+analy+wps+'</div></div></div>'
+                             }
+                             $('#article-pharses').html(resultStr1)
+                          }
+
+
+                          if(data['comment']['sentences']){
+                            var resultStr1 = ''
+                              var sentences = data['comment']['sentences']
+                              for(var key in sentences){
+                                  var ida = key.split(' ').join('_')
+                                  var soo = sentences[key][0]
+                                  var see = '<p>'+sentences[key][1]+'</p>'
+                                  var sxx = '<p>'+sentences[key][2]+'</p>'
+                                  resultStr1 += '<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-assistantt"href="#'+ida+'">'+soo+'</a></h4></div><div id="'+ida+'" class="panel-collapse collapse in"><div class="panel-body">'+see+sxx+'</div></div></div>'
+                             }
+                             $('#article-sentences').html(resultStr1)
+                          }
+
+                          if(data['comment']['grammars']){
+                              var sentences = data['comment']['grammars']
+                              var resultStr1 = ''
+                              for(var key in sentences){
+                                  var soo = sentences[key][0]
+                                  var ida = soo.split(' ').join('_')
+                                  var see = '<p>'+sentences[key][1]+'</p>'
+                                  var sxx = '<p>'+sentences[key][2]+'</p>'
+                                  resultStr1 += '<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" contenteditable="true" data-parent="#accordion-assistantt"href="#'+ida+'">'+soo+'</a></h4></div><div id="'+ida+'" class="panel-collapse collapse in"><div class="panel-body">'+see+sxx+'</div></div></div>'
+                             }
+                             $('#article-grammars').html(resultStr1)
+                          }
+
+                          if(data['comment']['extensions']){
+                                var sentences = data['comment']['extensions']
+                                var resultStr1 = ''
+                                for(var key in sentences){
+                                    var soo = sentences[key][0]
+                                    var ida = soo.split(' ').join('_')
+                                    var see = '<p>'+sentences[key][1]+'</p>'
+                                    var sxx = '<p>'+sentences[key][2]+'</p>'
+                                    resultStr1 += '<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" contenteditable="true" class="soo" data-parent="#accordion-assistantt"href="#'+ida+'">'+soo+'</a> </h4></div><div id="'+ida+'" class="panel-collapse collapse in"><div class="panel-body">'+see+sxx+'</div></div></div>'
+                               }
+                               $('#article-extensions').html(resultStr1)
+                            }
+
                           for(i=0;i<keyLen;i++){
                             var preDot = '<li class="keyword-span"> '
                             if (keyArr[i] in touchWords){

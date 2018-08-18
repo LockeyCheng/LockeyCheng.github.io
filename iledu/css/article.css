@@ -1048,7 +1048,7 @@ choose words
 #swith-nav-a{
     position: fixed;
     right: -3px;
-    top: 54%;
+    bottom: 13%;
     border-bottom: none;
     width: 60px;
 	/*margin-left: 20%;
@@ -1119,4 +1119,8 @@ choose words
 }
 #more-block p span.fa-minus-circle{
 	background: #b55121;
+}
+
+body{
+    font-family: proxima-nova,"LiSu",Helvetica,Arial,sans-serif;
 }
