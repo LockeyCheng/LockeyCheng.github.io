@@ -516,11 +516,11 @@ h
            var word = wordInfo[ass]
            var wordb = 'word'+ass
             try{
-              var proEn = '<li class="peg wordsVoice" data="'+ass+'">英：'+word['pron']['peg']+'<span class="fa fa-volume-up "></span></li>'
-              var proAm =  '<li class="pam wordsVoice" data="'+ass+'">美：'+word['pron']['pam']+'<span class="fa fa-volume-up"></span></li>'
+              var proEn = '<p class="peg wordsVoice" data="'+ass+'">英：'+word['pron']['peg']+'<span class="fa fa-volume-up "></span></p>'
+              var proAm =  '<p class="pam wordsVoice" data="'+ass+'">美：'+word['pron']['pam']+'<span class="fa fa-volume-up"></span></p>'
             } catch(err) {
-                var proEn =  '<li class="peg wordsVoice" data="'+ass+'">英：'+word['pro_en']+'<span class="fa fa-volume-up"></span></li>'
-                var proAm = '<li class="pam wordsVoice" data="'+ass+'">美：'+word['pro_am']+'<span class="fa fa-volume-up"></span></li>'
+                var proEn =  '<p class="peg wordsVoice" data="'+ass+'">英：'+word['pro_en']+'<span class="fa fa-volume-up"></span></p>'
+                var proAm = '<p class="pam wordsVoice" data="'+ass+'">美：'+word['pro_am']+'<span class="fa fa-volume-up"></span></p>'
             }
 
             if(!proEn){
@@ -532,25 +532,25 @@ h
             if(!proEn && !proAm){
               var proStr = ''
             }else{
-              var proStr = '<div class="panel panel-default Pronounciation"><div class="panel-heading">Pronounciation</div><ul class="table">'+proEn+proAm+'</ul></div>'
+              var proStr = '<div class="panel panel-default Pronounciation"><div class="panel-heading">Pronounciation</div>'+proEn+proAm+'</div>'
             }
             
             var exStr = ''
             for(var ex in word['ex']){
-               exStr+='<li class="wordEx" contenteditable="true">'+word['ex'][ex]+'</li>'
+               exStr+='<p class="wordEx" contenteditable="true">'+word['ex'][ex]+'</p>'
             }
             var eg2 = ''
             var aaa = 1
             for(var eg in word['eg2']){
                //var ecn = word['eg2'][eg][0]+'||'+word['eg2'][eg][1]
-               eg2+= '<li contenteditable="true" class="wordEg2">'+aaa+'. '+word['eg2'][eg][0]+'</li>'
-               eg2+='<li contenteditable="true" class="wordEg2">'+word['eg2'][eg][1]+'</li>'
+               eg2+= '<p contenteditable="true" class="wordEg2">'+aaa+'. '+word['eg2'][eg][0]+'</p>'
+               eg2+='<p contenteditable="true" class="wordEg2">'+word['eg2'][eg][1]+'</p>'
                aaa += 1
             }
             if(eg2 != ''){
-              eg2 = '<div class="panel panel-default Explanation"><div class="panel-heading">Example</div><ul class="table">'+eg2+'</ul></div>'
+              eg2 = '<div class="panel panel-default Explanation"><div class="panel-heading">Example</div>'+eg2+'</div>'
             }
-           var exp = '<div class="panel panel-default Explanation"><div class="panel-heading">Explanation</div><ul class="table">'+exStr+'</ul></div>'
+           var exp = '<div class="panel panel-default Explanation"><div class="panel-heading">Explanation</div>'+exStr+'</div>'
             var transStr = ''
             var simStr = ''
            if(word['st']){
@@ -558,7 +558,7 @@ h
                     var trs = word['st']['transform']
                    for(var tra in trs){
                         //var tratmp = trs[tra][0]+'||'+trs[tra][1]
-                        transStr+= '<li>'+trs[tra][0]+':'+trs[tra][1]+'</li>'
+                        transStr+= '<p>'+trs[tra][0]+':'+trs[tra][1]+'</p>'
                    }
                }
 
@@ -572,7 +572,7 @@ h
            var wps = ''
             if(word['wp']){
                for(var key in word['wp']){
-                   wps+= '<li>'+key+' '+word['wp'][key]+'</li>'
+                   wps+= '<p>'+key+' '+word['wp'][key]+'</p>'
                }
             }
             var wordsExt = ''
@@ -580,19 +580,18 @@ h
                 wordsExt = word['ext']
         }
         if(wordsExt != ''){
-           wordsExt = '<div class="panel panel-default Explanation"><div class="panel-heading">Extension</div><p class="wordExt" contenteditable="true">'+wordsExt+'</p></div>'
+           wordsExt = '<div class="panel panel-default Extension"><div class="panel-heading">Extension</div><p class="wordExt" contenteditable="true">'+wordsExt+'</p></div>'
         }
        
-        wps = '<div class="panel panel-default Explanation"><div class="panel-heading">Word Phrase</div><ul class="table">'+wps+'</ul></div>'
+        wps = '<div class="panel panel-default Explanation"><div class="panel-heading">Word Phrase</div>'+wps+'</div>'
 
-           if(transStr != '' || simStr != ''){
-            var simTrans = '<div class="panel panel-default Explanation"><div class="panel-heading">Transform and Similar</div><ul class="table transform">'+transStr+'</ul>'+simStr+'</div>'
-           }else{
-            var simTrans = ''
+           if(transStr != ''){
+             transStr = '<div class="panel panel-default Transform"><div class="panel-heading">Transform</div>'+transStr+'</div>'
            }
-           
-
-           assStr+='<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-assistantt" href="#'+wordb+'">'+ass+'</a></h4></div><div id="'+wordb+'" class="panel-collapse collapse"><div class="panel-body">'+exp+proStr+eg2+simTrans+wps+wordsExt+'</div></div></div>'
+           if(simStr != ''){
+             simStr = '<div class="panel panel-default Similar"><div class="panel-heading">Similar</div>'+simStr+'</div>'
+           }
+           assStr+='<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-assistantt" href="#'+wordb+'">'+ass+'</a></h4></div><div id="'+wordb+'" class="panel-collapse collapse"><div class="panel-body">'+exp+proStr+eg2+transStr+simStr+wps+wordsExt+'</div></div></div>'
             }
             return assStr
     }
@@ -1626,6 +1625,7 @@ $('.switchPaper').click(function(){
           {
               if($('.fa-arrow-circle-up').is(':hidden')){
                 $('.fa-arrow-circle-up').show()
+                $('#swith-nav-a').fadeOut(234)
                 $('#toggle-sidebar').animate({
                     'opacity':'0.5',
                     'font-size':'1.6em'
@@ -1636,6 +1636,7 @@ $('.switchPaper').click(function(){
         }else{
           if(!$('.fa-arrow-circle-up').is(':hidden')){
             $('.fa-arrow-circle-up').hide()
+            $('#swith-nav-a').fadeIn(234)
             $('#toggle-sidebar').animate({
                   'opacity':'1',
                   'font-size':'3.2em'
