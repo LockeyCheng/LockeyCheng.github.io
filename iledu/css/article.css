@@ -296,10 +296,10 @@ custom.css merge here
 /*---------------------toggle-sidebar button-------------------------*/
 #toggle-sidebar{
     position: fixed;
-    top: 0px;
-    right: 6px;
+    top: -3px;
+    left: 10px;
     color: #D5D6E2;
-    font-size: 2.6em;
+    font-size: 3.2em;
 }
 
 #toggle-sidebar .fa-github{
@@ -395,12 +395,12 @@ ul li {
     .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
       color: #555;
       cursor: default;
-      background-color: #96fff7;
+      background-color: #d4fffc;
       border:1px solid #31fff9; 
-      border-bottom-color: transparent;
-      border-radius: 5px;
+      /*border-bottom-color: transparent;*/
+      border-radius: 50%;
       color:#ffa262;
-      font-size: 1.26em;
+      font-size: 1em;
     }
     .nav>li>a {
       padding: 6px 10px;
@@ -439,6 +439,8 @@ ul li {
     .nav-tabs>li>a{
       color:#bca1a1;
       border: solid 1px #ffeeee;
+      border-radius: 50%;
+      margin-top: 5px
     }
     ul.nav-tabs{
       padding: 0px 15px;
@@ -454,10 +456,10 @@ ul li {
     border-radius: 9px;
     margin-top: -65px;
     }
-    .tab-content
+  /*  .tab-content
     {
       padding-top: 6px;
-    }
+    }*/
       #home .box-item{
         padding: 3px;
         border: solid 1px #ffd28f;
@@ -677,7 +679,7 @@ h1.mottoh1en {
     -webkit-box-shadow: inset 0px -1px 43px #f0ded1;
     box-shadow: inset 0px -1px 43px #f0ded1;
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    padding: 5px;
+    padding: 9px;
     border-left: solid 5px #ffac64;
     text-align: center;
 }
@@ -856,13 +858,13 @@ z-index: 1050;
     color: #089763;
 }
 #articleContent img {
-    max-width: 81%;
+    max-width: 100%;
 }
 #timerDiv{
 	    z-index: 1;
 	    position: fixed;
-	    bottom: -1px;
-	    right: 40.5%;
+	    bottom: -2.5px;
+	    right: 42%;
         opacity: 0.92;
       }
       #timerDiv span{
@@ -1044,8 +1046,13 @@ choose words
 }
 
 #swith-nav-a{
-	margin-left: 20%;
-	border-bottom: none;
+    position: fixed;
+    right: -3px;
+    top: 54%;
+    border-bottom: none;
+    width: 60px;
+	/*margin-left: 20%;
+	border-bottom: none;*/
 }
 #slideImgAdd{
 	text-align: right;
