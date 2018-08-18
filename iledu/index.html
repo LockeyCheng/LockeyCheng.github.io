@@ -1492,13 +1492,13 @@ $('.switchPaper').click(function(){
                         }
                         
                         $('#mainTitle').html(content['title'])
-                        var paperJsonDate = content['date']
+                        var paperJsonDate = content['Date']
                         var timeArr = paperJsonDate.slice(0,10).split('-')
                         var hms = paperJsonDate.slice(10)
                         var dateStr = '-- '+noTomonth[timeArr[1]*1-1]+' '+timeArr[2]+' '+timeArr[0] + hms
                         $('#createDate').html(dateStr)
-                        $('#lastArt').attr('data-link',content['last'])
-                        $('#nextArt').attr('data-link',content['next'])
+                        $('#lastArt').attr('data-link',content['Last'])
+                        $('#nextArt').attr('data-link',content['Next'])
                         dictData['default'] = content['assistent']
                         $('#myModal').modal('hide')
                         
