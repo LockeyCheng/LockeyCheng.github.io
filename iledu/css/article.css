@@ -393,13 +393,12 @@ ul li {
     list-style: none;
 }
     .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-      color: #555;
       cursor: default;
-      background-color: #d4fffc;
-      border:1px solid #31fff9; 
+      /*background-color: #d4fffc;
+      border:1px solid #31fff9; */
       /*border-bottom-color: transparent;*/
       border-radius: 50%;
-      color:#ffa262;
+      color:#eb670d;
       font-size: 1em;
     }
     .nav>li>a {
@@ -423,8 +422,8 @@ ul li {
         border-bottom: 1px solid #b8fff4;
     }
     .nav-tabs>li.active>a{
-      border: 1px solid #31fff9;
-      border-bottom: none;
+      /*border: 1px solid #31fff9;
+      border-bottom: none;*/
     }
     /*.nav-item a.active{
       background: #00d9b9;
@@ -1123,4 +1122,9 @@ choose words
 
 body{
     font-family: proxima-nova,"LiSu",Helvetica,Arial,sans-serif;
+}
+
+#article-words p{
+    text-indent: 0.86em;
+    padding: 2px 6px;
 }
