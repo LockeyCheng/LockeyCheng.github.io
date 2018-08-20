@@ -396,8 +396,7 @@ ul li {
       color: #555;
       cursor: default;
       background-color: #96fff7;
-      border:1px solid #31fff9; 
-      border-bottom-color: transparent;
+      border: solid 1px #b8ffdc;
       border-radius: 5px;
       color:#ffa262;
       font-size: 1.26em;

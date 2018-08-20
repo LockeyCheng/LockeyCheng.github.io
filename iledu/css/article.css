@@ -394,11 +394,10 @@ ul li {
 }
     .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
       cursor: default;
-      /*background-color: #d4fffc;
-      border:1px solid #31fff9; */
-      /*border-bottom-color: transparent;*/
+      border: solid 1px #b8ffdc;
       border-radius: 50%;
-      color:#eb670d;
+      color:#ff6700;
+      background: transparent;
       font-size: 1em;
     }
     .nav>li>a {
