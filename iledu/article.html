@@ -1372,6 +1372,7 @@ $('.switchPaper').click(function(){
                           var keyArr = keyWords.split(',')
                           var keyLen = keyArr.length
                           var touchWords = content['assistent']
+                          try{
                           var words = data['comment']['words']
                           if(words.length >0){
                             $('#article-words').html(genWordsDiv(false,touchWords,words))
@@ -1436,6 +1437,10 @@ $('.switchPaper').click(function(){
                                }
                                $('#article-extensions').html(resultStr1)
                             }
+                          }catch{
+                            console.log('comment error')
+                          }
+
 
                           for(i=0;i<keyLen;i++){
                             var preDot = '<li class="keyword-span"> '
