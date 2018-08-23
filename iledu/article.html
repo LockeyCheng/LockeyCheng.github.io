@@ -182,7 +182,7 @@
               </div>
                 <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
                   <h5 class="heading5" id="createDate">——By Lockey</h5>
-                  <h5 class="heading5" id="articleSource">——The Economist</h5>
+                  <h5 class="heading5" id="articleSource">—The Economist</h5>
                   <p class="pkeywords"><span id="spanstatistics"></span></p>
                   <div id="articleContent"></div>
 
@@ -1373,75 +1373,75 @@ $('.switchPaper').click(function(){
                           var keyArr = keyWords.split(',')
                           var keyLen = keyArr.length
                           var touchWords = content['assistent']
-                          try{
-                          var words = data['comment']['words']
-                          if(words.length >0){
-                            $('#article-words').html(genWordsDiv(false,touchWords,words))
-                          }
-                          
-                          if(data['comment']['pharses']){
-                            var resultStr1 = ''
-                            for(var key in data['comment']['pharses']){
-                                 var ida = key.split(' ').join('_')
-                                 var aatmp = data['comment']['pharses'][key]
-                                 var ex = '<p>'+aatmp['ex']+'</p>'
-                                 var analy = '<p>'+aatmp['analy']+'</p>'
-                                 var aaa = 1
-                                 var samples = ''
-                                for(var i in aatmp['eg2']){
-                                   samples += '<p>'+aaa+'. '+aatmp['eg2'][i][0]+'</p>'
-                                   samples += '<p>'+aatmp['eg2'][i][1]+'</p>'
-                                   aaa += 1
-                                }
-                             var wps = '<div class="panel panel-default Explanation"><div class="panel-heading">Sample sentences</div>'+samples+'</div>'
-                             resultStr1 += '<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" class="pharseTitle" data-parent="#accordion-assistantt" href="#'+ida+'">'+key+'</a></h4></div><div id="'+ida+'" class="panel-collapse collapse in"><div class="panel-body">'+ex+analy+wps+'</div></div></div>'
-                             }
-                             $('#article-pharses').html(resultStr1)
-                          }
 
-
-                          if(data['comment']['sentences']){
-                            var resultStr1 = ''
-                              var sentences = data['comment']['sentences']
-                              for(var key in sentences){
-                                  var ida = key.split(' ').join('_')
-                                  var soo = sentences[key][0]
-                                  var see = '<p>'+sentences[key][1]+'</p>'
-                                  var sxx = '<p>'+sentences[key][2]+'</p>'
-                                  resultStr1 += '<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-assistantt"href="#'+ida+'">'+soo+'</a></h4></div><div id="'+ida+'" class="panel-collapse collapse in"><div class="panel-body">'+see+sxx+'</div></div></div>'
-                             }
-                             $('#article-sentences').html(resultStr1)
-                          }
-
-                          if(data['comment']['grammars']){
-                              var sentences = data['comment']['grammars']
+                          if(data['comment']){
+                            var words = data['comment']['words']
+                            if(words.length >0){
+                              $('#article-words').html(genWordsDiv(false,touchWords,words))
+                            }
+                            
+                            if(data['comment']['pharses']){
                               var resultStr1 = ''
-                              for(var key in sentences){
-                                  var soo = sentences[key][0]
-                                  var ida = soo.split(' ').join('_')
-                                  var see = '<p>'+sentences[key][1]+'</p>'
-                                  var sxx = '<p>'+sentences[key][2]+'</p>'
-                                  resultStr1 += '<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" contenteditable="true" data-parent="#accordion-assistantt"href="#'+ida+'">'+soo+'</a></h4></div><div id="'+ida+'" class="panel-collapse collapse in"><div class="panel-body">'+see+sxx+'</div></div></div>'
-                             }
-                             $('#article-grammars').html(resultStr1)
-                          }
+                              for(var key in data['comment']['pharses']){
+                                   var ida = key.split(' ').join('_')
+                                   var aatmp = data['comment']['pharses'][key]
+                                   var ex = '<p>'+aatmp['ex']+'</p>'
+                                   var analy = '<p>'+aatmp['analy']+'</p>'
+                                   var aaa = 1
+                                   var samples = ''
+                                  for(var i in aatmp['eg2']){
+                                     samples += '<p>'+aaa+'. '+aatmp['eg2'][i][0]+'</p>'
+                                     samples += '<p>'+aatmp['eg2'][i][1]+'</p>'
+                                     aaa += 1
+                                  }
+                               var wps = '<div class="panel panel-default Explanation"><div class="panel-heading">Sample sentences</div>'+samples+'</div>'
+                               resultStr1 += '<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" class="pharseTitle" data-parent="#accordion-assistantt" href="#'+ida+'">'+key+'</a></h4></div><div id="'+ida+'" class="panel-collapse collapse in"><div class="panel-body">'+ex+analy+wps+'</div></div></div>'
+                               }
+                               $('#article-pharses').html(resultStr1)
+                            }
 
-                          if(data['comment']['extensions']){
-                                var sentences = data['comment']['extensions']
+
+                            if(data['comment']['sentences']){
+                              var resultStr1 = ''
+                                var sentences = data['comment']['sentences']
+                                for(var key in sentences){
+                                    var ida = key.split(' ').join('_')
+                                    var soo = sentences[key][0]
+                                    var see = '<p>'+sentences[key][1]+'</p>'
+                                    var sxx = '<p>'+sentences[key][2]+'</p>'
+                                    resultStr1 += '<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-assistantt"href="#'+ida+'">'+soo+'</a></h4></div><div id="'+ida+'" class="panel-collapse collapse in"><div class="panel-body">'+see+sxx+'</div></div></div>'
+                               }
+                               $('#article-sentences').html(resultStr1)
+                            }
+
+                            if(data['comment']['grammars']){
+                                var sentences = data['comment']['grammars']
                                 var resultStr1 = ''
                                 for(var key in sentences){
                                     var soo = sentences[key][0]
                                     var ida = soo.split(' ').join('_')
                                     var see = '<p>'+sentences[key][1]+'</p>'
                                     var sxx = '<p>'+sentences[key][2]+'</p>'
-                                    resultStr1 += '<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" contenteditable="true" class="soo" data-parent="#accordion-assistantt"href="#'+ida+'">'+soo+'</a> </h4></div><div id="'+ida+'" class="panel-collapse collapse in"><div class="panel-body">'+see+sxx+'</div></div></div>'
+                                    resultStr1 += '<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" contenteditable="true" data-parent="#accordion-assistantt"href="#'+ida+'">'+soo+'</a></h4></div><div id="'+ida+'" class="panel-collapse collapse in"><div class="panel-body">'+see+sxx+'</div></div></div>'
                                }
-                               $('#article-extensions').html(resultStr1)
+                               $('#article-grammars').html(resultStr1)
                             }
-                          }catch{
-                            console.log('comment error')
-                          }
 
+                            if(data['comment']['extensions']){
+                                  var sentences = data['comment']['extensions']
+                                  var resultStr1 = ''
+                                  for(var key in sentences){
+                                      var soo = sentences[key][0]
+                                      var ida = soo.split(' ').join('_')
+                                      var see = '<p>'+sentences[key][1]+'</p>'
+                                      var sxx = '<p>'+sentences[key][2]+'</p>'
+                                      resultStr1 += '<div class="panel panel-info"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" contenteditable="true" class="soo" data-parent="#accordion-assistantt"href="#'+ida+'">'+soo+'</a> </h4></div><div id="'+ida+'" class="panel-collapse collapse in"><div class="panel-body">'+see+sxx+'</div></div></div>'
+                                 }
+                                 $('#article-extensions').html(resultStr1)
+                              }
+
+                          }
+                          
 
                           for(i=0;i<keyLen;i++){
                             var preDot = '<li class="keyword-span"> '
