@@ -828,9 +828,9 @@ z-index: 1050;
     color: #914915;
     padding-bottom: 3px;
 }
-#createDate {
+#createDate,#articleSource {
     margin-top: -10px;
-    border-top: solid 1px #ddf1ff;
+    /*border-top: solid 1px #ddf1ff;*/
     text-align: right !important;
 }
 .statistics-no ul li {
