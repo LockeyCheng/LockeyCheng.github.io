@@ -791,6 +791,7 @@ Article content part
     text-indent: 23px;
     color: #4a2d03;
     font-size: 1.15em;
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
 }
 #articleContent p span {
     text-indent: 3px;
@@ -827,9 +828,9 @@ z-index: 1050;
     color: #914915;
     padding-bottom: 3px;
 }
-#createDate {
+#createDate,#articleSource{
     margin-top: -10px;
-    border-top: solid 1px #ddf1ff;
+    /*border-top: solid 1px #ddf1ff;*/
     text-align: right !important;
 }
 .statistics-no ul li {
@@ -842,7 +843,7 @@ z-index: 1050;
 }
 .clickWordsDict_title, .words-sep-dot {
     color: #914915;
-    font-weight: 700;
+    /*font-weight: 700;*/
 }
 .statistics-no, #spansfocus {
     color: #40e7d1;
@@ -850,6 +851,7 @@ z-index: 1050;
 .statistics-no, #spankeywords, #spansfocus {
     display: block;
     padding-top: 5px;
+    font-size: 1.23em;
 }
 #spanstatistics {
     color: #089763;

@@ -234,8 +234,8 @@
           
     </div>
       <h3 class="heading3" id="mainTitle">One can not see what itself in until leave it.</h3>
-        <h5 class="heading5" id="createDate">——By Lockey</h5>
-        
+        <h5 class="heading5" id="createDate">— By Lockey</h5>
+        <h5 class="heading5" id="articleSource">— The Economist</h5>
         <!-- <p class="pkeywords">[ Key Words ]<span id="spankeywords"></span></p> -->
         <p class="pkeywords"><span id="spanstatistics"></span></p>
         <!-- <p class="pkeywords"><span id="spansfocus"></span></p> -->
@@ -1492,7 +1492,7 @@ $('.switchPaper').click(function(){
                           console.log(err)
                         }
                         
-                        $('#mainTitle').html(content['title'])
+                        $('#mainTitle').html(content['Title'])
                         var paperJsonDate = content['Date']
                         var timeArr = paperJsonDate.slice(0,10).split('-')
                         var hms = paperJsonDate.slice(10)
