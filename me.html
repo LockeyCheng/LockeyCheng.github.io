@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+<!--- basic page needs
+================================================== -->
+<meta charset="utf-8">
+<title>Lockey's Personal Page</title>
+<meta name="description" content="">  
+<meta name="author" content="">
+
+<!-- mobile specific metas
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="css/bootstrap.min.css"  type="text/css">
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="about/css/base.css">  
+<link rel="stylesheet" href="font-awesome-4.4.0/css/font-awesome.min.css"  type="text/css">
+<link rel="stylesheet" href="about/css/main.css">
+<!-- favicons
+================================================== --> 
+ <link rel="icon" type="image/x-icon" class="js-site-favicon" href="images/favicon.ico">
+</head>
+<style type="text/css">
+	#menu-toggle {
+    border-left-color: #81db34;
+    border-right-color: #34d9da;
+    border-top-color: #81db34;
+    border-bottom-color: #34d9da;
+}
+.navbar-default {
+    border-color: transparent;
+    background-color: #222;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:active, .navbar-default .navbar-brand.active {
+    color: #fec503;
+}
+.navbar-default .navbar-brand {
+    font-family: Helvetica,Arial,cursive;
+    color: #ff3d00;
+}
+.navbar-default .navbar-nav>.active>a {
+    border-radius: 0;
+    color: #ddd;
+    background: none;
+}
+.navbar-default .nav li a {
+    text-transform: uppercase;
+    font-family: Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 13px;
+    color: #ddd;
+}
+@media (min-width: 768px)
+{
+.navbar-default {
+    padding: 10px 0;
+    border: 0;
+    /*background-color: transparent;*/
+    -webkit-transition: padding .3s;
+    -moz-transition: padding .3s;
+    transition: padding .3s;
+}
+}
+@media (min-width: 768px)
+{
+.navbar-default.navbar-shrink {
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+}
+@media (min-width: 768px)
+{
+.navbar-default {
+    padding: 10px 0;
+    border: 0;
+    /*background-color: transparent;*/
+    -webkit-transition: padding .3s;
+    -moz-transition: padding .3s;
+    transition: padding .3s;
+}
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-image: -webkit-linear-gradient(left, #81db34 0%, #34d9da 100%), -webkit-linear-gradient(left, #81db34 0%, #34d9da 100%);
+    background-image: -moz-linear-gradient(left, #81db34 0%, #34d9da 100%), -moz-linear-gradient(left, #81db34 0%, #34d9da 100%);
+    background-image: -o-linear-gradient(left, #81db34 0%, #34d9da 100%), -o-linear-gradient(left, #81db34 0%, #34d9da 100%);
+    background-image: linear-gradient(to right, #81db34 0%, #34d9da 100%), linear-gradient(to right, #81db34 0%, #34d9da 100%);
+}
+.navbar-default .navbar-collapse {
+    border-color: rgba(255,255,255,.02);
+}
+section{
+	background-color: #000;
+}
+#gretting{
+	color: #006f75;
+    font-size: 0.6em;
+}
+.timeline-content p{
+	font-size: 1.45em;
+	text-indent: 23px;
+	word-break: break-all;
+}
+body{
+	background: url(https://lockeycheng.github.io/resume/images/pattern/pattern2.png) repeat;
+    font: 100% Arial,'Signika';
+    line-height: 20px;
+    font-weight: normal;
+    font-style: normal;
+    color: #999;
+}
+#skilllabel span{
+	font-size: 1.68em;
+    padding: 6px;
+    color: #35968d;
+}
+</style>
+<body id="top">
+<nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" id="menu-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="index.html"><i class="fa fa-github" style="padding-right:9px;font-size: 1.5em"></i>LOCKEY</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+					<li  class="active">
+                        <a class="page-scroll" href="index.html">Home</a>
+                    </li>
+					<li>
+                        <a class="page-scroll" href="blog.html">Blog</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="video/videojs-app/index.html">Video</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="photograph/index.html">Photograph</a>
+                    </li>
+                    
+                    <li>
+                        <a class="page-scroll" id="Personal" href="javascript:void(0)" data-toggle="modal" data-target="#myModal">Personal</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+<!-- intro section
+================================================== -->
+<!--  -->
+<!-- about section
+================================================== -->
+<section id="about">  
+
+<div class="row section-intro">
+	<div class="col-twelve">
+		<br/><br/>
+		<!-- <h5>About</h5> -->
+		<h1>Let me introduce myself.</h1>
+
+		<div class="intro-info">
+
+			<img src="about/images/seaside-me.jpg" alt="Profile Picture">
+
+			<p class="lead">Halo buddy, welcome here, this is Lockey Young, also known as YangCheng in Chinese. Yeah, I like coding, which really makes me joyful , but not like most programmers with houseboy label, I am an outgoing bird. Travelling fills half of my spare time, you may not expect that I had reached the peak of Mount Hua for twice and also overlooked from the top of Mount Tai during my college period. I really love reading, and become a fan of Keigo Higashino recently, his works like <b><i>Journey under the Midnight Sun</i></b> and <b><i>Miracles of the Namiya General Store</i></b> really impressed me! Furthermore, I have a deep love for Comic Animations and sports(badmintion, basketball, table tennis, ping-pong...), etc. Thoughtful minds always impress me, hope to know more people who follow the similar and be my friends, so we can learn and grow together, may you be one! Wanna know more about me please find my links below.</p>
+		</div>   			
+
+	</div>   		
+</div> <!-- /section-intro -->
+
+<div class="row about-content">
+
+	<div class="col-six tab-full">
+
+		<h3>Profile</h3>
+		<p></p>
+
+		<ul class="info-list">
+			<li>
+				<strong>Fullname:</strong>
+				<span>Lockey Young</span>
+			</li>
+			<li>
+				<strong>Birth Date:</strong>
+				<span>March 18, 1993</span>
+			</li>
+			<li>
+				<strong>Job:</strong>
+				<span>info2soft.com, Web Developer</span>
+				<span>China Link(PayPal AWF), Risk Engineer</span>
+			</li>
+			<li>
+				<strong>Website:</strong>
+				<span>lockeycheng.github.io</span>
+			</li>
+			<li>
+				<strong>Cellphone:</strong>
+				<span>+86 13262566336</span>
+			</li>
+			<li>
+				<strong>Email:</strong>
+				<span>iooiooi23@163.com</span>
+			</li>
+
+		</ul> <!-- /info-list -->
+
+	</div>
+
+	<div class="col-six tab-full">
+
+		<h3>Skills</h3>
+		<p></p>
+
+			<ul class="skill-bars">
+			   
+			   <li>
+				<div class="progress percent85"><span>70%</span></div>
+				<strong>Python</strong>
+			   </li>
+			   <li>
+				<div class="progress percent80"><span>88%</span></div>
+				<strong>Linux</strong>
+			   </li>
+			   <li>
+				<div class="progress percent75"><span>75%</span></div>
+				<strong>Shell</strong>
+			   </li>
+			   <li>
+				<div class="progress percent75"><span>70%</span></div>
+				<strong>Web frontend</strong>
+			   </li>
+			   <li>
+				<div class="progress percent70"><span>80%</span></div>
+				<strong>DevOps</strong>
+			   </li>
+			   <li>
+				<div class="progress percent75"><span>70%</span></div>
+				<strong>DataBase</strong>
+			   </li>
+			   <li style="background: none">
+				<!-- <div class="progress percent0"><span>75%</span></div> -->
+				<strong>...</strong>
+			   </li>
+  
+			</ul> <!-- /skill-bars -->		
+
+	</div>
+	<div id="skilllabel">
+		<h3 align="center">My skill labels</h3>
+		<span>Python</span><span>Flask</span><span>Django</span><span>uWSGI</span><span>Nginx</span><span>MySQL</span><span>Html</span><span>CSS</span><span>JavaScript</span><span>jQuery</span><span>LAMP/LNMP</span><span>Redhat/Centos/Ubuntu</span><span>Gawk</span><span>Sed</span><span>DHCP</span><span>VSFTP</span><span>Git/SVN</span><span>Github</span><span>Redis</span><span>MongoDB</span><span>SaltStack</span><span>Keepalived/HAProxy</span><span>Prometheus</span><span>Grafana</span><span>Docker</span><span>OpenStack</span><span>Hadoop</span><span>Spark</span><span>Linux</span><span>Shell</span><span>...</span>
+	</div>
+
+</div>
+
+<div class="row button-section" style="display: none">
+	<div class="col-twelve">
+		<a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Me</a>
+		<a href="#" title="Download CV" class="button button-primary">Download CV</a>
+	</div>   		
+</div>
+
+</section> <!-- /process-->    
+
+
+<!-- resume Section
+================================================== -->
+<section id="resume" class="grey-section">
+
+	<div class="row section-intro">
+	<div class="col-twelve">
+
+		<h1>More about me.</h1>
+
+		<p class="lead"></p>
+
+	</div>   		
+</div> <!-- /section-intro--> 
+
+<div class="row resume-timeline">
+
+	<div class="col-twelve resume-header">
+
+		<h2>Education</h2>
+
+	</div> <!-- /resume-header -->
+
+	<div class="col-twelve">
+
+		<div class="timeline-wrap">
+
+
+			<div class="timeline-block">
+				<div class="timeline-ico">
+					<i class="fa fa-graduation-cap"></i>
+				</div>
+				<div class="timeline-header">
+					<h3>Bachelor Degree</h3>
+					<p>Aug 2012 - June 2016</p>
+				</div>
+				<div class="timeline-content">
+					<h4>Xi'an University of Technology</h4>
+					<p>In the August, 2012, I became a college student, major in IOT(Internet of Things). During the next four years I learnt a series of subjects about computer and science, programming practice appeared in most course, which finally becomes one of my interest and offered me a decent job today. College time passed, in class, in library, in playground, ...really a struggling time made a better me.</p>
+				</div>
+			</div> <!-- /timeline-block -->
+
+
+		</div> <!-- /timeline-wrap -->   			
+
+	</div> <!-- /col-twelve -->
+	
+</div> <!-- /resume-timeline -->
+
+<div class="row resume-timeline">
+
+	<div class="col-twelve resume-header">
+
+		<h2>Work Experiences</h2>
+
+	</div> <!-- /resume-header -->
+
+	<div class="col-twelve">
+
+		<div class="timeline-wrap">
+
+			<div class="timeline-block">
+				<div class="timeline-ico">
+					<i class="fa fa-briefcase"></i>
+				</div>
+				<div class="timeline-header">
+					<h3>Risk Engineer</h3>
+					<p>Mar 2018 -  Now</p>
+				</div>
+				<div class="timeline-content">
+					<h4>China Link(PayPal AWF)</h4>
+					<p>Though working as an AWF in PayPal, it is really a pleasure. As we all know, PayPal is a financial services company with high value. Since March this year, I has been worked as a Risk Engineer under SRS-BI for almost 6 months, the major work I focus on is a data application(developed under Nginx+MySQL+Django+Frontend) which provides access to some data for some roles in various display(chart,text,graph), and user can create a job to periodically receive email contains the data they want to view in the app. Other functions such as Q&A system, job library, user management are also available. During project time, I was impressed by PayPal's working environment and learnt more than IT skills.</p>
+				</div>
+			</div> <!-- /timeline-block -->
+
+			<div class="timeline-block">
+				<div class="timeline-ico">
+					<i class="fa fa-briefcase"></i>
+				</div>
+				<div class="timeline-header">
+					<h3>Web intern</h3>
+					<p>Jan 2016 -  May 2016</p>
+				</div>
+				<div class="timeline-content">
+					<h4>Info2soft.com</h4>
+					<p>Information2 is an enterprise focusses on disaster recovery and application high availability, in where I got my first job working as a web intern then became a web developer. During internship I accomplished graduation project(a website for book exchange within school using the technologies such as Apache,PHP,MySQL,etc). Then I participated in the implementation of a file sync and share platform(using web front-end technologies and Python) and developed serveral functions such as File Recycling,Visualization of user statistics,etc.</p>
+				</div>
+			</div> <!-- /timeline-block -->
+
+			<div class="timeline-block">
+				<div class="timeline-ico">
+					<i class="fa fa-briefcase"></i>
+				</div>
+				<div class="timeline-header">
+					<h3>Web Developer</h3>
+					<p>Jul 2016 -  Jun 2017</p>
+				</div>
+				<div class="timeline-content">
+					<h4>Info2soft.com</h4>
+					<p>After my formal entry, I immediately put my hand to a project, which is a customized product for DELL. I worked with NWJS to build a client app from scratch. Prototype design then function implementation and review, I totally toke the charge of the app. After completing the app, I joined another project group to develop a system for file diff and sync, in which I toke responsible of client app, server side development and front-end work. That was really a difficult but challenging work, I learnt more than programming that time.</p>
+				</div>
+			</div> <!-- /timeline-block -->
+
+		<div class="timeline-block">
+
+				<div class="timeline-ico">
+					<i class="fa fa-briefcase"></i>
+				</div>
+
+				<div class="timeline-header">
+					<h3>Python Developer</h3>
+					<p>Jun 2017 - Jan 2018</p>
+				</div>
+
+				<div class="timeline-content">
+					<h4>Sunline.cn</h4>
+					<p>The time in Sunline I worked as a DevOps using Python and MongoDB, taking all responsible for a monitoring and alerting system, from prototype design to backends function implementation. I completed system configurations and alerts management via web browser before my separation. From this project I learnt more about Flask and NoSQL database such as MongoDB and some Ops skills.</p>
+				</div>
+
+			</div><!-- /timeline-block -->
+
+
+		</div> <!-- /timeline-wrap -->   			
+
+	</div> <!-- /col-twelve -->
+	
+</div> <!-- /resume-timeline -->
+
+
+<div class="row resume-timeline">
+
+	<div class="col-twelve resume-header">
+
+		<h2>Coding experiences</h2>
+
+	</div> <!-- /resume-header -->
+
+	<div class="col-twelve">
+
+		<div class="timeline-wrap">
+
+			<div class="timeline-block">
+				<div class="timeline-ico">
+					<i class="fa fa-code"></i>
+				</div>
+				<div class="timeline-header">
+					<h3>Panda</h3>
+					<p>Apri 2018 - Now</p>
+				</div>
+				<div class="timeline-content">
+					<h4>Operation Alert and Data Analytics system</h4>
+					<p>Based on raw data from Teradata, Panda makes an advanced data filtering then routes needful data to MySQL Server into schemed tables, which makes Panda's data source. Users post filter conditions from Panda's front-end to request wanted backends data, if necessary, a job can be created to retrive wanted data as wished frequency in various display(table,chart,text), which is the main functionality Panda focuses. </p>
+				</div>
+			</div> <!-- /timeline-block -->
+
+
+			<div class="timeline-block">
+				<div class="timeline-ico">
+					<i class="fa fa-code"></i>
+				</div>
+				<div class="timeline-header">
+					<h3>I2share</h3>
+					<p>Mar 2016 - Sep 2016</p>
+				</div>
+				<div class="timeline-content">
+					<h4>File sync and share platform</h4>
+					<p>I2share comes from an open source project called seafile based on Python web framework Django. When I was a member of I2share, my duties are web front-end and backends which using JavaScript and Python. Together with other members, we implemented functionalities such as file recycle and Visualization of user statistics, I finished the 3rd web interface Rendering myself. After this project I become a fan of Python and decided to become a pythoner.</p>
+				</div>
+			</div> <!-- /timeline-block -->
+
+			<div class="timeline-block">
+				<div class="timeline-ico">
+					<i class="fa fa-code"></i>
+				</div>
+				<div class="timeline-header">
+					<h3>I2Dell</h3>
+					<p>Sep 2016 - Jan 2017</p>
+				</div>
+				<div class="timeline-content">
+					<h4>Client for disaster recovery and HA system</h4>
+					<p>I2Dell is a customized product for DELL developed by Information2. I take the charge of client app, which developed from NWJS. From prototype design to function implementation and review are all my works. When developing the client I learnt NWJS/Node and know some about team work.</p>
+				</div>
+			</div> <!-- /timeline-block -->
+
+			<div class="timeline-block">
+				<div class="timeline-ico">
+					<i class="fa fa-code"></i>
+				</div>
+				<div class="timeline-header">
+					<h3>I2Verify</h3>
+					<p>Feb 2017 - May 2017</p>
+				</div>
+				<div class="timeline-content">
+					<h4>A system focusing on documents diversity and sync</h4>
+					<p>Based on Information2's core technology, I2Verify is an innovative product. I take several tasks in this project(web/server side, client). On server side I implemented user and node modules, file compare, notification...,all under PHP. On client side I do the same job as I2Dell. Although difficult, I done all work well and learnt more technologies, which made me happy.</p>
+				</div>
+			</div> <!-- /timeline-block -->
+
+			<div class="timeline-block">
+				<div class="timeline-ico">
+					<i class="fa fa-code"></i>
+				</div>
+				<div class="timeline-header">
+					<h3>OMS</h3>
+					<p>Sep 2017 - Oct 2017</p>
+				</div>
+				<div class="timeline-content">
+					<h4>Online operating system</h4>
+					<p>OMS is a project from open source based on Django. Core functions come from calling SaltStack's python API. This system contains user and salt minion manage, service/node auto discovery, remote command excute, automatic deploy, file and log mamage, etc. On the level of architecture, nginx+uWSGI+python was used for html parser.</p>
+				</div>
+			</div> <!-- /timeline-block -->
+
+			<div class="timeline-block">
+				<div class="timeline-ico">
+					<i class="fa fa-code"></i>
+				</div>
+				<div class="timeline-header">
+					<h3>EDSP Promgen</h3>
+					<p>Nov 2017 - Jan 2018</p>
+				</div>
+				<div class="timeline-content">
+					<h4>Monitoring and alerting system</h4>
+					<p>By configuring Prometheus(basic configure, rules, jobs) and Alertmanager from web interface, this system can monitor services via metrics and send alert message to some recivers such as email, pageduty, etc. Nginx+Flask+MongoDB is the backends architecture within which I coding.</p>
+				</div>
+			</div> <!-- /timeline-block -->
+		</div> <!-- /timeline-wrap -->   			
+
+	</div> <!-- /col-twelve -->
+	
+</div> <!-- /resume-timeline -->
+</section> <!-- /features -->
+
+
+<!-- Portfolio Section
+================================================== -->
+<section id="portfolio">
+
+	<div class="row section-intro">
+	<div class="col-twelve">
+
+		<h5>Relax time</h5>
+		<h1>Show you some beautiful photographs.</h1>
+
+		<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
+
+	</div>   		
+</div> <!-- /section-intro--> 
+
+<div class="row portfolio-content">
+
+	<div class="col-twelve">
+
+		<!-- portfolio-wrapper -->
+		 <div id="folio-wrapper" class="block-1-2 block-mob-full stack">
+
+			<div class="bgrid folio-item">
+			   <div class="item-wrap">
+				<img src="about/images/portfolio/liberty.jpg" alt="Liberty">
+				  <a href="#modal-01" class="overlay">	                  	           
+					 <div class="folio-item-table">
+						<div class="folio-item-cell">
+								   <h3 class="folio-title">Liberty</h3>	     					    
+									 <span class="folio-types">
+									  Graphic Design
+								   </span>
+							   </div>	                      	
+					 </div>                    
+				  </a>
+			   </div>	               
+				</div> <!-- /folio-item -->
+
+				<div class="bgrid folio-item">
+			   <div class="item-wrap">
+				<img src="about/images/portfolio/shutterbug.jpg" alt="Shutterbug">
+				<a href="#modal-02" class="overlay">              		                  
+					 <div class="folio-item-table">
+						<div class="folio-item-cell">
+							<h3 class="folio-title">Shutterbug</h3>	     					    
+									<span class="folio-types">
+									  Web Design
+								  </span>		     		
+							   </div> 	                      	
+					 </div>                    
+				  </a>
+			   </div>
+				</div> <!-- /folio-item -->
+
+			<div class="bgrid folio-item">
+			   <div class="item-wrap">
+				<img src="about/images/portfolio/clouds.jpg"alt="Clouds">
+				  <a href="#modal-03" class="overlay">             		                  
+					 <div class="folio-item-table">
+						<div class="folio-item-cell">
+							<h3 class="folio-title">Clouds</h3>	     					    
+									<span class="folio-types">
+									  Web Design
+								  </span>		     		
+							   </div> 	                      	
+					 </div>                    
+				  </a>
+			   </div>
+				</div> <!-- /folio-item -->
+
+			<div class="bgrid folio-item">
+			   <div class="item-wrap">
+				<img src="about/images/portfolio/beetle.jpg" alt="Beetle">
+				  <a href="#modal-04" class="overlay">                  	                 
+					 <div class="folio-item-table">
+						<div class="folio-item-cell">
+							<h3 class="folio-title">Beetle</h3>	     					    
+									<span class="folio-types">
+									  Branding
+								  </span>		     		
+							   </div>  	                      	
+					 </div>                    
+				  </a>
+			   </div>
+				</div> <!-- /folio-item -->     
+
+				<div class="bgrid folio-item">
+			   <div class="item-wrap">
+				<img src="about/images/portfolio/lighthouse.jpg" alt="Lighthouse">
+				  <a href="#modal-05" class="overlay">             		                  
+					 <div class="folio-item-table">
+						<div class="folio-item-cell">
+							<h3 class="folio-title">Lighthouse</h3>	     					    
+									<span class="folio-types">
+									  Web Development
+								  </span>		     		
+							   </div> 	                      	
+					 </div>                    
+				  </a>
+			   </div>
+				</div> <!-- /folio-item -->
+
+			<div class="bgrid folio-item">
+			   <div class="item-wrap">
+				<img src="about/images/portfolio/salad.jpg" alt="Salad">
+				  <a href="#modal-06" class="overlay">
+					 <div class="folio-item-table">
+						<div class="folio-item-cell">
+							<h3 class="folio-title">Salad</h3>	     					    
+									<span class="folio-types">
+									  Branding
+								  </span>		     		
+							   </div>	                      	
+					 </div>                    
+				  </a>
+			   </div>
+				</div> <!-- /folio-item -->   
+				
+			<!-- modal popups - begin
+			============================================================= -->
+			<div id="modal-01" class="popup-modal slider mfp-hide">	
+
+					<div class="media">
+						<img src="about/images/portfolio/modals/m-liberty.jpg" alt="" />
+					</div>      	
+
+				   <div class="description-box">
+					  <h4>Liberty</h4>		      
+					  <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+
+					  <div class="categories">Web Development</div>			               
+				   </div>
+
+				 <div class="link-box">
+					<a href="">Details</a>
+					  <a href="#" class="popup-modal-dismiss">Close</a>
+				 </div>		      
+
+			   </div> <!-- /modal-01 -->
+
+			   <div id="modal-02" class="popup-modal slider mfp-hide">	
+
+					<div class="media">
+						<img src="about/images/portfolio/modals/m-shutterbug.jpg" alt="" />
+					</div>      	
+
+				   <div class="description-box">
+					  <h4>Shutterbug</h4>		      
+					  <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+
+					  <div class="categories">Web Design</div>			               
+				   </div>
+
+				 <div class="link-box">
+					<a href="#">Details</a>
+					  <a href="#" class="popup-modal-dismiss">Close</a>
+				 </div>		      
+
+			   </div> <!-- /modal-02 -->
+
+			   <div id="modal-03" class="popup-modal slider mfp-hide">	
+
+					<div class="media">
+						<img src="about/images/portfolio/modals/m-clouds.jpg" alt="" />
+					</div>      	
+
+				   <div class="description-box">
+					  <h4>Clouds</h4>		      
+					  <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+
+					  <div class="categories">Web Design</div>			               
+				   </div>
+
+				 <div class="link-box">
+					<a href="#">Details</a>
+					  <a href="#" class="popup-modal-dismiss">Close</a>
+				 </div>		      
+
+			   </div> <!-- /modal-03 -->
+
+			   <div id="modal-04" class="popup-modal slider mfp-hide">	
+
+					<div class="media">
+						<img src="about/images/portfolio/modals/m-beetle.jpg" alt="" />
+					</div>      	
+
+				   <div class="description-box">
+					  <h4>Beetle</h4>		      
+					  <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+
+					  <div class="categories">Branding</div>			               
+				   </div>
+
+				 <div class="link-box">
+					<a href="#">Details</a>
+					  <a href="#" class="popup-modal-dismiss">Close</a>
+				 </div>		      
+
+			   </div> <!-- /modal-04 -->
+
+			   <div id="modal-05" class="popup-modal slider mfp-hide">	
+
+					<div class="media">
+						<img src="about/images/portfolio/modals/m-lighthouse.jpg" alt="" />
+					</div>      	
+
+				   <div class="description-box">
+					  <h4>Lighthouse</h4>		      
+					  <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+
+					  <div class="categories">Web Development</div>			               
+				   </div>
+
+				 <div class="link-box">
+					<a href="#">Details</a>
+					  <a href="#" class="popup-modal-dismiss">Close</a>
+				 </div>		      
+
+			   </div> <!-- /modal-05 -->
+
+			   <div id="modal-06" class="popup-modal slider mfp-hide">	
+
+					<div class="media">
+						<img src="about/images/portfolio/modals/m-salad.jpg" alt="" />
+					</div>      	
+
+				   <div class="description-box">
+					  <h4>Salad</h4>		      
+					  <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+
+					  <div class="categories">Branding</div>			               
+				   </div>
+
+				 <div class="link-box">
+					<a href="#">Details</a>
+					  <a href="#" class="popup-modal-dismiss">Close</a>
+				 </div>		      
+
+			   </div> <!-- /modal-06 -->
+
+
+			   <!-- modal popups - end
+			============================================================= -->
+
+		 </div> <!-- /portfolio-wrapper --> 
+
+	</div>  <!-- /twelve -->   
+
+</div> <!-- /portfolio-content --> 
+	
+</section> <!-- /portfolio --> 
+
+
+
+<!-- services Section
+================================================== -->
+<section id="services">
+
+	<div class="overlay"></div>
+
+	<div class="row section-intro">
+	<div class="col-twelve">
+
+		<h5>Services</h5>
+		<h1>What Can I Do For You?</h1>
+
+		<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
+
+	</div>   		
+</div> <!-- /section-intro -->
+
+<div class="row services-content">
+
+	<div id="owl-slider" class="owl-carousel services-list">
+
+		<div class="service">	
+
+			<span class="icon"><i class="icon-earth"></i></span>            
+
+			<div class="service-content">	
+
+				 <h3>Webdesign</h3>
+
+				<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+				</p>
+				
+			</div> 	         	 
+
+			</div> <!-- /service -->
+
+			<div class="service">	
+
+				<span class="icon"><i class="icon-window"></i></span>                          
+
+			<div class="service-content">	
+
+				<h3>Web Development</h3>  
+
+				<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+				</p>
+
+			</div>	                          
+
+		   </div> <!-- /service -->
+
+		   <div class="service">
+
+			<span class="icon"><i class="icon-paint-brush"></i></span>		            
+
+			<div class="service-content">
+
+				<h3>Operating</h3>
+
+				<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+					</p> 
+
+			</div> 	            	               
+
+		   </div> <!-- /service -->
+
+			<div class="service">
+
+				<span class="icon"><i class="icon-toggles"></i></span>	              
+
+			<div class="service-content">
+
+				<h3>DevOps</h3>
+
+				<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+				</p> 
+				
+			</div>                
+
+			</div> <!-- /service -->
+
+		   <div class="service">
+
+			<span class="icon"><i class="icon-image"></i></span>	            
+
+			<div class="service-content">
+
+				<h3>Python Dev</h3>
+
+				<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+					</p> 
+
+			</div>	               
+
+		   </div> <!-- /service -->
+
+		   <div class="service">
+
+			<span class="icon"><i class="icon-chat"></i></span>	   	           
+
+			<div class="service-content">
+
+				 <h3>Consultancy</h3>
+
+				<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+					</p> 
+					
+			</div>	               
+
+		   </div> <!-- /service -->
+
+	  </div> <!-- /services-list -->
+	
+</div> <!-- /services-content -->
+	
+</section> <!-- /services -->	
+
+
+
+
+<!-- contact
+================================================== -->
+<section id="contact">
+
+	<div class="row section-intro">
+		<div class="col-twelve">
+
+			<h5>Contact</h5>
+			<h1>I'd Love To Hear From You.</h1>
+
+			<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
+
+		</div> 
+	</div> <!-- /section-intro -->
+
+<div class="row contact-form">
+
+	<div class="col-twelve">
+
+		<!-- form -->
+		<form name="contactForm" id="contactForm" method="post" action="">
+			<fieldset>
+
+			  <div class="form-field">
+					   <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="">
+			  </div>
+			  <div class="form-field">
+				   <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required="">
+			   </div>
+			  <div class="form-field">
+					   <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="">
+			   </div>                       
+			  <div class="form-field">
+					<textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea>
+			   </div>                      
+			 <div class="form-field">
+				 <button class="submitform">Submit</button>
+				 <div id="submit-loader">
+					<div class="text-loader">Sending...</div>                             
+					  <div class="s-loader">
+								<div class="bounce1"></div>
+								<div class="bounce2"></div>
+								<div class="bounce3"></div>
+							</div>
+						</div>
+			  </div>
+
+			</fieldset>
+		</form> <!-- Form End -->
+
+		<!-- contact-warning -->
+		<div id="message-warning">            	
+		</div>            
+		<!-- contact-success -->
+		<div id="message-success">
+		   <i class="fa fa-check"></i>Your message was sent, thank you!<br>
+		</div>
+
+	 </div> <!-- /col-twelve -->
+	
+</div> <!-- /contact-form -->
+
+<div class="row contact-info">
+
+	<div class="col-four tab-full">
+
+		<div class="icon">
+			<i class="icon-pin"></i>
+		</div>
+
+		<h5>Where to find me</h5>
+
+		<p>
+		Eshan Road cross Dongfang Road<br>
+		Lujiazui Financial Square<br>
+		No.1217 20F
+		</p>
+
+	</div>
+
+	<div class="col-four tab-full">
+
+		<div class="icon">
+			<i class="icon-mail"></i>
+		</div>
+
+		<h5>Email Me At</h5>
+
+		<p>iooiooi23@163.com<br>
+			937169083@qq.com			     
+		   </p>
+
+	</div>
+
+	<div class="col-four tab-full">
+
+		<div class="icon">
+			<i class="icon-phone"></i>
+		</div>
+
+		<h5>Call Me At</h5>
+
+		<p>Phone: (+63) 555 121x<br>
+			Mobile: (+63) 555 0100x<br>
+				Fax: (+63) 555 0101x
+		   </p>
+
+	</div>
+	
+</div> <!-- /contact-info -->
+	
+</section> <!-- /contact -->
+
+
+<!-- footer
+================================================== -->
+
+<footer>
+	<div class="row">
+
+		<div class="col-six tab-full pull-right social">
+
+			<ul class="footer-social"> 
+			 <li><a href="#"><i class="fa fa-github"></i></a></li>        
+			 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+			 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+			 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+			 <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+			 <li><a href="#"><i class="fa fa-rss"></i></a></li>       
+		   </ul> 
+			
+	  </div>
+
+	<div class="col-six tab-full">
+		<div class="copyright">
+				<span>Copyright © 2017-2018 Created by Lockey All rights reserved.<!--  <a target="_blank" href="https://lockeycheng.github.io">Lockey</a> --></span> 
+			 </div>		                  
+		</div>
+
+		<div id="go-top">
+			 <a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+		  </div>
+
+	</div> <!-- /row -->     	
+</footer>  
+
+<div id="preloader" style="display:none"> 
+	<div id="loader"></div>
+</div> 
+
+<!-- Java Script
+================================================== --> 
+<script src="js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<script src="about/js/main.js"></script>
+
+<!--<script src="js/agency.js"></script>
+<script src="js/jquery.easing.min.js"></script>--> 
+<script src="js/classie.js"></script>
+<script src="js/cbpAnimatedHeader.js"></script>
+<!--<script src="js/mousetrap.min.js"></script>--> 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="margin-top: 196px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+				<i class="fa fa-lock" style="color:#ff3100;font-size: 1.6em;padding-right: 10px;"></i>隐私内容，密码访问！
+				</h4>
+			</div>
+			<div class="modal-body">
+				<input type="text" placeholder="Please Input File Name!" style="margin-bottom:0px;width: 96%;" id="accessFile">
+				<input type="password" placeholder="Please Input Access Token!" style="margin-bottom:0px;width: 96%;" id="accessPassword">
+				<span>按下 ESC 按钮退出。</span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary" id="accessPrivate">
+					提交密码
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+<script type="text/javascript" src="js/lockey.js"></script>
+<script type="text/javascript">
+	var scrollDirect=function () {
+        var dalta = document.body.scrollTop;
+        window.addEventListener("scroll", function (event) {
+        event = event || window.event;
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        var totalScroll = scrollHeight - windowHeight
+        var change = totalScroll- scrollTop
+        if((dalta - change) >0 ){
+          if(scrollTop > 160)
+          {
+              if(!$('.navbar-default').is(':hidden')){
+               $('.navbar-default').fadeOut(645)
+                }
+              }
+          
+        }else{
+          if($('.navbar-default').is(':hidden')){
+           	$('.navbar-default').fadeIn(456)
+            }
+        }
+        dalta = change
+       if(totalScroll - scrollTop > totalScroll-5){
+        //$('footer').show()
+       }
+      }, false);
+    }
+    scrollDirect(function (direction) {})
+</script>
+<audio controls style="display: none">
+  <source src="music/Confession.mp3" type="audio/mpeg">
+  <source src="music/Confession.mp3" type="audio/mpeg">
+您的浏览器不支持 audio 元素。
+</audio>
+</body>
+</html>
