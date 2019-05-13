@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+
+
 <!--
         /((((((\\\\
 =======((((((((((\\\\\
@@ -19,6 +22,11 @@
                                     _//       _//
                                    /_|       /_|
 -->
+
+<!-- what's fa fa-xxx -->
+<!---------too many chicken soup, need hard stuff---------->
+
+
 <html lang="zh">
 <head>
 	<meta charset="UTF-8">
@@ -35,16 +43,24 @@
   <style>
 
   </style>
+
+
 	<div class="page-wrapper">
+
+    <!-- sidebar start -->
             <nav id="sidebar" class="sidebar-wrapper">
               <div class="sidebar-content">
                 <a href="javascript:void(0)" id="toggle-sidebar"><i class="fa fa-github"></i></a>
+
+                <!-- username not showed yet!!! -->
                 <div class="sidebar-brand">
                     <a href="#" class="usernameHold">Lockey Young</a>
                 </div>
-                <div>    
+                <div> 
                   <input type="text" id="mymotto" placeholder="Add your motto here" class="nooutline">
                 </div>
+
+                <!-- show picture on the top-->
                 <div class="sidebar-header">
                     <div class="user-pic">
                         <img class="img-responsive img-rounded" src="./imgs/avatar.png" alt="">
@@ -52,11 +68,17 @@
                     <div class="user-info">
                         <!--<span class="user-name">Lockey <strong>Young</strong></span>-->
                         
-                        <div class="user-status">                       
+
+                        
+                        <div class="user-status">   
+                          <!-- var myLevel is defined, why not use it? -->                    
                             <a href="#"><span class="label label-success" id="level">LV X</span></a>                           
                         </div>
+                        <!-- user role should be a variable -->
                         <span class="user-role">Member</span>
                     </div>
+
+
                 </div><!-- sidebar-header  -->
                 <div class="sidebar-search">
                     <div>                   
@@ -130,6 +152,11 @@
                     <a href="#"><i class="fa fa-power-off"></i></a>
                 </div>
             </nav><!-- sidebar-wrapper  -->
+
+
+
+            <!-- ------------------page content starts here ----------------------->
+
             <main class="page-content">
               <!-- <h3 id="slideImgAdd"><span class="fa fa-modx"></span></h3> -->
               <div id="myCarousel" class="carousel slide">
@@ -171,6 +198,8 @@
       <p class="hidea rightO"><span class="fa fa-minus-circle carousel-add-minus"></span><span id="carouselNo">1</span><span class="fa fa-plus-circle carousel-add-minus"></span></p>
   </div>
   <ul class="nav nav-tabs" id="swith-nav-a" role="tablist"><!--style="margin-left: 16px;margin-top: -12px;"-->
+
+    <!---------------- in-page navigator starts here  --------------->
     <li class="nav-item active">
       <a class="nav-link active fa fa-podcast" data-toggle="tab" href="#home"></a>
     </li>
@@ -187,6 +216,10 @@
       <a class="nav-link fa fa-search-plus" data-toggle="tab" href="#menu4"></a>
     </li>
   </ul>
+
+
+
+  <!--------------- where's below parts?  -------------->
   <!-- Tab panes -->
   <div class="tab-content">
     <div id="home" class="container tab-pane active">
@@ -206,6 +239,8 @@
     <ol id="wordsOl">
     </ol>
 </div>
+
+
     <div id="clickWordsDict" class="touchAvoid">
       <p><a class="fa fa-remove showNone" style="
     margin-top: 0px;
@@ -335,6 +370,8 @@
         </div>
       </div>
     </div>
+
+
     <div id="menu4" class="container tab-pane fade"><br>
      <p id="dict-input-warpp">
         
@@ -367,6 +404,8 @@
   </div>
 </div>
 </main><!-- page-content" -->
+
+
 
  <footer>
     <div class="bottom-footer">
@@ -431,6 +470,8 @@
   <script type="text/javascript" src='assets/js/jquery.mCustomScrollbar.concat.min.js'></script>
   <script type="text/javascript" src="../js/showdown.min.js"></script>
   <script>
+
+    
     var test = null
     var mottoArr = [
           {'en':"I am not afraid of tomorrow for I have seen yesterday and I love today.",'auth':"— William Allen White",'cn':'不畏惧明天只因我已见过昨天并且热爱今天。'},
@@ -497,6 +538,9 @@
     if(!localStorage.mymotto){
       localStorage.mymotto = 'No Pains, No Gains!'
     }
+
+
+// defined readers' level here:
     var myLevel = 'LV  '
     if(localStorage.username){
       $('.usernameHold').html(localStorage.username)
@@ -520,10 +564,13 @@
       }
       $('#level').html(myLevel)
       $('.paperNos').html(localStorage.views)
-      aaaa += '</p><p class="viewsGreeting">May you save the QR code then share it to your buddies for reading in pairs.'
+      aaaa += '</p><p class="viewsGreeting">May you save the QR code then share it to your buddies for reading together.'
       var fillWelcome = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button><h6 class="modal-title rightO" id="myModalLabel">'+greeting+'</h6><div class="margintop23"><p class="viewsGreeting">'+aaaa+'</p></div></div><div class="modal-body"><img id="appimg" src="./imgs/economist_index.png"></div><div class="modal-footer"><button type="button" class="btn btn-success" data-dismiss="modal">Got it</button></div>'
       $('#myModal .modal-content').html(fillWelcome)
       $('#mymotto').val(localStorage.mymotto)
+
+    
+    // what's this?
     $(document).ready(function(){
       var morePaperLink = 'latestPapers'
       var defaultBlock = 'The_Economist'
@@ -540,6 +587,9 @@
       var paperGoon = 0
       var zoneMap = null
 
+
+
+      //haven't seen a ball yet
       /*ballball start*/
         var canvas = document.getElementById('ballball');
         var ctx = canvas.getContext('2d');
@@ -650,6 +700,8 @@
           $(this).attr('data-opacity','1')
         }
       })
+
+      //where we defined the ID?
       function multiplyArrayElement(num) {
           return num * document.getElementById("multiplyWith").value;
       }
@@ -866,6 +918,9 @@
                   return false
                 }
               }
+
+
+              // re-arrange the words to normal type
                 var valueO = value.toLocaleLowerCase()
                 var valueArr = [valueO]
                 value = valueO.slice(-4)
