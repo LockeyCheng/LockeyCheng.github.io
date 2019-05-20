@@ -3,26 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" class="js-site-favicon" href='fluidicon.png'>
+  <link rel="icon" type="image/x-icon" class="js-site-favicon" href='./fluidicon.png'>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
   <link rel="stylesheet" href='../font-awesome-4.7.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href='./static/css/main.css'>
   <title>Easy Reading</title>
 </head>
 <body>
   <style>
   body{
     margin: 0;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #ffffff),linear-gradient(70deg, #fff3ea 32%, #eefffc);
   }
   a{
-    text-decoration: none !important;
+   text-decoration: none !important;
   }
   </style>
   <div id="app"></div>
-  <script src="reading.js"></script>
+  <script src="./reading.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <script>
+    /*
+    $('body').bind('touchstart',function(e){
+          startX = e.originalEvent.changedTouches[0].pageX;
+          startY = e.originalEvent.changedTouches[0].pageY;
+        });
+        $("body").bind("touchmove",function(e){
+        
+        endX = e.originalEvent.changedTouches[0].pageX;
+        endY = e.originalEvent.changedTouches[0].pageY;
+        //获取滑动距离
+        distanceX = endX-startX;
+        distanceY = endY-startY;
+        console.log(distanceX,distanceY)
+        //判断滑动方向
+        if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX>60){
+          console.log('向右边滑动')
+         
+        }else if(Math.abs(distanceX)>Math.abs(distanceY) && distanceX<-60){
+         
+            console.log('往左滑动');
+            if(distanceX<-60){
+                $("#toggle-sidebar").trigger('click')
+            }
+            
+        }else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY<-30){
+          console.log('往up滑动');
+          document.getElementById("steps").style.display = "none";
+          //$('.fa-arrow-circle-up').show()
+              
+        }else if(Math.abs(distanceX)<Math.abs(distanceY) && distanceY>20){
+            console.log('往down滑动');
+            document.getElementById("steps").style.display = "block";
+            //$('.fa-arrow-circle-up').show()
+            
+        }
+      })
+      */
+  </script>
 </body>
 </html>
