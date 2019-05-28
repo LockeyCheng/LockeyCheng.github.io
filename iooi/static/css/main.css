@@ -340,3 +340,9 @@ padding: 0;
 .sidebar-footer-fa{
     font-size: 1.3em;
 }
+.card-body{
+    margin-bottom: 50px;
+}
+p{
+    margin: 0;
+}
