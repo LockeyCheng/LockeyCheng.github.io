@@ -259,6 +259,11 @@
             <label>密码</label>
             <input type="password" name="password" autocomplete="current-password" class="lowin-input" id="regpwd">
             </div>
+            <div class="lowin-group">
+              <label>账户类型</label>
+              <div class="wrapRadio"><input type="radio" name="usertype" value='1' checked> 个人</div>
+              <div class="wrapRadio"><input type="radio" name="usertype" value='2'> 商户</div>
+            </div>
             <button class="lowin-btn" id="regbtn">
             注 册
             </button>
@@ -291,7 +296,7 @@
                   let username = $('#loginuser').val()
                   let pwd = $('#loginpwd').val()
                   if(!username || !pwd){
-                    alert('Please input username and password correctly!')
+                    alert('请输入正确的用户名密码!')
                   }else{
                     let data={
                       username: username,
@@ -319,14 +324,15 @@
                   let username = $('#reguser').val()
                   let mail = $('#regmail').val()
                   let pwd = $('#regpwd').val()
-
+                  let usertype = $("input[name='usertype']:checked").val();
                   if(!username || !pwd || !mail){
-                    alert('Please input all required info correctly!')
+                    alert('请输入用户名密码和邮箱!')
                   }else{
                     let data={
                       username: username,
                       password: pwd,
-                      mail: mail
+                      mail: mail,
+                      usertype: usertype
                     };
                     $.ajax({
                           type: "post",
