@@ -29189,7 +29189,8 @@ a {
   left: 0;
   margin-right: auto;
   margin-left: auto;
-  background: #cab5f657;
+  background: #2e2049;
+  opacity: 0.66;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
